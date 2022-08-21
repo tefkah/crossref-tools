@@ -1,34 +1,26 @@
 {
   "compileOnSave": false,
-  "ts-node": {
-    "require": ["tsconfig-paths/register"],
-    "transpileOnly": true,
-    "compilerOptions": {
-      "module": "NodeNext",
-      "target": "ESNext"
-    },
-    "esm": true
-  },
   "compilerOptions": {
     "rootDir": ".",
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "strict": true,
     "sourceMap": true,
-    "declaration": false,
+    "declaration": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
+    "allowUnusedLabels": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "esnext",
-    "module": "NodeNext",
-    "lib": ["es2021", "DOM"],
+    "target": "es2020",
     "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipDefaultLibCheck": true,
-    "allowJs": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "noImplicitThis": false,
     "baseUrl": ".",
     "paths": {
       "crossref-xml": ["packages/crossref-xml/src/index.ts"]

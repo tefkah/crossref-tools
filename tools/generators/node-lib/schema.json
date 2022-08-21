@@ -7,7 +7,7 @@
   "examples": [
     {
       "command": "g lib mylib --directory=myapp",
-      "description": "Generate libs/myapp/mylib"
+      "description": "Generate packages/myapp/mylib"
     }
   ],
   "properties": {

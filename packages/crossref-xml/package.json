@@ -4,8 +4,8 @@
   "license": "GPL-3-0-or-later",
   "repository": "https://github.com/journaloftrialanderror/jote",
   "author": "Thomas F. K. Jorna <hello@tefkah.com>",
-  "type": "module",
   "description": "Generate CrossrefXML purely in Node using a friendly JSON api",
+  "type": "module",
   "keywords": [
     "unified",
     "abstract",

@@ -5,28 +5,28 @@
   "targets": {
     "build": {
       "executor": "@nrwl/js:swc",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/crossref-xml",
         "tsConfig": "packages/crossref-xml/tsconfig.lib.json",
         "packageJson": "packages/crossref-xml/package.json",
         "main": "packages/crossref-xml/src/index.ts",
-        "assets": [
-          "packages/crossref-xml/*.md"
-        ]
+        "assets": ["packages/crossref-xml/*.md"]
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "packages/crossref-xml/**/*.ts"
-        ]
+        "lintFilePatterns": ["packages/crossref-xml/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/crossref-xml"],
+      "options": {
+        "jestConfig": "packages/crossref-xml/jest.config.js",
+        "passWithNoTests": true
       }
     }
   },

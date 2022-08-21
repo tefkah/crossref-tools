@@ -1,26 +1,26 @@
-import { Element, Instruction, Root, Text } from "xast"
+import { Element, Instruction, Root, Text } from 'xast'
 
-import head, { Head } from "./head"
-import body, { Body } from "./body"
-import { Cite } from "./citation_list"
-import { Author } from "./contributors"
-import { URI } from "./ai_program"
+import head, { Head } from './head'
+import body, { Body } from './body'
+import { Cite } from './citation_list'
+import { Author } from './contributors'
+import { URI } from './ai_program'
 
 export interface CrossRef extends Root {
   children: (Instruction | DOIBatch)[]
 }
 export interface DOIBatch extends Element {
-  name: "doi_batch"
+  name: 'doi_batch'
   attributes: {
     version: string
     xmlns: string
-    "xmlns:xsi": string
-    "xsi:schemaLocation": string
-    "xmlns:jats": string
+    'xmlns:xsi': string
+    'xsi:schemaLocation': string
+    'xmlns:jats': string
   }
   children: (Head | Body)[]
 }
-const generateCrossRef = ({
+export const generateCrossRefObject = ({
   schema,
   type,
   title,
@@ -44,27 +44,27 @@ const generateCrossRef = ({
   citations: Cite[]
 }): CrossRef => {
   const jsCrossRef: CrossRef = {
-    type: "root",
+    type: 'root',
     children: [
       {
-        type: "instruction",
-        name: "xml",
+        type: 'instruction',
+        name: 'xml',
         value: 'version="1.0" encoding="UTF-8"',
       },
       {
-        type: "element",
-        name: "doi_batch",
+        type: 'element',
+        name: 'doi_batch',
         attributes: {
           version: schema,
           xmlns: `http://www.crossref.org/schema/${schema}`,
-          "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-          "xsi:schemaLocation": `http://www.crossref.org/schema/${schema} http://www.crossref.org/schemas/crossref${schema}.xsd`,
-          "xmlns:jats": "http://www.ncbi.nlm.nih.gov/JATS1",
+          'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
+          'xsi:schemaLocation': `http://www.crossref.org/schema/${schema} http://www.crossref.org/schemas/crossref${schema}.xsd`,
+          'xmlns:jats': 'http://www.ncbi.nlm.nih.gov/JATS1',
         },
         children: [
           head({
-            registrant: "Liberate Science GmbH",
-            email: "info@libscie.org",
+            registrant: 'Liberate Science GmbH',
+            email: 'info@libscie.org',
           }),
           body({
             type,
@@ -84,5 +84,3 @@ const generateCrossRef = ({
 
   return jsCrossRef
 }
-
-export default generateCrossRef

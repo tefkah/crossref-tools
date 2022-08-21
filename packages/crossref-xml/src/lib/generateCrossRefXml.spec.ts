@@ -22,7 +22,7 @@ describe('generateCrossRefXml', () => {
     const xmlIsWellFormed = libxml.loadXmlFromString(xml)
     // this is always relative to the main directory
     const xsdFolder = new URL('../../schemas', import.meta.url).pathname
-    const xsdPath = new URL(`${xsdFolder}/'crossref5.3.1.xsd`, import.meta.url).pathname
+    const xsdPath = new URL(`${xsdFolder}/crossref5.3.1.xsd`, import.meta.url).pathname
 
     const loadSchemas = libxml.loadSchemas([xsdPath])
 

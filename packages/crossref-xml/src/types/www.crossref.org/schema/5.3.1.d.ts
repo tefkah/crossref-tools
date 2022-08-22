@@ -10,6 +10,12 @@ import * as rel from '../relations.xsd'
 // https://data.crossref.org/schemas/crossref5.3.1.xsd
 
 import { Element, Text } from 'xast'
+
+export interface TextNode<T extends string = string> extends Element {
+  name: T
+  attributes: {}
+  children: [Text]
+}
 export type ValuesType<T extends ReadonlyArray<any> | ArrayLike<any> | Record<any, any>> =
   T extends ReadonlyArray<any>
     ? T[number]
@@ -24,7 +30,7 @@ export type AllTypes<T> = ArrayValueMaybe<ValuesType<T>>
 
 export type RequiredMap<T> = AllTypes<T>
 /** Common abbreviation or abbreviations used when citing a journal. It is recommended that periods be included after abbreviated words within the title. */
-type AbbrevTitle = string
+export type AbbrevTitle = TextNode<'abbrev_title'>
 type _AbbrevTitle = Primitive._string
 
 /** The date a manuscript was accepted for publication. */
@@ -197,8 +203,8 @@ export interface BookMetadataChildren {
   crossmark?: Crossmark
   /** The container for elements related directly to a DOI. */
   doiData?: DoiData
-  /** The edition Text of a book. edition_number should include only a number and not additional text such as "edition". For example, you should submit "3", not "third edition" or "3rd edition". Roman numerals are acceptable. */
-  editionNumber?: Text
+  /** The edition number of a book. edition_number should include only a number and not additional text such as "edition". For example, you should submit "3", not "third edition" or "3rd edition". Roman numerals are acceptable. */
+  editionNumber?: EditionNumber
   /** The ISBN assigned to an entity. */
   isbn: Isbn[]
   /** Identifies books or conference proceedings that have no ISBN assigned. */
@@ -269,8 +275,8 @@ export interface BookSetMetadataChildren {
   crossmark?: Crossmark
   /** The container for elements related directly to a DOI. */
   doiData?: DoiData
-  /** The edition Text of a book. edition_number should include only a number and not additional text such as "edition". For example, you should submit "3", not "third edition" or "3rd edition". Roman numerals are acceptable. */
-  editionNumber?: Text
+  /** The edition number of a book. edition_number should include only a number and not additional text such as "edition". For example, you should submit "3", not "third edition" or "3rd edition". Roman numerals are acceptable. */
+  editionNumber?: EditionNumber
   /** The ISBN assigned to an entity. */
   isbn: Isbn[]
   /** Identifies books or conference proceedings that have no ISBN assigned. */
@@ -285,8 +291,8 @@ export interface BookSetMetadataChildren {
   publisherItem?: PublisherItem
   /** When a book consists of multiple volumes that are not part of a serial publication (series), set_metadata is used to describe information about the entire set. */
   setMetadata: SetMetadata
-  /** The volume Text of a published journal, or the number of a printed volume for a book or conference proceedings. */
-  volume: Text
+  /** The volume number of a published journal, or the number of a printed volume for a book or conference proceedings. */
+  volume: Volume
 }
 
 /** Container for all information about a single book. */
@@ -345,22 +351,22 @@ export interface Citation extends citationT {
   }
 }
 
-export type cmAssertion = string
+export type cmAssertion = TextNode
 type _cmAssertion = Primitive._string
 
-export type cmAssertionGroupLabel = string
+export type cmAssertionGroupLabel = TextNode
 type _cmAssertionGroupLabel = Primitive._string
 
-export type cmAssertionGroupName = string
+export type cmAssertionGroupName = TextNode
 type _cmAssertionGroupName = Primitive._string
 
-export type cmAssertionLabel = string
+export type cmAssertionLabel = TextNode
 type _cmAssertionLabel = Primitive._string
 
-export type cmAssertionName = string
+export type cmAssertionName = TextNode
 type _cmAssertionName = Primitive._string
 
-export type cmDomain = string
+export type cmDomain = TextNode
 type _cmDomain = Primitive._string
 
 export type cmUpdate =
@@ -381,7 +387,7 @@ interface _cmUpdate extends Primitive._string {
 }
 
 /** The coden assigned to a journal or conference proceedings. */
-type Coden = string
+export type Coden = TextNode<'coden'>
 type _Coden = Primitive._string
 
 /** Container for item elements containing non-primary URIs associated with the item being registered. Collections are supported for the following (defined in the property attribute):
@@ -448,7 +454,7 @@ export interface ComponentListChildren {
 }
 
 /** The chapter, section, part, etc. number for a content item in a book. Unlike volume and edition_number, component_number should include any additional text that helps identify the type of component. */
-type ComponentNumber = string
+export type ComponentNumber = TextNode<'component_number'>
 type _ComponentNumber = Primitive._string
 
 /** Container for component metadata. Supplemental materials, figures, tables, and other items that can be considered a citeable part of a registered item may be registered as components. */
@@ -470,7 +476,7 @@ export interface ComponentChildren {
   /** A narrative description of a file (e.g. a figure caption or video description). */
   description?: Description
   /** DOI for an entity being registered with Crossref. */
-  doi: Text
+  doi: Doi
   /** The container for elements related directly to a DOI. */
   doiData: DoiData
   /** A narrative description of a component's file format and/or file extension. */
@@ -483,7 +489,7 @@ export interface ComponentChildren {
   titles?: Titles
 }
 
-type ComponentComponentSize = number
+export type ComponentComponentSize = TextNode<'component_size'>
 type _ComponentComponentSize = Primitive._number
 
 type ComponentParentRelation = 'isPartOf' | 'isReferencedBy' | 'isRequiredBy' | 'isTranslationOf'
@@ -491,14 +497,14 @@ interface _ComponentParentRelation extends Primitive._string {
   content: ComponentParentRelation
 }
 
-type ComponentRegAgency = string
+export type ComponentRegAgency = TextNode<'reg-agency'>
 type _ComponentRegAgency = Primitive._string
 
 /** The popularly known as or jargon name (e.g. SIGGRAPH for "Special Interest Group on Computer Graphics"). Authors commonly cite the conference acronym rather than the full conference or proceedings name, so it is best to include this element when it is available. */
-type ConferenceAcronym = string
+export type ConferenceAcronym = TextNode<'conference_acronym'>
 type _ConferenceAcronym = Primitive._string
 
-export type conferenceDateT = string
+export type conferenceDateT = TextNode
 type _conferenceDateT = Primitive._string
 
 /** The start and end dates of a conference event. conference_date may be used in three ways:
@@ -520,15 +526,15 @@ export interface ConferenceDate extends conferenceDateT {
 }
 
 /** The location of the conference. The city, state, province or country of the conference may be provided as appropriate. */
-type ConferenceLocation = string
+export type ConferenceLocation = TextNode<'conference_location'>
 type _ConferenceLocation = Primitive._string
 
 /** The official name of the conference, excluding numbers commonly provided in conference */
-type ConferenceName = string
+export type ConferenceName = TextNode<'conference_name'>
 type _ConferenceName = Primitive._string
 
 /** The number of a conference. conference_number should include only the number of the conference without any extra text */
-type ConferenceNumber = string
+export type ConferenceNumber = TextNode<'conference_number'>
 type _ConferenceNumber = Primitive._string
 
 /** Container for all information about a single conference paper. */
@@ -575,11 +581,11 @@ export interface ConferencePaperChildren {
 }
 
 /** The sponsoring organization(s) of a conference. Multiple sponsors may be given if a conference is hosted by more than one organization. */
-type ConferenceSponsor = string
+export type ConferenceSponsor = TextNode<'conference_sponsor'>
 type _ConferenceSponsor = Primitive._string
 
 /** The theme is the slogan or special emphasis of a conference in a particular year. It differs from the subject of a conference in that the subject is stable over the years while the theme may vary from year to year. For example, the American Society for Information Science and Technology conference theme was "Knowledge: Creation, Organization and Use" in 1999 and "Defining Information Architecture" in 2000. */
-type ConferenceTheme = string
+export type ConferenceTheme = TextNode<'conference_theme'>
 type _ConferenceTheme = Primitive._string
 
 /** Container for all information about a single conference and its proceedings. If a conference proceedings spans multiple volumes, each volume must be contained in a unique conference element. */
@@ -635,8 +641,8 @@ export interface ContentItemChildren {
   citationList?: CitationList
   /** Container for a group of components */
   componentList?: ComponentList
-  /** The chapter, section, part, etc. Text for a content item in a book. Unlike volume and edition_number, component_number should include any additional text that helps identify the type of component. */
-  componentNumber?: Text
+  /** The chapter, section, part, etc. number for a content item in a book. Unlike volume and edition_number, component_number should include any additional text that helps identify the type of component. */
+  componentNumber?: ComponentNumber
   /** The container for all who contributed to authoring or editing an item. */
   contributors?: Contributors
   /** Container element for CrossMark data. */
@@ -662,11 +668,11 @@ interface _ContentItemComponent extends Primitive._string {
   content: ContentItemComponent
 }
 
-type ContentItemLevelSequenceNumber = number
+export type ContentItemLevelSequenceNumber = TextNode<'level_sequence_number'>
 type _ContentItemLevelSequenceNumber = Primitive._number
 
 /** The contract number under which a report or paper was written. */
-type ContractNumber = string
+export type ContractNumber = TextNode<'contract_number'>
 type _ContractNumber = Primitive._string
 
 type ContributorRole =
@@ -729,9 +735,9 @@ export interface CrossmarkDomain extends Element {
 
 export interface CrossmarkDomainChildren {
   /** A domain name or subdomain name (e.g. www.psychoceramics.org or psychoceramics.org). It is used to identify when a referring URL is coming from a Crossmark domain. */
-  domain: Text
-  /** The filter element is used to disambiguate content in situations where multiple publishers share the same host (e.g. when on an aggregated platform). It should contain a substring of the path that can be used to uniquely identify a publisher's or publication's content. For instance, using the Text "alpsp" here would help the CrossMark system distinguish between ALPSP publications on the ingentaconnect host and other publications on the same host. */
-  filter?: Text
+  domain: Domain
+  /** The filter element is used to disambiguate content in situations where multiple publishers share the same host (e.g. when on an aggregated platform). It should contain a substring of the path that can be used to uniquely identify a publisher's or publication's content. For instance, using the string "alpsp" here would help the CrossMark system distinguish between ALPSP publications on the ingentaconnect host and other publications on the same host. */
+  filter?: Filter
 }
 
 /** Container element for CrossMark data. */
@@ -743,12 +749,12 @@ export interface Crossmark extends Element {
 }
 
 export interface CrossmarkChildren {
-  crossmarkDomainExclusive?: Text
+  crossmarkDomainExclusive?: CrossmarkDomainExclusive
   /** Container element for crossmark_domain. A list of domains where the publisher maintains updates and corrections to their content. Minimally, one of these should include the Internet domain name of the publisher's web site(s), but the publisher might also decide to include 3rd party aggregators (e.g. Ebsco, IngentaConnect) or archives with which the publisher has agreements to update the content */
   crossmarkDomains?: CrossmarkDomains[]
   /** A DOI which points to a publisher's CrossMark policy document. Publishers might have different policies for different publications. */
-  crossmarkPolicy?: Text
-  crossmarkVersion?: Text
+  crossmarkPolicy?: CrossmarkPolicy
+  crossmarkVersion?: CrossmarkVersion
   /** Publishers are encouraged to provided any non-bibliographical metadata that they feel might help the researcher evaluate and make better use of the content that the Crossmark record refers to. For example, publishers might want to provide funding information, clinical trial numbers, information about the peer-review process or a summary of the publication history of the document. */
   customMetadata?: CustomMetadata
   /** A document might provide updates (e.g. corrections, clarifications, retractions) to several other documents. When this is the case, the DOIs of the documents that are being *updated* should be listed here. */
@@ -764,7 +770,7 @@ export interface CustomMetadata extends Element {
 }
 
 export interface CustomMetadataChildren {
-  /** Accommodates deposit of linked clincal trials metadata. The clinical-trial-Text value will
+  /** Accommodates deposit of linked clincal trials metadata. The clinical-trial-number value will
    * be a string that must match a specific pattern appropriate for a given clinical trial registry. The
    * registry is identified in the required attribute 'registry' and must be the DOI of a recognized registry
    * (see http://dx.doi.org/10.18810/registries) */
@@ -892,11 +898,11 @@ export interface dateT extends Element {
 
 export interface dateTChildren {
   /** Day of publication. The should must be expressed with a leading zero if it is less than 10 (e.g. submit "05", not "5"). */
-  day?: Text
-  /** Month of publication. The month must be expressed in numeric format rather spelling out the name (e.g.. submit "10", not "October"). The month must be expressed with a leading zero if it is less than 10 (e.g. submit "05", not "5"). When a journal issue has both an issue Text and a season, the issue number should be placed in issue. If the month of publication is not known, the season should be placed in month as a two-digit value as follows: Season Value Spring 21 Summer 22 Autumn 23 Winter 24 First Quarter 31 Second Quarter 32 Third Quarter 33 Fourth Quarter 34 In cases when an issue covers multiple months, e.g. "March-April", include only the digits for the first month of the range. */
-  month?: Text
+  day?: Day
+  /** Month of publication. The month must be expressed in numeric format rather spelling out the name (e.g.. submit "10", not "October"). The month must be expressed with a leading zero if it is less than 10 (e.g. submit "05", not "5"). When a journal issue has both an issue number and a season, the issue number should be placed in issue. If the month of publication is not known, the season should be placed in month as a two-digit value as follows: Season Value Spring 21 Summer 22 Autumn 23 Winter 24 First Quarter 31 Second Quarter 32 Third Quarter 33 Fourth Quarter 34 In cases when an issue covers multiple months, e.g. "March-April", include only the digits for the first month of the range. */
+  month?: Month
   /** Year of publication. */
-  year: Text
+  year: Year
 }
 
 type dateTMedia = 'online' | 'print' | 'other'
@@ -913,11 +919,11 @@ export interface Degrees extends Element {
 }
 
 /** The degree(s) awarded for a dissertation. */
-type Degree = string
+export type Degree = TextNode<'degree'>
 type _Degree = Primitive._string
 
 /** Name of the organization registering the DOIs. */
-type DepositorName = string
+export type DepositorName = TextNode<'depositor_name'>
 type _DepositorName = Primitive._string
 
 /** Information about the organization submitting DOI metadata to Crossref */
@@ -930,9 +936,9 @@ export interface Depositor extends Element {
 
 export interface DepositorChildren {
   /** Name of the organization registering the DOIs. */
-  depositorName: Text
+  depositorName: DepositorName
   /** e-mail address to which batch success and/or error messages are sent. */
-  emailAddress: Text
+  emailAddress: EmailAddress
 }
 
 /** A narrative description of a file (e.g. a figure caption or video description). */
@@ -954,11 +960,11 @@ export interface Designators extends Element {
 
 export interface DesignatorsChildren {
   /** Designator for standard from which the current deposit is adopted. */
-  stdAdoptedFrom?: Text[]
+  stdAdoptedFrom?: StdAdoptedFrom[]
   /** Designator for the previous revision of the standard being deposited. (note: use alt_as_published for revisions within designators having common stem) */
-  stdRevisionOf?: Text[]
+  stdRevisionOf?: StdRevisionOf[]
   /** Designator for standard being replaced by the standard being deposited. */
-  stdSupersedes?: Text[]
+  stdSupersedes?: StdSupersedes[]
 }
 
 /** dissertation is the top level element for deposit of metadata about one or more dissertations. */
@@ -989,7 +995,7 @@ export interface DissertationChildren {
   /** Container element for CrossMark data. */
   crossmark?: Crossmark
   /** The degree(s) awarded for a dissertation. */
-  degree?: Text[]
+  degree?: Degree[]
   /** The container for elements related directly to a DOI. */
   doiData: DoiData
   /** Container element for information about an institution or organization associated with an item. */
@@ -1009,7 +1015,7 @@ export interface DissertationChildren {
 }
 
 /** Publisher generated ID that uniquely identifies the DOI submission batch. */
-type DoiBatchId = string
+export type DoiBatchId = TextNode<'doi_batch_id'>
 type _DoiBatchId = Primitive._string
 
 /** Top level element for a metadata record submission. This element indicates the start and end of the XML file. The version number is fixed to the version of the schema. */
@@ -1049,26 +1055,26 @@ export interface DoiDataChildren {
    * link-header: identifies resources to be used as an endpoint */
   collection?: Collection[]
   /** DOI for an entity being registered with Crossref. */
-  doi: Text
+  doi: Doi
   /** The URI associated with a DOI. */
   resource: Resource
-  /** An integer representation of date and time that serves as a version Text for the record that is being deposited, used to uniquely identify batch files and DOI values when a DOI has been updated one or more times. */
-  timestamp?: Text
+  /** An integer representation of date and time that serves as a version number for the record that is being deposited, used to uniquely identify batch files and DOI values when a DOI has been updated one or more times. */
+  timestamp?: Timestamp
 }
 
-export type doiT = string
+export type doiT = TextNode
 type _doiT = Primitive._string
 
 /** DOI for an entity being registered with Crossref. */
-type Doi = string
+export type Doi = TextNode<'doi'>
 type _Doi = _doiT
 
 /** The edition number of a book. edition_number should include only a number and not additional text such as "edition". For example, you should submit "3", not "third edition" or "3rd edition". Roman numerals are acceptable. */
-type EditionNumber = string
+export type EditionNumber = TextNode<'edition_number'>
 type _EditionNumber = Primitive._string
 
 /** e-mail address to which batch success and/or error messages are sent. */
-type EmailAddress = string
+export type EmailAddress = TextNode<'email_address'>
 type _EmailAddress = Primitive._string
 
 /** A container for all information that applies to a conference event. event_metadata captures information about a conference event. Data about conference proceedings is captured in proceedings_metadata. */
@@ -1081,7 +1087,7 @@ export interface EventMetadata extends Element {
 
 export interface EventMetadataChildren {
   /** The popularly known as or jargon name (e.g. SIGGRAPH for "Special Interest Group on Computer Graphics"). Authors commonly cite the conference acronym rather than the full conference or proceedings name, so it is best to include this element when it is available. */
-  conferenceAcronym?: Text
+  conferenceAcronym?: ConferenceAcronym
   /** The start and end dates of a conference event. conference_date may be used in three ways:
    * 1. If publishers that do not have parsed date values, provide just text with the conference dates. The date text should be taken from the proceedings title page.
    * 2. If publishers have parsed date values, provide them in the attributes.
@@ -1089,22 +1095,22 @@ export interface EventMetadataChildren {
    * Jan. 15-17, 1997 */
   conferenceDate?: ConferenceDate
   /** The location of the conference. The city, state, province or country of the conference may be provided as appropriate. */
-  conferenceLocation?: Text
+  conferenceLocation?: ConferenceLocation
   /** The official name of the conference, excluding numbers commonly provided in conference */
-  conferenceName: Text
-  /** The Text of a conference. conference_number should include only the number of the conference without any extra text */
-  conferenceNumber?: Text
+  conferenceName: ConferenceName
+  /** The number of a conference. conference_number should include only the number of the conference without any extra text */
+  conferenceNumber?: ConferenceNumber
   /** The sponsoring organization(s) of a conference. Multiple sponsors may be given if a conference is hosted by more than one organization. */
-  conferenceSponsor?: Text[]
+  conferenceSponsor?: ConferenceSponsor[]
   /** The theme is the slogan or special emphasis of a conference in a particular year. It differs from the subject of a conference in that the subject is stable over the years while the theme may vary from year to year. For example, the American Society for Information Science and Technology conference theme was "Knowledge: Creation, Organization and Use" in 1999 and "Defining Information Architecture" in 2000. */
-  conferenceTheme?: Text
+  conferenceTheme?: ConferenceTheme
 }
 
 /** First page number of an item. */
-type FirstPage = string
+export type FirstPage = TextNode<'first_page'>
 type _FirstPage = Primitive._string
 
-export type formatT = string
+export type formatT = TextNode
 type _formatT = Primitive._string
 
 /** A narrative description of a component's file format and/or file extension. */
@@ -1117,15 +1123,15 @@ export interface Format extends formatT {
 }
 
 /** The full title by which a journal is commonly known or cited. */
-type FullTitle = string
+export type FullTitle = TextNode<'full_title'>
 type _FullTitle = Primitive._string
 
 /** A contributor's given name. */
-type GivenName = string
+export type GivenName = TextNode<'given_name'>
 type _GivenName = Primitive._string
 
 /** Posted content may be organzed into groupings within a given publisher. This element provides for naming the group. It is expected that publishers will have a small number of groups each of which reflect a topic or subject area. */
-type GroupTitle = string
+export type GroupTitle = TextNode<'group_title'>
 type _GroupTitle = Primitive._string
 
 /** Container for information related to the DOI batch submission. This element uniquely identifies the batch deposit to Crossref and contains information that will be used as a reference in error messages triggered during submission processing. */
@@ -1140,14 +1146,14 @@ export interface HeadChildren {
   /** Information about the organization submitting DOI metadata to Crossref */
   depositor: Depositor
   /** Publisher generated ID that uniquely identifies the DOI submission batch. */
-  doiBatchId: Text
+  doiBatchId: DoiBatchId
   /** The organization responsible for the information being registered. */
-  registrant: Text
-  /** An integer representation of date and time that serves as a version Text for the record that is being deposited, used to uniquely identify batch files and DOI values when a DOI has been updated one or more times. */
-  timestamp: Text
+  registrant: Registrant
+  /** An integer representation of date and time that serves as a version number for the record that is being deposited, used to uniquely identify batch files and DOI values when a DOI has been updated one or more times. */
+  timestamp: Timestamp
 }
 
-export type identifierT = string
+export type identifierT = TextNode
 type _identifierT = Primitive._string
 
 /** A public standard identifier that can be used to uniquely identify the item being registered. */
@@ -1175,11 +1181,11 @@ interface _IdentifierId extends Primitive._string {
 }
 
 /** The acronym of the institution. */
-type InstitutionAcronym = string
+export type InstitutionAcronym = TextNode<'institution_acronym'>
 type _InstitutionAcronym = Primitive._string
 
 /** The department within an institution. */
-type InstitutionDepartment = string
+export type InstitutionDepartment = TextNode<'institution_department'>
 type _InstitutionDepartment = Primitive._string
 
 /** Identifier for an institution or organization (currently supported: ROR, ISNI, Wikidata). Identifiers must be included as a URI */
@@ -1197,11 +1203,11 @@ interface _InstitutionId extends Primitive._string {
 }
 
 /** The full name of an institution. */
-type InstitutionName = string
+export type InstitutionName = TextNode<'institution_name'>
 type _InstitutionName = Primitive._string
 
 /** The primary city location of the institution. institution_place gives the primary city location of the institution. When the location is a major city (e.g. New York, Amsterdam), no qualifying country or U.S. state need be given. If the city is not a major city, the appropriate country and/or state or province should be added. */
-type InstitutionPlace = string
+export type InstitutionPlace = TextNode<'institution_place'>
 type _InstitutionPlace = Primitive._string
 
 /** Container element for information about an institution or organization associated with an item. */
@@ -1214,13 +1220,13 @@ export interface Institution extends Element {
 
 export interface InstitutionChildren {
   /** The acronym of the institution. */
-  institutionAcronym?: Text[]
+  institutionAcronym?: InstitutionAcronym[]
   /** The department within an institution. */
-  institutionDepartment?: Text[]
+  institutionDepartment?: InstitutionDepartment[]
   /** Identifier for an institution or organization (currently supported: ROR, ISNI, Wikidata). Identifiers must be included as a URI */
   institutionId: InstitutionId[]
   /** The primary city location of the institution. institution_place gives the primary city location of the institution. When the location is a major city (e.g. New York, Amsterdam), no qualifying country or U.S. state need be given. If the city is not a major city, the appropriate country and/or state or province should be added. */
-  institutionPlace?: Text[]
+  institutionPlace?: InstitutionPlace[]
 }
 
 /** Member's custom statement of intent to publish content for which a pending publication DOI has been created */
@@ -1241,7 +1247,7 @@ export interface IntentStatementChildren {
   u?: xrefFaces[]
 }
 
-export type isbnT = string
+export type isbnT = TextNode
 type _isbnT = Primitive._string
 
 /** The ISBN assigned to an entity. */
@@ -1253,7 +1259,7 @@ export interface Isbn extends isbnT {
   }
 }
 
-export type issnT = string
+export type issnT = TextNode
 type _issnT = Primitive._string
 
 /** The ISSN assigned to the title being registered. */
@@ -1266,10 +1272,10 @@ export interface Issn extends issnT {
 }
 
 /** The issue number or name in which an article is published. The issue number takes precedence over any other name. For example, if an issue has only a seasonal name, then the season should be listed in issue. */
-type Issue = string
+export type Issue = TextNode<'issue'>
 type _Issue = Primitive._string
 
-export type itemNumberT = string
+export type itemNumberT = TextNode
 type _itemNumberT = Primitive._string
 
 /** A publisher-assigned number that uniquely identifies the item being registered. */
@@ -1296,7 +1302,7 @@ export interface Item extends Element {
 
 export interface ItemChildren {
   /** DOI for an entity being registered with Crossref. */
-  doi?: Text
+  doi?: Doi
   /** The URI associated with a DOI. */
   resource?: Resource
 }
@@ -1561,7 +1567,7 @@ interface _ItemCrawler extends Primitive._string {
   content: ItemCrawler
 }
 
-type ItemLabel = string
+export type ItemLabel = TextNode<'label'>
 type _ItemLabel = Primitive._string
 
 type ItemLinkHeaderRelationship = 'dul'
@@ -1627,14 +1633,14 @@ export interface JournalIssueChildren {
   contributors?: Contributors
   /** The container for elements related directly to a DOI. */
   doiData?: DoiData
-  /** The issue Text or name in which an article is published. The issue number takes precedence over any other name. For example, if an issue has only a seasonal name, then the season should be listed in issue. */
-  issue?: Text
+  /** The issue number or name in which an article is published. The issue number takes precedence over any other name. For example, if an issue has only a seasonal name, then the season should be listed in issue. */
+  issue?: Issue
   /** Container for the journal volume and DOI assigned to an entire journal volume. You may register a DOI for an entire volume by including doi_data in journal_volume. */
   journalVolume?: JournalVolume
   /** The date of publication. Multiple dates are allowed to allow for different dates of publication for online and print versions. */
   publicationDate: PublicationDate[]
-  /** Issue level numbering for supplements or special issues. Text defining the type of special issue (e.g. "suppl") should be included in this element along with the Text. */
-  specialNumbering?: Text
+  /** Issue level numbering for supplements or special issues. Text defining the type of special issue (e.g. "suppl") should be included in this element along with the number. */
+  specialNumbering?: SpecialNumbering
   /** A container for the title and original language title elements. */
   titles?: Titles
 }
@@ -1652,15 +1658,15 @@ export interface JournalMetadata extends Element {
 
 export interface JournalMetadataChildren {
   /** Common abbreviation or abbreviations used when citing a journal. It is recommended that periods be included after abbreviated words within the title. */
-  abbrevTitle?: Text[]
+  abbrevTitle?: AbbrevTitle[]
   /** Container element for archive information */
   archiveLocations?: ArchiveLocations
   /** The coden assigned to a journal or conference proceedings. */
-  coden?: Text
+  coden?: Coden
   /** The container for elements related directly to a DOI. */
   doiData?: DoiData
   /** The full title by which a journal is commonly known or cited. */
-  fullTitle: Text[]
+  fullTitle: FullTitle[]
   /** The ISSN assigned to the title being registered. */
   issn?: Issn[]
 }
@@ -1680,8 +1686,8 @@ export interface JournalVolumeChildren {
   doiData?: DoiData
   /** A container for item identification numbers set by a publisher. */
   publisherItem?: PublisherItem
-  /** The volume Text of a published journal, or the number of a printed volume for a book or conference proceedings. */
-  volume: Text
+  /** The volume number of a published journal, or the number of a printed volume for a book or conference proceedings. */
+  volume: Volume
 }
 
 /** Container for all information about a single journal and the volumes, issues, and articles being registered within the journal.  Within a journal instance you may register articles from a single issue, detailed in journal_issue. If you want to register items from more than one issue you must use multiple journal instances within your XML file. */
@@ -1701,7 +1707,7 @@ export interface JournalChildren {
   journalMetadata: JournalMetadata
 }
 
-type Key = string
+export type Key = TextNode<'key'>
 type _Key = Primitive._string
 
 type Language =
@@ -1893,7 +1899,7 @@ interface _Language extends Primitive._string {
 }
 
 /** Last page number of an item. */
-type LastPage = string
+export type LastPage = TextNode<'last_page'>
 type _LastPage = Primitive._string
 
 type Media = 'print' | 'electronic'
@@ -2067,10 +2073,10 @@ export interface Name extends Element {
 
 export interface NameChildren {
   /** A contributor's given name. */
-  givenName: Text
+  givenName: GivenName
   prefix?: Prefix
   /** The suffix of an author name, e.g. junior, senior, III. */
-  suffix?: Text
+  suffix?: Suffix
 }
 
 type NameNameStyle = 'western' | 'eastern' | 'islensk' | 'given-only'
@@ -2092,7 +2098,7 @@ interface _NoisbnReason extends Primitive._string {
   content: NoisbnReason
 }
 
-export type orcidT = string
+export type orcidT = TextNode
 type _orcidT = Primitive._string
 
 /** The ORCID iD for an author. */
@@ -2104,7 +2110,7 @@ export interface ORCID extends orcidT {
   }
 }
 
-export type organizationT = string
+export type organizationT = TextNode
 type _organizationT = Primitive._string
 
 /** The name of an organization (as opposed to a person) that contributed to an item. If an item was authored by individuals in addition to one or more organizations, person_name and organization may be freely intermixed within contributors. */
@@ -2129,7 +2135,7 @@ export interface OriginalLanguageTitle extends Element {
 }
 
 /** When an item has non-contiguous page information, capture the first page range in first_page and last_page. Any additional page information should be captured in other_pages. */
-type OtherPages = string
+export type OtherPages = TextNode<'other_pages'>
 type _OtherPages = Primitive._string
 
 /** The container for information about page ranges. */
@@ -2141,16 +2147,16 @@ export interface Pages extends Element {
 }
 
 export interface PagesChildren {
-  /** First page Text of an item. */
-  firstPage: Text
-  /** Last page Text of an item. */
-  lastPage?: Text
+  /** First page number of an item. */
+  firstPage: FirstPage
+  /** Last page number of an item. */
+  lastPage?: LastPage
   /** When an item has non-contiguous page information, capture the first page range in first_page and last_page. Any additional page information should be captured in other_pages. */
-  otherPages?: Text
+  otherPages?: OtherPages
 }
 
 /** The part number of a given volume. In some cases, a book set will have multiple parts, and then one or more volumes within each part. The part number of a given volume should be deposited in this element. */
-type PartNumber = string
+export type PartNumber = TextNode<'part_number'>
 type _PartNumber = Primitive._string
 
 /** The peer_review content type is intended for assigning DOIs to the reports and other artifacts associated with the review of published content. */
@@ -2182,7 +2188,7 @@ export interface PeerReviewChildren {
   /** The date a review was published to a repository. */
   reviewDate: ReviewDate
   /** Running numbers to specify the various reports (ex: RC1 to RC4) */
-  runningNumber?: Text
+  runningNumber?: RunningNumber
   /** A wrapper for Scholarly Sharing Network (SCN) policy information */
   scnPolicies?: ScnPolicies
   /** A container for the title and original language title elements. */
@@ -2237,12 +2243,12 @@ export interface PendingPublicationChildren {
   /** Container element for CrossMark data. */
   crossmark?: Crossmark
   /** DOI for an entity being registered with Crossref. */
-  doi: Text
+  doi: Doi
   /** Container element for information about an institution or organization associated with an item. */
   institution?: Institution[]
   /** Member's custom statement of intent to publish content for which a pending publication DOI has been created */
   intentStatement?: IntentStatement
-  /** A publisher-assigned Text that uniquely identifies the item being registered. */
+  /** A publisher-assigned number that uniquely identifies the item being registered. */
   itemNumber?: ItemNumber[]
   /** Wrapper element for relationship metadata */
   program?: rel.Program
@@ -2269,16 +2275,16 @@ export interface PersonNameChildren {
   affiliations?: Affiliations
   altName?: AltName
   /** A contributor's given name. */
-  givenName?: Text
+  givenName?: GivenName
   /** The ORCID iD for an author. */
   ORCID?: ORCID
   /** The suffix of an author name, e.g. junior, senior, III. */
-  suffix?: Text
+  suffix?: Suffix
   /** The family_name of a contributor. */
-  surname: Text
+  surname: Surname
 }
 
-export type PID = string
+export type PID = TextNode
 type _PID = Primitive._string
 
 /** Container for posted content metadata. */
@@ -2303,11 +2309,11 @@ export interface PostedContentChildren {
   contributors?: Contributors
   /** The container for elements related directly to a DOI. */
   doiData: DoiData
-  /** Posted content may be organzed into groupings within a given publisher. This element provides for naming the group. It is expected that publishers will have a small Text of groups each of which reflect a topic or subject area. */
-  groupTitle?: Text
+  /** Posted content may be organzed into groupings within a given publisher. This element provides for naming the group. It is expected that publishers will have a small number of groups each of which reflect a topic or subject area. */
+  groupTitle?: GroupTitle
   /** Container element for information about an institution or organization associated with an item. */
   institution?: Institution[]
-  /** A publisher-assigned Text that uniquely identifies the item being registered. */
+  /** A publisher-assigned number that uniquely identifies the item being registered. */
   itemNumber?: ItemNumber[]
   /** The date a pre-print was posted to a repository. */
   postedDate: PostedDate
@@ -2387,9 +2393,9 @@ export interface ProceedingsMetadataChildren {
   /** Identifies books or conference proceedings that have no ISBN assigned. */
   noisbn: Noisbn
   /** The subject of the conference proceeding, e.g. "Computer Graphics" is the subject matter of SIGGRAPH. */
-  proceedingsSubject?: Text
+  proceedingsSubject?: ProceedingsSubject
   /** The undifferentiated title of a conference proceeding. */
-  proceedingsTitle: Text
+  proceedingsTitle: ProceedingsTitle
   /** The date of publication. Multiple dates are allowed to allow for different dates of publication for online and print versions. */
   publicationDate: PublicationDate[]
   /** A container for information about the publisher of the item being registered */
@@ -2420,11 +2426,11 @@ export interface ProceedingsSeriesMetadataChildren {
 }
 
 /** The subject of the conference proceeding, e.g. "Computer Graphics" is the subject matter of SIGGRAPH. */
-type ProceedingsSubject = string
+export type ProceedingsSubject = TextNode<'proceedings_subject'>
 type _ProceedingsSubject = Primitive._string
 
 /** The undifferentiated title of a conference proceeding. */
-type ProceedingsTitle = string
+export type ProceedingsTitle = TextNode<'proceedings_title'>
 type _ProceedingsTitle = Primitive._string
 
 /** The date of publication. Multiple dates are allowed to allow for different dates of publication for online and print versions. */
@@ -2449,7 +2455,7 @@ export interface Publication extends Element {
 
 export interface PublicationChildren {
   /** The full title by which a journal is commonly known or cited. */
-  fullTitle: Text[]
+  fullTitle: FullTitle[]
 }
 
 /** A container for item identification numbers set by a publisher. */
@@ -2463,16 +2469,16 @@ export interface PublisherItem extends Element {
 export interface PublisherItemChildren {
   /** A public standard identifier that can be used to uniquely identify the item being registered. */
   identifier?: Identifier[]
-  /** A publisher-assigned Text that uniquely identifies the item being registered. */
+  /** A publisher-assigned number that uniquely identifies the item being registered. */
   itemNumber?: ItemNumber[]
 }
 
 /** The name of the publisher of a book or conference proceedings. This name may differ from that of the organization registering or maintaining the metadata record. */
-type PublisherName = string
+export type PublisherName = TextNode<'publisher_name'>
 type _PublisherName = Primitive._string
 
 /** publisher_place gives the primary city location of the publisher.  If the city is not a major city, the appropriate country, state, or province should be added. */
-type PublisherPlace = string
+export type PublisherPlace = TextNode<'publisher_place'>
 type _PublisherPlace = Primitive._string
 
 /** A container for information about the publisher of the item being registered */
@@ -2485,9 +2491,9 @@ export interface Publisher extends Element {
 
 export interface PublisherChildren {
   /** The name of the publisher of a book or conference proceedings. This name may differ from that of the organization registering or maintaining the metadata record. */
-  publisherName: Text
+  publisherName: PublisherName
   /** publisher_place gives the primary city location of the publisher.  If the city is not a major city, the appropriate country, state, or province should be added. */
-  publisherPlace?: Text
+  publisherPlace?: PublisherPlace
 }
 
 type ReferenceDistributionOpts = 'none' | 'query' | 'any'
@@ -2496,7 +2502,7 @@ interface _ReferenceDistributionOpts extends Primitive._string {
 }
 
 /** The organization responsible for the information being registered. */
-type Registrant = string
+export type Registrant = TextNode<'registrant'>
 type _Registrant = Primitive._string
 
 /** Container for the metadata related to a Technical Report or Working Paper. */
@@ -2519,16 +2525,16 @@ export interface ReportPaperMetadataChildren {
   archiveLocations?: ArchiveLocations
   /** A list of articles, books, and other content cited by the item being registered */
   citationList?: CitationList
-  /** The contract Text under which a report or paper was written. */
-  contractNumber?: Text
+  /** The contract number under which a report or paper was written. */
+  contractNumber?: ContractNumber
   /** The container for all who contributed to authoring or editing an item. */
   contributors?: Contributors
   /** Container element for CrossMark data. */
   crossmark?: Crossmark
   /** The container for elements related directly to a DOI. */
   doiData?: DoiData
-  /** The edition Text of a book. edition_number should include only a number and not additional text such as "edition". For example, you should submit "3", not "third edition" or "3rd edition". Roman numerals are acceptable. */
-  editionNumber?: Text
+  /** The edition number of a book. edition_number should include only a number and not additional text such as "edition". For example, you should submit "3", not "third edition" or "3rd edition". Roman numerals are acceptable. */
+  editionNumber?: EditionNumber
   /** Container element for information about an institution or organization associated with an item. */
   institution?: Institution[]
   /** The ISBN assigned to an entity. */
@@ -2565,14 +2571,14 @@ export interface ReportPaperSeriesMetadataChildren {
   archiveLocations?: ArchiveLocations
   /** A list of articles, books, and other content cited by the item being registered */
   citationList?: CitationList
-  /** The contract Text under which a report or paper was written. */
-  contractNumber?: Text
+  /** The contract number under which a report or paper was written. */
+  contractNumber?: ContractNumber
   /** The container for all who contributed to authoring or editing an item. */
   contributors?: Contributors
   /** The container for elements related directly to a DOI. */
   doiData?: DoiData
-  /** The edition Text of a book. edition_number should include only a number and not additional text such as "edition". For example, you should submit "3", not "third edition" or "3rd edition". Roman numerals are acceptable. */
-  editionNumber?: Text
+  /** The edition number of a book. edition_number should include only a number and not additional text such as "edition". For example, you should submit "3", not "third edition" or "3rd edition". Roman numerals are acceptable. */
+  editionNumber?: EditionNumber
   /** Container element for information about an institution or organization associated with an item. */
   institution?: Institution[]
   /** The ISBN assigned to an entity. */
@@ -2587,8 +2593,8 @@ export interface ReportPaperSeriesMetadataChildren {
   publisherItem?: PublisherItem
   /** Container for metadata about a series publication. */
   seriesMetadata: SeriesMetadata
-  /** The volume Text of a published journal, or the number of a printed volume for a book or conference proceedings. */
-  volume: Text
+  /** The volume number of a published journal, or the number of a printed volume for a book or conference proceedings. */
+  volume: Volume
 }
 
 /** report-paper is the top level element for deposit of metadata about one or more reports or working papers. */
@@ -2612,7 +2618,7 @@ export interface ReportPaperChildren {
   reportPaperSeriesMetadata: ReportPaperSeriesMetadata
 }
 
-export type resourceT = string
+export type resourceT = TextNode
 type _resourceT = Primitive._string
 
 /** The URI associated with a DOI. */
@@ -2640,11 +2646,11 @@ export interface ReviewDate extends Element {
 
 export interface ReviewDateChildren {
   /** Day of publication. The should must be expressed with a leading zero if it is less than 10 (e.g. submit "05", not "5"). */
-  day: Text
-  /** Month of publication. The month must be expressed in numeric format rather spelling out the name (e.g.. submit "10", not "October"). The month must be expressed with a leading zero if it is less than 10 (e.g. submit "05", not "5"). When a journal issue has both an issue Text and a season, the issue number should be placed in issue. If the month of publication is not known, the season should be placed in month as a two-digit value as follows: Season Value Spring 21 Summer 22 Autumn 23 Winter 24 First Quarter 31 Second Quarter 32 Third Quarter 33 Fourth Quarter 34 In cases when an issue covers multiple months, e.g. "March-April", include only the digits for the first month of the range. */
-  month: Text
+  day: Day
+  /** Month of publication. The month must be expressed in numeric format rather spelling out the name (e.g.. submit "10", not "October"). The month must be expressed with a leading zero if it is less than 10 (e.g. submit "05", not "5"). When a journal issue has both an issue number and a season, the issue number should be placed in issue. If the month of publication is not known, the season should be placed in month as a two-digit value as follows: Season Value Spring 21 Summer 22 Autumn 23 Winter 24 First Quarter 31 Second Quarter 32 Third Quarter 33 Fourth Quarter 34 In cases when an issue covers multiple months, e.g. "March-April", include only the digits for the first month of the range. */
+  month: Month
   /** Year of publication. */
-  year: Text
+  year: Year
 }
 
 /** Container for component metadata if the component is being registered after the parent record/DOI is created. */
@@ -2662,7 +2668,7 @@ export interface SaComponentChildren {
   componentList: ComponentList
 }
 
-type SaComponentParentDoi = string
+export type SaComponentParentDoi = TextNode<'parent_doi'>
 type _SaComponentParentDoi = Primitive._string
 
 /** A wrapper for Scholarly Sharing Network (SCN) policy information */
@@ -2679,7 +2685,7 @@ export interface ScnPoliciesChildren {
 }
 
 /** An individual SCN policy */
-type ScnPolicyRef = string
+export type ScnPolicyRef = TextNode<'scn_policy_ref'>
 type _ScnPolicyRef = _resourceT
 
 /** A group of related SCN policies */
@@ -2694,7 +2700,7 @@ export interface ScnPolicySet extends Element {
 
 export interface ScnPolicySetChildren {
   /** An individual SCN policy */
-  scnPolicyRef?: Text[]
+  scnPolicyRef?: ScnPolicyRef[]
 }
 
 type Sequence = 'first' | 'additional'
@@ -2716,7 +2722,7 @@ export interface SeriesMetadataChildren {
   /** Container element for archive information */
   archiveLocations?: ArchiveLocations
   /** The coden assigned to a journal or conference proceedings. */
-  coden?: Text
+  coden?: Coden
   /** The container for all who contributed to authoring or editing an item. */
   contributors?: Contributors
   /** Container element for CrossMark data. */
@@ -2727,14 +2733,14 @@ export interface SeriesMetadataChildren {
   issn: Issn[]
   /** A container for item identification numbers set by a publisher. */
   publisherItem?: PublisherItem
-  /** The series Text within a specific published conference discipline. */
-  seriesNumber?: Text
+  /** The series number within a specific published conference discipline. */
+  seriesNumber?: SeriesNumber
   /** A container for the title and original language title elements. */
   titles: Titles
 }
 
 /** The series number within a specific published conference discipline. */
-type SeriesNumber = string
+export type SeriesNumber = TextNode<'series_number'>
 type _SeriesNumber = Primitive._string
 
 /** When a book consists of multiple volumes that are not part of a serial publication (series), set_metadata is used to describe information about the entire set. */
@@ -2756,8 +2762,8 @@ export interface SetMetadataChildren {
   isbn: Isbn[]
   /** Identifies books or conference proceedings that have no ISBN assigned. */
   noisbn: Noisbn
-  /** The part Text of a given volume. In some cases, a book set will have multiple parts, and then one or more volumes within each part. The part number of a given volume should be deposited in this element. */
-  partNumber?: Text
+  /** The part number of a given volume. In some cases, a book set will have multiple parts, and then one or more volumes within each part. The part number of a given volume should be deposited in this element. */
+  partNumber?: PartNumber
   /** A container for item identification numbers set by a publisher. */
   publisherItem?: PublisherItem
   /** A container for the title and original language title elements. */
@@ -2765,7 +2771,7 @@ export interface SetMetadataChildren {
 }
 
 /** Issue level numbering for supplements or special issues. Text defining the type of special issue (e.g. "suppl") should be included in this element along with the number. */
-type SpecialNumbering = string
+export type SpecialNumbering = TextNode<'special_numbering'>
 type _SpecialNumbering = Primitive._string
 
 /** Container for the metadata related to a Standard that is not part of a series. */
@@ -2797,8 +2803,8 @@ export interface StandardMetadataChildren {
   designators: Designators
   /** The container for elements related directly to a DOI. */
   doiData: DoiData
-  /** The edition Text of a book. edition_number should include only a number and not additional text such as "edition". For example, you should submit "3", not "third edition" or "3rd edition". Roman numerals are acceptable. */
-  editionNumber?: Text
+  /** The edition number of a book. edition_number should include only a number and not additional text such as "edition". For example, you should submit "3", not "third edition" or "3rd edition". Roman numerals are acceptable. */
+  editionNumber?: EditionNumber
   /** The ISBN assigned to an entity. */
   isbn?: Isbn[]
   /** Wrapper element for relationship metadata */
@@ -2854,10 +2860,10 @@ export interface StdAltAsPublished extends stdDesignatorT {
   }
 }
 
-type StdAltAsPublishedApprovedMonth = number
+export type StdAltAsPublishedApprovedMonth = TextNode<'approvedMonth'>
 type _StdAltAsPublishedApprovedMonth = Primitive._number
 
-type StdAltAsPublishedApprovedYear = string
+export type StdAltAsPublishedApprovedYear = TextNode<'approvedYear'>
 type _StdAltAsPublishedApprovedYear = Primitive._string
 
 type StdAltAsPublishedReason = Type[]
@@ -2881,12 +2887,12 @@ export interface stdDesignatorT extends Element {
 }
 
 export interface stdDesignatorTChildren {
-  stdAltScript?: Text[]
-  stdDesignator: Text
-  stdVariantForm?: Text[]
+  stdAltScript?: StdAltScript[]
+  stdDesignator: StdDesignator
+  stdVariantForm?: StdVariantForm[]
 }
 
-export type stdDesignatorvalueT = string
+export type stdDesignatorvalueT = TextNode
 type _stdDesignatorvalueT = Primitive._string
 
 /** Provides for defining a DOI for a set of standards (sometimes know as truncated form). */
@@ -2921,12 +2927,12 @@ export interface StringName extends Element {
 export interface StringNameChildren {
   degrees?: Degrees[]
   /** A contributor's given name. */
-  givenName?: Text[]
+  givenName?: GivenName[]
   prefix?: Prefix[]
   /** The suffix of an author name, e.g. junior, senior, III. */
-  suffix?: Text[]
+  suffix?: Suffix[]
   /** The family_name of a contributor. */
-  surname?: Text[]
+  surname?: Surname[]
 }
 
 type StringNameNameStyle = 'western' | 'eastern' | 'islensk' | 'given-only'
@@ -2942,11 +2948,11 @@ export interface Subtitle extends Element {
 }
 
 /** The suffix of an author name, e.g. junior, senior, III. */
-type Suffix = string
+export type Suffix = TextNode<'suffix'>
 type _Suffix = Primitive._string
 
 /** The family_name of a contributor. */
-type Surname = string
+export type Surname = TextNode<'surname'>
 type _Surname = Primitive._string
 
 /** A container for the title and original language title elements. */
@@ -3030,10 +3036,10 @@ export interface Update extends doiT {
 }
 
 /** The volume number of a published journal, or the number of a printed volume for a book or conference proceedings. */
-type Volume = string
+export type Volume = TextNode<'volume'>
 type _Volume = Primitive._string
 
-export type xrefDay = number
+export type xrefDay = TextNode<'number'>
 type _xrefDay = Primitive._number
 
 export interface xrefFaces extends Element {
@@ -3042,18 +3048,18 @@ export interface xrefFaces extends Element {
   attributes: {}
 }
 
-export type xrefMonth = number
+export type xrefMonth = TextNode<'number'>
 type _xrefMonth = Primitive._number
 
 /** Basic data types for date parts. */
-export type xrefYear = number
+export type xrefYear = TextNode<'number'>
 type _xrefYear = Primitive._number
 
 export interface document extends Element {
   /** content is "Inline" except that anchors shouldn't be nested */
   a: A
   /** Common abbreviation or abbreviations used when citing a journal. It is recommended that periods be included after abbreviated words within the title. */
-  abbrevTitle: Text
+  abbrevTitle: AbbrevTitle
   /** The date a manuscript was accepted for publication. */
   acceptanceDate: AcceptanceDate
   affiliations: Affiliations
@@ -3067,11 +3073,11 @@ export interface document extends Element {
   /** Container element for archive information */
   archiveLocations: ArchiveLocations
   /** Article title in a citation. */
-  articleTitle: Text
+  articleTitle: ArticleTitle
   /** An assertion is a piece of custom, non-bibliographic metadata that the publisher is asserting about the content to which the Crossmark refers. */
   assertion: Assertion
   /** First author in a citation. */
-  author: Text
+  author: Author
   b: xrefFaces
   /** Container for the main body of a DOI record submission. While it is possible to include records for multiple journals, books, conferences, or other types of content in a single submission, it is not possible to mix content types within a single DOI submission. */
   body: Body
@@ -3089,7 +3095,7 @@ export interface document extends Element {
   /** A list of articles, books, and other content cited by the item being registered */
   citationList: CitationList
   /** The coden assigned to a journal or conference proceedings. */
-  coden: Text
+  coden: Coden
   /** Container for item elements containing non-primary URIs associated with the item being registered. Collections are supported for the following (defined in the property attribute):
    *
    * list-based:  Multiple Resolution, more info: https://www.crossref.org/education/content-registration/creating-and-managing-dois/multiple-resolution/
@@ -3107,11 +3113,11 @@ export interface document extends Element {
   /** Container for a group of components */
   componentList: ComponentList
   /** The chapter, section, part, etc. number for a content item in a book. Unlike volume and edition_number, component_number should include any additional text that helps identify the type of component. */
-  componentNumber: Text
+  componentNumber: ComponentNumber
   /** Container for all information about a single conference and its proceedings. If a conference proceedings spans multiple volumes, each volume must be contained in a unique conference element. */
   conference: Conference
   /** The popularly known as or jargon name (e.g. SIGGRAPH for "Special Interest Group on Computer Graphics"). Authors commonly cite the conference acronym rather than the full conference or proceedings name, so it is best to include this element when it is available. */
-  conferenceAcronym: Text
+  conferenceAcronym: ConferenceAcronym
   /** The start and end dates of a conference event. conference_date may be used in three ways:
    * 1. If publishers that do not have parsed date values, provide just text with the conference dates. The date text should be taken from the proceedings title page.
    * 2. If publishers have parsed date values, provide them in the attributes.
@@ -3119,23 +3125,23 @@ export interface document extends Element {
    * Jan. 15-17, 1997 */
   conferenceDate: ConferenceDate
   /** The location of the conference. The city, state, province or country of the conference may be provided as appropriate. */
-  conferenceLocation: Text
+  conferenceLocation: ConferenceLocation
   /** The official name of the conference, excluding numbers commonly provided in conference */
-  conferenceName: Text
+  conferenceName: ConferenceName
   /** The number of a conference. conference_number should include only the number of the conference without any extra text */
-  conferenceNumber: Text
+  conferenceNumber: ConferenceNumber
   /** Container for all information about a single conference paper. */
   conferencePaper: ConferencePaper
   /** The sponsoring organization(s) of a conference. Multiple sponsors may be given if a conference is hosted by more than one organization. */
-  conferenceSponsor: Text
+  conferenceSponsor: ConferenceSponsor
   /** The theme is the slogan or special emphasis of a conference in a particular year. It differs from the subject of a conference in that the subject is stable over the years while the theme may vary from year to year. For example, the American Society for Information Science and Technology conference theme was "Knowledge: Creation, Organization and Use" in 1999 and "Defining Information Architecture" in 2000. */
-  conferenceTheme: Text
+  conferenceTheme: ConferenceTheme
   /** The date a piece of content was created. */
   contentDate: ContentDate
   /** A segment of a book, report, or standard for which a DOI is being registered. Most commonly used for book chapters. */
   contentItem: ContentItem
   /** The contract number under which a report or paper was written. */
-  contractNumber: Text
+  contractNumber: ContractNumber
   /** The container for all who contributed to authoring or editing an item. */
   contributors: Contributors
   /** The date a database or dataset item was created. */
@@ -3144,16 +3150,16 @@ export interface document extends Element {
   crossmark: Crossmark
   /** This should be a simple Internet domain name or subdomain name (e.g. www.psychoceramics.org or psychoceramics.org). It is used to identify when a referring URL is coming from a Crossmark domain. A "crossmark_domain" is made up of two subelements; a "domain" and a "filter". The filter is only needed for use in situations where content from multiple publishers/publications is on the same host with the same domain name (e.g. an aggregator) and one needs to use the referrer's URI "path" to further determine whether the content in a crossmark domain. */
   crossmarkDomain: CrossmarkDomain
-  crossmarkDomainExclusive: Text
+  crossmarkDomainExclusive: CrossmarkDomainExclusive
   /** Container element for crossmark_domain. A list of domains where the publisher maintains updates and corrections to their content. Minimally, one of these should include the Internet domain name of the publisher's web site(s), but the publisher might also decide to include 3rd party aggregators (e.g. Ebsco, IngentaConnect) or archives with which the publisher has agreements to update the content */
   crossmarkDomains: CrossmarkDomains
   /** A DOI which points to a publisher's CrossMark policy document. Publishers might have different policies for different publications. */
-  crossmarkPolicy: Text
-  crossmarkVersion: Text
+  crossmarkPolicy: CrossmarkPolicy
+  crossmarkVersion: CrossmarkVersion
   /** Publishers are encouraged to provided any non-bibliographical metadata that they feel might help the researcher evaluate and make better use of the content that the Crossmark record refers to. For example, publishers might want to provide funding information, clinical trial numbers, information about the peer-review process or a summary of the publication history of the document. */
   customMetadata: CustomMetadata
   /** Year of publication in citation. */
-  cYear: Text
+  cYear: CYear
   /** database is the top level element for deposit of metadata about one or more datasets or records in a database. */
   database: Database
   /** Container for key dates in the life of a database or dataset. */
@@ -3163,14 +3169,14 @@ export interface document extends Element {
   /** dataset is used to capture information about one or more database records or collections. */
   dataset: Dataset
   /** Day of publication. The should must be expressed with a leading zero if it is less than 10 (e.g. submit "05", not "5"). */
-  day: Text
+  day: Day
   /** The degree(s) awarded for a dissertation. */
-  degree: Text
+  degree: Degree
   degrees: Degrees
   /** Information about the organization submitting DOI metadata to Crossref */
   depositor: Depositor
   /** Name of the organization registering the DOIs. */
-  depositorName: Text
+  depositorName: DepositorName
   /** A narrative description of a file (e.g. a figure caption or video description). */
   description: Description
   /** A wrapper for designators or other primary identifiers for a standard. */
@@ -3178,37 +3184,37 @@ export interface document extends Element {
   /** dissertation is the top level element for deposit of metadata about one or more dissertations. */
   dissertation: Dissertation
   /** DOI for an entity being registered with Crossref. */
-  doi: Text
+  doi: Doi
   /** Top level element for a metadata record submission. This element indicates the start and end of the XML file. The version number is fixed to the version of the schema. */
   doiBatch: DoiBatch
   /** Publisher generated ID that uniquely identifies the DOI submission batch. */
-  doiBatchId: Text
+  doiBatchId: DoiBatchId
   /** The container for elements related directly to a DOI. */
   doiData: DoiData
   /** A domain name or subdomain name (e.g. www.psychoceramics.org or psychoceramics.org). It is used to identify when a referring URL is coming from a Crossmark domain. */
-  domain: Text
+  domain: Domain
   /** The edition number of a book. edition_number should include only a number and not additional text such as "edition". For example, you should submit "3", not "third edition" or "3rd edition". Roman numerals are acceptable. */
-  editionNumber: Text
+  editionNumber: EditionNumber
   /** article identifier or e-location id of the item */
-  elocationId: Text
+  elocationId: ElocationId
   em: xrefFaces
   /** e-mail address to which batch success and/or error messages are sent. */
-  emailAddress: Text
+  emailAddress: EmailAddress
   /** A container for all information that applies to a conference event. event_metadata captures information about a conference event. Data about conference proceedings is captured in proceedings_metadata. */
   eventMetadata: EventMetadata
   /** The filter element is used to disambiguate content in situations where multiple publishers share the same host (e.g. when on an aggregated platform). It should contain a substring of the path that can be used to uniquely identify a publisher's or publication's content. For instance, using the string "alpsp" here would help the CrossMark system distinguish between ALPSP publications on the ingentaconnect host and other publications on the same host. */
-  filter: Text
+  filter: Filter
   /** First page number of an item. */
-  firstPage: Text
+  firstPage: FirstPage
   font: xrefFaces
   /** A narrative description of a component's file format and/or file extension. */
   format: Format
   /** The full title by which a journal is commonly known or cited. */
-  fullTitle: Text
+  fullTitle: FullTitle
   /** A contributor's given name. */
-  givenName: Text
+  givenName: GivenName
   /** Posted content may be organzed into groupings within a given publisher. This element provides for naming the group. It is expected that publishers will have a small number of groups each of which reflect a topic or subject area. */
-  groupTitle: Text
+  groupTitle: GroupTitle
   /** Container for information related to the DOI batch submission. This element uniquely identifies the batch deposit to Crossref and contains information that will be used as a reference in error messages triggered during submission processing. */
   head: Head
   i: xrefFaces
@@ -3217,15 +3223,15 @@ export interface document extends Element {
   /** Container element for information about an institution or organization associated with an item. */
   institution: Institution
   /** The acronym of the institution. */
-  institutionAcronym: Text
+  institutionAcronym: InstitutionAcronym
   /** The department within an institution. */
-  institutionDepartment: Text
+  institutionDepartment: InstitutionDepartment
   /** Identifier for an institution or organization (currently supported: ROR, ISNI, Wikidata). Identifiers must be included as a URI */
   institutionId: InstitutionId
   /** The full name of an institution. */
-  institutionName: Text
+  institutionName: InstitutionName
   /** The primary city location of the institution. institution_place gives the primary city location of the institution. When the location is a major city (e.g. New York, Amsterdam), no qualifying country or U.S. state need be given. If the city is not a major city, the appropriate country and/or state or province should be added. */
-  institutionPlace: Text
+  institutionPlace: InstitutionPlace
   /** Member's custom statement of intent to publish content for which a pending publication DOI has been created */
   intentStatement: IntentStatement
   /** The ISBN assigned to an entity. */
@@ -3233,7 +3239,7 @@ export interface document extends Element {
   /** The ISSN assigned to the title being registered. */
   issn: Issn
   /** The issue number or name in which an article is published. The issue number takes precedence over any other name. For example, if an issue has only a seasonal name, then the season should be listed in issue. */
-  issue: Text
+  issue: Issue
   /** A container used to associate a URI with the DOI being registered. */
   item: Item
   /** A publisher-assigned number that uniquely identifies the item being registered. */
@@ -3247,13 +3253,13 @@ export interface document extends Element {
   /** Container for metadata that defines a journal. */
   journalMetadata: JournalMetadata
   /** Journal title in a citation. */
-  journalTitle: Text
+  journalTitle: JournalTitle
   /** Container for the journal volume and DOI assigned to an entire journal volume. You may register a DOI for an entire volume by including doi_data in journal_volume. */
   journalVolume: JournalVolume
   /** Last page number of an item. */
-  lastPage: Text
+  lastPage: LastPage
   /** Month of publication. The month must be expressed in numeric format rather spelling out the name (e.g.. submit "10", not "October"). The month must be expressed with a leading zero if it is less than 10 (e.g. submit "05", not "5"). When a journal issue has both an issue number and a season, the issue number should be placed in issue. If the month of publication is not known, the season should be placed in month as a two-digit value as follows: Season Value Spring 21 Summer 22 Autumn 23 Winter 24 First Quarter 31 Second Quarter 32 Third Quarter 33 Fourth Quarter 34 In cases when an issue covers multiple months, e.g. "March-April", include only the digits for the first month of the range. */
-  month: Text
+  month: Month
   name: Name
   /** Identifies books or conference proceedings that have no ISBN assigned. */
   noisbn: Noisbn
@@ -3264,12 +3270,12 @@ export interface document extends Element {
   /** The title of an item in its original language if the registration is for a translation of a work. */
   originalLanguageTitle: OriginalLanguageTitle
   /** When an item has non-contiguous page information, capture the first page range in first_page and last_page. Any additional page information should be captured in other_pages. */
-  otherPages: Text
+  otherPages: OtherPages
   ovl: xrefFaces
   /** The container for information about page ranges. */
   pages: Pages
   /** The part number of a given volume. In some cases, a book set will have multiple parts, and then one or more volumes within each part. The part number of a given volume should be deposited in this element. */
-  partNumber: Text
+  partNumber: PartNumber
   /** The peer_review content type is intended for assigning DOIs to the reports and other artifacts associated with the review of published content. */
   peerReview: PeerReview
   /** Container for 'pending publication' metadata. Pending publication DOIs are used to create a DOI for a content item that is not yet available online or in print. */
@@ -3286,9 +3292,9 @@ export interface document extends Element {
   /** Container for all information that applies to a specific conference proceeding that is part of a series. */
   proceedingsSeriesMetadata: ProceedingsSeriesMetadata
   /** The subject of the conference proceeding, e.g. "Computer Graphics" is the subject matter of SIGGRAPH. */
-  proceedingsSubject: Text
+  proceedingsSubject: ProceedingsSubject
   /** The undifferentiated title of a conference proceeding. */
-  proceedingsTitle: Text
+  proceedingsTitle: ProceedingsTitle
   /** Used to define a publication (book, journal, etc) for pending publication content. A title must be supplied, as well as an ISSN, ISBN, or title-level DOI */
   publication: Publication
   /** The date of publication. Multiple dates are allowed to allow for different dates of publication for online and print versions. */
@@ -3298,11 +3304,11 @@ export interface document extends Element {
   /** A container for item identification numbers set by a publisher. */
   publisherItem: PublisherItem
   /** The name of the publisher of a book or conference proceedings. This name may differ from that of the organization registering or maintaining the metadata record. */
-  publisherName: Text
+  publisherName: PublisherName
   /** publisher_place gives the primary city location of the publisher.  If the city is not a major city, the appropriate country, state, or province should be added. */
-  publisherPlace: Text
+  publisherPlace: PublisherPlace
   /** The organization responsible for the information being registered. */
-  registrant: Text
+  registrant: Registrant
   /** report-paper is the top level element for deposit of metadata about one or more reports or working papers. */
   reportPaper: ReportPaper
   /** Container for the metadata related to a Technical Report or Working Paper. */
@@ -3314,26 +3320,26 @@ export interface document extends Element {
   /** The date a review was published to a repository. */
   reviewDate: ReviewDate
   /** Running numbers to specify the various reports (ex: RC1 to RC4) */
-  runningNumber: Text
+  runningNumber: RunningNumber
   /** Container for component metadata if the component is being registered after the parent record/DOI is created. */
   saComponent: SaComponent
   /** A wrapper for Scholarly Sharing Network (SCN) policy information */
   scnPolicies: ScnPolicies
   /** An individual SCN policy */
-  scnPolicyRef: Text
+  scnPolicyRef: ScnPolicyRef
   /** A group of related SCN policies */
   scnPolicySet: ScnPolicySet
   scp: xrefFaces
   /** Container for metadata about a series publication. */
   seriesMetadata: SeriesMetadata
   /** The series number within a specific published conference discipline. */
-  seriesNumber: Text
+  seriesNumber: SeriesNumber
   /** Book series title in a citation. */
-  seriesTitle: Text
+  seriesTitle: SeriesTitle
   /** When a book consists of multiple volumes that are not part of a serial publication (series), set_metadata is used to describe information about the entire set. */
   setMetadata: SetMetadata
   /** Issue level numbering for supplements or special issues. Text defining the type of special issue (e.g. "suppl") should be included in this element along with the number. */
-  specialNumbering: Text
+  specialNumbering: SpecialNumbering
   /** standard is the top level element for deposit of metadata about standards developed by Standards Development Organizations (SDOs) or Consortia. */
   standard: Standard
   /** Container for the metadata related to a Standard that is not part of a series. */
@@ -3341,35 +3347,35 @@ export interface document extends Element {
   /** A wrapper for standards body information. */
   standardsBody: StandardsBody
   /** Designator for standard from which the current deposit is adopted. */
-  stdAdoptedFrom: Text
+  stdAdoptedFrom: StdAdoptedFrom
   stdAltAsPublished: StdAltAsPublished
-  stdAltScript: Text
+  stdAltScript: StdAltScript
   /** Designator or other primary identifier for the standard being deposited. */
   stdAsPublished: StdAsPublished
-  stdDesignator: Text
+  stdDesignator: StdDesignator
   /** Provides for defining a DOI for a broad grouping of standards. */
   stdFamilyDesignator: stdDesignatorT
   /** Designator for the previous revision of the standard being deposited. (note: use alt_as_published for revisions within designators having common stem) */
-  stdRevisionOf: Text
+  stdRevisionOf: StdRevisionOf
   /** Provides for defining a DOI for a set of standards (sometimes know as truncated form). */
   stdSetDesignator: StdSetDesignator
   /** Designator for standard being replaced by the standard being deposited. */
-  stdSupersedes: Text
+  stdSupersedes: StdSupersedes
   /** Provides for defining a DOI for a group of closely related standard documents (undated form is a stem for any dated form) */
   stdUndatedDesignator: StdUndatedDesignator
-  stdVariantForm: Text
+  stdVariantForm: StdVariantForm
   stringName: StringName
   strong: xrefFaces
   sub: xrefFaces
   /** The sub-title portion of a title. */
   subtitle: Subtitle
   /** The suffix of an author name, e.g. junior, senior, III. */
-  suffix: Text
+  suffix: Suffix
   sup: xrefFaces
   /** The family_name of a contributor. */
-  surname: Text
+  surname: Surname
   /** An integer representation of date and time that serves as a version number for the record that is being deposited, used to uniquely identify batch files and DOI values when a DOI has been updated one or more times. */
-  timestamp: Text
+  timestamp: Timestamp
   /** The title of the item being registered. */
   title: Title
   /** A container for the title and original language title elements. */
@@ -3385,10 +3391,10 @@ export interface document extends Element {
   /** A document might provide updates (e.g. corrections, clarifications, retractions) to several other documents. When this is the case, the DOIs of the documents that are being *updated* should be listed here. */
   updates: Updates
   /** The volume number of a published journal, or the number of a printed volume for a book or conference proceedings. */
-  volume: Text
+  volume: Volume
   /** Book volume title in a citation. */
-  volumeTitle: Text
+  volumeTitle: VolumeTitle
   /** Year of publication. */
-  year: Text
+  year: Year
 }
 export var document: document

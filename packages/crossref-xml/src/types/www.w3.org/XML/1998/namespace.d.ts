@@ -4,6 +4,12 @@ import * as Primitive from '../../../xml-primitives'
 // https://data.crossref.org/schemas/standard-modules/xml.xsd
 
 import { Element, Text } from 'xast'
+
+export interface TextNode<T extends string = string> extends Element {
+  name: T
+  attributes: {}
+  children: [Text]
+}
 export type ValuesType<T extends ReadonlyArray<any> | ArrayLike<any> | Record<any, any>> =
   T extends ReadonlyArray<any>
     ? T[number]
@@ -39,7 +45,7 @@ export type RequiredMap<T> = AllTypes<T>
  *
  * The union allows for the 'un-declaration' of xml:lang with
  * the empty string. */
-export type Lang = string
+export type Lang = TextNode<'lang'>
 type _Lang = Primitive._string
 
 /** space (as an attribute name)

@@ -4,6 +4,12 @@ import * as Primitive from '../xml-primitives'
 // https://data.crossref.org/schemas/relations.xsd
 
 import { Element, Text } from 'xast'
+
+export interface TextNode<T extends string = string> extends Element {
+  name: T
+  attributes: {}
+  children: [Text]
+}
 export type ValuesType<T extends ReadonlyArray<any> | ArrayLike<any> | Record<any, any>> =
   T extends ReadonlyArray<any>
     ? T[number]
@@ -320,7 +326,7 @@ interface _Language extends Primitive._string {
 }
 
 /** An identifier systems may require a namespace that is needed in addition to the identifer value to provide uniqueness. */
-type Namespace = string
+export type Namespace = TextNode<'namespace'>
 type _Namespace = Primitive._string
 
 /** Wrapper element for relationship metadata */

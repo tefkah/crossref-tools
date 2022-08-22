@@ -4,6 +4,12 @@ import * as Primitive from '../xml-primitives'
 // https://data.crossref.org/schemas/fundref.xsd
 
 import { Element, Text } from 'xast'
+
+export interface TextNode<T extends string = string> extends Element {
+  name: T
+  attributes: {}
+  children: [Text]
+}
 export type ValuesType<T extends ReadonlyArray<any> | ArrayLike<any> | Record<any, any>> =
   T extends ReadonlyArray<any>
     ? T[number]
@@ -45,7 +51,7 @@ export interface AssertionChildren {
    *
    * funder_name: name of the funding agency (required)
    *
-   * award_number: grant Text or other fund identifier */
+   * award_number: grant number or other fund identifier */
   assertion?: Assertion[]
 }
 
@@ -98,7 +104,7 @@ export interface ProgramChildren {
    *
    * funder_name: name of the funding agency (required)
    *
-   * award_number: grant Text or other fund identifier */
+   * award_number: grant number or other fund identifier */
   assertion?: Assertion[]
 }
 

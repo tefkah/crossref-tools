@@ -7,6 +7,12 @@ import * as xml from '../www.w3.org/XML/1998/namespace'
 // https://data.crossref.org/schemas/JATS-journalpublishing1-3d2-mathml3.xsd
 
 import { Element, Text } from 'xast'
+
+export interface TextNode<T extends string = string> extends Element {
+  name: T
+  attributes: {}
+  children: [Text]
+}
 export type ValuesType<T extends ReadonlyArray<any> | ArrayLike<any> | Record<any, any>> =
   T extends ReadonlyArray<any>
     ? T[number]

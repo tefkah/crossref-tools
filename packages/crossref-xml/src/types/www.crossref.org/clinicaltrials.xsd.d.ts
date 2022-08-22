@@ -4,6 +4,12 @@ import * as Primitive from '../xml-primitives'
 // https://data.crossref.org/schemas/clinicaltrials.xsd
 
 import { Element, Text } from 'xast'
+
+export interface TextNode<T extends string = string> extends Element {
+  name: T
+  attributes: {}
+  children: [Text]
+}
 export type ValuesType<T extends ReadonlyArray<any> | ArrayLike<any> | Record<any, any>> =
   T extends ReadonlyArray<any>
     ? T[number]
@@ -29,7 +35,7 @@ export interface ClinicalTrialnumber extends Element {
 }
 
 /** The clinical trial identifier related to the article. */
-type ClinicalTrialnumberRegistry = string
+export type ClinicalTrialnumberRegistry = TextNode<'registry'>
 type _ClinicalTrialnumberRegistry = Primitive._string
 
 /** Used to identify the article publication date in relation to the issuance of the trial results */

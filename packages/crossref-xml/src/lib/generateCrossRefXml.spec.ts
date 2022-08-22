@@ -1,6 +1,7 @@
 import { join } from 'path'
-import LibXML from 'node-libxml'
 import { generateCrossRefXml } from './generateCrossRefXml'
+
+import { validateXMLWithXSD } from 'validate-with-xmllint'
 
 describe('generateCrossRefXml', () => {
   const xml = generateCrossRefXml({
@@ -16,26 +17,20 @@ describe('generateCrossRefXml', () => {
     citations: [],
   })
 
-  const libxml = new LibXML()
-
-  it('should generate valid xml', () => {
-    const xmlIsWellFormed = libxml.loadXmlFromString(xml)
+  it('should generate valid xml', async () => {
     // this is always relative to the main directory
     const xsdFolder = new URL('../../schemas', import.meta.url).pathname
     const xsdPath = new URL(`${xsdFolder}/crossref5.3.1.xsd`, import.meta.url).pathname
 
-    const loadSchemas = libxml.loadSchemas([xsdPath])
-
-    let valid
+    let valid = false
     try {
-      valid = libxml.validateAgainstSchemas()
-      console.log(libxml.schemasLoadedErrors)
-      // valid = await validateXML(xml, join(__dirname, "schemas", "crossref5.3.1.xsd"))
+      const x = await validateXMLWithXSD(
+        xml,
+        new URL('../../schemas/crossref5.3.1.xsd', import.meta.url).pathname,
+      )
+      valid = true
     } catch (e) {
-      valid = e
-      throw new Error(`Generated XML is invalid!
-
-     ${e}`)
+      console.error(e)
     }
     expect(valid).toBeTruthy()
   })

@@ -2,7 +2,6 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "crossref-xml": "packages/crossref-xml",
-    "xast-xsd-to-ts": "packages/xast-xsd-to-ts"
+    "crossref-xml": "packages/crossref-xml"
   }
 }

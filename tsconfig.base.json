@@ -17,25 +17,14 @@
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "module": "esnext",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "noImplicitThis": false,
     "baseUrl": ".",
     "paths": {
-      "crossref-xml": [
-        "packages/crossref-xml/src/index.ts"
-      ],
-      "xast-xsd-to-ts": [
-        "packages/xast-xsd-to-ts/src/index.ts"
-      ]
+      "crossref-xml": ["packages/crossref-xml/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

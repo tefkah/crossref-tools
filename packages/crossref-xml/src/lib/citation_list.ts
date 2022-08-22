@@ -1,45 +1,46 @@
-import { Element, Text } from "xast"
-export interface CitationList extends Element {
-  name: "citation_list"
-  children: Citation[]
-}
+// import { Element, Text } from "xast"
+// export interface CitationList extends Element {
+//   name: "citation_list"
+//   children: Citation[]
+// }
 
-export interface Citation extends Element {
-  name: "citation"
-  attributes: {
-    key: string
-  }
-  children: (DOI | ISBN | JournalTitle | CitationAuthor | CYear | ArticleTitle)[]
-}
+// export interface Citation extends Element {
+//   name: "citation"
+//   attributes: {
+//     key: string
+//   }
+//   children: (DOI | ISBN | JournalTitle | CitationAuthor | CYear | ArticleTitle)[]
+// }
 
-export interface CitationAuthor extends Element {
-  name: "author"
-  children: [Text]
-}
+// export interface CitationAuthor extends Element {
+//   name: "author"
+//   children: [Text]
+// }
 
-export interface CYear extends Element {
-  name: "cYear"
-  children: [Text]
-}
-export interface DOI extends Element {
-  name: "doi"
-  children: [Text]
-}
-export interface ISBN extends Element {
-  name: "isbn"
-  children: [Text]
-}
-export interface JournalTitle extends Element {
-  name: "journal_title"
-  children: [Text]
-}
-export interface ArticleTitle extends Element {
-  name: "article_title"
-  children: [Text]
-}
+// export interface CYear extends Element {
+//   name: "cYear"
+//   children: [Text]
+// }
+// export interface DOI extends Element {
+//   name: "doi"
+//   children: [Text]
+// }
+// export interface ISBN extends Element {
+//   name: "isbn"
+//   children: [Text]
+// }
+// export interface JournalTitle extends Element {
+//   name: "journal_title"
+//   children: [Text]
+// }
+// export interface ArticleTitle extends Element {
+//   name: "article_title"
+//   children: [Text]
+// }
 
 // TODO: Verify output generated
 
+import { CitationList, Citation, FullTitle as JournalTitle } from '../types'
 export interface Cite {
   publishedWhere: string
   authors: [{ name: string }] | { name: string }[]
@@ -51,56 +52,56 @@ export interface Cite {
 
 const citation_list = ({ citations }: { citations: Cite[] }): CitationList => {
   const js: CitationList = {
-    type: "element",
-    name: "citation_list",
+    type: 'element',
+    name: 'citation_list',
     children: citations.map((citation, index) => {
       const { publishedWhere, authors, title, prefix, suffix, publishedAt } = citation
 
-      const datetime = typeof publishedAt === "string" ? new Date(publishedAt) : publishedAt
+      const datetime = typeof publishedAt === 'string' ? new Date(publishedAt) : publishedAt
       const citationJs: Citation = {
-        type: "element",
-        name: "citation",
+        type: 'element',
+        name: 'citation',
         attributes: {
           // index starts at 0
           key: `${index + 1}`,
         },
         children: [
           {
-            type: "element",
-            name: "journal_title",
+            type: 'element',
+            name: 'journal_title',
             children: [
               {
-                type: "text",
+                type: 'text',
                 value: publishedWhere,
               },
             ],
           } as JournalTitle,
           {
-            type: "element",
-            name: "author",
+            type: 'element',
+            name: 'author',
             children: [
               {
-                type: "text",
+                type: 'text',
                 value: authors[0].name,
               },
             ],
           } as CitationAuthor,
           {
-            type: "element",
-            name: "cYear",
+            type: 'element',
+            name: 'cYear',
             children: [
               {
-                type: "text",
+                type: 'text',
                 value: datetime.getUTCFullYear().toString(),
               },
             ],
           },
           {
-            type: "element",
-            name: "doi",
+            type: 'element',
+            name: 'doi',
             children: [
               {
-                type: "text",
+                type: 'text',
                 value: `${prefix}/${suffix}`,
               },
             ],
@@ -116,11 +117,11 @@ const citation_list = ({ citations }: { citations: Cite[] }): CitationList => {
           //   ],
           // },
           {
-            type: "element",
-            name: "article_title",
+            type: 'element',
+            name: 'article_title',
             children: [
               {
-                type: "text",
+                type: 'text',
                 value: title,
               },
             ],

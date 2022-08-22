@@ -1,16 +1,6 @@
-import { Element } from "xast"
+import { x } from 'xastscript'
+import { ComponentList } from '../types'
 
-export interface ComponentList extends Element {
-  name: "component_list"
-}
-const component_list = (): ComponentList => {
-  const js: ComponentList = {
-    type: "element",
-    name: "component_list",
-    children: [],
-  }
-
-  return js
-}
+const component_list = (): ComponentList => x('component_list', []) as ComponentList
 
 export default component_list

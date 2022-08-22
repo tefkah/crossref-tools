@@ -331,6 +331,45 @@ export interface CitationListChildren {
 export interface citationT extends Element {
   type: 'element'
   name: 'citation_t'
+  children: RequiredMap<citationTChildren>[]
+}
+
+export interface citationTChildren {
+  /** Article title in a citation. */
+  articleTitle?: ArticleTitle
+  /** First author in a citation. */
+  author?: Author
+  /** The chapter, section, part, etc. number for a content item in a book. Unlike volume and edition_number, component_number should include any additional text that helps identify the type of component. */
+  componentNumber?: ComponentNumber
+  /** Year of publication in citation. */
+  cYear?: CYear
+  /** DOI for an entity being registered with Crossref. */
+  doi?: Doi
+  /** The edition number of a book. edition_number should include only a number and not additional text such as "edition". For example, you should submit "3", not "third edition" or "3rd edition". Roman numerals are acceptable. */
+  editionNumber?: EditionNumber
+  /** article identifier or e-location id of the item */
+  elocationId?: ElocationId
+  /** First page number of an item. */
+  firstPage?: FirstPage
+  /** The ISBN assigned to an entity. */
+  isbn?: Isbn
+  /** The ISSN assigned to the title being registered. */
+  issn?: Issn
+  /** The issue number or name in which an article is published. The issue number takes precedence over any other name. For example, if an issue has only a seasonal name, then the season should be listed in issue. */
+  issue?: Issue
+  /** Journal title in a citation. */
+  journalTitle?: JournalTitle
+  /** Book series title in a citation. */
+  seriesTitle?: SeriesTitle
+  /** A wrapper for standards body information. */
+  standardsBody?: StandardsBody
+  stdDesignator?: StdDesignator
+  /** A citation to an item that is not structured with the Crossref citation model.  'unstructured_citation' supports deposit of references for which no structural information is available. */
+  unstructuredCitation?: UnstructuredCitation
+  /** The volume number of a published journal, or the number of a printed volume for a book or conference proceedings. */
+  volume?: Volume
+  /** Book volume title in a citation. */
+  volumeTitle?: VolumeTitle
 }
 
 /** citation is used to deposit each reference in the reference list of the item for which the DOI is being deposited. For details see:

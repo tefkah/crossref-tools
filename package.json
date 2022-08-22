@@ -33,6 +33,7 @@
     "axios": "^0.27.2",
     "jest": "^27",
     "tslib": "^2.3.0",
+    "unist-builder": "^3.0.0",
     "validate-with-xmllint": "^1.2.0",
     "xastscript": "^3.0.0"
   }

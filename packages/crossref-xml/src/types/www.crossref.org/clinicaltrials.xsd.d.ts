@@ -6,8 +6,8 @@ import * as Primitive from '../xml-primitives'
 import { Element, Text } from 'xast'
 
 export interface TextNode<T extends string = string> extends Element {
+  type: 'element'
   name: T
-  attributes: {}
   children: [Text]
 }
 export type ValuesType<T extends ReadonlyArray<any> | ArrayLike<any> | Record<any, any>> =
@@ -51,7 +51,6 @@ interface _ClinicalTrialnumber extends Primitive._string {
 export interface Program extends Element {
   type: 'element'
   name: 'program'
-  attributes: {}
   children: RequiredMap<ProgramChildren>[]
 }
 

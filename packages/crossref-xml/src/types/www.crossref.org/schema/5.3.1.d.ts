@@ -12,8 +12,8 @@ import * as rel from '../relations.xsd'
 import { Element, Text } from 'xast'
 
 export interface TextNode<T extends string = string> extends Element {
+  type: 'element'
   name: T
-  attributes: {}
   children: [Text]
 }
 export type ValuesType<T extends ReadonlyArray<any> | ArrayLike<any> | Record<any, any>> =
@@ -37,13 +37,11 @@ type _AbbrevTitle = Primitive._string
 export interface AcceptanceDate extends dateT {
   type: 'element'
   name: 'acceptance_date'
-  attributes: {}
 }
 
 export interface Affiliations extends Element {
   type: 'element'
   name: 'affiliations'
-  attributes: {}
   children: RequiredMap<AffiliationsChildren>[]
 }
 
@@ -55,7 +53,6 @@ export interface AffiliationsChildren {
 export interface AltName extends Element {
   type: 'element'
   name: 'alt-name'
-  attributes: {}
   children: RequiredMap<AltNameChildren>[]
 }
 
@@ -84,14 +81,12 @@ export interface AnonymousChildren {
 export interface ApprovalDate extends dateT {
   type: 'element'
   name: 'approval_date'
-  attributes: {}
 }
 
 /** Container element for archive information */
 export interface ArchiveLocations extends Element {
   type: 'element'
   name: 'archive_locations'
-  attributes: {}
   children: RequiredMap<ArchiveLocationsChildren>[]
 }
 
@@ -131,7 +126,7 @@ export interface Assertion extends Element {
     /** This is the machine-readable name of the assertion. Use the "label" attribute to provide a human-readable version of the name. */
     name: string
     /** The publisher may want to control the order in which assertions are displayed to the user in the CrossMark dialog. All assertions will be sorted by this element if it is present. */
-    order: number
+    order: `${number}`
   }
 }
 
@@ -148,7 +143,6 @@ export interface A extends Primitive._string {
 export interface Body extends Element {
   type: 'element'
   name: 'body'
-  attributes: {}
   children: RequiredMap<BodyChildren>[]
 }
 
@@ -325,7 +319,6 @@ interface _BookBook extends Primitive._string {
 export interface CitationList extends Element {
   type: 'element'
   name: 'citation_list'
-  attributes: {}
   children: RequiredMap<CitationListChildren>[]
 }
 
@@ -338,7 +331,6 @@ export interface CitationListChildren {
 export interface citationT extends Element {
   type: 'element'
   name: 'citation_t'
-  attributes: {}
 }
 
 /** citation is used to deposit each reference in the reference list of the item for which the DOI is being deposited. For details see:
@@ -444,7 +436,6 @@ export interface CompetingInterestStatement extends Element {
 export interface ComponentList extends Element {
   type: 'element'
   name: 'component_list'
-  attributes: {}
   children: RequiredMap<ComponentListChildren>[]
 }
 
@@ -462,7 +453,7 @@ export interface Component extends Element {
   type: 'element'
   name: 'component'
   attributes: {
-    componentSize: number
+    componentSize: `${number}`
     language?: Language
     parentRelation: ComponentParentRelation
     regAgency?: string
@@ -516,12 +507,12 @@ export interface ConferenceDate extends conferenceDateT {
   type: 'element'
   name: 'conference_date'
   attributes: {
-    endDay?: number
-    endMonth?: number
-    endYear?: number
-    startDay?: number
-    startMonth?: number
-    startYear?: number
+    endDay?: `${number}`
+    endMonth?: `${number}`
+    endYear?: `${number}`
+    startDay?: `${number}`
+    startMonth?: `${number}`
+    startYear?: `${number}`
   }
 }
 
@@ -592,7 +583,6 @@ type _ConferenceTheme = Primitive._string
 export interface Conference extends Element {
   type: 'element'
   name: 'conference'
-  attributes: {}
   children: RequiredMap<ConferenceChildren>[]
 }
 
@@ -613,7 +603,6 @@ export interface ConferenceChildren {
 export interface ContentDate extends dateT {
   type: 'element'
   name: 'content_date'
-  attributes: {}
 }
 
 /** A segment of a book, report, or standard for which a DOI is being registered. Most commonly used for book chapters. */
@@ -623,7 +612,7 @@ export interface ContentItem extends Element {
   attributes: {
     component: ContentItemComponent
     language?: Language
-    levelSequenceNumber: number
+    levelSequenceNumber: `${number}`
     publication: Publication
     referenceDistributionOpts?: ReferenceDistributionOpts
   }
@@ -693,7 +682,6 @@ interface _ContributorRole extends Primitive._string {
 export interface Contributors extends Element {
   type: 'element'
   name: 'contributors'
-  attributes: {}
   children: RequiredMap<ContributorsChildren>[]
 }
 
@@ -709,14 +697,12 @@ export interface ContributorsChildren {
 export interface CreationDate extends dateT {
   type: 'element'
   name: 'creation_date'
-  attributes: {}
 }
 
 /** Container element for crossmark_domain. A list of domains where the publisher maintains updates and corrections to their content. Minimally, one of these should include the Internet domain name of the publisher's web site(s), but the publisher might also decide to include 3rd party aggregators (e.g. Ebsco, IngentaConnect) or archives with which the publisher has agreements to update the content */
 export interface CrossmarkDomains extends Element {
   type: 'element'
   name: 'crossmark_domains'
-  attributes: {}
   children: RequiredMap<CrossmarkDomainsChildren>[]
 }
 
@@ -729,7 +715,6 @@ export interface CrossmarkDomainsChildren {
 export interface CrossmarkDomain extends Element {
   type: 'element'
   name: 'crossmark_domain'
-  attributes: {}
   children: RequiredMap<CrossmarkDomainChildren>[]
 }
 
@@ -744,7 +729,6 @@ export interface CrossmarkDomainChildren {
 export interface Crossmark extends Element {
   type: 'element'
   name: 'crossmark'
-  attributes: {}
   children: RequiredMap<CrossmarkChildren>[]
 }
 
@@ -765,7 +749,6 @@ export interface CrossmarkChildren {
 export interface CustomMetadata extends Element {
   type: 'element'
   name: 'custom_metadata'
-  attributes: {}
   children: RequiredMap<CustomMetadataChildren>[]
 }
 
@@ -781,7 +764,6 @@ export interface CustomMetadataChildren {
 export interface DatabaseDate extends Element {
   type: 'element'
   name: 'database_date'
-  attributes: {}
   children: RequiredMap<DatabaseDateChildren>[]
 }
 
@@ -832,7 +814,6 @@ export interface DatabaseMetadataChildren {
 export interface Database extends Element {
   type: 'element'
   name: 'database'
-  attributes: {}
   children: RequiredMap<DatabaseChildren>[]
 }
 
@@ -930,7 +911,6 @@ type _DepositorName = Primitive._string
 export interface Depositor extends Element {
   type: 'element'
   name: 'depositor'
-  attributes: {}
   children: RequiredMap<DepositorChildren>[]
 }
 
@@ -954,7 +934,6 @@ export interface Description extends Element {
 export interface Designators extends Element {
   type: 'element'
   name: 'designators'
-  attributes: {}
   children: RequiredMap<DesignatorsChildren>[]
 }
 
@@ -1039,7 +1018,6 @@ export interface DoiBatchChildren {
 export interface DoiData extends Element {
   type: 'element'
   name: 'doi_data'
-  attributes: {}
   children: RequiredMap<DoiDataChildren>[]
 }
 
@@ -1081,7 +1059,6 @@ type _EmailAddress = Primitive._string
 export interface EventMetadata extends Element {
   type: 'element'
   name: 'event_metadata'
-  attributes: {}
   children: RequiredMap<EventMetadataChildren>[]
 }
 
@@ -1138,7 +1115,6 @@ type _GroupTitle = Primitive._string
 export interface Head extends Element {
   type: 'element'
   name: 'head'
-  attributes: {}
   children: RequiredMap<HeadChildren>[]
 }
 
@@ -1214,7 +1190,6 @@ type _InstitutionPlace = Primitive._string
 export interface Institution extends Element {
   type: 'element'
   name: 'institution'
-  attributes: {}
   children: RequiredMap<InstitutionChildren>[]
 }
 
@@ -1622,7 +1597,6 @@ export interface JournalArticleChildren {
 export interface JournalIssue extends Element {
   type: 'element'
   name: 'journal_issue'
-  attributes: {}
   children: RequiredMap<JournalIssueChildren>[]
 }
 
@@ -1675,7 +1649,6 @@ export interface JournalMetadataChildren {
 export interface JournalVolume extends Element {
   type: 'element'
   name: 'journal_volume'
-  attributes: {}
   children: RequiredMap<JournalVolumeChildren>[]
 }
 
@@ -1694,7 +1667,6 @@ export interface JournalVolumeChildren {
 export interface Journal extends Element {
   type: 'element'
   name: 'journal'
-  attributes: {}
   children: RequiredMap<JournalChildren>[]
 }
 
@@ -2104,9 +2076,9 @@ type _orcidT = Primitive._string
 /** The ORCID iD for an author. */
 export interface ORCID extends orcidT {
   type: 'element'
-  name: 'oRCID'
+  name: 'ORCID'
   attributes: {
-    authenticated: boolean
+    authenticated: `${boolean}`
   }
 }
 
@@ -2142,7 +2114,6 @@ type _OtherPages = Primitive._string
 export interface Pages extends Element {
   type: 'element'
   name: 'pages'
-  attributes: {}
   children: RequiredMap<PagesChildren>[]
 }
 
@@ -2167,7 +2138,7 @@ export interface PeerReview extends Element {
     language?: Language
     recommendation?: PeerReviewRecommendation
     /** Required attribute. First submission defined as revision round zero */
-    revisionRound?: number
+    revisionRound?: `${number}`
     stage?: PeerReviewStage
     type?: PeerReview
   }
@@ -2361,7 +2332,6 @@ interface _PostedContent extends Primitive._string {
 export interface PostedDate extends dateT {
   type: 'element'
   name: 'posted_date'
-  attributes: {}
 }
 
 export interface Prefix extends Element {
@@ -2437,7 +2407,6 @@ type _ProceedingsTitle = Primitive._string
 export interface PublicationDate extends dateT {
   type: 'element'
   name: 'publication_date'
-  attributes: {}
 }
 
 type Publication = 'abstract_only' | 'full_text' | 'bibliographic_record'
@@ -2449,7 +2418,6 @@ interface _Publication extends Primitive._string {
 export interface Publication extends Element {
   type: 'element'
   name: 'publication'
-  attributes: {}
   children: RequiredMap<PublicationChildren>[]
 }
 
@@ -2462,7 +2430,6 @@ export interface PublicationChildren {
 export interface PublisherItem extends Element {
   type: 'element'
   name: 'publisher_item'
-  attributes: {}
   children: RequiredMap<PublisherItemChildren>[]
 }
 
@@ -2485,7 +2452,6 @@ type _PublisherPlace = Primitive._string
 export interface Publisher extends Element {
   type: 'element'
   name: 'publisher'
-  attributes: {}
   children: RequiredMap<PublisherChildren>[]
 }
 
@@ -2640,7 +2606,6 @@ interface _ResourceContentVersion extends Primitive._string {
 export interface ReviewDate extends Element {
   type: 'element'
   name: 'review_date'
-  attributes: {}
   children: RequiredMap<ReviewDateChildren>[]
 }
 
@@ -2675,7 +2640,6 @@ type _SaComponentParentDoi = Primitive._string
 export interface ScnPolicies extends Element {
   type: 'element'
   name: 'scn_policies'
-  attributes: {}
   children: RequiredMap<ScnPoliciesChildren>[]
 }
 
@@ -2712,7 +2676,6 @@ interface _Sequence extends Primitive._string {
 export interface SeriesMetadata extends Element {
   type: 'element'
   name: 'series_metadata'
-  attributes: {}
   children: RequiredMap<SeriesMetadataChildren>[]
 }
 
@@ -2747,7 +2710,6 @@ type _SeriesNumber = Primitive._string
 export interface SetMetadata extends Element {
   type: 'element'
   name: 'set_metadata'
-  attributes: {}
   children: RequiredMap<SetMetadataChildren>[]
 }
 
@@ -2828,7 +2790,6 @@ interface _StandardMetadataPublicationStatus extends Primitive._string {
 export interface StandardsBody extends Element {
   type: 'element'
   name: 'standards_body'
-  attributes: {}
 }
 
 /** standard is the top level element for deposit of metadata about standards developed by Standards Development Organizations (SDOs) or Consortia. */
@@ -2854,7 +2815,7 @@ export interface StdAltAsPublished extends stdDesignatorT {
   type: 'element'
   name: 'std_alt_as_published'
   attributes: {
-    approvedMonth?: number
+    approvedMonth?: `${number}`
     approvedYear: string
     reason: StdAltAsPublishedReason
   }
@@ -2882,7 +2843,6 @@ export interface StdAsPublished extends stdDesignatorT {
 export interface stdDesignatorT extends Element {
   type: 'element'
   name: 'std_designator_t'
-  attributes: {}
   children: RequiredMap<stdDesignatorTChildren>[]
 }
 
@@ -2944,7 +2904,6 @@ interface _StringNameNameStyle extends Primitive._string {
 export interface Subtitle extends Element {
   type: 'element'
   name: 'subtitle'
-  attributes: {}
 }
 
 /** The suffix of an author name, e.g. junior, senior, III. */
@@ -2959,7 +2918,6 @@ type _Surname = Primitive._string
 export interface Titles extends Element {
   type: 'element'
   name: 'titles'
-  attributes: {}
   children: RequiredMap<TitlesChildren>[]
 }
 
@@ -2976,7 +2934,6 @@ export interface TitlesChildren {
 export interface Title extends Element {
   type: 'element'
   name: 'title'
-  attributes: {}
 }
 
 type Type = 'editorial' | 'revision' | 'reapproval' | 'correction' | 'amendment'
@@ -2988,21 +2945,18 @@ interface _Type extends Primitive._string {
 export interface UnstructuredCitation extends Element {
   type: 'element'
   name: 'unstructured_citation'
-  attributes: {}
 }
 
 /** The date a pre-print was posted to a repository. */
 export interface UpdateDate extends dateT {
   type: 'element'
   name: 'update_date'
-  attributes: {}
 }
 
 /** A document might provide updates (e.g. corrections, clarifications, retractions) to several other documents. When this is the case, the DOIs of the documents that are being *updated* should be listed here. */
 export interface Updates extends Element {
   type: 'element'
   name: 'updates'
-  attributes: {}
   children: RequiredMap<UpdatesChildren>[]
 }
 
@@ -3045,7 +2999,6 @@ type _xrefDay = Primitive._number
 export interface xrefFaces extends Element {
   type: 'element'
   name: 'xrefFaces'
-  attributes: {}
 }
 
 export type xrefMonth = TextNode<'number'>

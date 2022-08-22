@@ -6,8 +6,8 @@ import * as Primitive from '../xml-primitives'
 import { Element, Text } from 'xast'
 
 export interface TextNode<T extends string = string> extends Element {
+  type: 'element'
   name: T
-  attributes: {}
   children: [Text]
 }
 export type ValuesType<T extends ReadonlyArray<any> | ArrayLike<any> | Record<any, any>> =
@@ -346,7 +346,6 @@ export interface ProgramChildren {
 export interface RelatedItem extends Element {
   type: 'element'
   name: 'related_item'
-  attributes: {}
   children: RequiredMap<RelatedItemChildren>[]
 }
 
@@ -360,7 +359,6 @@ export interface RelatedItemChildren {
 export interface xrefFaces extends Element {
   type: 'element'
   name: 'xrefFaces'
-  attributes: {}
 }
 
 export interface document extends Element {

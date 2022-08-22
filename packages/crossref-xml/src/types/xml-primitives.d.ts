@@ -4,8 +4,8 @@
 import { Element, Text } from 'xast'
 
 export interface TextNode<T extends string = string> extends Element {
+  type: 'element'
   name: T
-  attributes: {}
   children: [Text]
 }
 export type ValuesType<T extends ReadonlyArray<any> | ArrayLike<any> | Record<any, any>> =

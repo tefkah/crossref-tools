@@ -1,33 +1,6 @@
-import { Element, Text } from "xast"
+import { x } from 'xastscript'
+import { Titles, Title } from '../types'
 
-export interface Titles extends Element {
-  name: "titles"
-  children: [Title]
+export const titles = (title: string): Titles => {
+  return x('titles', [x('title', title) as Title]) as Titles
 }
-
-export interface Title extends Element {
-  name: "title"
-  children: [Text]
-}
-
-const titles = (title: string): Titles => {
-  const js: Titles = {
-    type: "element",
-    name: "titles",
-    children: [
-      {
-        type: "element",
-        name: "title",
-        children: [
-          {
-            type: "text",
-            value: title,
-          },
-        ],
-      },
-    ],
-  }
-
-  return js
-}
-export default titles

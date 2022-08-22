@@ -25,6 +25,7 @@ specifiers:
   tslib: ^2.3.0
   tsx: ^3.8.2
   typescript: ~4.7.4
+  unist-builder: ^3.0.0
   validate-with-xmllint: ^1.2.0
   xast-util-to-xml: ^3.0.0
   xastscript: ^3.0.0
@@ -33,6 +34,7 @@ dependencies:
   axios: 0.27.2
   jest: 27.5.1_ts-node@10.9.1
   tslib: 2.4.0
+  unist-builder: 3.0.0
   validate-with-xmllint: 1.2.0
   xastscript: 3.0.0
 
@@ -1413,8 +1415,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /ajv-formats/2.1.1:
+  /ajv-formats/2.1.1_ajv@8.11.0:
     resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
+    peerDependencies:
+      ajv: ^8.0.0
     peerDependenciesMeta:
       ajv:
         optional: true
@@ -3881,7 +3885,7 @@ packages:
     dependencies:
       '@types/json-schema': 7.0.11
       ajv: 8.11.0
-      ajv-formats: 2.1.1
+      ajv-formats: 2.1.1_ajv@8.11.0
       ajv-keywords: 5.1.0_ajv@8.11.0
     dev: true
 
@@ -4324,6 +4328,12 @@ packages:
     resolution: {integrity: sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==}
     engines: {node: '>=4.2.0'}
     hasBin: true
+
+  /unist-builder/3.0.0:
+    resolution: {integrity: sha512-GFxmfEAa0vi9i5sd0R2kcrI9ks0r82NasRq5QHh2ysGngrc6GiqD5CDf1FjPenY4vApmFASBIIlk/jj5J5YbmQ==}
+    dependencies:
+      '@types/unist': 2.0.6
+    dev: false
 
   /universalify/0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}

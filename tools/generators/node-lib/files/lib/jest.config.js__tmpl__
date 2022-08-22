@@ -1,0 +1,13 @@
+const config = {
+  displayName: '<%= importPath %>',
+  preset: '<%= offsetFromRoot %>jest.preset.js',
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.spec.json',
+      useESM: true,
+    },
+  },
+  coverageDirectory: '<%= offsetFromRoot %>coverage/packages/<%= importPath %>',
+}
+
+export default config

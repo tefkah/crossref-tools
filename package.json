@@ -31,6 +31,7 @@
     "xast-util-to-xml": "^3.0.0"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "jest": "^27",
     "tslib": "^2.3.0"
   }

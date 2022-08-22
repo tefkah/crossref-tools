@@ -1,0 +1,34 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/xast-xsd-to-ts/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:swc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/xast-xsd-to-ts",
+        "tsConfig": "packages/xast-xsd-to-ts/tsconfig.lib.json",
+        "packageJson": "packages/xast-xsd-to-ts/package.json",
+        "main": "packages/xast-xsd-to-ts/src/index.ts",
+        "assets": ["packages/xast-xsd-to-ts/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/xast-xsd-to-ts/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/xast-xsd-to-ts"],
+      "options": {
+        "jestConfig": "packages/xast-xsd-to-ts/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

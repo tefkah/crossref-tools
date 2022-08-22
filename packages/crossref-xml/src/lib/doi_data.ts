@@ -1,39 +1,40 @@
-import { Element, Text } from "xast"
+import { Element, Text } from 'xast'
+import { DoiData } from '../../types'
 
-export interface DoiData extends Element {
-  name: "doi_data"
-  children: (DOI | Resource)[]
-}
+// export interface DoiData extends Element {
+//   name: "doi_data"
+//   children: (DOI | Resource)[]
+// }
 export interface DOI extends Element {
-  name: "doi"
+  name: 'doi'
   children: [Text]
 }
 export interface Resource extends Element {
-  name: "resource"
+  name: 'resource'
   children: [Text]
 }
 
 const doi_data = ({ doi, url }: { doi: string; url: string }): DoiData => {
   const js: DoiData = {
-    type: "element",
-    name: "doi_data",
+    type: 'element',
+    name: 'doi_data',
     children: [
       {
-        type: "element",
-        name: "doi",
+        type: 'element',
+        name: 'doi',
         children: [
           {
-            type: "text",
+            type: 'text',
             value: doi,
           },
         ],
       },
       {
-        type: "element",
-        name: "resource",
+        type: 'element',
+        name: 'resource',
         children: [
           {
-            type: "text",
+            type: 'text',
             value: url,
           },
         ],

@@ -39,7 +39,7 @@ export interface Assertion extends Element {
     name: AssertionName
     provider: AssertionProvider
   }
-  children: RequiredMap<AssertionChildren>
+  children: RequiredMap<AssertionChildren>[]
 }
 
 export interface AssertionChildren {
@@ -92,7 +92,7 @@ export interface Program extends Element {
   attributes: {
     name: string
   }
-  children: RequiredMap<ProgramChildren>
+  children: RequiredMap<ProgramChildren>[]
 }
 
 export interface ProgramChildren {

@@ -56,7 +56,7 @@ export interface Program extends Element {
   attributes: {
     name: string
   }
-  children: RequiredMap<ProgramChildren>
+  children: RequiredMap<ProgramChildren>[]
 }
 
 export interface ProgramChildren {

@@ -167,7 +167,7 @@ export interface Abstract extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<AbstractChildren>
+  children: RequiredMap<AbstractChildren>[]
 }
 
 export interface AbstractChildren {
@@ -244,7 +244,7 @@ export interface Ack extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<AckChildren>
+  children: RequiredMap<AckChildren>[]
 }
 
 export interface AckChildren {
@@ -362,7 +362,7 @@ export interface AffAlternatives extends Element {
     base?: string
     id?: string
   }
-  children: RequiredMap<AffAlternativesChildren>
+  children: RequiredMap<AffAlternativesChildren>[]
 }
 
 export interface AffAlternativesChildren {
@@ -658,7 +658,7 @@ export interface AnswerSet extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<AnswerSetChildren>
+  children: RequiredMap<AnswerSetChildren>[]
 }
 
 export interface AnswerSetChildren {
@@ -720,7 +720,7 @@ export interface Answer extends Element {
     pointerToquestion: string
     specificUse?: string
   }
-  children: RequiredMap<AnswerChildren>
+  children: RequiredMap<AnswerChildren>[]
 }
 
 export interface AnswerChildren {
@@ -779,7 +779,7 @@ export interface AppGroup extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<AppGroupChildren>
+  children: RequiredMap<AppGroupChildren>[]
 }
 
 export interface AppGroupChildren {
@@ -832,7 +832,7 @@ export interface App extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<AppChildren>
+  children: RequiredMap<AppChildren>[]
 }
 
 export interface AppChildren {
@@ -913,7 +913,7 @@ export interface ArticleCategories extends Element {
     base?: string
     id?: string
   }
-  children: RequiredMap<ArticleCategoriesChildren>
+  children: RequiredMap<ArticleCategoriesChildren>[]
 }
 
 export interface ArticleCategoriesChildren {
@@ -994,7 +994,7 @@ export interface ArticleMeta extends Element {
     base?: string
     id?: string
   }
-  children: RequiredMap<ArticleMetaChildren>
+  children: RequiredMap<ArticleMetaChildren>[]
 }
 
 export interface ArticleMetaChildren {
@@ -1147,7 +1147,7 @@ export interface Article extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<ArticleChildren>
+  children: RequiredMap<ArticleChildren>[]
 }
 
 export interface ArticleChildren {
@@ -1202,7 +1202,7 @@ export interface ArticleVersionalternatives extends Element {
     base?: string
     id?: string
   }
-  children: RequiredMap<ArticleVersionalternativesChildren>
+  children: RequiredMap<ArticleVersionalternativesChildren>[]
 }
 
 export interface ArticleVersionalternativesChildren {
@@ -1334,7 +1334,7 @@ export interface AuthorComment extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<AuthorCommentChildren>
+  children: RequiredMap<AuthorCommentChildren>[]
 }
 
 export interface AuthorCommentChildren {
@@ -1362,7 +1362,7 @@ export interface AuthorNotes extends Element {
     rid?: string
     specificUse?: string
   }
-  children: RequiredMap<AuthorNotesChildren>
+  children: RequiredMap<AuthorNotesChildren>[]
 }
 
 export interface AuthorNotesChildren {
@@ -1473,7 +1473,7 @@ export interface AwardGroup extends Element {
     title?: string
     type?: xlink.Type
   }
-  children: RequiredMap<AwardGroupChildren>
+  children: RequiredMap<AwardGroupChildren>[]
 }
 
 export interface AwardGroupChildren {
@@ -1616,7 +1616,7 @@ export interface Back extends Element {
     base?: string
     id?: string
   }
-  children: RequiredMap<BackChildren>
+  children: RequiredMap<BackChildren>[]
 }
 
 export interface BackChildren {
@@ -1677,7 +1677,7 @@ export interface Bio extends Element {
     $title?: string
     type?: xlink.Type
   }
-  children: RequiredMap<BioChildren>
+  children: RequiredMap<BioChildren>[]
 }
 
 export interface BioChildren {
@@ -1728,7 +1728,7 @@ export interface Body extends Element {
     id?: string
     specificUse?: string
   }
-  children: RequiredMap<BodyChildren>
+  children: RequiredMap<BodyChildren>[]
 }
 
 export interface BodyChildren {
@@ -1808,7 +1808,7 @@ export interface BoxedText extends Element {
     position?: BoxedTextPosition
     specificUse?: string
   }
-  children: RequiredMap<BoxedTextChildren>
+  children: RequiredMap<BoxedTextChildren>[]
 }
 
 export interface BoxedTextChildren {
@@ -1894,7 +1894,7 @@ export interface Caption extends Element {
     specificUse?: string
     style?: string
   }
-  children: RequiredMap<CaptionChildren>
+  children: RequiredMap<CaptionChildren>[]
 }
 
 export interface CaptionChildren {
@@ -2043,7 +2043,7 @@ export interface ChemStructwrap extends Element {
     position?: ChemStructwrapPosition
     specificUse?: string
   }
-  children: RequiredMap<ChemStructwrapChildren>
+  children: RequiredMap<ChemStructwrapChildren>[]
 }
 
 export interface ChemStructwrapChildren {
@@ -2226,7 +2226,7 @@ export interface Colgroup extends Element {
     valign?: ColgroupValign
     width?: string
   }
-  children: RequiredMap<ColgroupChildren>
+  children: RequiredMap<ColgroupChildren>[]
 }
 
 export interface ColgroupChildren {
@@ -2443,7 +2443,7 @@ export interface CompoundKwd extends Element {
     vocabTerm?: string
     vocabTermidentifier?: string
   }
-  children: RequiredMap<CompoundKwdChildren>
+  children: RequiredMap<CompoundKwdChildren>[]
 }
 
 export interface CompoundKwdChildren {
@@ -2496,7 +2496,7 @@ export interface CompoundSubject extends Element {
     vocabTerm?: string
     vocabTermidentifier?: string
   }
-  children: RequiredMap<CompoundSubjectChildren>
+  children: RequiredMap<CompoundSubjectChildren>[]
 }
 
 export interface CompoundSubjectChildren {
@@ -2646,7 +2646,7 @@ export interface Conference extends Element {
     title?: string
     type?: xlink.Type
   }
-  children: RequiredMap<ConferenceChildren>
+  children: RequiredMap<ConferenceChildren>[]
 }
 
 export interface ConferenceChildren {
@@ -3057,7 +3057,7 @@ export interface ContributedResourcegroup extends Element {
     resource?: string
     specificUse?: string
   }
-  children: RequiredMap<ContributedResourcegroupChildren>
+  children: RequiredMap<ContributedResourcegroupChildren>[]
 }
 
 export interface ContributedResourcegroupChildren {
@@ -3290,7 +3290,7 @@ export interface Counts extends Element {
     base?: string
     id?: string
   }
-  children: RequiredMap<CountsChildren>
+  children: RequiredMap<CountsChildren>[]
 }
 
 export interface CountsChildren {
@@ -3375,7 +3375,7 @@ export interface CustomMetagroup extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<CustomMetagroupChildren>
+  children: RequiredMap<CustomMetagroupChildren>[]
 }
 
 export interface CustomMetagroupChildren {
@@ -3437,7 +3437,7 @@ export interface CustomMeta extends Element {
     vocabTerm?: string
     vocabTermidentifier?: string
   }
-  children: RequiredMap<CustomMetaChildren>
+  children: RequiredMap<CustomMetaChildren>[]
 }
 
 export interface CustomMetaChildren {
@@ -3562,7 +3562,7 @@ export interface Date extends Element {
     publicationFormat?: string
     specificUse?: string
   }
-  children: RequiredMap<DateChildren>
+  children: RequiredMap<DateChildren>[]
 }
 
 export interface DateChildren {
@@ -3681,7 +3681,7 @@ export interface DefItem extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<DefItemChildren>
+  children: RequiredMap<DefItemChildren>[]
 }
 
 export interface DefItemChildren {
@@ -3737,7 +3737,7 @@ export interface DefList extends Element {
     prefixWord?: string
     specificUse?: string
   }
-  children: RequiredMap<DefListChildren>
+  children: RequiredMap<DefListChildren>[]
 }
 
 export interface DefListChildren {
@@ -3884,7 +3884,7 @@ export interface DispFormulagroup extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<DispFormulagroupChildren>
+  children: RequiredMap<DispFormulagroupChildren>[]
 }
 
 export interface DispFormulagroupChildren {
@@ -3980,7 +3980,7 @@ export interface DispQuote extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<DispQuoteChildren>
+  children: RequiredMap<DispQuoteChildren>[]
 }
 
 export interface DispQuoteChildren {
@@ -4363,7 +4363,7 @@ export interface Event extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<EventChildren>
+  children: RequiredMap<EventChildren>[]
 }
 
 export interface EventChildren {
@@ -4431,7 +4431,7 @@ export interface Explanation extends Element {
     pointerToexplained: string
     specificUse?: string
   }
-  children: RequiredMap<ExplanationChildren>
+  children: RequiredMap<ExplanationChildren>[]
 }
 
 export interface ExplanationChildren {
@@ -4773,7 +4773,7 @@ export interface FnGroup extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<FnGroupChildren>
+  children: RequiredMap<FnGroupChildren>[]
 }
 
 export interface FnGroupChildren {
@@ -4828,7 +4828,7 @@ export interface Fn extends Element {
     specificUse?: string
     symbol?: string
   }
-  children: RequiredMap<FnChildren>
+  children: RequiredMap<FnChildren>[]
 }
 
 export interface FnChildren {
@@ -4927,7 +4927,7 @@ export interface FrontStub extends Element {
     base?: string
     id?: string
   }
-  children: RequiredMap<FrontStubChildren>
+  children: RequiredMap<FrontStubChildren>[]
 }
 
 export interface FrontStubChildren {
@@ -5011,7 +5011,7 @@ export interface Front extends Element {
     base?: string
     id?: string
   }
-  children: RequiredMap<FrontChildren>
+  children: RequiredMap<FrontChildren>[]
 }
 
 export interface FrontChildren {
@@ -5063,7 +5063,7 @@ export interface FundingGroup extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<FundingGroupChildren>
+  children: RequiredMap<FundingGroupChildren>[]
 }
 
 export interface FundingGroupChildren {
@@ -5238,7 +5238,7 @@ export interface Glossary extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<GlossaryChildren>
+  children: RequiredMap<GlossaryChildren>[]
 }
 
 export interface GlossaryChildren {
@@ -5525,7 +5525,7 @@ export interface IndexTerm extends Element {
     vocabTerm?: string
     vocabTermidentifier?: string
   }
-  children: RequiredMap<IndexTermChildren>
+  children: RequiredMap<IndexTermChildren>[]
 }
 
 export interface IndexTermChildren {
@@ -6171,7 +6171,7 @@ export interface IssueTitlegroup extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<IssueTitlegroupChildren>
+  children: RequiredMap<IssueTitlegroupChildren>[]
 }
 
 export interface IssueTitlegroupChildren {
@@ -6365,7 +6365,7 @@ export interface JournalMeta extends Element {
     base?: string
     id?: string
   }
-  children: RequiredMap<JournalMetaChildren>
+  children: RequiredMap<JournalMetaChildren>[]
 }
 
 export interface JournalMetaChildren {
@@ -6451,7 +6451,7 @@ export interface JournalTitlegroup extends Element {
     content?: string
     id?: string
   }
-  children: RequiredMap<JournalTitlegroupChildren>
+  children: RequiredMap<JournalTitlegroupChildren>[]
 }
 
 export interface JournalTitlegroupChildren {
@@ -6556,7 +6556,7 @@ export interface KwdGroup extends Element {
     vocab?: string
     vocabIdentifier?: string
   }
-  children: RequiredMap<KwdGroupChildren>
+  children: RequiredMap<KwdGroupChildren>[]
 }
 
 export interface KwdGroupChildren {
@@ -6752,7 +6752,7 @@ export interface ListItem extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<ListItemChildren>
+  children: RequiredMap<ListItemChildren>[]
 }
 
 export interface ListItemChildren {
@@ -6808,7 +6808,7 @@ export interface List extends Element {
     prefixWord?: string
     specificUse?: string
   }
-  children: RequiredMap<ListChildren>
+  children: RequiredMap<ListChildren>[]
 }
 
 export interface ListChildren {
@@ -7364,7 +7364,7 @@ export interface Name extends Element {
     nameStyle?: NameNameStyle
     specificUse?: string
   }
-  children: RequiredMap<NameChildren>
+  children: RequiredMap<NameChildren>[]
 }
 
 export interface NameChildren {
@@ -7405,7 +7405,7 @@ export interface NestedKwd extends Element {
     vocabTerm?: string
     vocabTermidentifier?: string
   }
-  children: RequiredMap<NestedKwdChildren>
+  children: RequiredMap<NestedKwdChildren>[]
 }
 
 export interface NestedKwdChildren {
@@ -7465,7 +7465,7 @@ export interface NlmCitation extends Element {
     title?: string
     type?: xlink.Type
   }
-  children: RequiredMap<NlmCitationChildren>
+  children: RequiredMap<NlmCitationChildren>[]
 }
 
 export interface NlmCitationChildren {
@@ -7566,7 +7566,7 @@ export interface Notes extends Element {
     notes?: string
     specificUse?: string
   }
-  children: RequiredMap<NotesChildren>
+  children: RequiredMap<NotesChildren>[]
 }
 
 export interface NotesChildren {
@@ -7621,7 +7621,7 @@ export interface Note extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<NoteChildren>
+  children: RequiredMap<NoteChildren>[]
 }
 
 export interface NoteChildren {
@@ -7785,7 +7785,7 @@ export interface Option extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<OptionChildren>
+  children: RequiredMap<OptionChildren>[]
 }
 
 export interface OptionChildren {
@@ -8050,7 +8050,7 @@ export interface Permissions extends Element {
     base?: string
     id?: string
   }
-  children: RequiredMap<PermissionsChildren>
+  children: RequiredMap<PermissionsChildren>[]
 }
 
 export interface PermissionsChildren {
@@ -8459,7 +8459,7 @@ export interface PrivateChar extends Element {
     name?: string
     specificUse?: string
   }
-  children: RequiredMap<PrivateCharChildren>
+  children: RequiredMap<PrivateCharChildren>[]
 }
 
 export interface PrivateCharChildren {
@@ -8490,7 +8490,7 @@ export interface ProcessingMeta extends Element {
     tableModel?: ProcessingMetaTableModel
     tagsetFamily?: ProcessingMetaTagsetFamily
   }
-  children: RequiredMap<ProcessingMetaChildren>
+  children: RequiredMap<ProcessingMetaChildren>[]
 }
 
 export interface ProcessingMetaChildren {
@@ -8687,7 +8687,7 @@ export interface PubDate extends Element {
     pub?: string
     publicationFormat?: string
   }
-  children: RequiredMap<PubDateChildren>
+  children: RequiredMap<PubDateChildren>[]
 }
 
 export interface PubDateChildren {
@@ -8930,7 +8930,7 @@ export interface QuestionPreamble extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<QuestionPreambleChildren>
+  children: RequiredMap<QuestionPreambleChildren>[]
 }
 
 export interface QuestionPreambleChildren {
@@ -8988,7 +8988,7 @@ export interface Question extends Element {
     questionResponsetype?: QuestionQuestionResponsetype
     specificUse?: string
   }
-  children: RequiredMap<QuestionChildren>
+  children: RequiredMap<QuestionChildren>[]
 }
 
 export interface QuestionChildren {
@@ -9059,7 +9059,7 @@ export interface QuestionWrapgroup extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<QuestionWrapgroupChildren>
+  children: RequiredMap<QuestionWrapgroupChildren>[]
 }
 
 export interface QuestionWrapgroupChildren {
@@ -9119,7 +9119,7 @@ export interface QuestionWrap extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<QuestionWrapChildren>
+  children: RequiredMap<QuestionWrapChildren>[]
 }
 
 export interface QuestionWrapChildren {
@@ -9242,7 +9242,7 @@ export interface RefList extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<RefListChildren>
+  children: RequiredMap<RefListChildren>[]
 }
 
 export interface RefListChildren {
@@ -9297,7 +9297,7 @@ export interface Ref extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<RefChildren>
+  children: RequiredMap<RefChildren>[]
 }
 
 export interface RefChildren {
@@ -9590,7 +9590,7 @@ export interface ResourceWrap extends Element {
     base?: string
     id?: string
   }
-  children: RequiredMap<ResourceWrapChildren>
+  children: RequiredMap<ResourceWrapChildren>[]
 }
 
 export interface ResourceWrapChildren {
@@ -9643,7 +9643,7 @@ export interface Response extends Element {
     response?: string
     specificUse?: string
   }
-  children: RequiredMap<ResponseChildren>
+  children: RequiredMap<ResponseChildren>[]
 }
 
 export interface ResponseChildren {
@@ -9857,7 +9857,7 @@ export interface Ruby extends Element {
     id?: string
     specificUse?: string
   }
-  children: RequiredMap<RubyChildren>
+  children: RequiredMap<RubyChildren>[]
 }
 
 export interface RubyChildren {
@@ -9984,7 +9984,7 @@ export interface SecMeta extends Element {
     base?: string
     id?: string
   }
-  children: RequiredMap<SecMetaChildren>
+  children: RequiredMap<SecMetaChildren>[]
 }
 
 export interface SecMetaChildren {
@@ -10035,7 +10035,7 @@ export interface Sec extends Element {
     sec?: string
     specificUse?: string
   }
-  children: RequiredMap<SecChildren>
+  children: RequiredMap<SecChildren>[]
 }
 
 export interface SecChildren {
@@ -10576,7 +10576,7 @@ export interface Speech extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<SpeechChildren>
+  children: RequiredMap<SpeechChildren>[]
 }
 
 export interface SpeechChildren {
@@ -10627,7 +10627,7 @@ export interface Statement extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<StatementChildren>
+  children: RequiredMap<StatementChildren>[]
 }
 
 export interface StatementChildren {
@@ -11039,7 +11039,7 @@ export interface SubArticle extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<SubArticleChildren>
+  children: RequiredMap<SubArticleChildren>[]
 }
 
 export interface SubArticleChildren {
@@ -11132,7 +11132,7 @@ export interface SubjGroup extends Element {
     vocab?: string
     vocabIdentifier?: string
   }
-  children: RequiredMap<SubjGroupChildren>
+  children: RequiredMap<SubjGroupChildren>[]
 }
 
 export interface SubjGroupChildren {
@@ -11458,7 +11458,7 @@ export interface SupportGroup extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<SupportGroupChildren>
+  children: RequiredMap<SupportGroupChildren>[]
 }
 
 export interface SupportGroupChildren {
@@ -11619,7 +11619,7 @@ export interface Table extends Element {
     summary?: string
     width?: string
   }
-  children: RequiredMap<TableChildren>
+  children: RequiredMap<TableChildren>[]
 }
 
 export interface TableChildren {
@@ -11664,7 +11664,7 @@ export interface TableWrapfoot extends Element {
     base?: string
     id?: string
   }
-  children: RequiredMap<TableWrapfootChildren>
+  children: RequiredMap<TableWrapfootChildren>[]
 }
 
 export interface TableWrapfootChildren {
@@ -11854,7 +11854,7 @@ export interface Tbody extends Element {
     style?: string
     valign?: TbodyValign
   }
-  children: RequiredMap<TbodyChildren>
+  children: RequiredMap<TbodyChildren>[]
 }
 
 export interface TbodyChildren {
@@ -12084,7 +12084,7 @@ export interface Tfoot extends Element {
     style?: string
     valign?: TfootValign
   }
-  children: RequiredMap<TfootChildren>
+  children: RequiredMap<TfootChildren>[]
 }
 
 export interface TfootChildren {
@@ -12124,7 +12124,7 @@ export interface Thead extends Element {
     style?: string
     valign?: TheadValign
   }
-  children: RequiredMap<TheadChildren>
+  children: RequiredMap<TheadChildren>[]
 }
 
 export interface TheadChildren {
@@ -12227,7 +12227,7 @@ export interface TitleGroup extends Element {
     base?: string
     id?: string
   }
-  children: RequiredMap<TitleGroupChildren>
+  children: RequiredMap<TitleGroupChildren>[]
 }
 
 export interface TitleGroupChildren {
@@ -12308,7 +12308,7 @@ export interface TransAbstract extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<TransAbstractChildren>
+  children: RequiredMap<TransAbstractChildren>[]
 }
 
 export interface TransAbstractChildren {
@@ -12450,7 +12450,7 @@ export interface TransTitlegroup extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<TransTitlegroupChildren>
+  children: RequiredMap<TransTitlegroupChildren>[]
 }
 
 export interface TransTitlegroupChildren {
@@ -12528,7 +12528,7 @@ export interface Tr extends Element {
     style?: string
     valign?: TrValign
   }
-  children: RequiredMap<TrChildren>
+  children: RequiredMap<TrChildren>[]
 }
 
 export interface TrChildren {
@@ -12764,7 +12764,7 @@ export interface VerseGroup extends Element {
     styleDetail?: string
     style?: string
   }
-  children: RequiredMap<VerseGroupChildren>
+  children: RequiredMap<VerseGroupChildren>[]
 }
 
 export interface VerseGroupChildren {
@@ -12972,7 +12972,7 @@ export interface VolumeIssuegroup extends Element {
     lang?: string
     specificUse?: string
   }
-  children: RequiredMap<VolumeIssuegroupChildren>
+  children: RequiredMap<VolumeIssuegroupChildren>[]
 }
 
 export interface VolumeIssuegroupChildren {

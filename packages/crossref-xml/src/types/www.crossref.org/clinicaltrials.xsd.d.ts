@@ -52,7 +52,7 @@ export interface Program extends Element {
   type: 'element'
   name: 'program'
   attributes: {}
-  children: RequiredMap<ProgramChildren>
+  children: RequiredMap<ProgramChildren>[]
 }
 
 export interface ProgramChildren {

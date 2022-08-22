@@ -44,7 +44,7 @@ export interface Affiliations extends Element {
   type: 'element'
   name: 'affiliations'
   attributes: {}
-  children: RequiredMap<AffiliationsChildren>
+  children: RequiredMap<AffiliationsChildren>[]
 }
 
 export interface AffiliationsChildren {
@@ -56,7 +56,7 @@ export interface AltName extends Element {
   type: 'element'
   name: 'alt-name'
   attributes: {}
-  children: RequiredMap<AltNameChildren>
+  children: RequiredMap<AltNameChildren>[]
 }
 
 export interface AltNameChildren {
@@ -73,7 +73,7 @@ export interface Anonymous extends Element {
     nameStyle?: NameStyle
     sequence: Sequence
   }
-  children: RequiredMap<AnonymousChildren>
+  children: RequiredMap<AnonymousChildren>[]
 }
 
 export interface AnonymousChildren {
@@ -92,7 +92,7 @@ export interface ArchiveLocations extends Element {
   type: 'element'
   name: 'archive_locations'
   attributes: {}
-  children: RequiredMap<ArchiveLocationsChildren>
+  children: RequiredMap<ArchiveLocationsChildren>[]
 }
 
 export interface ArchiveLocationsChildren {
@@ -149,7 +149,7 @@ export interface Body extends Element {
   type: 'element'
   name: 'body'
   attributes: {}
-  children: RequiredMap<BodyChildren>
+  children: RequiredMap<BodyChildren>[]
 }
 
 export interface BodyChildren {
@@ -185,7 +185,7 @@ export interface BookMetadata extends Element {
     language?: Language
     referenceDistributionOpts?: ReferenceDistributionOpts
   }
-  children: RequiredMap<BookMetadataChildren>
+  children: RequiredMap<BookMetadataChildren>[]
 }
 
 export interface BookMetadataChildren {
@@ -229,7 +229,7 @@ export interface BookSeriesMetadata extends Element {
     language?: Language
     referenceDistributionOpts?: ReferenceDistributionOpts
   }
-  children: RequiredMap<BookSeriesMetadataChildren>
+  children: RequiredMap<BookSeriesMetadataChildren>[]
 }
 
 export interface BookSeriesMetadataChildren {
@@ -261,7 +261,7 @@ export interface BookSetMetadata extends Element {
     language?: Language
     referenceDistributionOpts?: ReferenceDistributionOpts
   }
-  children: RequiredMap<BookSetMetadataChildren>
+  children: RequiredMap<BookSetMetadataChildren>[]
 }
 
 export interface BookSetMetadataChildren {
@@ -302,7 +302,7 @@ export interface Book extends Element {
   attributes: {
     book: BookBook
   }
-  children: RequiredMap<BookChildren>
+  children: RequiredMap<BookChildren>[]
 }
 
 export interface BookChildren {
@@ -326,7 +326,7 @@ export interface CitationList extends Element {
   type: 'element'
   name: 'citation_list'
   attributes: {}
-  children: RequiredMap<CitationListChildren>
+  children: RequiredMap<CitationListChildren>[]
 }
 
 export interface CitationListChildren {
@@ -406,7 +406,7 @@ export interface Collection extends Element {
     multiResolution: CollectionMultiResolution
     property: CollectionProperty
   }
-  children: RequiredMap<CollectionChildren>
+  children: RequiredMap<CollectionChildren>[]
 }
 
 export interface CollectionChildren {
@@ -445,7 +445,7 @@ export interface ComponentList extends Element {
   type: 'element'
   name: 'component_list'
   attributes: {}
-  children: RequiredMap<ComponentListChildren>
+  children: RequiredMap<ComponentListChildren>[]
 }
 
 export interface ComponentListChildren {
@@ -467,7 +467,7 @@ export interface Component extends Element {
     parentRelation: ComponentParentRelation
     regAgency?: string
   }
-  children: RequiredMap<ComponentChildren>
+  children: RequiredMap<ComponentChildren>[]
 }
 
 export interface ComponentChildren {
@@ -546,7 +546,7 @@ export interface ConferencePaper extends Element {
     publication: Publication
     referenceDistributionOpts?: ReferenceDistributionOpts
   }
-  children: RequiredMap<ConferencePaperChildren>
+  children: RequiredMap<ConferencePaperChildren>[]
 }
 
 export interface ConferencePaperChildren {
@@ -593,7 +593,7 @@ export interface Conference extends Element {
   type: 'element'
   name: 'conference'
   attributes: {}
-  children: RequiredMap<ConferenceChildren>
+  children: RequiredMap<ConferenceChildren>[]
 }
 
 export interface ConferenceChildren {
@@ -627,7 +627,7 @@ export interface ContentItem extends Element {
     publication: Publication
     referenceDistributionOpts?: ReferenceDistributionOpts
   }
-  children: RequiredMap<ContentItemChildren>
+  children: RequiredMap<ContentItemChildren>[]
 }
 
 export interface ContentItemChildren {
@@ -694,7 +694,7 @@ export interface Contributors extends Element {
   type: 'element'
   name: 'contributors'
   attributes: {}
-  children: RequiredMap<ContributorsChildren>
+  children: RequiredMap<ContributorsChildren>[]
 }
 
 export interface ContributorsChildren {
@@ -717,7 +717,7 @@ export interface CrossmarkDomains extends Element {
   type: 'element'
   name: 'crossmark_domains'
   attributes: {}
-  children: RequiredMap<CrossmarkDomainsChildren>
+  children: RequiredMap<CrossmarkDomainsChildren>[]
 }
 
 export interface CrossmarkDomainsChildren {
@@ -730,7 +730,7 @@ export interface CrossmarkDomain extends Element {
   type: 'element'
   name: 'crossmark_domain'
   attributes: {}
-  children: RequiredMap<CrossmarkDomainChildren>
+  children: RequiredMap<CrossmarkDomainChildren>[]
 }
 
 export interface CrossmarkDomainChildren {
@@ -745,7 +745,7 @@ export interface Crossmark extends Element {
   type: 'element'
   name: 'crossmark'
   attributes: {}
-  children: RequiredMap<CrossmarkChildren>
+  children: RequiredMap<CrossmarkChildren>[]
 }
 
 export interface CrossmarkChildren {
@@ -766,7 +766,7 @@ export interface CustomMetadata extends Element {
   type: 'element'
   name: 'custom_metadata'
   attributes: {}
-  children: RequiredMap<CustomMetadataChildren>
+  children: RequiredMap<CustomMetadataChildren>[]
 }
 
 export interface CustomMetadataChildren {
@@ -782,7 +782,7 @@ export interface DatabaseDate extends Element {
   type: 'element'
   name: 'database_date'
   attributes: {}
-  children: RequiredMap<DatabaseDateChildren>
+  children: RequiredMap<DatabaseDateChildren>[]
 }
 
 export interface DatabaseDateChildren {
@@ -802,7 +802,7 @@ export interface DatabaseMetadata extends Element {
     language?: Language
     referenceDistributionOpts?: ReferenceDistributionOpts
   }
-  children: RequiredMap<DatabaseMetadataChildren>
+  children: RequiredMap<DatabaseMetadataChildren>[]
 }
 
 export interface DatabaseMetadataChildren {
@@ -833,7 +833,7 @@ export interface Database extends Element {
   type: 'element'
   name: 'database'
   attributes: {}
-  children: RequiredMap<DatabaseChildren>
+  children: RequiredMap<DatabaseChildren>[]
 }
 
 export interface DatabaseChildren {
@@ -852,7 +852,7 @@ export interface Dataset extends Element {
   attributes: {
     dataset: DatasetDataset
   }
-  children: RequiredMap<DatasetChildren>
+  children: RequiredMap<DatasetChildren>[]
 }
 
 export interface DatasetChildren {
@@ -893,7 +893,7 @@ export interface dateT extends Element {
   attributes: {
     media: dateTMedia
   }
-  children: RequiredMap<dateTChildren>
+  children: RequiredMap<dateTChildren>[]
 }
 
 export interface dateTChildren {
@@ -931,7 +931,7 @@ export interface Depositor extends Element {
   type: 'element'
   name: 'depositor'
   attributes: {}
-  children: RequiredMap<DepositorChildren>
+  children: RequiredMap<DepositorChildren>[]
 }
 
 export interface DepositorChildren {
@@ -955,7 +955,7 @@ export interface Designators extends Element {
   type: 'element'
   name: 'designators'
   attributes: {}
-  children: RequiredMap<DesignatorsChildren>
+  children: RequiredMap<DesignatorsChildren>[]
 }
 
 export interface DesignatorsChildren {
@@ -976,7 +976,7 @@ export interface Dissertation extends Element {
     publication: Publication
     referenceDistributionOpts?: ReferenceDistributionOpts
   }
-  children: RequiredMap<DissertationChildren>
+  children: RequiredMap<DissertationChildren>[]
 }
 
 export interface DissertationChildren {
@@ -1025,7 +1025,7 @@ export interface DoiBatch extends Element {
   attributes: {
     version: string
   }
-  children: RequiredMap<DoiBatchChildren>
+  children: RequiredMap<DoiBatchChildren>[]
 }
 
 export interface DoiBatchChildren {
@@ -1040,7 +1040,7 @@ export interface DoiData extends Element {
   type: 'element'
   name: 'doi_data'
   attributes: {}
-  children: RequiredMap<DoiDataChildren>
+  children: RequiredMap<DoiDataChildren>[]
 }
 
 export interface DoiDataChildren {
@@ -1082,7 +1082,7 @@ export interface EventMetadata extends Element {
   type: 'element'
   name: 'event_metadata'
   attributes: {}
-  children: RequiredMap<EventMetadataChildren>
+  children: RequiredMap<EventMetadataChildren>[]
 }
 
 export interface EventMetadataChildren {
@@ -1139,7 +1139,7 @@ export interface Head extends Element {
   type: 'element'
   name: 'head'
   attributes: {}
-  children: RequiredMap<HeadChildren>
+  children: RequiredMap<HeadChildren>[]
 }
 
 export interface HeadChildren {
@@ -1215,7 +1215,7 @@ export interface Institution extends Element {
   type: 'element'
   name: 'institution'
   attributes: {}
-  children: RequiredMap<InstitutionChildren>
+  children: RequiredMap<InstitutionChildren>[]
 }
 
 export interface InstitutionChildren {
@@ -1236,7 +1236,7 @@ export interface IntentStatement extends Element {
   attributes: {
     language?: Language
   }
-  children: RequiredMap<IntentStatementChildren>
+  children: RequiredMap<IntentStatementChildren>[]
 }
 
 export interface IntentStatementChildren {
@@ -1297,7 +1297,7 @@ export interface Item extends Element {
     label?: string
     linkHeaderRelationship: ItemLinkHeaderRelationship
   }
-  children: RequiredMap<ItemChildren>
+  children: RequiredMap<ItemChildren>[]
 }
 
 export interface ItemChildren {
@@ -1584,7 +1584,7 @@ export interface JournalArticle extends Element {
     publication: Publication
     referenceDistributionOpts?: ReferenceDistributionOpts
   }
-  children: RequiredMap<JournalArticleChildren>
+  children: RequiredMap<JournalArticleChildren>[]
 }
 
 export interface JournalArticleChildren {
@@ -1623,7 +1623,7 @@ export interface JournalIssue extends Element {
   type: 'element'
   name: 'journal_issue'
   attributes: {}
-  children: RequiredMap<JournalIssueChildren>
+  children: RequiredMap<JournalIssueChildren>[]
 }
 
 export interface JournalIssueChildren {
@@ -1653,7 +1653,7 @@ export interface JournalMetadata extends Element {
     language?: Language
     referenceDistributionOpts?: ReferenceDistributionOpts
   }
-  children: RequiredMap<JournalMetadataChildren>
+  children: RequiredMap<JournalMetadataChildren>[]
 }
 
 export interface JournalMetadataChildren {
@@ -1676,7 +1676,7 @@ export interface JournalVolume extends Element {
   type: 'element'
   name: 'journal_volume'
   attributes: {}
-  children: RequiredMap<JournalVolumeChildren>
+  children: RequiredMap<JournalVolumeChildren>[]
 }
 
 export interface JournalVolumeChildren {
@@ -1695,7 +1695,7 @@ export interface Journal extends Element {
   type: 'element'
   name: 'journal'
   attributes: {}
-  children: RequiredMap<JournalChildren>
+  children: RequiredMap<JournalChildren>[]
 }
 
 export interface JournalChildren {
@@ -2068,7 +2068,7 @@ export interface Name extends Element {
     language?: Language
     nameStyle: NameNameStyle
   }
-  children: RequiredMap<NameChildren>
+  children: RequiredMap<NameChildren>[]
 }
 
 export interface NameChildren {
@@ -2143,7 +2143,7 @@ export interface Pages extends Element {
   type: 'element'
   name: 'pages'
   attributes: {}
-  children: RequiredMap<PagesChildren>
+  children: RequiredMap<PagesChildren>[]
 }
 
 export interface PagesChildren {
@@ -2171,7 +2171,7 @@ export interface PeerReview extends Element {
     stage?: PeerReviewStage
     type?: PeerReview
   }
-  children: RequiredMap<PeerReviewChildren>
+  children: RequiredMap<PeerReviewChildren>[]
 }
 
 export interface PeerReviewChildren {
@@ -2230,7 +2230,7 @@ export interface PendingPublication extends Element {
   attributes: {
     language?: Language
   }
-  children: RequiredMap<PendingPublicationChildren>
+  children: RequiredMap<PendingPublicationChildren>[]
 }
 
 export interface PendingPublicationChildren {
@@ -2268,7 +2268,7 @@ export interface PersonName extends Element {
     nameStyle?: NameStyle
     sequence: Sequence
   }
-  children: RequiredMap<PersonNameChildren>
+  children: RequiredMap<PersonNameChildren>[]
 }
 
 export interface PersonNameChildren {
@@ -2295,7 +2295,7 @@ export interface PostedContent extends Element {
     language?: Language
     type: PostedContent
   }
-  children: RequiredMap<PostedContentChildren>
+  children: RequiredMap<PostedContentChildren>[]
 }
 
 export interface PostedContentChildren {
@@ -2380,7 +2380,7 @@ export interface ProceedingsMetadata extends Element {
     language?: Language
     referenceDistributionOpts?: ReferenceDistributionOpts
   }
-  children: RequiredMap<ProceedingsMetadataChildren>
+  children: RequiredMap<ProceedingsMetadataChildren>[]
 }
 
 export interface ProceedingsMetadataChildren {
@@ -2411,7 +2411,7 @@ export interface ProceedingsSeriesMetadata extends Element {
   attributes: {
     referenceDistributionOpts?: ReferenceDistributionOpts
   }
-  children: RequiredMap<ProceedingsSeriesMetadataChildren>
+  children: RequiredMap<ProceedingsSeriesMetadataChildren>[]
 }
 
 export interface ProceedingsSeriesMetadataChildren {
@@ -2450,7 +2450,7 @@ export interface Publication extends Element {
   type: 'element'
   name: 'publication'
   attributes: {}
-  children: RequiredMap<PublicationChildren>
+  children: RequiredMap<PublicationChildren>[]
 }
 
 export interface PublicationChildren {
@@ -2463,7 +2463,7 @@ export interface PublisherItem extends Element {
   type: 'element'
   name: 'publisher_item'
   attributes: {}
-  children: RequiredMap<PublisherItemChildren>
+  children: RequiredMap<PublisherItemChildren>[]
 }
 
 export interface PublisherItemChildren {
@@ -2486,7 +2486,7 @@ export interface Publisher extends Element {
   type: 'element'
   name: 'publisher'
   attributes: {}
-  children: RequiredMap<PublisherChildren>
+  children: RequiredMap<PublisherChildren>[]
 }
 
 export interface PublisherChildren {
@@ -2513,7 +2513,7 @@ export interface ReportPaperMetadata extends Element {
     language?: Language
     referenceDistributionOpts?: ReferenceDistributionOpts
   }
-  children: RequiredMap<ReportPaperMetadataChildren>
+  children: RequiredMap<ReportPaperMetadataChildren>[]
 }
 
 export interface ReportPaperMetadataChildren {
@@ -2561,7 +2561,7 @@ export interface ReportPaperSeriesMetadata extends Element {
     language?: Language
     referenceDistributionOpts?: ReferenceDistributionOpts
   }
-  children: RequiredMap<ReportPaperSeriesMetadataChildren>
+  children: RequiredMap<ReportPaperSeriesMetadataChildren>[]
 }
 
 export interface ReportPaperSeriesMetadataChildren {
@@ -2604,7 +2604,7 @@ export interface ReportPaper extends Element {
   attributes: {
     publication: Publication
   }
-  children: RequiredMap<ReportPaperChildren>
+  children: RequiredMap<ReportPaperChildren>[]
 }
 
 export interface ReportPaperChildren {
@@ -2641,7 +2641,7 @@ export interface ReviewDate extends Element {
   type: 'element'
   name: 'review_date'
   attributes: {}
-  children: RequiredMap<ReviewDateChildren>
+  children: RequiredMap<ReviewDateChildren>[]
 }
 
 export interface ReviewDateChildren {
@@ -2660,7 +2660,7 @@ export interface SaComponent extends Element {
   attributes: {
     parentDoi: string
   }
-  children: RequiredMap<SaComponentChildren>
+  children: RequiredMap<SaComponentChildren>[]
 }
 
 export interface SaComponentChildren {
@@ -2676,7 +2676,7 @@ export interface ScnPolicies extends Element {
   type: 'element'
   name: 'scn_policies'
   attributes: {}
-  children: RequiredMap<ScnPoliciesChildren>
+  children: RequiredMap<ScnPoliciesChildren>[]
 }
 
 export interface ScnPoliciesChildren {
@@ -2695,7 +2695,7 @@ export interface ScnPolicySet extends Element {
   attributes: {
     startDate?: Date
   }
-  children: RequiredMap<ScnPolicySetChildren>
+  children: RequiredMap<ScnPolicySetChildren>[]
 }
 
 export interface ScnPolicySetChildren {
@@ -2713,7 +2713,7 @@ export interface SeriesMetadata extends Element {
   type: 'element'
   name: 'series_metadata'
   attributes: {}
-  children: RequiredMap<SeriesMetadataChildren>
+  children: RequiredMap<SeriesMetadataChildren>[]
 }
 
 export interface SeriesMetadataChildren {
@@ -2748,7 +2748,7 @@ export interface SetMetadata extends Element {
   type: 'element'
   name: 'set_metadata'
   attributes: {}
-  children: RequiredMap<SetMetadataChildren>
+  children: RequiredMap<SetMetadataChildren>[]
 }
 
 export interface SetMetadataChildren {
@@ -2783,7 +2783,7 @@ export interface StandardMetadata extends Element {
     publicationStatus?: StandardMetadataPublicationStatus
     referenceDistributionOpts?: ReferenceDistributionOpts
   }
-  children: RequiredMap<StandardMetadataChildren>
+  children: RequiredMap<StandardMetadataChildren>[]
 }
 
 export interface StandardMetadataChildren {
@@ -2838,7 +2838,7 @@ export interface Standard extends Element {
   attributes: {
     publication: Publication
   }
-  children: RequiredMap<StandardChildren>
+  children: RequiredMap<StandardChildren>[]
 }
 
 export interface StandardChildren {
@@ -2883,7 +2883,7 @@ export interface stdDesignatorT extends Element {
   type: 'element'
   name: 'std_designator_t'
   attributes: {}
-  children: RequiredMap<stdDesignatorTChildren>
+  children: RequiredMap<stdDesignatorTChildren>[]
 }
 
 export interface stdDesignatorTChildren {
@@ -2921,7 +2921,7 @@ export interface StringName extends Element {
     language?: Language
     nameStyle: StringNameNameStyle
   }
-  children: RequiredMap<StringNameChildren>
+  children: RequiredMap<StringNameChildren>[]
 }
 
 export interface StringNameChildren {
@@ -2960,7 +2960,7 @@ export interface Titles extends Element {
   type: 'element'
   name: 'titles'
   attributes: {}
-  children: RequiredMap<TitlesChildren>
+  children: RequiredMap<TitlesChildren>[]
 }
 
 export interface TitlesChildren {
@@ -3003,7 +3003,7 @@ export interface Updates extends Element {
   type: 'element'
   name: 'updates'
   attributes: {}
-  children: RequiredMap<UpdatesChildren>
+  children: RequiredMap<UpdatesChildren>[]
 }
 
 export interface UpdatesChildren {

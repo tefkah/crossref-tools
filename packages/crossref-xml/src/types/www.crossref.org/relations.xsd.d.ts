@@ -336,7 +336,7 @@ export interface Program extends Element {
   attributes: {
     name: string
   }
-  children: RequiredMap<ProgramChildren>
+  children: RequiredMap<ProgramChildren>[]
 }
 
 export interface ProgramChildren {
@@ -347,7 +347,7 @@ export interface RelatedItem extends Element {
   type: 'element'
   name: 'related_item'
   attributes: {}
-  children: RequiredMap<RelatedItemChildren>
+  children: RequiredMap<RelatedItemChildren>[]
 }
 
 export interface RelatedItemChildren {

@@ -27,12 +27,14 @@ specifiers:
   typescript: ~4.7.4
   validate-with-xmllint: ^1.2.0
   xast-util-to-xml: ^3.0.0
+  xastscript: ^3.0.0
 
 dependencies:
   axios: 0.27.2
   jest: 27.5.1_ts-node@10.9.1
   tslib: 2.4.0
   validate-with-xmllint: 1.2.0
+  xastscript: 3.0.0
 
 devDependencies:
   '@nrwl/cli': 14.5.8_@swc+core@1.2.241
@@ -1234,13 +1236,11 @@ packages:
 
   /@types/unist/2.0.6:
     resolution: {integrity: sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==}
-    dev: true
 
   /@types/xast/1.0.2:
     resolution: {integrity: sha512-eIuX49CmWaXTh0hDEQTFH5MbTV+NPm0FM5gB36nDcr9x8n75t9o7wy2guS1lakkQxtUwfVDYiokqvHk3x0CC4Q==}
     dependencies:
       '@types/unist': 2.0.6
-    dev: true
 
   /@types/yargs-parser/21.0.0:
     resolution: {integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==}
@@ -4533,6 +4533,12 @@ packages:
       ccount: 2.0.1
       stringify-entities: 4.0.3
     dev: true
+
+  /xastscript/3.0.0:
+    resolution: {integrity: sha512-K/b8ih/Mt6z1mEkQnNpUcpkvlMUfJhIgbGg4PPnPCnqvrG+Dm/qfZJXidbVUx+PGYKD5VtuhYHQzyC935voA4Q==}
+    dependencies:
+      '@types/xast': 1.0.2
+    dev: false
 
   /xml-name-validator/3.0.0:
     resolution: {integrity: sha512-A5CUptxDsvxKJEU3yO6DuWBSJz/qizqzJKOMIfUJHETbBw/sFaDxgd6fxm1ewUaM0jZ444Fc5vC5ROYurg/4Pw==}

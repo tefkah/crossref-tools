@@ -23,20 +23,23 @@ export type ArrayValueMaybe<T> = T extends any[] ? ValuesType<NoUndefined<T>> : 
 export type AllTypes<T> = ArrayValueMaybe<ValuesType<T>>
 
 export type RequiredMap<T> = AllTypes<T>
+
 export type Actuate = 'onLoad' | 'onRequest' | 'other' | 'none'
-interface _Actuate extends Primitive._string {
-  content: Actuate
-}
+
+export type Arcrole = TextNode<'arcrole'>
+
+export type From = TextNode<'from'>
+
+export type Href = TextNode<'href'>
+
+export type Label = TextNode<'label'>
+
+export type Role = TextNode<'role'>
 
 export type Show = 'new' | 'replace' | 'embed' | 'other' | 'none'
-interface _Show extends Primitive._string {
-  content: Show
-}
+
+export type Title = TextNode<'title'>
+
+export type To = TextNode<'to'>
 
 export type Type = 'simple' | 'extended' | 'locator' | 'arc' | 'resource' | 'title' | 'none'
-interface _Type extends Primitive._string {
-  content: Type
-}
-
-export interface document extends Element {}
-export var document: document

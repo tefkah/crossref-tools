@@ -23,6 +23,13 @@ export type ArrayValueMaybe<T> = T extends any[] ? ValuesType<NoUndefined<T>> : 
 export type AllTypes<T> = ArrayValueMaybe<ValuesType<T>>
 
 export type RequiredMap<T> = AllTypes<T>
+
+export interface XrefFaces extends Element {
+  type: 'element'
+  name: 'xrefFaces' /** Element is self-closing */
+  children: []
+}
+
 /** A narrative description of the relationship target item */
 export interface Description extends Element {
   type: 'element'
@@ -30,9 +37,11 @@ export interface Description extends Element {
   attributes: {
     language?: Language
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type Identifier =
+export type IdentifierType =
   | 'doi'
   | 'issn'
   | 'isbn'
@@ -47,97 +56,36 @@ type Identifier =
   | 'ecli'
   | 'accession'
   | 'other'
-interface _Identifier extends Primitive._string {
-  content: Identifier
-}
 
 export interface InterWorkRelation extends Element {
   type: 'element'
   name: 'inter_work_relation'
   attributes: {
-    identifier: Identifier
+    identifierType: IdentifierType
     /** An identifier systems may require a namespace that is needed in addition to the identifer value to provide uniqueness. */
     namespace: string
     /** Used to describe relations between items that are not the same work. */
-    relationship: InterWorkRelationRelationship
+    relationshipType: InterWorkRelationRelationshipType
   }
-}
-
-/** Used to describe relations between items that are not the same work. */
-type InterWorkRelationRelationship =
-  | 'isDerivedFrom'
-  | 'hasDerivation'
-  | 'isReviewOf'
-  | 'hasReview'
-  | 'isCommentOn'
-  | 'hasComment'
-  | 'isReplyTo'
-  | 'hasReply'
-  | 'basedOnData'
-  | 'isDataBasisFor'
-  | 'hasRelatedMaterial'
-  | 'isRelatedMaterial'
-  | 'isCompiledBy'
-  | 'compiles'
-  | 'isDocumentedBy'
-  | 'documents'
-  | 'isSupplementTo'
-  | 'isSupplementedBy'
-  | 'isContinuedBy'
-  | 'continues'
-  | 'isPartOf'
-  | 'hasPart'
-  | 'references'
-  | 'isReferencedBy'
-  | 'isBasedOn'
-  | 'isBasisFor'
-  | 'requires'
-  | 'isRequiredBy'
-  | 'finances'
-  | 'isFinancedBy'
-interface _InterWorkRelationRelationship extends Primitive._string {
-  content: InterWorkRelationRelationship
+  /** Element is self-closing */
+  children: []
 }
 
 export interface IntraWorkRelation extends Element {
   type: 'element'
   name: 'intra_work_relation'
   attributes: {
-    identifier: Identifier
+    identifierType: IdentifierType
     /** An identifier systems may require a namespace that is needed in addition to the identifer value to provide uniqueness. */
     namespace: string
     /** Used to define relations between items that are essentially the same work but may differ in some way that impacts citation, for example a difference in format, language, or revision. Assigning different identifers to exactly the same item available in one place or as copies in multiple places can be problematic and should be avoided. */
-    relationship: IntraWorkRelationRelationship
+    relationshipType: IntraWorkRelationRelationshipType
   }
+  /** Element is self-closing */
+  children: []
 }
 
-/** Used to define relations between items that are essentially the same work but may differ in some way that impacts citation, for example a difference in format, language, or revision. Assigning different identifers to exactly the same item available in one place or as copies in multiple places can be problematic and should be avoided. */
-type IntraWorkRelationRelationship =
-  | 'isTranslationOf'
-  | 'hasTranslation'
-  | 'isPreprintOf'
-  | 'hasPreprint'
-  | 'isManuscriptOf'
-  | 'hasManuscript'
-  | 'isExpressionOf'
-  | 'hasExpression'
-  | 'isManifestationOf'
-  | 'hasManifestation'
-  | 'isReplacedBy'
-  | 'replaces'
-  | 'isSameAs'
-  | 'isIdenticalTo'
-  | 'isVariantFormOf'
-  | 'isOriginalFormOf'
-  | 'isVersionOf'
-  | 'hasVersion'
-  | 'isFormatOf'
-  | 'hasFormat'
-interface _IntraWorkRelationRelationship extends Primitive._string {
-  content: IntraWorkRelationRelationship
-}
-
-type Language =
+export type Language =
   | 'aa'
   | 'ab'
   | 'ae'
@@ -321,13 +269,13 @@ type Language =
   | 'yo'
   | 'za'
   | 'zh'
-interface _Language extends Primitive._string {
-  content: Language
-}
+
+export type Name = TextNode<'name'>
 
 /** An identifier systems may require a namespace that is needed in addition to the identifer value to provide uniqueness. */
-export type Namespace = TextNode<'namespace'>
-type _Namespace = Primitive._string
+export type Namespace = TextNode
+/** An identifier systems may require a namespace that is needed in addition to the identifer value to provide uniqueness. */
+export type NamespacePrimitiveType = string
 
 /** Wrapper element for relationship metadata */
 export interface Program extends Element {
@@ -340,7 +288,7 @@ export interface Program extends Element {
 }
 
 export interface ProgramChildren {
-  relatedItem?: RelatedItem[]
+  related_item?: RelatedItem[]
 }
 
 export interface RelatedItem extends Element {
@@ -351,34 +299,63 @@ export interface RelatedItem extends Element {
 
 export interface RelatedItemChildren {
   /** A narrative description of the relationship target item */
-  description?: Description
-  interWorkRelation: InterWorkRelation
-  intraWorkRelation: IntraWorkRelation
+  Description?: Description
+  InterWorkRelation: InterWorkRelation
+  IntraWorkRelation: IntraWorkRelation
 }
 
-export interface xrefFaces extends Element {
-  type: 'element'
-  name: 'xrefFaces'
-}
+/** Used to describe relations between items that are not the same work. */
+export type InterWorkRelationRelationshipType =
+  | 'isDerivedFrom'
+  | 'hasDerivation'
+  | 'isReviewOf'
+  | 'hasReview'
+  | 'isCommentOn'
+  | 'hasComment'
+  | 'isReplyTo'
+  | 'hasReply'
+  | 'basedOnData'
+  | 'isDataBasisFor'
+  | 'hasRelatedMaterial'
+  | 'isRelatedMaterial'
+  | 'isCompiledBy'
+  | 'compiles'
+  | 'isDocumentedBy'
+  | 'documents'
+  | 'isSupplementTo'
+  | 'isSupplementedBy'
+  | 'isContinuedBy'
+  | 'continues'
+  | 'isPartOf'
+  | 'hasPart'
+  | 'references'
+  | 'isReferencedBy'
+  | 'isBasedOn'
+  | 'isBasisFor'
+  | 'requires'
+  | 'isRequiredBy'
+  | 'finances'
+  | 'isFinancedBy'
 
-export interface document extends Element {
-  b: xrefFaces
-  /** A narrative description of the relationship target item */
-  description: Description
-  em: xrefFaces
-  font: xrefFaces
-  i: xrefFaces
-  interWorkRelation: InterWorkRelation
-  intraWorkRelation: IntraWorkRelation
-  ovl: xrefFaces
-  /** Wrapper element for relationship metadata */
-  program: Program
-  relatedItem: RelatedItem
-  scp: xrefFaces
-  strong: xrefFaces
-  sub: xrefFaces
-  sup: xrefFaces
-  tt: xrefFaces
-  u: xrefFaces
-}
-export var document: document
+/** Used to define relations between items that are essentially the same work but may differ in some way that impacts citation, for example a difference in format, language, or revision. Assigning different identifers to exactly the same item available in one place or as copies in multiple places can be problematic and should be avoided. */
+export type IntraWorkRelationRelationshipType =
+  | 'isTranslationOf'
+  | 'hasTranslation'
+  | 'isPreprintOf'
+  | 'hasPreprint'
+  | 'isManuscriptOf'
+  | 'hasManuscript'
+  | 'isExpressionOf'
+  | 'hasExpression'
+  | 'isManifestationOf'
+  | 'hasManifestation'
+  | 'isReplacedBy'
+  | 'replaces'
+  | 'isSameAs'
+  | 'isIdenticalTo'
+  | 'isVariantFormOf'
+  | 'isOriginalFormOf'
+  | 'isVersionOf'
+  | 'hasVersion'
+  | 'isFormatOf'
+  | 'hasFormat'

@@ -26,50 +26,10 @@ export type ArrayValueMaybe<T> = T extends any[] ? ValuesType<NoUndefined<T>> : 
 export type AllTypes<T> = ArrayValueMaybe<ValuesType<T>>
 
 export type RequiredMap<T> = AllTypes<T>
-/** Abbreviated Journal Title */
-export interface AbbrevJournaltitle extends Element {
-  type: 'element'
-  name: 'abbrev-journal-title'
-  attributes: {
-    abbrev?: string
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-  }
-}
+
+export type Abbr = TextNode<'abbr'>
+
+export type String = string
 
 /** Abbreviation or Acronym */
 export interface Abbrev extends Element {
@@ -89,7 +49,7 @@ export interface Abbrev extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href?: string
     hreflang?: string
     id?: string
@@ -122,14 +82,65 @@ export interface Abbrev extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
+
+/** Abbreviated Journal Title */
+export interface AbbrevJournaltitle extends Element {
+  type: 'element'
+  name: 'abbrev-journal-title'
+  attributes: {
+    abbrevType?: string
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
+}
+
+export type AbbrevType = TextNode<'abbrev-type'>
 
 /** Abstract */
 export interface Abstract extends Element {
   type: 'element'
   name: 'abstract'
   attributes: {
-    abstract?: string
+    abstractType?: string
     /** base (as an attribute name)
      *
      * denotes an attribute whose value
@@ -177,6 +188,8 @@ export interface AbstractChildren {
   title?: Title
 }
 
+export type AbstractType = TextNode<'abstract-type'>
+
 /** Access Date For Cited Work */
 export interface AccessDate extends Element {
   type: 'element'
@@ -194,11 +207,13 @@ export interface AccessDate extends Element {
      * for information about this attribute. */
     base?: string
     calendar?: string
-    content?: string
+    contentType?: string
     id?: string
     iso8601Date?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Acknowledgments */
@@ -217,7 +232,7 @@ export interface Ack extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -270,7 +285,7 @@ export interface Address extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -297,6 +312,8 @@ export interface Address extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Address Line */
@@ -315,7 +332,7 @@ export interface AddrLine extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -342,6 +359,56 @@ export interface AddrLine extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+/** Affiliation */
+export interface Aff extends Element {
+  type: 'element'
+  name: 'aff'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    rid?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Affiliation Alternatives */
@@ -370,51 +437,23 @@ export interface AffAlternativesChildren {
   aff: Aff[]
 }
 
-/** Affiliation */
-export interface Aff extends Element {
-  type: 'element'
-  name: 'aff'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    rid?: string
-    specificUse?: string
-  }
-}
+export type ColAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
+
+export type ColgroupAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
+
+export type TbodyAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
+
+export type TrAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
+
+export type TdAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
+
+export type ThAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
+
+export type TfootAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
+
+export type TheadAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
+
+export type Alt = TextNode<'alt'>
 
 /** Alternatives For Processing */
 export interface Alternatives extends Element {
@@ -434,6 +473,8 @@ export interface Alternatives extends Element {
     base?: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Alternate Title Text For a Figure, Etc. */
@@ -452,7 +493,7 @@ export interface AltText extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -479,6 +520,8 @@ export interface AltText extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Alternate Title */
@@ -524,7 +567,11 @@ export interface AltTitle extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type AltTitletype = TextNode<'alt-title-type'>
 
 /** Annotation in a Citation */
 export interface Annotation extends Element {
@@ -542,7 +589,7 @@ export interface Annotation extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -569,6 +616,8 @@ export interface Annotation extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Anonymous */
@@ -613,6 +662,68 @@ export interface Anonymous extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+/** Answer Elements */
+export interface Answer extends Element {
+  type: 'element'
+  name: 'answer'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    pointerToquestion: string
+    specificUse?: string
+  }
+  children: RequiredMap<AnswerChildren>[]
+}
+
+export interface AnswerChildren {
+  /** Alternate Title */
+  altTitle?: AltTitle[]
+  /** Explanation */
+  explanation?: Explanation[]
+  /** Label of a Figure, Reference, Etc. */
+  label?: Label
+  /** Article Subtitle */
+  subtitle?: Subtitle[]
+  /** Title */
+  title?: Title
 }
 
 /** Answer Set */
@@ -631,7 +742,7 @@ export interface AnswerSet extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -676,119 +787,6 @@ export interface AnswerSetChildren {
   title?: Title
 }
 
-/** Answer Elements */
-export interface Answer extends Element {
-  type: 'element'
-  name: 'answer'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    pointerToquestion: string
-    specificUse?: string
-  }
-  children: RequiredMap<AnswerChildren>[]
-}
-
-export interface AnswerChildren {
-  /** Alternate Title */
-  altTitle?: AltTitle[]
-  /** Explanation */
-  explanation?: Explanation[]
-  /** Label of a Figure, Reference, Etc. */
-  label?: Label
-  /** Article Subtitle */
-  subtitle?: Subtitle[]
-  /** Title */
-  title?: Title
-}
-
-/** Appendix Group */
-export interface AppGroup extends Element {
-  type: 'element'
-  name: 'app-group'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-  }
-  children: RequiredMap<AppGroupChildren>[]
-}
-
-export interface AppGroupChildren {
-  /** Label of a Figure, Reference, Etc. */
-  label?: Label
-  /** Title */
-  title?: Title
-}
-
 /** Appendix */
 export interface App extends Element {
   type: 'element'
@@ -805,7 +803,7 @@ export interface App extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -844,6 +842,63 @@ export interface AppChildren {
   title: Title
 }
 
+/** Appendix Group */
+export interface AppGroup extends Element {
+  type: 'element'
+  name: 'app-group'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  children: RequiredMap<AppGroupChildren>[]
+}
+
+export interface AppGroupChildren {
+  /** Label of a Figure, Reference, Etc. */
+  label?: Label
+  /** Title */
+  title?: Title
+}
+
+export type SubArrange = 'stack' | 'stagger'
+
+export type SupArrange = 'stack' | 'stagger'
+
 /** Array (Simple Tabular Array) */
 export interface Array extends Element {
   type: 'element'
@@ -860,7 +915,7 @@ export interface Array extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -888,11 +943,72 @@ export interface Array extends Element {
     orientation?: ArrayOrientation
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type ArrayOrientation = 'landscape' | 'portrait'
-interface _ArrayOrientation extends Primitive._string {
-  content: ArrayOrientation
+/** Article */
+export interface Article extends Element {
+  type: 'element'
+  name: 'article'
+  attributes: {
+    articleType?: string
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    dtdVersion?: ArticleDtdVersion
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  children: RequiredMap<ArticleChildren>[]
+}
+
+export interface ArticleChildren {
+  /** Back Matter */
+  back?: Back
+  /** Body of the Article */
+  body?: Body
+  /** Floats Group */
+  floatsGroup?: FloatsGroup
+  /** Front Matter */
+  front: Front
+  /** Processing Metadata Model */
+  processingMeta?: ProcessingMeta
+  /** Response */
+  response?: Response[]
+  /** Sub-Article */
+  subArticle?: SubArticle[]
 }
 
 /** Article Grouping Data */
@@ -941,39 +1057,13 @@ export interface ArticleId extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    custom?: string
+    customType?: string
     id?: string
     pubIdtype?: ArticleIdPubIdtype
     specificUse?: string
   }
-}
-
-type ArticleIdPubIdtype =
-  | 'accession'
-  | 'archive'
-  | 'ark'
-  | 'art-access-id'
-  | 'arxiv'
-  | 'coden'
-  | 'custom'
-  | 'doaj'
-  | 'doi'
-  | 'handle'
-  | 'index'
-  | 'isbn'
-  | 'manuscript'
-  | 'medline'
-  | 'mr'
-  | 'other'
-  | 'pii'
-  | 'pmcid'
-  | 'pmid'
-  | 'publisher-id'
-  | 'sici'
-  | 'std-designation'
-  | 'zbl'
-interface _ArticleIdPubIdtype extends Primitive._string {
-  content: ArticleIdPubIdtype
+  /** Element is self-closing */
+  children: []
 }
 
 /** Article Metadata */
@@ -999,9 +1089,9 @@ export interface ArticleMeta extends Element {
 
 export interface ArticleMetaChildren {
   /** Article Grouping Data */
-  articleCategories?: ArticleCategories
+  ArticleCategories?: ArticleCategories
   /** Article Identifier */
-  articleId?: ArticleId[]
+  ArticleId?: ArticleId[]
   /** Author Note Group */
   authorNotes?: AuthorNotes
   /** Conference Information */
@@ -1101,14 +1191,20 @@ export interface ArticleTitle extends Element {
      * the empty string. */
     lang?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-/** Article */
-export interface Article extends Element {
+export type ArticleType = TextNode<'article-type'>
+
+/** Article Version */
+export interface ArticleVersion extends Element {
   type: 'element'
-  name: 'article'
+  name: 'article-version'
   attributes: {
-    article?: string
+    actuate?: xlink.Actuate
+    articleVersiontype?: string
+    assigningAuthority?: string
     /** base (as an attribute name)
      *
      * denotes an attribute whose value
@@ -1120,68 +1216,24 @@ export interface Article extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    dtdVersion?: ArticleDtdVersion
+    contentType?: string
+    designator?: string
+    href?: string
+    hreflang?: string
     id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
+    iso8601Date?: string
+    role?: string
+    show?: xlink.Show
     specificUse?: string
+    title?: string
+    type?: xlink.Type
+    vocab?: string
+    vocabIdentifier?: string
+    vocabTerm?: string
+    vocabTermidentifier?: string
   }
-  children: RequiredMap<ArticleChildren>[]
-}
-
-export interface ArticleChildren {
-  /** Back Matter */
-  back?: Back
-  /** Body of the Article */
-  body?: Body
-  /** Floats Group */
-  floatsGroup?: FloatsGroup
-  /** Front Matter */
-  front: Front
-  /** Processing Metadata Model */
-  processingMeta?: ProcessingMeta
-  /** Response */
-  response?: Response[]
-  /** Sub-Article */
-  subArticle?: SubArticle[]
-}
-
-type ArticleDtdVersion =
-  | '0.4'
-  | '1.0'
-  | '1.1'
-  | '1.1d1'
-  | '1.1d2'
-  | '1.1d3'
-  | '1.2'
-  | '1.2d1'
-  | '1.2d2'
-  | '1.3d1'
-  | '1.3d2'
-  | '3.0'
-interface _ArticleDtdVersion extends Primitive._string {
-  content: ArticleDtdVersion
+  /** Element is self-closing */
+  children: []
 }
 
 /** Article Version Alternatives */
@@ -1210,42 +1262,9 @@ export interface ArticleVersionalternativesChildren {
   articleVersion: ArticleVersion[]
 }
 
-/** Article Version */
-export interface ArticleVersion extends Element {
-  type: 'element'
-  name: 'article-version'
-  attributes: {
-    actuate?: xlink.Actuate
-    articleVersiontype?: string
-    assigningAuthority?: string
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    designator?: string
-    href?: string
-    hreflang?: string
-    id?: string
-    iso8601Date?: string
-    role?: string
-    show?: xlink.Show
-    specificUse?: string
-    title?: string
-    type?: xlink.Type
-    vocab?: string
-    vocabIdentifier?: string
-    vocabTerm?: string
-    vocabTermidentifier?: string
-  }
-}
+export type ArticleVersiontype = TextNode<'article-version-type'>
+
+export type AssigningAuthority = TextNode<'assigning-authority'>
 
 /** Attribution */
 export interface Attrib extends Element {
@@ -1289,7 +1308,13 @@ export interface Attrib extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type Audience = TextNode<'audience'>
+
+export type ContribIdAuthenticated = 'false' | 'true'
 
 /** Author Comment */
 export interface AuthorComment extends Element {
@@ -1307,7 +1332,7 @@ export interface AuthorComment extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -1420,6 +1445,8 @@ export interface AwardDesc extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Award Group */
@@ -1428,7 +1455,7 @@ export interface AwardGroup extends Element {
   name: 'award-group'
   attributes: {
     actuate?: xlink.Actuate
-    award?: string
+    awardType?: string
     /** base (as an attribute name)
      *
      * denotes an attribute whose value
@@ -1478,7 +1505,7 @@ export interface AwardGroup extends Element {
 
 export interface AwardGroupChildren {
   /** Award Description */
-  awardDesc?: AwardDesc
+  AwardDesc?: AwardDesc
   /** Award Identifier */
   awardId?: AwardId[]
   /** Award Name */
@@ -1501,7 +1528,7 @@ export interface AwardId extends Element {
     actuate?: xlink.Actuate
     assigningAuthority?: string
     awardIdtype?: string
-    award?: string
+    awardType?: string
     /** base (as an attribute name)
      *
      * denotes an attribute whose value
@@ -1546,7 +1573,11 @@ export interface AwardId extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type AwardIdtype = TextNode<'award-id-type'>
 
 /** Award Name */
 export interface AwardName extends Element {
@@ -1596,7 +1627,13 @@ export interface AwardName extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type AwardType = TextNode<'award-type'>
+
+export type Axis = TextNode<'axis'>
 
 /** Back Matter */
 export interface Back extends Element {
@@ -1626,6 +1663,10 @@ export interface BackChildren {
   title?: Title[]
 }
 
+export type BaselineShift = TextNode<'baseline-shift'>
+
+export type ProcessingMetaBaseTagset = 'archiving' | 'authoring' | 'publishing'
+
 /** Biography */
 export interface Bio extends Element {
   type: 'element'
@@ -1643,7 +1684,7 @@ export interface Bio extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href?: string
     hreflang?: string
     id?: string
@@ -1674,7 +1715,7 @@ export interface Bio extends Element {
     role?: string
     show?: xlink.Show
     specificUse?: string
-    $title?: string
+    title?: string
     type?: xlink.Type
   }
   children: RequiredMap<BioChildren>[]
@@ -1707,6 +1748,8 @@ export interface BlockAlternatives extends Element {
     base?: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Body of the Article */
@@ -1756,12 +1799,11 @@ export interface Bold extends Element {
     specificUse?: string
     toggle?: BoldToggle
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type BoldToggle = 'no' | 'yes'
-interface _BoldToggle extends Primitive._string {
-  content: BoldToggle
-}
+export type Border = TextNode<'border'>
 
 /** Boxed Text */
 export interface BoxedText extends Element {
@@ -1779,7 +1821,7 @@ export interface BoxedText extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -1820,16 +1862,6 @@ export interface BoxedTextChildren {
   secMeta?: SecMeta
 }
 
-type BoxedTextOrientation = 'landscape' | 'portrait'
-interface _BoxedTextOrientation extends Primitive._string {
-  content: BoxedTextOrientation
-}
-
-type BoxedTextPosition = 'anchor' | 'background' | 'float' | 'margin'
-interface _BoxedTextPosition extends Primitive._string {
-  content: BoxedTextPosition
-}
-
 /** Line Break */
 export interface Break extends Element {
   type: 'element'
@@ -1848,7 +1880,11 @@ export interface Break extends Element {
     base?: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type Calendar = TextNode<'calendar'>
 
 /** Caption of a Figure, Table, Etc. */
 export interface Caption extends Element {
@@ -1866,7 +1902,7 @@ export interface Caption extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -1901,6 +1937,10 @@ export interface CaptionChildren {
   /** Title */
   title?: Title
 }
+
+export type Cellpadding = TextNode<'cellpadding'>
+
+export type Cellspacing = TextNode<'cellspacing'>
 
 /** Chapter Title in a Citation */
 export interface ChapterTitle extends Element {
@@ -1944,7 +1984,13 @@ export interface ChapterTitle extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type Char = TextNode<'char'>
+
+export type Charoff = TextNode<'charoff'>
 
 /** Chemical Structure (Display) */
 export interface ChemStruct extends Element {
@@ -1963,7 +2009,7 @@ export interface ChemStruct extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href?: string
     hreflang?: string
     id?: string
@@ -1996,6 +2042,8 @@ export interface ChemStruct extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Chemical Structure Wrapper */
@@ -2014,7 +2062,7 @@ export interface ChemStructwrap extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -2051,16 +2099,6 @@ export interface ChemStructwrapChildren {
   label?: Label
 }
 
-type ChemStructwrapOrientation = 'landscape' | 'portrait'
-interface _ChemStructwrapOrientation extends Primitive._string {
-  content: ChemStructwrapOrientation
-}
-
-type ChemStructwrapPosition = 'anchor' | 'background' | 'float' | 'margin'
-interface _ChemStructwrapPosition extends Primitive._string {
-  content: ChemStructwrapPosition
-}
-
 /** Citation Alternatives */
 export interface CitationAlternatives extends Element {
   type: 'element'
@@ -2079,6 +2117,8 @@ export interface CitationAlternatives extends Element {
     base?: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** City: in an Address */
@@ -2097,7 +2137,7 @@ export interface City extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -2124,6 +2164,8 @@ export interface City extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Code Text */
@@ -2142,7 +2184,7 @@ export interface Code extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    code?: string
+    codeType?: string
     codeVersion?: string
     executable?: CodeExecutable
     id?: string
@@ -2184,21 +2226,41 @@ export interface Code extends Element {
     space: xml.Space
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type CodeExecutable = 'no' | 'yes'
-interface _CodeExecutable extends Primitive._string {
-  content: CodeExecutable
-}
+export type CodeType = TextNode<'code-type'>
 
-type CodeOrientation = 'landscape' | 'portrait'
-interface _CodeOrientation extends Primitive._string {
-  content: CodeOrientation
-}
+export type CodeVersion = TextNode<'code-version'>
 
-type CodePosition = 'anchor' | 'background' | 'float' | 'margin'
-interface _CodePosition extends Primitive._string {
-  content: CodePosition
+export interface Col extends Element {
+  type: 'element'
+  name: 'col'
+  attributes: {
+    align?: ColAlign
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    char?: string
+    charoff?: string
+    contentType?: string
+    id?: string
+    span?: string
+    style?: string
+    valign?: ColValign
+    width?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 export interface Colgroup extends Element {
@@ -2219,7 +2281,7 @@ export interface Colgroup extends Element {
     base?: string
     char?: string
     charoff?: string
-    content?: string
+    contentType?: string
     id?: string
     span?: string
     style?: string
@@ -2231,36 +2293,6 @@ export interface Colgroup extends Element {
 
 export interface ColgroupChildren {
   col?: Col[]
-}
-
-type ColgroupAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
-interface _ColgroupAlign extends Primitive._string {
-  content: ColgroupAlign
-}
-
-type ColgroupValign = 'baseline' | 'bottom' | 'middle' | 'top'
-interface _ColgroupValign extends Primitive._string {
-  content: ColgroupValign
-}
-
-/** Collaboration Alternatives */
-export interface CollabAlternatives extends Element {
-  type: 'element'
-  name: 'collab-alternatives'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    id?: string
-  }
 }
 
 /** Collaborative (Group) Author */
@@ -2280,7 +2312,7 @@ export interface Collab extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    collab?: string
+    collabType?: string
     href?: string
     hreflang?: string
     id?: string
@@ -2314,13 +2346,15 @@ export interface Collab extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
 
-export interface Col extends Element {
+/** Collaboration Alternatives */
+export interface CollabAlternatives extends Element {
   type: 'element'
-  name: 'col'
+  name: 'collab-alternatives'
   attributes: {
-    align?: ColAlign
     /** base (as an attribute name)
      *
      * denotes an attribute whose value
@@ -2332,26 +2366,15 @@ export interface Col extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    char?: string
-    charoff?: string
-    content?: string
     id?: string
-    span?: string
-    style?: string
-    valign?: ColValign
-    width?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type ColAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
-interface _ColAlign extends Primitive._string {
-  content: ColAlign
-}
+export type CollabType = TextNode<'collab-type'>
 
-type ColValign = 'baseline' | 'bottom' | 'middle' | 'top'
-interface _ColValign extends Primitive._string {
-  content: ColValign
-}
+export type Colspan = TextNode<'colspan'>
 
 /** Comment in a Citation */
 export interface Comment extends Element {
@@ -2369,7 +2392,7 @@ export interface Comment extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -2396,27 +2419,8 @@ export interface Comment extends Element {
     lang?: string
     specificUse?: string
   }
-}
-
-/** Compound Keyword Part */
-export interface CompoundKwdpart extends Element {
-  type: 'element'
-  name: 'compound-kwd-part'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Compound Keyword */
@@ -2436,7 +2440,7 @@ export interface CompoundKwd extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     vocab?: string
     vocabIdentifier?: string
@@ -2451,10 +2455,10 @@ export interface CompoundKwdChildren {
   compoundKwdpart: CompoundKwdpart[]
 }
 
-/** Compound Subject Part Name */
-export interface CompoundSubjectpart extends Element {
+/** Compound Keyword Part */
+export interface CompoundKwdpart extends Element {
   type: 'element'
-  name: 'compound-subject-part'
+  name: 'compound-kwd-part'
   attributes: {
     /** base (as an attribute name)
      *
@@ -2467,9 +2471,11 @@ export interface CompoundSubjectpart extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Compound Subject Name */
@@ -2489,7 +2495,7 @@ export interface CompoundSubject extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     vocab?: string
     vocabIdentifier?: string
@@ -2502,6 +2508,29 @@ export interface CompoundSubject extends Element {
 export interface CompoundSubjectChildren {
   /** Compound Subject Part Name */
   compoundSubjectpart: CompoundSubjectpart[]
+}
+
+/** Compound Subject Part Name */
+export interface CompoundSubjectpart extends Element {
+  type: 'element'
+  name: 'compound-subject-part'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Conference Acronym */
@@ -2520,7 +2549,7 @@ export interface ConfAcronym extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -2547,6 +2576,8 @@ export interface ConfAcronym extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Conference Date */
@@ -2566,7 +2597,7 @@ export interface ConfDate extends Element {
      * for information about this attribute. */
     base?: string
     calendar?: string
-    content?: string
+    contentType?: string
     id?: string
     iso8601Date?: string
     /** lang (as an attribute name)
@@ -2594,6 +2625,8 @@ export interface ConfDate extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Conference Information */
@@ -2613,7 +2646,7 @@ export interface Conference extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href?: string
     hreflang?: string
     id?: string
@@ -2651,9 +2684,9 @@ export interface Conference extends Element {
 
 export interface ConferenceChildren {
   /** Conference Acronym */
-  confAcronym: ConfAcronym[]
+  ConfAcronym: ConfAcronym[]
   /** Conference Date */
-  confDate: ConfDate
+  ConfDate: ConfDate
   /** Conference Location */
   confLoc?: ConfLoc
   /** Conference Name */
@@ -2682,7 +2715,7 @@ export interface ConfLoc extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -2709,6 +2742,8 @@ export interface ConfLoc extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Conference Name */
@@ -2727,7 +2762,7 @@ export interface ConfName extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -2754,6 +2789,8 @@ export interface ConfName extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Conference Number */
@@ -2772,7 +2809,7 @@ export interface ConfNum extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -2799,6 +2836,8 @@ export interface ConfNum extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Conference Sponsor */
@@ -2817,7 +2856,7 @@ export interface ConfSponsor extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -2844,6 +2883,8 @@ export interface ConfSponsor extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Conference Theme */
@@ -2862,7 +2903,7 @@ export interface ConfTheme extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -2889,6 +2930,47 @@ export interface ConfTheme extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+export type ContentType = TextNode<'content-type'>
+
+export type ContinuedFrom = TextNode<'continued-from'>
+
+/** Contributor */
+export interface Contrib extends Element {
+  type: 'element'
+  name: 'contrib'
+  attributes: {
+    actuate?: xlink.Actuate
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contribType?: string
+    corresp?: ContribCorresp
+    deceased?: ContribDeceased
+    equalContrib?: ContribEqualContrib
+    href?: string
+    hreflang?: string
+    id?: string
+    rid?: string
+    role?: string
+    show?: xlink.Show
+    specificUse?: string
+    title?: string
+    type?: xlink.Type
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Contributor Group */
@@ -2907,10 +2989,12 @@ export interface ContribGroup extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Contributor Identifier */
@@ -2931,7 +3015,7 @@ export interface ContribId extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     contribIdtype?: string
     id?: string
     /** lang (as an attribute name)
@@ -2959,60 +3043,13 @@ export interface ContribId extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type ContribIdAuthenticated = 'false' | 'true'
-interface _ContribIdAuthenticated extends Primitive._string {
-  content: ContribIdAuthenticated
-}
+export type ContribIdtype = TextNode<'contrib-id-type'>
 
-/** Contributor */
-export interface Contrib extends Element {
-  type: 'element'
-  name: 'contrib'
-  attributes: {
-    actuate?: xlink.Actuate
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    contrib?: string
-    corresp?: ContribCorresp
-    deceased?: ContribDeceased
-    equalContrib?: ContribEqualContrib
-    href?: string
-    hreflang?: string
-    id?: string
-    rid?: string
-    role?: string
-    show?: xlink.Show
-    specificUse?: string
-    title?: string
-    type?: xlink.Type
-  }
-}
-
-type ContribCorresp = 'no' | 'yes'
-interface _ContribCorresp extends Primitive._string {
-  content: ContribCorresp
-}
-
-type ContribDeceased = 'no' | 'yes'
-interface _ContribDeceased extends Primitive._string {
-  content: ContribDeceased
-}
-
-type ContribEqualContrib = 'no' | 'yes'
-interface _ContribEqualContrib extends Primitive._string {
-  content: ContribEqualContrib
-}
+export type ContribType = TextNode<'contrib-type'>
 
 /** Contributed Resource Group */
 export interface ContributedResourcegroup extends Element {
@@ -3054,7 +3091,7 @@ export interface ContributedResourcegroup extends Element {
      * The union allows for the 'un-declaration' of xml:lang with
      * the empty string. */
     lang?: string
-    resource?: string
+    resourceType?: string
     specificUse?: string
   }
   children: RequiredMap<ContributedResourcegroupChildren>[]
@@ -3085,7 +3122,7 @@ export interface CopyrightHolder extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -3112,6 +3149,8 @@ export interface CopyrightHolder extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Copyright Statement */
@@ -3130,7 +3169,7 @@ export interface CopyrightStatement extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -3157,6 +3196,8 @@ export interface CopyrightStatement extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Copyright Year */
@@ -3175,11 +3216,17 @@ export interface CopyrightYear extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type OptionCorrect = 'no' | 'yes'
+
+export type ContribCorresp = 'no' | 'yes'
 
 /** Correspondence Information */
 export interface Corresp extends Element {
@@ -3197,7 +3244,7 @@ export interface Corresp extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -3224,12 +3271,14 @@ export interface Corresp extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-/** Country: in an Address */
-export interface Country extends Element {
+/** Count */
+export interface Count extends Element {
   type: 'element'
-  name: 'country'
+  name: 'count'
   attributes: {
     /** base (as an attribute name)
      *
@@ -3242,35 +3291,15 @@ export interface Country extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
-    country?: string
+    count: string
+    countType: string
     id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type Country = TextNode<'country'>
 
 /** Counts */
 export interface Counts extends Element {
@@ -3295,7 +3324,7 @@ export interface Counts extends Element {
 
 export interface CountsChildren {
   /** Count */
-  count?: Count[]
+  Count?: Count[]
   /** Equation Count */
   equationCount?: EquationCount
   /** Figure Count */
@@ -3310,78 +3339,9 @@ export interface CountsChildren {
   wordCount?: WordCount
 }
 
-/** Count */
-export interface Count extends Element {
-  type: 'element'
-  name: 'count'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    count: string
-    count: string
-    id?: string
-  }
-}
+export type CountType = TextNode<'count-type'>
 
-/** Custom Metadata Group */
-export interface CustomMetagroup extends Element {
-  type: 'element'
-  name: 'custom-meta-group'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-  }
-  children: RequiredMap<CustomMetagroupChildren>[]
-}
-
-export interface CustomMetagroupChildren {
-  /** Custom Metadata */
-  customMeta: CustomMeta[]
-}
+export type Currency = TextNode<'currency'>
 
 /** Custom Metadata */
 export interface CustomMeta extends Element {
@@ -3447,6 +3407,59 @@ export interface CustomMetaChildren {
   metaValue: MetaValue
 }
 
+/** Custom Metadata Group */
+export interface CustomMetagroup extends Element {
+  type: 'element'
+  name: 'custom-meta-group'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  children: RequiredMap<CustomMetagroupChildren>[]
+}
+
+export interface CustomMetagroupChildren {
+  /** Custom Metadata */
+  CustomMeta: CustomMeta[]
+}
+
+export type CustomType = TextNode<'custom-type'>
+
 /** Data Title in a Citation */
 export interface DataTitle extends Element {
   type: 'element'
@@ -3463,7 +3476,7 @@ export interface DataTitle extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -3490,53 +3503,8 @@ export interface DataTitle extends Element {
     lang?: string
     specificUse?: string
   }
-}
-
-/** Date Inside Citation */
-export interface DateIncitation extends Element {
-  type: 'element'
-  name: 'date-in-citation'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    calendar?: string
-    content?: string
-    id?: string
-    iso8601Date?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Date */
@@ -3556,7 +3524,7 @@ export interface Date extends Element {
      * for information about this attribute. */
     base?: string
     calendar?: string
-    date?: string
+    dateType?: string
     id?: string
     iso8601Date?: string
     publicationFormat?: string
@@ -3574,6 +3542,57 @@ export interface DateChildren {
   year: Year
 }
 
+/** Date Inside Citation */
+export interface DateIncitation extends Element {
+  type: 'element'
+  name: 'date-in-citation'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    calendar?: string
+    contentType?: string
+    id?: string
+    iso8601Date?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
+}
+
+export type DateType = TextNode<'date-type'>
+
 /** Day */
 export interface Day extends Element {
   type: 'element'
@@ -3590,7 +3609,7 @@ export interface Day extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -3617,6 +3636,57 @@ export interface Day extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+export type ContribDeceased = 'no' | 'yes'
+
+/** Definition List: Definition */
+export interface Def extends Element {
+  type: 'element'
+  name: 'def'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    rid?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Definition List: Definition Head */
@@ -3637,6 +3707,8 @@ export interface DefHead extends Element {
     base?: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Definition List: Definition Item */
@@ -3733,7 +3805,7 @@ export interface DefList extends Element {
      * the empty string. */
     lang?: string
     listContent?: string
-    list?: string
+    listType?: string
     prefixWord?: string
     specificUse?: string
   }
@@ -3751,50 +3823,7 @@ export interface DefListChildren {
   title?: Title
 }
 
-/** Definition List: Definition */
-export interface Def extends Element {
-  type: 'element'
-  name: 'def'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    rid?: string
-    specificUse?: string
-  }
-}
+export type DegreeContribution = TextNode<'degree-contribution'>
 
 /** Degree(s) */
 export interface Degrees extends Element {
@@ -3812,7 +3841,7 @@ export interface Degrees extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -3839,6 +3868,59 @@ export interface Degrees extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+export type Description = TextNode<'description'>
+
+export type Designator = TextNode<'designator'>
+
+/** Formula, Display */
+export interface DispFormula extends Element {
+  type: 'element'
+  name: 'disp-formula'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Formula, Display Group */
@@ -3857,7 +3939,7 @@ export interface DispFormulagroup extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -3892,51 +3974,6 @@ export interface DispFormulagroupChildren {
   label?: Label
 }
 
-/** Formula, Display */
-export interface DispFormula extends Element {
-  type: 'element'
-  name: 'disp-formula'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-  }
-}
-
 /** Quote, Displayed */
 export interface DispQuote extends Element {
   type: 'element'
@@ -3953,7 +3990,7 @@ export interface DispQuote extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -3990,6 +4027,26 @@ export interface DispQuoteChildren {
   title?: Title
 }
 
+export type DocumentId = TextNode<'document-id'>
+
+export type DocumentIdtype = TextNode<'document-id-type'>
+
+export type DocumentType = TextNode<'document-type'>
+
+export type ArticleDtdVersion =
+  | '0.4'
+  | '1.0'
+  | '1.1'
+  | '1.1d1'
+  | '1.1d2'
+  | '1.1d3'
+  | '1.2'
+  | '1.2d1'
+  | '1.2d2'
+  | '1.3d1'
+  | '1.3d2'
+  | '3.0'
+
 /** Edition Statement, Cited */
 export interface Edition extends Element {
   type: 'element'
@@ -4006,7 +4063,7 @@ export interface Edition extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     designator?: string
     id?: string
     /** lang (as an attribute name)
@@ -4034,6 +4091,8 @@ export interface Edition extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Element Citation */
@@ -4080,15 +4139,17 @@ export interface ElementCitation extends Element {
      * the empty string. */
     lang?: string
     publicationFormat?: string
-    publication?: string
-    publisher?: string
+    publicationType?: string
+    publisherType?: string
     role?: string
     show?: xlink.Show
     specificUse?: string
     title?: string
     type?: xlink.Type
-    use?: string
+    useType?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Electronic Location Identifier */
@@ -4107,11 +4168,13 @@ export interface ElocationId extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     seq?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Email Address */
@@ -4131,7 +4194,7 @@ export interface Email extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href?: string
     hreflang?: string
     id?: string
@@ -4164,7 +4227,11 @@ export interface Email extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type ContribEqualContrib = 'no' | 'yes'
 
 /** Equation Count */
 export interface EquationCount extends Element {
@@ -4185,6 +4252,8 @@ export interface EquationCount extends Element {
     count: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Era */
@@ -4203,7 +4272,7 @@ export interface Era extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -4230,6 +4299,8 @@ export interface Era extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Et Al */
@@ -4274,50 +4345,8 @@ export interface Etal extends Element {
     lang?: string
     specificUse?: string
   }
-}
-
-/** Event Description */
-export interface EventDesc extends Element {
-  type: 'element'
-  name: 'event-desc'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Event in Publishing History */
@@ -4336,7 +4365,7 @@ export interface Event extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    event?: string
+    eventType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -4387,6 +4416,56 @@ export interface EventChildren {
   selfUri?: SelfUri[]
 }
 
+/** Event Description */
+export interface EventDesc extends Element {
+  type: 'element'
+  name: 'event-desc'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
+}
+
+export type EventType = TextNode<'event-type'>
+
+export type CodeExecutable = 'no' | 'yes'
+
 /** Explanation */
 export interface Explanation extends Element {
   type: 'element'
@@ -4403,7 +4482,7 @@ export interface Explanation extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -4476,6 +4555,8 @@ export interface ExtendedBy extends Element {
     vocabTerm?: string
     vocabTermidentifier?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** External Link */
@@ -4529,7 +4610,11 @@ export interface ExtLink extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type ExtLinktype = TextNode<'ext-link-type'>
 
 /** Fax Number: in an Address */
 export interface Fax extends Element {
@@ -4547,88 +4632,12 @@ export interface Fax extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     specificUse?: string
   }
-}
-
-/** Figure Count */
-export interface FigCount extends Element {
-  type: 'element'
-  name: 'fig-count'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    count: string
-    id?: string
-  }
-}
-
-/** Figure Group */
-export interface FigGroup extends Element {
-  type: 'element'
-  name: 'fig-group'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    orientation?: FigGroupOrientation
-    position?: FigGroupPosition
-    specificUse?: string
-  }
-}
-
-type FigGroupOrientation = 'landscape' | 'portrait'
-interface _FigGroupOrientation extends Primitive._string {
-  content: FigGroupOrientation
-}
-
-type FigGroupPosition = 'anchor' | 'background' | 'float' | 'margin'
-interface _FigGroupPosition extends Primitive._string {
-  content: FigGroupPosition
+  /** Element is self-closing */
+  children: []
 }
 
 /** Figure */
@@ -4647,7 +4656,7 @@ export interface Fig extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    fig?: string
+    figType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -4676,17 +4685,83 @@ export interface Fig extends Element {
     position?: FigPosition
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type FigOrientation = 'landscape' | 'portrait'
-interface _FigOrientation extends Primitive._string {
-  content: FigOrientation
+/** Figure Count */
+export interface FigCount extends Element {
+  type: 'element'
+  name: 'fig-count'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    count: string
+    id?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
-type FigPosition = 'anchor' | 'background' | 'float' | 'margin'
-interface _FigPosition extends Primitive._string {
-  content: FigPosition
+/** Figure Group */
+export interface FigGroup extends Element {
+  type: 'element'
+  name: 'fig-group'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    orientation?: FigGroupOrientation
+    position?: FigGroupPosition
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
+
+export type FigType = TextNode<'fig-type'>
 
 /** Fixed Case */
 export interface FixedCase extends Element {
@@ -4704,10 +4779,12 @@ export interface FixedCase extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Floats Group */
@@ -4728,6 +4805,61 @@ export interface FloatsGroup extends Element {
     base?: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+/** Footnote */
+export interface Fn extends Element {
+  type: 'element'
+  name: 'fn'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    customType?: string
+    fnType?: FnFnType
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+    symbol?: string
+  }
+  children: RequiredMap<FnChildren>[]
+}
+
+export interface FnChildren {
+  /** Label of a Figure, Reference, Etc. */
+  label?: Label
 }
 
 /** Footnote Group */
@@ -4746,7 +4878,7 @@ export interface FnGroup extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -4783,60 +4915,7 @@ export interface FnGroupChildren {
   title?: Title
 }
 
-/** Footnote */
-export interface Fn extends Element {
-  type: 'element'
-  name: 'fn'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    custom?: string
-    fn?: FnFn
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-    symbol?: string
-  }
-  children: RequiredMap<FnChildren>[]
-}
-
-export interface FnChildren {
-  /** Label of a Figure, Reference, Etc. */
-  label?: Label
-}
-
-type FnFn =
+export type FnFnType =
   | 'abbr'
   | 'coi-statement'
   | 'com'
@@ -4859,9 +4938,12 @@ type FnFn =
   | 'study-group-members'
   | 'supplementary-material'
   | 'supported-by'
-interface _FnFn extends Primitive._string {
-  content: FnFn
-}
+
+export type Fontchar = TextNode<'fontchar'>
+
+export type Fontname = TextNode<'fontname'>
+
+export type Format = TextNode<'format'>
 
 /** First Page */
 export interface Fpage extends Element {
@@ -4879,7 +4961,7 @@ export interface Fpage extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -4907,6 +4989,47 @@ export interface Fpage extends Element {
     seq?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+export type TableFrame =
+  | 'above'
+  | 'below'
+  | 'border'
+  | 'box'
+  | 'hsides'
+  | 'lhs'
+  | 'rhs'
+  | 'void'
+  | 'vsides'
+
+/** Front Matter */
+export interface Front extends Element {
+  type: 'element'
+  name: 'front'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    id?: string
+  }
+  children: RequiredMap<FrontChildren>[]
+}
+
+export interface FrontChildren {
+  /** Article Metadata */
+  ArticleMeta: ArticleMeta
+  /** Journal Metadata */
+  journalMeta: JournalMeta
 }
 
 /** Stub Front Metadata */
@@ -4993,34 +5116,6 @@ export interface FrontStubChildren {
   volumeSeries?: VolumeSeries
 }
 
-/** Front Matter */
-export interface Front extends Element {
-  type: 'element'
-  name: 'front'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    id?: string
-  }
-  children: RequiredMap<FrontChildren>[]
-}
-
-export interface FrontChildren {
-  /** Article Metadata */
-  articleMeta: ArticleMeta
-  /** Journal Metadata */
-  journalMeta: JournalMeta
-}
-
 /** Funding Group */
 export interface FundingGroup extends Element {
   type: 'element'
@@ -5068,7 +5163,7 @@ export interface FundingGroup extends Element {
 
 export interface FundingGroupChildren {
   /** Award Group */
-  awardGroup?: AwardGroup[]
+  AwardGroup?: AwardGroup[]
   /** Funding Statement */
   fundingStatement?: FundingStatement[]
   /** Open Access */
@@ -5122,11 +5217,13 @@ export interface FundingSource extends Element {
     rid?: string
     role?: string
     show?: xlink.Show
-    source?: string
+    sourceType?: string
     specificUse?: string
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Funding Statement */
@@ -5172,6 +5269,8 @@ export interface FundingStatement extends Element {
     rid?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Given (First) Names */
@@ -5193,6 +5292,8 @@ export interface GivenNames extends Element {
     id?: string
     initials?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Glossary Elements */
@@ -5211,7 +5312,7 @@ export interface Glossary extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -5282,6 +5383,8 @@ export interface GlyphData extends Element {
     xSize?: string
     ySize?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Glyph Reference For a Private Character */
@@ -5303,6 +5406,8 @@ export interface GlyphRef extends Element {
     glyphData?: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Government Report, Cited */
@@ -5321,7 +5426,7 @@ export interface Gov extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -5348,6 +5453,8 @@ export interface Gov extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Graphic */
@@ -5367,7 +5474,7 @@ export interface Graphic extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href: string
     hreflang?: string
     id?: string
@@ -5404,17 +5511,11 @@ export interface Graphic extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type GraphicOrientation = 'landscape' | 'portrait'
-interface _GraphicOrientation extends Primitive._string {
-  content: GraphicOrientation
-}
-
-type GraphicPosition = 'anchor' | 'background' | 'float' | 'margin'
-interface _GraphicPosition extends Primitive._string {
-  content: GraphicPosition
-}
+export type Headers = TextNode<'headers'>
 
 /** History: Document History */
 export interface History extends Element {
@@ -5434,6 +5535,8 @@ export interface History extends Element {
     base?: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Horizontal Rule */
@@ -5454,28 +5557,15 @@ export interface Hr extends Element {
     base?: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-/** Index Term Range End */
-export interface IndexTermrangeend extends Element {
-  type: 'element'
-  name: 'index-term-range-end'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    id?: string
-    rid: string
-  }
-}
+export type Hreflang = TextNode<'hreflang'>
+
+export type Id = TextNode<'id'>
+
+export type IndentLevel = TextNode<'indent-level'>
 
 /** Index Term */
 export interface IndexTerm extends Element {
@@ -5493,9 +5583,9 @@ export interface IndexTerm extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
-    index?: string
+    indexType?: string
     /** lang (as an attribute name)
      *
      * denotes an attribute whose value
@@ -5535,6 +5625,33 @@ export interface IndexTermChildren {
   term: Term
 }
 
+/** Index Term Range End */
+export interface IndexTermrangeend extends Element {
+  type: 'element'
+  name: 'index-term-range-end'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    id?: string
+    rid: string
+  }
+  /** Element is self-closing */
+  children: []
+}
+
+export type IndexType = TextNode<'index-type'>
+
+export type Initials = TextNode<'initials'>
+
 /** Formula, Inline */
 export interface InlineFormula extends Element {
   type: 'element'
@@ -5551,7 +5668,7 @@ export interface InlineFormula extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -5578,6 +5695,8 @@ export interface InlineFormula extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Inline Graphic */
@@ -5598,7 +5717,7 @@ export interface InlineGraphic extends Element {
      * for information about this attribute. */
     base?: string
     baselineShift?: string
-    content?: string
+    contentType?: string
     href: string
     hreflang?: string
     id?: string
@@ -5633,6 +5752,8 @@ export interface InlineGraphic extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Inline Media Object */
@@ -5652,7 +5773,7 @@ export interface InlineMedia extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href: string
     hreflang?: string
     id?: string
@@ -5691,6 +5812,8 @@ export interface InlineMedia extends Element {
     vocabTerm?: string
     vocabTermidentifier?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Inline Supplementary Material */
@@ -5710,7 +5833,7 @@ export interface InlineSupplementarymaterial extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href?: string
     hreflang?: string
     id?: string
@@ -5745,55 +5868,8 @@ export interface InlineSupplementarymaterial extends Element {
     title?: string
     type?: xlink.Type
   }
-}
-
-/** Institution Identifier */
-export interface InstitutionId extends Element {
-  type: 'element'
-  name: 'institution-id'
-  attributes: {
-    assigningAuthority?: string
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    institutionIdtype?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-    vocab?: string
-    vocabIdentifier?: string
-  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Institution Name: in an Address */
@@ -5813,7 +5889,7 @@ export interface Institution extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href?: string
     hreflang?: string
     id?: string
@@ -5846,7 +5922,62 @@ export interface Institution extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
+
+/** Institution Identifier */
+export interface InstitutionId extends Element {
+  type: 'element'
+  name: 'institution-id'
+  attributes: {
+    assigningAuthority?: string
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    institutionIdtype?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+    vocab?: string
+    vocabIdentifier?: string
+  }
+  /** Element is self-closing */
+  children: []
+}
+
+export type InstitutionIdtype = TextNode<'institution-id-type'>
 
 /** Institution Wrapper */
 export interface InstitutionWrap extends Element {
@@ -5866,6 +5997,8 @@ export interface InstitutionWrap extends Element {
     base?: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Isbn */
@@ -5885,11 +6018,42 @@ export interface Isbn extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     publicationFormat?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+export type Iso8601Date = TextNode<'iso-8601-date'>
+
+/** Issn */
+export interface Issn extends Element {
+  type: 'element'
+  name: 'issn'
+  attributes: {
+    assigningAuthority?: string
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    pubType?: string
+    publicationFormat?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Issn Linking */
@@ -5912,14 +6076,15 @@ export interface IssnL extends Element {
     id?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-/** Issn */
-export interface Issn extends Element {
+/** Issue Number */
+export interface Issue extends Element {
   type: 'element'
-  name: 'issn'
+  name: 'issue'
   attributes: {
-    assigningAuthority?: string
     /** base (as an attribute name)
      *
      * denotes an attribute whose value
@@ -5931,12 +6096,36 @@ export interface Issn extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
-    pub?: string
-    publicationFormat?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    seq?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Issue Identifier */
@@ -5957,7 +6146,7 @@ export interface IssueId extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href?: string
     hreflang?: string
     id?: string
@@ -5991,6 +6180,8 @@ export interface IssueId extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Issue Part */
@@ -6009,7 +6200,7 @@ export interface IssuePart extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -6036,6 +6227,8 @@ export interface IssuePart extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Issue Title */
@@ -6054,7 +6247,7 @@ export interface IssueSponsor extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -6081,6 +6274,8 @@ export interface IssueSponsor extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Issue Subtitle */
@@ -6099,7 +6294,7 @@ export interface IssueSubtitle extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -6126,6 +6321,55 @@ export interface IssueSubtitle extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+/** Issue Title */
+export interface IssueTitle extends Element {
+  type: 'element'
+  name: 'issue-title'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Issue Title Group */
@@ -6144,7 +6388,7 @@ export interface IssueTitlegroup extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -6176,102 +6420,11 @@ export interface IssueTitlegroup extends Element {
 
 export interface IssueTitlegroupChildren {
   /** Issue Subtitle */
-  issueSubtitle?: IssueSubtitle[]
+  IssueSubtitle?: IssueSubtitle[]
   /** Issue Title */
   issueTitle: IssueTitle
   /** Translated Title Group */
   transTitlegroup?: TransTitlegroup[]
-}
-
-/** Issue Title */
-export interface IssueTitle extends Element {
-  type: 'element'
-  name: 'issue-title'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-  }
-}
-
-/** Issue Number */
-export interface Issue extends Element {
-  type: 'element'
-  name: 'issue'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    seq?: string
-    specificUse?: string
-  }
 }
 
 /** Italic */
@@ -6294,11 +6447,8 @@ export interface Italic extends Element {
     specificUse?: string
     toggle?: ItalicToggle
   }
-}
-
-type ItalicToggle = 'no' | 'yes'
-interface _ItalicToggle extends Primitive._string {
-  content: ItalicToggle
+  /** Element is self-closing */
+  children: []
 }
 
 /** Journal Identifier */
@@ -6345,7 +6495,11 @@ export interface JournalId extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type JournalIdtype = TextNode<'journal-id-type'>
 
 /** Journal Metadata */
 export interface JournalMeta extends Element {
@@ -6372,11 +6526,11 @@ export interface JournalMetaChildren {
   /** Isbn */
   isbn?: Isbn[]
   /** Issn */
-  issn: Issn[]
+  Issn: Issn[]
   /** Issn Linking */
-  issnL?: IssnL
+  IssnL?: IssnL
   /** Journal Identifier */
-  journalId: JournalId[]
+  JournalId: JournalId[]
   /** Journal Title Group */
   journalTitlegroup?: JournalTitlegroup[]
   /** Notes */
@@ -6403,7 +6557,7 @@ export interface JournalSubtitle extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -6430,39 +6584,8 @@ export interface JournalSubtitle extends Element {
     lang?: string
     specificUse?: string
   }
-}
-
-/** Journal Title Group */
-export interface JournalTitlegroup extends Element {
-  type: 'element'
-  name: 'journal-title-group'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-  }
-  children: RequiredMap<JournalTitlegroupChildren>[]
-}
-
-export interface JournalTitlegroupChildren {
-  /** Abbreviated Journal Title */
-  abbrevJournaltitle?: AbbrevJournaltitle[]
-  /** Journal Subtitle */
-  journalSubtitle?: JournalSubtitle[]
-  /** Journal Title (Full) */
-  journalTitle?: JournalTitle[]
-  /** Translated Title Group */
-  transTitlegroup?: TransTitlegroup[]
+  /** Element is self-closing */
+  children: []
 }
 
 /** Journal Title (Full) */
@@ -6481,7 +6604,7 @@ export interface JournalTitle extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -6508,6 +6631,69 @@ export interface JournalTitle extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+/** Journal Title Group */
+export interface JournalTitlegroup extends Element {
+  type: 'element'
+  name: 'journal-title-group'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+  }
+  children: RequiredMap<JournalTitlegroupChildren>[]
+}
+
+export interface JournalTitlegroupChildren {
+  /** Abbreviated Journal Title */
+  abbrevJournaltitle?: AbbrevJournaltitle[]
+  /** Journal Subtitle */
+  JournalSubtitle?: JournalSubtitle[]
+  /** Journal Title (Full) */
+  JournalTitle?: JournalTitle[]
+  /** Translated Title Group */
+  transTitlegroup?: TransTitlegroup[]
+}
+
+/** Keyword */
+export interface Kwd extends Element {
+  type: 'element'
+  name: 'kwd'
+  attributes: {
+    assigningAuthority?: string
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    vocab?: string
+    vocabIdentifier?: string
+    vocabTerm?: string
+    vocabTermidentifier?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Keyword Group */
@@ -6566,31 +6752,7 @@ export interface KwdGroupChildren {
   title?: Title
 }
 
-/** Keyword */
-export interface Kwd extends Element {
-  type: 'element'
-  name: 'kwd'
-  attributes: {
-    assigningAuthority?: string
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    vocab?: string
-    vocabIdentifier?: string
-    vocabTerm?: string
-    vocabTermidentifier?: string
-  }
-}
+export type KwdGrouptype = TextNode<'kwd-group-type'>
 
 /** Label of a Figure, Reference, Etc. */
 export interface Label extends Element {
@@ -6634,29 +6796,13 @@ export interface Label extends Element {
      * the empty string. */
     lang?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-/** License Paragraph */
-export interface LicenseP extends Element {
-  type: 'element'
-  name: 'license-p'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    specificUse?: string
-  }
-}
+export type Language = TextNode<'language'>
+
+export type LanguageVersion = TextNode<'language-version'>
 
 /** License Information */
 export interface License extends Element {
@@ -6701,14 +6847,102 @@ export interface License extends Element {
      * The union allows for the 'un-declaration' of xml:lang with
      * the empty string. */
     lang?: string
-    license?: string
+    licenseType?: string
     role?: string
     show?: xlink.Show
     specificUse?: string
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
+
+/** License Paragraph */
+export interface LicenseP extends Element {
+  type: 'element'
+  name: 'license-p'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
+}
+
+export type LicenseType = TextNode<'license-type'>
+
+export type LinkType = TextNode<'link-type'>
+
+/** List */
+export interface List extends Element {
+  type: 'element'
+  name: 'list'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    continuedFrom?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    listContent?: string
+    listType?: string
+    prefixWord?: string
+    specificUse?: string
+  }
+  children: RequiredMap<ListChildren>[]
+}
+
+export interface ListChildren {
+  /** Label of a Figure, Reference, Etc. */
+  label?: Label
+  /** Title */
+  title?: Title
+}
+
+export type ListContent = TextNode<'list-content'>
 
 /** List Item */
 export interface ListItem extends Element {
@@ -6762,61 +6996,7 @@ export interface ListItemChildren {
   title?: Title
 }
 
-/** List */
-export interface List extends Element {
-  type: 'element'
-  name: 'list'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    continuedFrom?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    listContent?: string
-    list?: string
-    prefixWord?: string
-    specificUse?: string
-  }
-  children: RequiredMap<ListChildren>[]
-}
-
-export interface ListChildren {
-  /** Label of a Figure, Reference, Etc. */
-  label?: Label
-  /** Title */
-  title?: Title
-}
+export type ListType = TextNode<'list-type'>
 
 /** Long Description */
 export interface LongDesc extends Element {
@@ -6835,7 +7015,7 @@ export interface LongDesc extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href?: string
     hreflang?: string
     id?: string
@@ -6868,6 +7048,8 @@ export interface LongDesc extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Last Page */
@@ -6886,7 +7068,7 @@ export interface Lpage extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -6913,7 +7095,13 @@ export interface Lpage extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type ProcessingMetaMathmlVersion = '2.0' | '3.0'
+
+export type MathRepresentation = TextNode<'math-representation'>
 
 /** Media Object */
 export interface Media extends Element {
@@ -6932,7 +7120,7 @@ export interface Media extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href: string
     hreflang?: string
     id?: string
@@ -6969,16 +7157,8 @@ export interface Media extends Element {
     title?: string
     type?: xlink.Type
   }
-}
-
-type MediaOrientation = 'landscape' | 'portrait'
-interface _MediaOrientation extends Primitive._string {
-  content: MediaOrientation
-}
-
-type MediaPosition = 'anchor' | 'background' | 'float' | 'margin'
-interface _MediaPosition extends Primitive._string {
-  content: MediaPosition
+  /** Element is self-closing */
+  children: []
 }
 
 /** Metadata Data Name For Custom Metadata */
@@ -6999,6 +7179,8 @@ export interface MetaName extends Element {
     base?: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Metadata Data Value For Custom Metadata */
@@ -7019,6 +7201,8 @@ export interface MetaValue extends Element {
     base?: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Milestone End */
@@ -7037,7 +7221,7 @@ export interface MilestoneEnd extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -7066,6 +7250,8 @@ export interface MilestoneEnd extends Element {
     rid?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Milestone Start */
@@ -7084,7 +7270,7 @@ export interface MilestoneStart extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -7113,7 +7299,13 @@ export interface MilestoneStart extends Element {
     rid?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type MimeSubtype = TextNode<'mime-subtype'>
+
+export type Mimetype = TextNode<'mimetype'>
 
 /** Mixed Citation */
 export interface MixedCitation extends Element {
@@ -7159,15 +7351,17 @@ export interface MixedCitation extends Element {
      * the empty string. */
     lang?: string
     publicationFormat?: string
-    publication?: string
-    publisher?: string
+    publicationType?: string
+    publisherType?: string
     role?: string
     show?: xlink.Show
     specificUse?: string
     title?: string
     type?: xlink.Type
-    use?: string
+    useType?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Monospace Text (Typewriter Text) */
@@ -7190,11 +7384,8 @@ export interface Monospace extends Element {
     specificUse?: string
     toggle?: MonospaceToggle
   }
-}
-
-type MonospaceToggle = 'no' | 'yes'
-interface _MonospaceToggle extends Primitive._string {
-  content: MonospaceToggle
+  /** Element is self-closing */
+  children: []
 }
 
 /** Month */
@@ -7213,7 +7404,7 @@ export interface Month extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -7240,84 +7431,8 @@ export interface Month extends Element {
     lang?: string
     specificUse?: string
   }
-}
-
-/** Name Alternatives */
-export interface NameAlternatives extends Element {
-  type: 'element'
-  name: 'name-alternatives'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    id?: string
-  }
-}
-
-/** Named Special (Subject) Content */
-export interface NamedContent extends Element {
-  type: 'element'
-  name: 'named-content'
-  attributes: {
-    actuate?: xlink.Actuate
-    alt?: string
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content: string
-    href?: string
-    hreflang?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    rid?: string
-    role?: string
-    show?: xlink.Show
-    specificUse?: string
-    title?: string
-    type?: xlink.Type
-    vocab?: string
-    vocabIdentifier?: string
-    vocabTerm?: string
-    vocabTermidentifier?: string
-  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Name of Person (Structured) */
@@ -7336,7 +7451,7 @@ export interface Name extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -7376,10 +7491,91 @@ export interface NameChildren {
   suffix?: Suffix
 }
 
-type NameNameStyle = 'eastern' | 'given-only' | 'islensk' | 'western'
-interface _NameNameStyle extends Primitive._string {
-  content: NameNameStyle
+/** Name Alternatives */
+export interface NameAlternatives extends Element {
+  type: 'element'
+  name: 'name-alternatives'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    id?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
+
+/** Named Special (Subject) Content */
+export interface NamedContent extends Element {
+  type: 'element'
+  name: 'named-content'
+  attributes: {
+    actuate?: xlink.Actuate
+    alt?: string
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType: string
+    href?: string
+    hreflang?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    rid?: string
+    role?: string
+    show?: xlink.Show
+    specificUse?: string
+    title?: string
+    type?: xlink.Type
+    vocab?: string
+    vocabIdentifier?: string
+    vocabTerm?: string
+    vocabTermidentifier?: string
+  }
+  /** Element is self-closing */
+  children: []
+}
+
+export type NameNameStyle = 'eastern' | 'given-only' | 'islensk' | 'western'
+
+export type StringNameNameStyle = 'eastern' | 'given-only' | 'islensk' | 'western'
 
 /** Nested Keyword */
 export interface NestedKwd extends Element {
@@ -7398,7 +7594,7 @@ export interface NestedKwd extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     vocab?: string
     vocabIdentifier?: string
@@ -7457,8 +7653,8 @@ export interface NlmCitation extends Element {
      * the empty string. */
     lang?: string
     publicationFormat?: string
-    publication?: string
-    publisher?: string
+    publicationType?: string
+    publisherType?: string
     role?: string
     show?: xlink.Show
     specificUse?: string
@@ -7523,6 +7719,59 @@ export interface NlmCitationChildren {
   year?: Year
 }
 
+export type TexMathNotation = 'LaTeX' | 'TEX' | 'TeX' | 'tex'
+
+/** Note in a Reference List */
+export interface Note extends Element {
+  type: 'element'
+  name: 'note'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  children: RequiredMap<NoteChildren>[]
+}
+
+export interface NoteChildren {
+  /** Label of a Figure, Reference, Etc. */
+  label?: Label
+}
+
 /** Notes */
 export interface Notes extends Element {
   type: 'element'
@@ -7563,7 +7812,7 @@ export interface Notes extends Element {
      * The union allows for the 'un-declaration' of xml:lang with
      * the empty string. */
     lang?: string
-    notes?: string
+    notesType?: string
     specificUse?: string
   }
   children: RequiredMap<NotesChildren>[]
@@ -7578,56 +7827,7 @@ export interface NotesChildren {
   title?: Title
 }
 
-/** Note in a Reference List */
-export interface Note extends Element {
-  type: 'element'
-  name: 'note'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-  }
-  children: RequiredMap<NoteChildren>[]
-}
-
-export interface NoteChildren {
-  /** Label of a Figure, Reference, Etc. */
-  label?: Label
-}
+export type NotesType = TextNode<'notes-type'>
 
 /** Object Identifier */
 export interface ObjectId extends Element {
@@ -7646,12 +7846,18 @@ export interface ObjectId extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     pubIdtype?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type ObjectIdtype = TextNode<'object-id-type'>
+
+export type ObjectType = TextNode<'object-type'>
 
 /** On Behalf of */
 export interface OnBehalfof extends Element {
@@ -7695,6 +7901,8 @@ export interface OnBehalfof extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Open Access */
@@ -7739,6 +7947,8 @@ export interface OpenAccess extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Option Elements */
@@ -7757,7 +7967,7 @@ export interface Option extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     correct?: OptionCorrect
     id?: string
     /** lang (as an attribute name)
@@ -7801,9 +8011,52 @@ export interface OptionChildren {
   title?: Title
 }
 
-type OptionCorrect = 'no' | 'yes'
-interface _OptionCorrect extends Primitive._string {
-  content: OptionCorrect
+export type ArrayOrientation = 'landscape' | 'portrait'
+
+export type SupplementaryMaterialOrientation = 'landscape' | 'portrait'
+
+export type BoxedTextOrientation = 'landscape' | 'portrait'
+
+export type ChemStructwrapOrientation = 'landscape' | 'portrait'
+
+export type CodeOrientation = 'landscape' | 'portrait'
+
+export type FigOrientation = 'landscape' | 'portrait'
+
+export type FigGroupOrientation = 'landscape' | 'portrait'
+
+export type GraphicOrientation = 'landscape' | 'portrait'
+
+export type MediaOrientation = 'landscape' | 'portrait'
+
+export type PreformatOrientation = 'landscape' | 'portrait'
+
+export type TableWrapOrientation = 'landscape' | 'portrait'
+
+export type TableWrapgroupOrientation = 'landscape' | 'portrait'
+
+/** Overline */
+export interface Overline extends Element {
+  type: 'element'
+  name: 'overline'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    id?: string
+    specificUse?: string
+    toggle?: OverlineToggle
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Overline End */
@@ -7826,6 +8079,8 @@ export interface OverlineEnd extends Element {
     rid: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Overline Start */
@@ -7847,12 +8102,14 @@ export interface OverlineStart extends Element {
     id: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-/** Overline */
-export interface Overline extends Element {
+/** Paragraph */
+export interface P extends Element {
   type: 'element'
-  name: 'overline'
+  name: 'p'
   attributes: {
     /** base (as an attribute name)
      *
@@ -7865,55 +8122,7 @@ export interface Overline extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    id?: string
-    specificUse?: string
-    toggle?: OverlineToggle
-  }
-}
-
-type OverlineToggle = 'no' | 'yes'
-interface _OverlineToggle extends Primitive._string {
-  content: OverlineToggle
-}
-
-/** Page Count */
-export interface PageCount extends Element {
-  type: 'element'
-  name: 'page-count'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    count: string
-    id?: string
-  }
-}
-
-/** Page Ranges */
-export interface PageRange extends Element {
-  type: 'element'
-  name: 'page-range'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -7940,6 +8149,80 @@ export interface PageRange extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+export type Page = TextNode<'page'>
+
+/** Page Count */
+export interface PageCount extends Element {
+  type: 'element'
+  name: 'page-count'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    count: string
+    id?: string
+  }
+  /** Element is self-closing */
+  children: []
+}
+
+/** Page Ranges */
+export interface PageRange extends Element {
+  type: 'element'
+  name: 'page-range'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Part Title in a Citation */
@@ -7984,6 +8267,8 @@ export interface PartTitle extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Patent Number, Cited */
@@ -8002,7 +8287,7 @@ export interface Patent extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     country?: string
     id?: string
     /** lang (as an attribute name)
@@ -8030,6 +8315,8 @@ export interface Patent extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Permissions */
@@ -8055,11 +8342,11 @@ export interface Permissions extends Element {
 
 export interface PermissionsChildren {
   /** Copyright Holder */
-  copyrightHolder?: CopyrightHolder[]
+  CopyrightHolder?: CopyrightHolder[]
   /** Copyright Statement */
-  copyrightStatement?: CopyrightStatement[]
+  CopyrightStatement?: CopyrightStatement[]
   /** Copyright Year */
-  copyrightYear?: CopyrightYear[]
+  CopyrightYear?: CopyrightYear[]
 }
 
 /** Person Group For a Cited Publication */
@@ -8078,7 +8365,7 @@ export interface PersonGroup extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    custom?: string
+    customType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -8106,9 +8393,11 @@ export interface PersonGroup extends Element {
     personGrouptype?: PersonGroupPersonGrouptype
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type PersonGroupPersonGrouptype =
+export type PersonGroupPersonGrouptype =
   | 'allauthors'
   | 'assignee'
   | 'author'
@@ -8123,9 +8412,6 @@ type PersonGroupPersonGrouptype =
   | 'research-assistant'
   | 'transed'
   | 'translator'
-interface _PersonGroupPersonGrouptype extends Primitive._string {
-  content: PersonGroupPersonGrouptype
-}
 
 /** Phone Number: in an Address */
 export interface Phone extends Element {
@@ -8143,11 +8429,41 @@ export interface Phone extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type Platforms = TextNode<'platforms'>
+
+export type PointerToexplained = TextNode<'pointer-to-explained'>
+
+export type PointerToquestion = TextNode<'pointer-to-question'>
+
+export type SupplementaryMaterialPosition = 'anchor' | 'background' | 'float' | 'margin'
+
+export type BoxedTextPosition = 'anchor' | 'background' | 'float' | 'margin'
+
+export type ChemStructwrapPosition = 'anchor' | 'background' | 'float' | 'margin'
+
+export type CodePosition = 'anchor' | 'background' | 'float' | 'margin'
+
+export type FigPosition = 'anchor' | 'background' | 'float' | 'margin'
+
+export type FigGroupPosition = 'anchor' | 'background' | 'float' | 'margin'
+
+export type GraphicPosition = 'anchor' | 'background' | 'float' | 'margin'
+
+export type MediaPosition = 'anchor' | 'background' | 'float' | 'margin'
+
+export type PreformatPosition = 'anchor' | 'background' | 'float' | 'margin'
+
+export type TableWrapPosition = 'anchor' | 'background' | 'float' | 'margin'
+
+export type TableWrapgroupPosition = 'anchor' | 'background' | 'float' | 'margin'
 
 /** Postal Code: in an Address */
 export interface PostalCode extends Element {
@@ -8165,7 +8481,7 @@ export interface PostalCode extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -8192,6 +8508,8 @@ export interface PostalCode extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Prefix */
@@ -8210,7 +8528,7 @@ export interface Prefix extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -8237,7 +8555,11 @@ export interface Prefix extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type PrefixWord = TextNode<'prefix-word'>
 
 /** Preformatted Text */
 export interface Preformat extends Element {
@@ -8281,7 +8603,7 @@ export interface Preformat extends Element {
     lang?: string
     orientation?: PreformatOrientation
     position?: PreformatPosition
-    preformat?: string
+    preformatType?: string
     /** space (as an attribute name)
      *
      * denotes an attribute whose
@@ -8292,17 +8614,11 @@ export interface Preformat extends Element {
     space: xml.Space
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type PreformatOrientation = 'landscape' | 'portrait'
-interface _PreformatOrientation extends Primitive._string {
-  content: PreformatOrientation
-}
-
-type PreformatPosition = 'anchor' | 'background' | 'float' | 'margin'
-interface _PreformatPosition extends Primitive._string {
-  content: PreformatPosition
-}
+export type PreformatType = TextNode<'preformat-type'>
 
 /** Price */
 export interface Price extends Element {
@@ -8320,7 +8636,7 @@ export interface Price extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     currency?: string
     id?: string
     /** lang (as an attribute name)
@@ -8348,6 +8664,8 @@ export interface Price extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Principal Award Recipient */
@@ -8392,6 +8710,8 @@ export interface PrincipalAwardrecipient extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Principal Investigator Recipient */
@@ -8436,6 +8756,8 @@ export interface PrincipalInvestigator extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Private Character (Custom or Unicode) */
@@ -8497,29 +8819,9 @@ export interface ProcessingMetaChildren {
   /** Custom Metadata Group */
   customMetagroup?: CustomMetagroup[]
   /** Extended-by Model */
-  extendedBy?: ExtendedBy[]
+  ExtendedBy?: ExtendedBy[]
   /** Restricted-by Model */
   restrictedBy?: RestrictedBy[]
-}
-
-type ProcessingMetaBaseTagset = 'archiving' | 'authoring' | 'publishing'
-interface _ProcessingMetaBaseTagset extends Primitive._string {
-  content: ProcessingMetaBaseTagset
-}
-
-type ProcessingMetaMathmlVersion = '2.0' | '3.0'
-interface _ProcessingMetaMathmlVersion extends Primitive._string {
-  content: ProcessingMetaMathmlVersion
-}
-
-type ProcessingMetaTableModel = 'both' | 'none' | 'oasis' | 'xhtml'
-interface _ProcessingMetaTableModel extends Primitive._string {
-  content: ProcessingMetaTableModel
-}
-
-type ProcessingMetaTagsetFamily = 'bits' | 'jats' | 'sts'
-interface _ProcessingMetaTagsetFamily extends Primitive._string {
-  content: ProcessingMetaTagsetFamily
 }
 
 /** Product Information */
@@ -8565,80 +8867,18 @@ export interface Product extends Element {
      * The union allows for the 'un-declaration' of xml:lang with
      * the empty string. */
     lang?: string
-    product?: string
+    productType?: string
     role?: string
     show?: xlink.Show
     specificUse?: string
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
 
-/** Paragraph */
-export interface P extends Element {
-  type: 'element'
-  name: 'p'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-  }
-}
-
-/** Date Not Available Flag */
-export interface PubDatenotavailable extends Element {
-  type: 'element'
-  name: 'pub-date-not-available'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    id?: string
-    specificUse?: string
-  }
-}
+export type ProductType = TextNode<'product-type'>
 
 /** Publication Date */
 export interface PubDate extends Element {
@@ -8658,7 +8898,7 @@ export interface PubDate extends Element {
      * for information about this attribute. */
     base?: string
     calendar?: string
-    date?: string
+    dateType?: string
     id?: string
     iso8601Date?: string
     /** lang (as an attribute name)
@@ -8684,7 +8924,7 @@ export interface PubDate extends Element {
      * The union allows for the 'un-declaration' of xml:lang with
      * the empty string. */
     lang?: string
-    pub?: string
+    pubType?: string
     publicationFormat?: string
   }
   children: RequiredMap<PubDateChildren>[]
@@ -8697,6 +8937,29 @@ export interface PubDateChildren {
   season?: Season
   /** Year */
   year: Year
+}
+
+/** Date Not Available Flag */
+export interface PubDatenotavailable extends Element {
+  type: 'element'
+  name: 'pub-date-not-available'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    id?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Publication History */
@@ -8717,6 +8980,8 @@ export interface PubHistory extends Element {
     base?: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Publication Identifier For a Cited Publication */
@@ -8737,7 +9002,7 @@ export interface PubId extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    custom?: string
+    customType?: string
     href?: string
     hreflang?: string
     id?: string
@@ -8748,9 +9013,11 @@ export interface PubId extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type PubIdPubIdtype =
+export type ArticleIdPubIdtype =
   | 'accession'
   | 'archive'
   | 'ark'
@@ -8774,8 +9041,59 @@ type PubIdPubIdtype =
   | 'sici'
   | 'std-designation'
   | 'zbl'
-interface _PubIdPubIdtype extends Primitive._string {
-  content: PubIdPubIdtype
+
+export type PubIdtype = TextNode<'pub-id-type'>
+
+export type PubIdPubIdtype =
+  | 'accession'
+  | 'archive'
+  | 'ark'
+  | 'art-access-id'
+  | 'arxiv'
+  | 'coden'
+  | 'custom'
+  | 'doaj'
+  | 'doi'
+  | 'handle'
+  | 'index'
+  | 'isbn'
+  | 'manuscript'
+  | 'medline'
+  | 'mr'
+  | 'other'
+  | 'pii'
+  | 'pmcid'
+  | 'pmid'
+  | 'publisher-id'
+  | 'sici'
+  | 'std-designation'
+  | 'zbl'
+
+export type PublicationFormat = TextNode<'publication-format'>
+
+export type PublicationType = TextNode<'publication-type'>
+
+/** Publisher */
+export interface Publisher extends Element {
+  type: 'element'
+  name: 'publisher'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Publisher's Location */
@@ -8820,6 +9138,8 @@ export interface PublisherLoc extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Publisher's Name */
@@ -8864,85 +9184,13 @@ export interface PublisherName extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-/** Publisher */
-export interface Publisher extends Element {
-  type: 'element'
-  name: 'publisher'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-  }
-}
+export type PublisherType = TextNode<'publisher-type'>
 
-/** Question Preamble */
-export interface QuestionPreamble extends Element {
-  type: 'element'
-  name: 'question-preamble'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-  }
-  children: RequiredMap<QuestionPreambleChildren>[]
-}
-
-export interface QuestionPreambleChildren {
-  /** Alternate Title */
-  altTitle?: AltTitle[]
-  /** Label of a Figure, Reference, Etc. */
-  label?: Label
-  /** Article Subtitle */
-  subtitle?: Subtitle[]
-  /** Title */
-  title?: Title
-}
+export type PubType = TextNode<'pub-type'>
 
 /** Question */
 export interface Question extends Element {
@@ -8960,7 +9208,7 @@ export interface Question extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -9004,15 +9252,127 @@ export interface QuestionChildren {
   title?: Title
 }
 
-type QuestionQuestionResponsetype =
+/** Question Preamble */
+export interface QuestionPreamble extends Element {
+  type: 'element'
+  name: 'question-preamble'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  children: RequiredMap<QuestionPreambleChildren>[]
+}
+
+export interface QuestionPreambleChildren {
+  /** Alternate Title */
+  altTitle?: AltTitle[]
+  /** Label of a Figure, Reference, Etc. */
+  label?: Label
+  /** Article Subtitle */
+  subtitle?: Subtitle[]
+  /** Title */
+  title?: Title
+}
+
+export type QuestionQuestionResponsetype =
   | 'essay'
   | 'fill-in-the-blank'
   | 'multi-select'
   | 'multiple-choice'
   | 'short-answer'
   | 'true-false'
-interface _QuestionQuestionResponsetype extends Primitive._string {
-  content: QuestionQuestionResponsetype
+
+/** Question Wrap */
+export interface QuestionWrap extends Element {
+  type: 'element'
+  name: 'question-wrap'
+  attributes: {
+    audience?: string
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  children: RequiredMap<QuestionWrapChildren>[]
+}
+
+export interface QuestionWrapChildren {
+  /** Answer Elements */
+  answer?: Answer
+  /** Answer Set */
+  answerSet?: AnswerSet
+  /** Explanation */
+  explanation?: Explanation[]
+  /** Question */
+  question: Question
 }
 
 /** Question Wrap Group */
@@ -9032,7 +9392,7 @@ export interface QuestionWrapgroup extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -9075,63 +9435,7 @@ export interface QuestionWrapgroupChildren {
   title?: Title
 }
 
-/** Question Wrap */
-export interface QuestionWrap extends Element {
-  type: 'element'
-  name: 'question-wrap'
-  attributes: {
-    audience?: string
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-  }
-  children: RequiredMap<QuestionWrapChildren>[]
-}
-
-export interface QuestionWrapChildren {
-  /** Answer Elements */
-  answer?: Answer
-  /** Answer Set */
-  answerSet?: AnswerSet
-  /** Explanation */
-  explanation?: Explanation[]
-  /** Question */
-  question: Question
-}
+export type Rationale = TextNode<'rationale'>
 
 /** Ruby Base */
 export interface Rb extends Element {
@@ -9149,7 +9453,7 @@ export interface Rb extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -9176,6 +9480,59 @@ export interface Rb extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+/** Reference Item */
+export interface Ref extends Element {
+  type: 'element'
+  name: 'ref'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  children: RequiredMap<RefChildren>[]
+}
+
+export interface RefChildren {
+  /** Label of a Figure, Reference, Etc. */
+  label?: Label
 }
 
 /** Reference Count */
@@ -9197,6 +9554,8 @@ export interface RefCount extends Element {
     count: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Reference List (Bibliographic Reference List) */
@@ -9215,7 +9574,7 @@ export interface RefList extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -9254,56 +9613,32 @@ export interface RefListChildren {
   title?: Title
 }
 
-/** Reference Item */
-export interface Ref extends Element {
-  type: 'element'
-  name: 'ref'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-  }
-  children: RequiredMap<RefChildren>[]
-}
-
-export interface RefChildren {
-  /** Label of a Figure, Reference, Etc. */
-  label?: Label
-}
+export type XrefRefType =
+  | 'aff'
+  | 'app'
+  | 'author-notes'
+  | 'award'
+  | 'bibr'
+  | 'bio'
+  | 'boxed-text'
+  | 'chem'
+  | 'collab'
+  | 'contrib'
+  | 'corresp'
+  | 'custom'
+  | 'disp-formula'
+  | 'fig'
+  | 'fn'
+  | 'kwd'
+  | 'list'
+  | 'other'
+  | 'plate'
+  | 'scheme'
+  | 'sec'
+  | 'statement'
+  | 'supplementary-material'
+  | 'table'
+  | 'table-fn'
 
 /** Related Article Information */
 export interface RelatedArticle extends Element {
@@ -9362,7 +9697,11 @@ export interface RelatedArticle extends Element {
     type?: xlink.Type
     vol?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type RelatedArticletype = TextNode<'related-article-type'>
 
 /** Related Object Information */
 export interface RelatedObject extends Element {
@@ -9381,10 +9720,10 @@ export interface RelatedObject extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     documentId?: string
     documentIdtype?: string
-    document?: string
+    documentType?: string
     extLinktype?: string
     href?: string
     hreflang?: string
@@ -9412,20 +9751,24 @@ export interface RelatedObject extends Element {
      * The union allows for the 'un-declaration' of xml:lang with
      * the empty string. */
     lang?: string
-    link?: string
+    linkType?: string
     objectId?: string
     objectIdtype?: string
-    object?: string
+    objectType?: string
     role?: string
     show?: xlink.Show
     sourceId?: string
     sourceIdtype?: string
-    source?: string
+    sourceType?: string
     specificUse?: string
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type Resolution = TextNode<'resolution'>
 
 /** Resource Group */
 export interface ResourceGroup extends Element {
@@ -9469,6 +9812,8 @@ export interface ResourceGroup extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Resource Identifier */
@@ -9488,7 +9833,7 @@ export interface ResourceId extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -9518,7 +9863,11 @@ export interface ResourceId extends Element {
     vocab?: string
     vocabIdentifier?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type ResourceIdtype = TextNode<'resource-id-type'>
 
 /** Resource Name */
 export interface ResourceName extends Element {
@@ -9537,7 +9886,7 @@ export interface ResourceName extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href?: string
     hreflang?: string
     id?: string
@@ -9570,7 +9919,11 @@ export interface ResourceName extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type ResourceType = TextNode<'resource-type'>
 
 /** Resource Wrap */
 export interface ResourceWrap extends Element {
@@ -9640,7 +9993,7 @@ export interface Response extends Element {
      * The union allows for the 'un-declaration' of xml:lang with
      * the empty string. */
     lang?: string
-    response?: string
+    responseType?: string
     specificUse?: string
   }
   children: RequiredMap<ResponseChildren>[]
@@ -9656,10 +10009,12 @@ export interface ResponseChildren {
   /** Front Matter */
   front: Front
   /** Stub Front Metadata */
-  frontStub: FrontStub
+  FrontStub: FrontStub
   /** Processing Metadata Model */
   processingMeta?: ProcessingMeta
 }
+
+export type ResponseType = TextNode<'response-type'>
 
 /** Restricted-by Model */
 export interface RestrictedBy extends Element {
@@ -9692,7 +10047,11 @@ export interface RestrictedBy extends Element {
     vocabTerm?: string
     vocabTermidentifier?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type Rid = TextNode<'rid'>
 
 /** Role or Function Title of Contributor */
 export interface Role extends Element {
@@ -9711,7 +10070,7 @@ export interface Role extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     degreeContribution?: string
     id?: string
     /** lang (as an attribute name)
@@ -9743,6 +10102,8 @@ export interface Role extends Element {
     vocabTerm?: string
     vocabTermidentifier?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Roman */
@@ -9765,12 +10126,11 @@ export interface Roman extends Element {
     specificUse?: string
     toggle?: RomanToggle
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type RomanToggle = 'no' | 'yes'
-interface _RomanToggle extends Primitive._string {
-  content: RomanToggle
-}
+export type Rowspan = TextNode<'rowspan'>
 
 /** Ruby Parenthesis */
 export interface Rp extends Element {
@@ -9790,6 +10150,8 @@ export interface Rp extends Element {
     base?: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Ruby Textual Annotation */
@@ -9808,7 +10170,7 @@ export interface Rt extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -9835,6 +10197,8 @@ export interface Rt extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Ruby Wrapper */
@@ -9853,7 +10217,7 @@ export interface Ruby extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     specificUse?: string
   }
@@ -9866,6 +10230,8 @@ export interface RubyChildren {
   /** Ruby Textual Annotation */
   rt: Rt
 }
+
+export type TableRules = 'all' | 'cols' | 'groups' | 'none' | 'rows'
 
 /** Sans Serif */
 export interface SansSerif extends Element {
@@ -9887,11 +10253,8 @@ export interface SansSerif extends Element {
     specificUse?: string
     toggle?: SansSerifToggle
   }
-}
-
-type SansSerifToggle = 'no' | 'yes'
-interface _SansSerifToggle extends Primitive._string {
-  content: SansSerifToggle
+  /** Element is self-closing */
+  children: []
 }
 
 /** Small Caps */
@@ -9914,12 +10277,13 @@ export interface Sc extends Element {
     specificUse?: string
     toggle?: ScToggle
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type ScToggle = 'no' | 'yes'
-interface _ScToggle extends Primitive._string {
-  content: ScToggle
-}
+export type TdScope = 'col' | 'colgroup' | 'row' | 'rowgroup'
+
+export type ThScope = 'col' | 'colgroup' | 'row' | 'rowgroup'
 
 /** Season */
 export interface Season extends Element {
@@ -9937,7 +10301,7 @@ export interface Season extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -9964,32 +10328,8 @@ export interface Season extends Element {
     lang?: string
     specificUse?: string
   }
-}
-
-/** Section Metadata */
-export interface SecMeta extends Element {
-  type: 'element'
-  name: 'sec-meta'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    id?: string
-  }
-  children: RequiredMap<SecMetaChildren>[]
-}
-
-export interface SecMetaChildren {
-  /** Permissions */
-  permissions?: Permissions
+  /** Element is self-closing */
+  children: []
 }
 
 /** Section */
@@ -10032,7 +10372,7 @@ export interface Sec extends Element {
      * The union allows for the 'un-declaration' of xml:lang with
      * the empty string. */
     lang?: string
-    sec?: string
+    secType?: string
     specificUse?: string
   }
   children: RequiredMap<SecChildren>[]
@@ -10043,6 +10383,82 @@ export interface SecChildren {
   secMeta?: SecMeta
   /** Title */
   title: Title
+}
+
+/** Section Metadata */
+export interface SecMeta extends Element {
+  type: 'element'
+  name: 'sec-meta'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    id?: string
+  }
+  children: RequiredMap<SecMetaChildren>[]
+}
+
+export interface SecMetaChildren {
+  /** Permissions */
+  permissions?: Permissions
+}
+
+export type SecType = TextNode<'sec-type'>
+
+/** See */
+export interface See extends Element {
+  type: 'element'
+  name: 'see'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    rid?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** See-Also Term */
@@ -10061,7 +10477,7 @@ export interface SeeAlso extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -10093,52 +10509,8 @@ export interface SeeAlso extends Element {
     vocabTerm?: string
     vocabTermidentifier?: string
   }
-}
-
-/** See */
-export interface See extends Element {
-  type: 'element'
-  name: 'see'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    rid?: string
-    specificUse?: string
-  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Uri For This Same Article Online */
@@ -10159,7 +10531,7 @@ export interface SelfUri extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href?: string
     hreflang?: string
     id?: string
@@ -10192,6 +10564,57 @@ export interface SelfUri extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
+}
+
+export type Seq = TextNode<'seq'>
+
+/** Series */
+export interface Series extends Element {
+  type: 'element'
+  name: 'series'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Series Text: Header Text to Describe */
@@ -10210,7 +10633,7 @@ export interface SeriesText extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -10237,6 +10660,8 @@ export interface SeriesText extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Series Title */
@@ -10255,7 +10680,7 @@ export interface SeriesTitle extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -10282,74 +10707,8 @@ export interface SeriesTitle extends Element {
     lang?: string
     specificUse?: string
   }
-}
-
-/** Series */
-export interface Series extends Element {
-  type: 'element'
-  name: 'series'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-  }
-}
-
-/** Signature Block */
-export interface SigBlock extends Element {
-  type: 'element'
-  name: 'sig-block'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    rid?: string
-    specificUse?: string
-  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Signature */
@@ -10368,7 +10727,7 @@ export interface Sig extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -10396,6 +10755,33 @@ export interface Sig extends Element {
     rid?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+/** Signature Block */
+export interface SigBlock extends Element {
+  type: 'element'
+  name: 'sig-block'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    rid?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Size */
@@ -10441,6 +10827,8 @@ export interface Size extends Element {
     specificUse?: string
     units: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Source */
@@ -10459,7 +10847,7 @@ export interface Source extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -10486,7 +10874,17 @@ export interface Source extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type SourceId = TextNode<'source-id'>
+
+export type SourceIdtype = TextNode<'source-id-type'>
+
+export type SourceType = TextNode<'source-type'>
+
+export type Span = TextNode<'span'>
 
 /** Speaker */
 export interface Speaker extends Element {
@@ -10504,7 +10902,7 @@ export interface Speaker extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -10531,7 +10929,11 @@ export interface Speaker extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type SpecificUse = TextNode<'specific-use'>
 
 /** Speech */
 export interface Speech extends Element {
@@ -10549,7 +10951,7 @@ export interface Speech extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -10584,6 +10986,53 @@ export interface SpeechChildren {
   speaker: Speaker
 }
 
+/** State or Province: in an Address */
+export interface State extends Element {
+  type: 'element'
+  name: 'state'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
+}
+
 /** Statement, Formal */
 export interface Statement extends Element {
   type: 'element'
@@ -10600,7 +11049,7 @@ export interface Statement extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -10637,10 +11086,10 @@ export interface StatementChildren {
   title?: Title
 }
 
-/** State or Province: in an Address */
-export interface State extends Element {
+/** Standard, Cited */
+export interface Std extends Element {
   type: 'element'
-  name: 'state'
+  name: 'std'
   attributes: {
     /** base (as an attribute name)
      *
@@ -10653,7 +11102,7 @@ export interface State extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -10680,6 +11129,8 @@ export interface State extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Standards Organization */
@@ -10698,7 +11149,7 @@ export interface StdOrganization extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -10725,51 +11176,8 @@ export interface StdOrganization extends Element {
     lang?: string
     specificUse?: string
   }
-}
-
-/** Standard, Cited */
-export interface Std extends Element {
-  type: 'element'
-  name: 'std'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Strike Through */
@@ -10792,11 +11200,8 @@ export interface Strike extends Element {
     specificUse?: string
     toggle?: StrikeToggle
   }
-}
-
-type StrikeToggle = 'no' | 'yes'
-interface _StrikeToggle extends Primitive._string {
-  content: StrikeToggle
+  /** Element is self-closing */
+  children: []
 }
 
 /** String Conference Name */
@@ -10815,7 +11220,7 @@ export interface StringConf extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -10842,6 +11247,8 @@ export interface StringConf extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Date As a String */
@@ -10861,7 +11268,7 @@ export interface StringDate extends Element {
      * for information about this attribute. */
     base?: string
     calendar?: string
-    content?: string
+    contentType?: string
     id?: string
     iso8601Date?: string
     /** lang (as an attribute name)
@@ -10889,6 +11296,8 @@ export interface StringDate extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Name of Person (Unstructured) */
@@ -10907,7 +11316,7 @@ export interface StringName extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -10935,12 +11344,11 @@ export interface StringName extends Element {
     nameStyle?: StringNameNameStyle
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type StringNameNameStyle = 'eastern' | 'given-only' | 'islensk' | 'western'
-interface _StringNameNameStyle extends Primitive._string {
-  content: StringNameNameStyle
-}
+export type Style = TextNode<'style'>
 
 /** Styled Special (Subject) Content */
 export interface StyledContent extends Element {
@@ -10986,14 +11394,39 @@ export interface StyledContent extends Element {
     specificUse?: string
     style?: string
     styleDetail?: string
-    style?: string
+    styleType?: string
     toggle?: StyledContentToggle
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type StyledContentToggle = 'no' | 'yes'
-interface _StyledContentToggle extends Primitive._string {
-  content: StyledContentToggle
+export type StyleDetail = TextNode<'style-detail'>
+
+export type StyleType = TextNode<'style-type'>
+
+/** Subscript */
+export interface Sub extends Element {
+  type: 'element'
+  name: 'sub'
+  attributes: {
+    arrange?: SubArrange
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    id?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Sub-Article */
@@ -11001,7 +11434,7 @@ export interface SubArticle extends Element {
   type: 'element'
   name: 'sub-article'
   attributes: {
-    article?: string
+    articleType?: string
     /** base (as an attribute name)
      *
      * denotes an attribute whose value
@@ -11078,13 +11511,15 @@ export interface Subject extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     vocab?: string
     vocabIdentifier?: string
     vocabTerm?: string
     vocabTermidentifier?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 export interface SubjGroup extends Element {
@@ -11137,11 +11572,13 @@ export interface SubjGroup extends Element {
 
 export interface SubjGroupChildren {
   /** Compound Subject Name */
-  compoundSubject: CompoundSubject[]
+  CompoundSubject: CompoundSubject[]
   subjGroup?: SubjGroup[]
   /** Subject Name */
-  subject: Subject[]
+  Subject: Subject[]
 }
+
+export type SubjGrouptype = TextNode<'subj-group-type'>
 
 /** Article Subtitle */
 export interface Subtitle extends Element {
@@ -11159,7 +11596,7 @@ export interface Subtitle extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -11186,33 +11623,8 @@ export interface Subtitle extends Element {
     lang?: string
     specificUse?: string
   }
-}
-
-/** Subscript */
-export interface Sub extends Element {
-  type: 'element'
-  name: 'sub'
-  attributes: {
-    arrange?: SubArrange
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    id?: string
-    specificUse?: string
-  }
-}
-
-type SubArrange = 'stack' | 'stagger'
-interface _SubArrange extends Primitive._string {
-  content: SubArrange
+  /** Element is self-closing */
+  children: []
 }
 
 /** Suffix */
@@ -11231,7 +11643,7 @@ export interface Suffix extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -11258,14 +11670,18 @@ export interface Suffix extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-/** Supplementary Material */
-export interface SupplementaryMaterial extends Element {
+export type Summary = TextNode<'summary'>
+
+/** Superscript */
+export interface Sup extends Element {
   type: 'element'
-  name: 'supplementary-material'
+  name: 'sup'
   attributes: {
-    actuate?: xlink.Actuate
+    arrange?: SupArrange
     /** base (as an attribute name)
      *
      * denotes an attribute whose value
@@ -11277,53 +11693,11 @@ export interface SupplementaryMaterial extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
-    href?: string
-    hreflang?: string
     id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    mimeSubtype?: string
-    mimetype?: string
-    orientation?: SupplementaryMaterialOrientation
-    position?: SupplementaryMaterialPosition
-    role?: string
-    show?: xlink.Show
     specificUse?: string
-    title?: string
-    type?: xlink.Type
   }
-}
-
-type SupplementaryMaterialOrientation = 'landscape' | 'portrait'
-interface _SupplementaryMaterialOrientation extends Primitive._string {
-  content: SupplementaryMaterialOrientation
-}
-
-type SupplementaryMaterialPosition = 'anchor' | 'background' | 'float' | 'margin'
-interface _SupplementaryMaterialPosition extends Primitive._string {
-  content: SupplementaryMaterialPosition
+  /** Element is self-closing */
+  children: []
 }
 
 /** Supplement */
@@ -11367,9 +11741,71 @@ export interface Supplement extends Element {
      * the empty string. */
     lang?: string
     specificUse?: string
-    supplement?: string
+    supplementType?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+/** Supplementary Material */
+export interface SupplementaryMaterial extends Element {
+  type: 'element'
+  name: 'supplementary-material'
+  attributes: {
+    actuate?: xlink.Actuate
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    href?: string
+    hreflang?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    mimeSubtype?: string
+    mimetype?: string
+    orientation?: SupplementaryMaterialOrientation
+    position?: SupplementaryMaterialPosition
+    role?: string
+    show?: xlink.Show
+    specificUse?: string
+    title?: string
+    type?: xlink.Type
+  }
+  /** Element is self-closing */
+  children: []
+}
+
+export type SupplementType = TextNode<'supplement-type'>
 
 /** Support Description */
 export interface SupportDescription extends Element {
@@ -11414,6 +11850,8 @@ export interface SupportDescription extends Element {
     rid?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Support Group */
@@ -11463,7 +11901,7 @@ export interface SupportGroup extends Element {
 
 export interface SupportGroupChildren {
   /** Contributed Resource Group */
-  contributedResourcegroup?: ContributedResourcegroup[]
+  ContributedResourcegroup?: ContributedResourcegroup[]
   /** Funding Group */
   fundingGroup?: FundingGroup[]
 }
@@ -11516,38 +11954,15 @@ export interface SupportSource extends Element {
     role?: string
     show?: xlink.Show
     specificUse?: string
-    support?: string
+    supportType?: string
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
 
-/** Superscript */
-export interface Sup extends Element {
-  type: 'element'
-  name: 'sup'
-  attributes: {
-    arrange?: SupArrange
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    id?: string
-    specificUse?: string
-  }
-}
-
-type SupArrange = 'stack' | 'stagger'
-interface _SupArrange extends Primitive._string {
-  content: SupArrange
-}
+export type SupportType = TextNode<'support-type'>
 
 /** Surname */
 export interface Surname extends Element {
@@ -11568,6 +11983,46 @@ export interface Surname extends Element {
     id?: string
     initials?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+export type Symbol = TextNode<'symbol'>
+
+/** Table: Table Element .............................. */
+export interface Table extends Element {
+  type: 'element'
+  name: 'table'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    border?: string
+    cellpadding?: string
+    cellspacing?: string
+    contentType?: string
+    frame?: TableFrame
+    id?: string
+    rules?: TableRules
+    specificUse?: string
+    style?: string
+    summary?: string
+    width?: string
+  }
+  children: RequiredMap<TableChildren>[]
+}
+
+export interface TableChildren {
+  col?: Col[]
+  colgroup?: Colgroup[]
 }
 
 /** Table Count */
@@ -11589,12 +12044,16 @@ export interface TableCount extends Element {
     count: string
     id?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-/** Table: Table Element .............................. */
-export interface Table extends Element {
+export type ProcessingMetaTableModel = 'both' | 'none' | 'oasis' | 'xhtml'
+
+/** Table Wrapper */
+export interface TableWrap extends Element {
   type: 'element'
-  name: 'table'
+  name: 'table-wrap'
   attributes: {
     /** base (as an attribute name)
      *
@@ -11607,43 +12066,37 @@ export interface Table extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    border?: string
-    cellpadding?: string
-    cellspacing?: string
-    content?: string
-    frame?: TableFrame
+    contentType?: string
     id?: string
-    rules?: TableRules
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    orientation?: TableWrapOrientation
+    position?: TableWrapPosition
     specificUse?: string
-    style?: string
-    summary?: string
-    width?: string
   }
-  children: RequiredMap<TableChildren>[]
-}
-
-export interface TableChildren {
-  col?: Col[]
-  colgroup?: Colgroup[]
-}
-
-type TableFrame =
-  | 'above'
-  | 'below'
-  | 'border'
-  | 'box'
-  | 'hsides'
-  | 'lhs'
-  | 'rhs'
-  | 'void'
-  | 'vsides'
-interface _TableFrame extends Primitive._string {
-  content: TableFrame
-}
-
-type TableRules = 'all' | 'cols' | 'groups' | 'none' | 'rows'
-interface _TableRules extends Primitive._string {
-  content: TableRules
+  /** Element is self-closing */
+  children: []
 }
 
 /** Table Wrap Footer */
@@ -11688,7 +12141,7 @@ export interface TableWrapgroup extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -11717,74 +12170,11 @@ export interface TableWrapgroup extends Element {
     position?: TableWrapgroupPosition
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type TableWrapgroupOrientation = 'landscape' | 'portrait'
-interface _TableWrapgroupOrientation extends Primitive._string {
-  content: TableWrapgroupOrientation
-}
-
-type TableWrapgroupPosition = 'anchor' | 'background' | 'float' | 'margin'
-interface _TableWrapgroupPosition extends Primitive._string {
-  content: TableWrapgroupPosition
-}
-
-/** Table Wrapper */
-export interface TableWrap extends Element {
-  type: 'element'
-  name: 'table-wrap'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    orientation?: TableWrapOrientation
-    position?: TableWrapPosition
-    specificUse?: string
-  }
-}
-
-type TableWrapOrientation = 'landscape' | 'portrait'
-interface _TableWrapOrientation extends Primitive._string {
-  content: TableWrapOrientation
-}
-
-type TableWrapPosition = 'anchor' | 'background' | 'float' | 'margin'
-interface _TableWrapPosition extends Primitive._string {
-  content: TableWrapPosition
-}
+export type ProcessingMetaTagsetFamily = 'bits' | 'jats' | 'sts'
 
 /** Target of an Internal Link */
 export interface Target extends Element {
@@ -11827,9 +12217,13 @@ export interface Target extends Element {
      * the empty string. */
     lang?: string
     specificUse?: string
-    target?: string
+    targetType?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type TargetType = TextNode<'target-type'>
 
 export interface Tbody extends Element {
   type: 'element'
@@ -11849,7 +12243,7 @@ export interface Tbody extends Element {
     base?: string
     char?: string
     charoff?: string
-    content?: string
+    contentType?: string
     id?: string
     style?: string
     valign?: TbodyValign
@@ -11859,16 +12253,6 @@ export interface Tbody extends Element {
 
 export interface TbodyChildren {
   tr: Tr[]
-}
-
-type TbodyAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
-interface _TbodyAlign extends Primitive._string {
-  content: TbodyAlign
-}
-
-type TbodyValign = 'baseline' | 'bottom' | 'middle' | 'top'
-interface _TbodyValign extends Primitive._string {
-  content: TbodyValign
 }
 
 export interface Td extends Element {
@@ -11892,7 +12276,7 @@ export interface Td extends Element {
     char?: string
     charoff?: string
     colspan?: string
-    content?: string
+    contentType?: string
     headers?: string
     id?: string
     rowspan?: string
@@ -11900,41 +12284,8 @@ export interface Td extends Element {
     style?: string
     valign?: TdValign
   }
-}
-
-type TdAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
-interface _TdAlign extends Primitive._string {
-  content: TdAlign
-}
-
-type TdScope = 'col' | 'colgroup' | 'row' | 'rowgroup'
-interface _TdScope extends Primitive._string {
-  content: TdScope
-}
-
-type TdValign = 'baseline' | 'bottom' | 'middle' | 'top'
-interface _TdValign extends Primitive._string {
-  content: TdValign
-}
-
-/** Definition List: Term Head */
-export interface TermHead extends Element {
-  type: 'element'
-  name: 'term-head'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    id?: string
-  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Definition List: Term */
@@ -11980,13 +12331,41 @@ export interface Term extends Element {
     rid?: string
     specificUse?: string
     termStatus?: string
-    term?: string
+    termType?: string
     vocab?: string
     vocabIdentifier?: string
     vocabTerm?: string
     vocabTermidentifier?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+/** Definition List: Term Head */
+export interface TermHead extends Element {
+  type: 'element'
+  name: 'term-head'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    id?: string
+  }
+  /** Element is self-closing */
+  children: []
+}
+
+export type TermStatus = TextNode<'term-status'>
+
+export type TermType = TextNode<'term-type'>
 
 /** Tex Math Equation */
 export interface TexMath extends Element {
@@ -12004,17 +12383,14 @@ export interface TexMath extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     notation?: TexMathNotation
     specificUse?: string
     version?: string
   }
-}
-
-type TexMathNotation = 'LaTeX' | 'TEX' | 'TeX' | 'tex'
-interface _TexMathNotation extends Primitive._string {
-  content: TexMathNotation
+  /** Element is self-closing */
+  children: []
 }
 
 /** Textual Form */
@@ -12059,6 +12435,8 @@ export interface TextualForm extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 export interface Tfoot extends Element {
@@ -12079,7 +12457,7 @@ export interface Tfoot extends Element {
     base?: string
     char?: string
     charoff?: string
-    content?: string
+    contentType?: string
     id?: string
     style?: string
     valign?: TfootValign
@@ -12089,56 +12467,6 @@ export interface Tfoot extends Element {
 
 export interface TfootChildren {
   tr: Tr[]
-}
-
-type TfootAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
-interface _TfootAlign extends Primitive._string {
-  content: TfootAlign
-}
-
-type TfootValign = 'baseline' | 'bottom' | 'middle' | 'top'
-interface _TfootValign extends Primitive._string {
-  content: TfootValign
-}
-
-export interface Thead extends Element {
-  type: 'element'
-  name: 'thead'
-  attributes: {
-    align?: TheadAlign
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    char?: string
-    charoff?: string
-    content?: string
-    id?: string
-    style?: string
-    valign?: TheadValign
-  }
-  children: RequiredMap<TheadChildren>[]
-}
-
-export interface TheadChildren {
-  tr: Tr[]
-}
-
-type TheadAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
-interface _TheadAlign extends Primitive._string {
-  content: TheadAlign
-}
-
-type TheadValign = 'baseline' | 'bottom' | 'middle' | 'top'
-interface _TheadValign extends Primitive._string {
-  content: TheadValign
 }
 
 export interface Th extends Element {
@@ -12162,7 +12490,7 @@ export interface Th extends Element {
     char?: string
     charoff?: string
     colspan?: string
-    content?: string
+    contentType?: string
     headers?: string
     id?: string
     rowspan?: string
@@ -12170,21 +12498,38 @@ export interface Th extends Element {
     style?: string
     valign?: ThValign
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type ThAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
-interface _ThAlign extends Primitive._string {
-  content: ThAlign
+export interface Thead extends Element {
+  type: 'element'
+  name: 'thead'
+  attributes: {
+    align?: TheadAlign
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    char?: string
+    charoff?: string
+    contentType?: string
+    id?: string
+    style?: string
+    valign?: TheadValign
+  }
+  children: RequiredMap<TheadChildren>[]
 }
 
-type ThScope = 'col' | 'colgroup' | 'row' | 'rowgroup'
-interface _ThScope extends Primitive._string {
-  content: ThScope
-}
-
-type ThValign = 'baseline' | 'bottom' | 'middle' | 'top'
-interface _ThValign extends Primitive._string {
-  content: ThValign
+export interface TheadChildren {
+  tr: Tr[]
 }
 
 /** Time Stamp For Cited Work */
@@ -12203,10 +12548,36 @@ export interface TimeStamp extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+/** Title */
+export interface Title extends Element {
+  type: 'element'
+  name: 'title'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Title Group */
@@ -12234,20 +12605,40 @@ export interface TitleGroupChildren {
   /** Alternate Title */
   altTitle?: AltTitle[]
   /** Article Title */
-  articleTitle: ArticleTitle
+  ArticleTitle: ArticleTitle
   /** Footnote Group */
-  fnGroup?: FnGroup
+  FnGroup?: FnGroup
   /** Article Subtitle */
   subtitle?: Subtitle[]
   /** Translated Title Group */
   transTitlegroup?: TransTitlegroup[]
 }
 
-/** Title */
-export interface Title extends Element {
+export type BoldToggle = 'no' | 'yes'
+
+export type ItalicToggle = 'no' | 'yes'
+
+export type MonospaceToggle = 'no' | 'yes'
+
+export type OverlineToggle = 'no' | 'yes'
+
+export type RomanToggle = 'no' | 'yes'
+
+export type SansSerifToggle = 'no' | 'yes'
+
+export type ScToggle = 'no' | 'yes'
+
+export type StrikeToggle = 'no' | 'yes'
+
+export type StyledContentToggle = 'no' | 'yes'
+
+export type UnderlineToggle = 'no' | 'yes'
+
+export interface Tr extends Element {
   type: 'element'
-  name: 'title'
+  name: 'tr'
   attributes: {
+    align?: TrAlign
     /** base (as an attribute name)
      *
      * denotes an attribute whose value
@@ -12259,10 +12650,19 @@ export interface Title extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    char?: string
+    charoff?: string
+    contentType?: string
     id?: string
-    specificUse?: string
+    style?: string
+    valign?: TrValign
   }
+  children: RequiredMap<TrChildren>[]
+}
+
+export interface TrChildren {
+  Td: Td[]
+  Th: Th[]
 }
 
 /** Translated Abstract */
@@ -12270,7 +12670,7 @@ export interface TransAbstract extends Element {
   type: 'element'
   name: 'trans-abstract'
   attributes: {
-    abstract?: string
+    abstractType?: string
     /** base (as an attribute name)
      *
      * denotes an attribute whose value
@@ -12334,7 +12734,7 @@ export interface TransSource extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -12361,6 +12761,8 @@ export interface TransSource extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Translated Subtitle */
@@ -12405,6 +12807,55 @@ export interface TransSubtitle extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
+}
+
+/** Translated Title */
+export interface TransTitle extends Element {
+  type: 'element'
+  name: 'trans-title'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    contentType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Translated Title Group */
@@ -12423,7 +12874,7 @@ export interface TransTitlegroup extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -12455,138 +12906,9 @@ export interface TransTitlegroup extends Element {
 
 export interface TransTitlegroupChildren {
   /** Translated Subtitle */
-  transSubtitle?: TransSubtitle[]
+  TransSubtitle?: TransSubtitle[]
   /** Translated Title */
-  transTitle: TransTitle
-}
-
-/** Translated Title */
-export interface TransTitle extends Element {
-  type: 'element'
-  name: 'trans-title'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    specificUse?: string
-  }
-}
-
-export interface Tr extends Element {
-  type: 'element'
-  name: 'tr'
-  attributes: {
-    align?: TrAlign
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    char?: string
-    charoff?: string
-    content?: string
-    id?: string
-    style?: string
-    valign?: TrValign
-  }
-  children: RequiredMap<TrChildren>[]
-}
-
-export interface TrChildren {
-  td: Td[]
-  th: Th[]
-}
-
-type TrAlign = 'center' | 'char' | 'justify' | 'left' | 'right'
-interface _TrAlign extends Primitive._string {
-  content: TrAlign
-}
-
-type TrValign = 'baseline' | 'bottom' | 'middle' | 'top'
-interface _TrValign extends Primitive._string {
-  content: TrValign
-}
-
-/** Underline End */
-export interface UnderlineEnd extends Element {
-  type: 'element'
-  name: 'underline-end'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    id?: string
-    rid: string
-    specificUse?: string
-  }
-}
-
-/** Underline Start */
-export interface UnderlineStart extends Element {
-  type: 'element'
-  name: 'underline-start'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    id: string
-    specificUse?: string
-  }
+  TransTitle: TransTitle
 }
 
 /** Underline */
@@ -12610,12 +12932,60 @@ export interface Underline extends Element {
     toggle?: UnderlineToggle
     underlineStyle?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-type UnderlineToggle = 'no' | 'yes'
-interface _UnderlineToggle extends Primitive._string {
-  content: UnderlineToggle
+/** Underline End */
+export interface UnderlineEnd extends Element {
+  type: 'element'
+  name: 'underline-end'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    id?: string
+    rid: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
 }
+
+/** Underline Start */
+export interface UnderlineStart extends Element {
+  type: 'element'
+  name: 'underline-start'
+  attributes: {
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    id: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
+}
+
+export type UnderlineStyle = TextNode<'underline-style'>
+
+export type Units = TextNode<'units'>
 
 /** Unstructured Keyword Group */
 export interface UnstructuredKwdgroup extends Element {
@@ -12663,6 +13033,8 @@ export interface UnstructuredKwdgroup extends Element {
     vocab?: string
     vocabIdentifier?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Uri */
@@ -12683,7 +13055,7 @@ export interface Uri extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href?: string
     hreflang?: string
     id?: string
@@ -12716,7 +13088,27 @@ export interface Uri extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
+
+export type UseType = TextNode<'use-type'>
+
+export type ColValign = 'baseline' | 'bottom' | 'middle' | 'top'
+
+export type ColgroupValign = 'baseline' | 'bottom' | 'middle' | 'top'
+
+export type TbodyValign = 'baseline' | 'bottom' | 'middle' | 'top'
+
+export type TrValign = 'baseline' | 'bottom' | 'middle' | 'top'
+
+export type TdValign = 'baseline' | 'bottom' | 'middle' | 'top'
+
+export type ThValign = 'baseline' | 'bottom' | 'middle' | 'top'
+
+export type TfootValign = 'baseline' | 'bottom' | 'middle' | 'top'
+
+export type TheadValign = 'baseline' | 'bottom' | 'middle' | 'top'
 
 /** Verse Form For Poetry */
 export interface VerseGroup extends Element {
@@ -12734,7 +13126,7 @@ export interface VerseGroup extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -12762,7 +13154,7 @@ export interface VerseGroup extends Element {
     specificUse?: string
     style?: string
     styleDetail?: string
-    style?: string
+    styleType?: string
   }
   children: RequiredMap<VerseGroupChildren>[]
 }
@@ -12796,7 +13188,7 @@ export interface VerseLine extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     indentLevel?: string
     /** lang (as an attribute name)
@@ -12825,14 +13217,28 @@ export interface VerseLine extends Element {
     specificUse?: string
     style?: string
     styleDetail?: string
-    style?: string
+    styleType?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-/** Version Statement, Cited */
-export interface Version extends Element {
+export type Version = TextNode<'version'>
+
+export type Vocab = TextNode<'vocab'>
+
+export type VocabIdentifier = TextNode<'vocab-identifier'>
+
+export type VocabTerm = TextNode<'vocab-term'>
+
+export type VocabTermidentifier = TextNode<'vocab-term-identifier'>
+
+export type Vol = TextNode<'vol'>
+
+/** Volume Number */
+export interface Volume extends Element {
   type: 'element'
-  name: 'version'
+  name: 'volume'
   attributes: {
     /** base (as an attribute name)
      *
@@ -12845,8 +13251,7 @@ export interface Version extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
-    designator?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -12871,8 +13276,11 @@ export interface Version extends Element {
      * The union allows for the 'un-declaration' of xml:lang with
      * the empty string. */
     lang?: string
+    seq?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Volume Identifier */
@@ -12893,7 +13301,7 @@ export interface VolumeId extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     href?: string
     hreflang?: string
     id?: string
@@ -12927,6 +13335,8 @@ export interface VolumeId extends Element {
     title?: string
     type?: xlink.Type
   }
+  /** Element is self-closing */
+  children: []
 }
 
 /** Translated Title Group */
@@ -12945,7 +13355,7 @@ export interface VolumeIssuegroup extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -13012,7 +13422,7 @@ export interface VolumeSeries extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -13039,53 +13449,11 @@ export interface VolumeSeries extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-/** Volume Number */
-export interface Volume extends Element {
-  type: 'element'
-  name: 'volume'
-  attributes: {
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    content?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    seq?: string
-    specificUse?: string
-  }
-}
+export type Width = TextNode<'width'>
 
 /** Word Count */
 export interface WordCount extends Element {
@@ -13106,84 +13474,8 @@ export interface WordCount extends Element {
     count: string
     id?: string
   }
-}
-
-/** X(cross) Reference */
-export interface Xref extends Element {
-  type: 'element'
-  name: 'xref'
-  attributes: {
-    alt?: string
-    /** base (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * provides a URI to be used as the base for interpreting any
-     * relative URIs in the scope of the element on which it
-     * appears; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML Base specification.
-     *
-     * See http://www.w3.org/TR/xmlbase/
-     * for information about this attribute. */
-    base?: string
-    custom?: string
-    id?: string
-    /** lang (as an attribute name)
-     *
-     * denotes an attribute whose value
-     * is a language code for the natural language of the content of
-     * any element; its value is inherited.  This name is reserved
-     * by virtue of its definition in the XML specification.
-     *
-     * Notes
-     *
-     * Attempting to install the relevant ISO 2- and 3-letter
-     * codes as the enumerated possible values is probably never
-     * going to be a realistic possibility.
-     *
-     * See BCP 47 at
-     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
-     * and the IANA language subtag registry at
-     *
-     * http://www.iana.org/assignments/language-subtag-registry
-     * for further information.
-     *
-     * The union allows for the 'un-declaration' of xml:lang with
-     * the empty string. */
-    lang?: string
-    ref?: XrefRef
-    rid?: string
-    specificUse?: string
-  }
-}
-
-type XrefRef =
-  | 'aff'
-  | 'app'
-  | 'author-notes'
-  | 'award'
-  | 'bibr'
-  | 'bio'
-  | 'boxed-text'
-  | 'chem'
-  | 'collab'
-  | 'contrib'
-  | 'corresp'
-  | 'custom'
-  | 'disp-formula'
-  | 'fig'
-  | 'fn'
-  | 'kwd'
-  | 'list'
-  | 'other'
-  | 'plate'
-  | 'scheme'
-  | 'sec'
-  | 'statement'
-  | 'supplementary-material'
-  | 'table'
-  | 'table-fn'
-interface _XrefRef extends Primitive._string {
-  content: XrefRef
+  /** Element is self-closing */
+  children: []
 }
 
 /** X - Generated Text and Punctuation */
@@ -13202,7 +13494,7 @@ export interface X extends Element {
      * See http://www.w3.org/TR/xmlbase/
      * for information about this attribute. */
     base?: string
-    content?: string
+    contentType?: string
     id?: string
     /** lang (as an attribute name)
      *
@@ -13237,7 +13529,61 @@ export interface X extends Element {
     space: xml.Space
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
+
+/** X(cross) Reference */
+export interface Xref extends Element {
+  type: 'element'
+  name: 'xref'
+  attributes: {
+    alt?: string
+    /** base (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * provides a URI to be used as the base for interpreting any
+     * relative URIs in the scope of the element on which it
+     * appears; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML Base specification.
+     *
+     * See http://www.w3.org/TR/xmlbase/
+     * for information about this attribute. */
+    base?: string
+    customType?: string
+    id?: string
+    /** lang (as an attribute name)
+     *
+     * denotes an attribute whose value
+     * is a language code for the natural language of the content of
+     * any element; its value is inherited.  This name is reserved
+     * by virtue of its definition in the XML specification.
+     *
+     * Notes
+     *
+     * Attempting to install the relevant ISO 2- and 3-letter
+     * codes as the enumerated possible values is probably never
+     * going to be a realistic possibility.
+     *
+     * See BCP 47 at
+     * http://www.rfc-editor.org/rfc/bcp/bcp47.txt
+     * and the IANA language subtag registry at
+     *
+     * http://www.iana.org/assignments/language-subtag-registry
+     * for further information.
+     *
+     * The union allows for the 'un-declaration' of xml:lang with
+     * the empty string. */
+    lang?: string
+    refType?: XrefRefType
+    rid?: string
+    specificUse?: string
+  }
+  /** Element is self-closing */
+  children: []
+}
+
+export type XSize = TextNode<'x-size'>
 
 /** Year */
 export interface Year extends Element {
@@ -13256,7 +13602,7 @@ export interface Year extends Element {
      * for information about this attribute. */
     base?: string
     calendar?: string
-    content?: string
+    contentType?: string
     id?: string
     iso8601Date?: string
     /** lang (as an attribute name)
@@ -13284,605 +13630,8 @@ export interface Year extends Element {
     lang?: string
     specificUse?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-export interface document extends Element {
-  /** Abbreviation or Acronym */
-  abbrev: Abbrev
-  /** Abbreviated Journal Title */
-  abbrevJournaltitle: AbbrevJournaltitle
-  /** Abstract */
-  abstract: Abstract
-  /** Access Date For Cited Work */
-  accessDate: AccessDate
-  /** Acknowledgments */
-  ack: Ack
-  /** Address Line */
-  addrLine: AddrLine
-  /** Address/Contact Information */
-  address: Address
-  /** Affiliation */
-  aff: Aff
-  /** Affiliation Alternatives */
-  affAlternatives: AffAlternatives
-  /** Alternate Title Text For a Figure, Etc. */
-  altText: AltText
-  /** Alternate Title */
-  altTitle: AltTitle
-  /** Alternatives For Processing */
-  alternatives: Alternatives
-  /** Annotation in a Citation */
-  annotation: Annotation
-  /** Anonymous */
-  anonymous: Anonymous
-  /** Answer Elements */
-  answer: Answer
-  /** Answer Set */
-  answerSet: AnswerSet
-  /** Appendix */
-  app: App
-  /** Appendix Group */
-  appGroup: AppGroup
-  /** Array (Simple Tabular Array) */
-  array: Array
-  /** Article */
-  article: Article
-  /** Article Grouping Data */
-  articleCategories: ArticleCategories
-  /** Article Identifier */
-  articleId: ArticleId
-  /** Article Metadata */
-  articleMeta: ArticleMeta
-  /** Article Title */
-  articleTitle: ArticleTitle
-  /** Article Version */
-  articleVersion: ArticleVersion
-  /** Article Version Alternatives */
-  articleVersionalternatives: ArticleVersionalternatives
-  /** Attribution */
-  attrib: Attrib
-  /** Author Comment */
-  authorComment: AuthorComment
-  /** Author Note Group */
-  authorNotes: AuthorNotes
-  /** Award Description */
-  awardDesc: AwardDesc
-  /** Award Group */
-  awardGroup: AwardGroup
-  /** Award Identifier */
-  awardId: AwardId
-  /** Award Name */
-  awardName: AwardName
-  /** Back Matter */
-  back: Back
-  /** Biography */
-  bio: Bio
-  /** Block-Level Alternatives For Processing */
-  blockAlternatives: BlockAlternatives
-  /** Body of the Article */
-  body: Body
-  /** Bold */
-  bold: Bold
-  /** Boxed Text */
-  boxedText: BoxedText
-  /** Line Break */
-  break: Break
-  /** Caption of a Figure, Table, Etc. */
-  caption: Caption
-  /** Chapter Title in a Citation */
-  chapterTitle: ChapterTitle
-  /** Chemical Structure (Display) */
-  chemStruct: ChemStruct
-  /** Chemical Structure Wrapper */
-  chemStructwrap: ChemStructwrap
-  /** Citation Alternatives */
-  citationAlternatives: CitationAlternatives
-  /** City: in an Address */
-  city: City
-  /** Code Text */
-  code: Code
-  col: Col
-  colgroup: Colgroup
-  /** Collaborative (Group) Author */
-  collab: Collab
-  /** Collaboration Alternatives */
-  collabAlternatives: CollabAlternatives
-  /** Comment in a Citation */
-  comment: Comment
-  /** Compound Keyword */
-  compoundKwd: CompoundKwd
-  /** Compound Keyword Part */
-  compoundKwdpart: CompoundKwdpart
-  /** Compound Subject Name */
-  compoundSubject: CompoundSubject
-  /** Compound Subject Part Name */
-  compoundSubjectpart: CompoundSubjectpart
-  /** Conference Acronym */
-  confAcronym: ConfAcronym
-  /** Conference Date */
-  confDate: ConfDate
-  /** Conference Location */
-  confLoc: ConfLoc
-  /** Conference Name */
-  confName: ConfName
-  /** Conference Number */
-  confNum: ConfNum
-  /** Conference Sponsor */
-  confSponsor: ConfSponsor
-  /** Conference Theme */
-  confTheme: ConfTheme
-  /** Conference Information */
-  conference: Conference
-  /** Contributor */
-  contrib: Contrib
-  /** Contributor Group */
-  contribGroup: ContribGroup
-  /** Contributor Identifier */
-  contribId: ContribId
-  /** Contributed Resource Group */
-  contributedResourcegroup: ContributedResourcegroup
-  /** Copyright Holder */
-  copyrightHolder: CopyrightHolder
-  /** Copyright Statement */
-  copyrightStatement: CopyrightStatement
-  /** Copyright Year */
-  copyrightYear: CopyrightYear
-  /** Correspondence Information */
-  corresp: Corresp
-  /** Count */
-  count: Count
-  /** Country: in an Address */
-  country: Country
-  /** Counts */
-  counts: Counts
-  /** Custom Metadata */
-  customMeta: CustomMeta
-  /** Custom Metadata Group */
-  customMetagroup: CustomMetagroup
-  /** Data Title in a Citation */
-  dataTitle: DataTitle
-  /** Date */
-  date: Date
-  /** Date Inside Citation */
-  dateIncitation: DateIncitation
-  /** Day */
-  day: Day
-  /** Definition List: Definition */
-  def: Def
-  /** Definition List: Definition Head */
-  defHead: DefHead
-  /** Definition List: Definition Item */
-  defItem: DefItem
-  /** Definition List */
-  defList: DefList
-  /** Degree(s) */
-  degrees: Degrees
-  /** Formula, Display */
-  dispFormula: DispFormula
-  /** Formula, Display Group */
-  dispFormulagroup: DispFormulagroup
-  /** Quote, Displayed */
-  dispQuote: DispQuote
-  /** Edition Statement, Cited */
-  edition: Edition
-  /** Element Citation */
-  elementCitation: ElementCitation
-  /** Electronic Location Identifier */
-  elocationId: ElocationId
-  /** Email Address */
-  email: Email
-  /** Equation Count */
-  equationCount: EquationCount
-  /** Era */
-  era: Era
-  /** Et Al */
-  etal: Etal
-  /** Event in Publishing History */
-  event: Event
-  /** Event Description */
-  eventDesc: EventDesc
-  /** Explanation */
-  explanation: Explanation
-  /** External Link */
-  extLink: ExtLink
-  /** Extended-by Model */
-  extendedBy: ExtendedBy
-  /** Fax Number: in an Address */
-  fax: Fax
-  /** Figure */
-  fig: Fig
-  /** Figure Count */
-  figCount: FigCount
-  /** Figure Group */
-  figGroup: FigGroup
-  /** Fixed Case */
-  fixedCase: FixedCase
-  /** Floats Group */
-  floatsGroup: FloatsGroup
-  /** Footnote */
-  fn: Fn
-  /** Footnote Group */
-  fnGroup: FnGroup
-  /** First Page */
-  fpage: Fpage
-  /** Front Matter */
-  front: Front
-  /** Stub Front Metadata */
-  frontStub: FrontStub
-  /** Funding Group */
-  fundingGroup: FundingGroup
-  /** Funding Source */
-  fundingSource: FundingSource
-  /** Funding Statement */
-  fundingStatement: FundingStatement
-  /** Given (First) Names */
-  givenNames: GivenNames
-  /** Glossary Elements */
-  glossary: Glossary
-  /** Glyph Data For a Private Character */
-  glyphData: GlyphData
-  /** Glyph Reference For a Private Character */
-  glyphRef: GlyphRef
-  /** Government Report, Cited */
-  gov: Gov
-  /** Graphic */
-  graphic: Graphic
-  /** History: Document History */
-  history: History
-  /** Horizontal Rule */
-  hr: Hr
-  /** Index Term */
-  indexTerm: IndexTerm
-  /** Index Term Range End */
-  indexTermrangeend: IndexTermrangeend
-  /** Formula, Inline */
-  inlineFormula: InlineFormula
-  /** Inline Graphic */
-  inlineGraphic: InlineGraphic
-  /** Inline Media Object */
-  inlineMedia: InlineMedia
-  /** Inline Supplementary Material */
-  inlineSupplementarymaterial: InlineSupplementarymaterial
-  /** Institution Name: in an Address */
-  institution: Institution
-  /** Institution Identifier */
-  institutionId: InstitutionId
-  /** Institution Wrapper */
-  institutionWrap: InstitutionWrap
-  /** Isbn */
-  isbn: Isbn
-  /** Issn */
-  issn: Issn
-  /** Issn Linking */
-  issnL: IssnL
-  /** Issue Number */
-  issue: Issue
-  /** Issue Identifier */
-  issueId: IssueId
-  /** Issue Part */
-  issuePart: IssuePart
-  /** Issue Title */
-  issueSponsor: IssueSponsor
-  /** Issue Subtitle */
-  issueSubtitle: IssueSubtitle
-  /** Issue Title */
-  issueTitle: IssueTitle
-  /** Issue Title Group */
-  issueTitlegroup: IssueTitlegroup
-  /** Italic */
-  italic: Italic
-  /** Journal Identifier */
-  journalId: JournalId
-  /** Journal Metadata */
-  journalMeta: JournalMeta
-  /** Journal Subtitle */
-  journalSubtitle: JournalSubtitle
-  /** Journal Title (Full) */
-  journalTitle: JournalTitle
-  /** Journal Title Group */
-  journalTitlegroup: JournalTitlegroup
-  /** Keyword */
-  kwd: Kwd
-  /** Keyword Group */
-  kwdGroup: KwdGroup
-  /** Label of a Figure, Reference, Etc. */
-  label: Label
-  /** License Information */
-  license: License
-  /** License Paragraph */
-  licenseP: LicenseP
-  /** List */
-  list: List
-  /** List Item */
-  listItem: ListItem
-  /** Long Description */
-  longDesc: LongDesc
-  /** Last Page */
-  lpage: Lpage
-  /** Media Object */
-  media: Media
-  /** Metadata Data Name For Custom Metadata */
-  metaName: MetaName
-  /** Metadata Data Value For Custom Metadata */
-  metaValue: MetaValue
-  /** Milestone End */
-  milestoneEnd: MilestoneEnd
-  /** Milestone Start */
-  milestoneStart: MilestoneStart
-  /** Mixed Citation */
-  mixedCitation: MixedCitation
-  /** Monospace Text (Typewriter Text) */
-  monospace: Monospace
-  /** Month */
-  month: Month
-  /** Name of Person (Structured) */
-  name: Name
-  /** Name Alternatives */
-  nameAlternatives: NameAlternatives
-  /** Named Special (Subject) Content */
-  namedContent: NamedContent
-  /** Nested Keyword */
-  nestedKwd: NestedKwd
-  /** Nlm Citation Model */
-  nlmCitation: NlmCitation
-  /** Note in a Reference List */
-  note: Note
-  /** Notes */
-  notes: Notes
-  /** Object Identifier */
-  objectId: ObjectId
-  /** On Behalf of */
-  onBehalfof: OnBehalfof
-  /** Open Access */
-  openAccess: OpenAccess
-  /** Option Elements */
-  option: Option
-  /** Overline */
-  overline: Overline
-  /** Overline End */
-  overlineEnd: OverlineEnd
-  /** Overline Start */
-  overlineStart: OverlineStart
-  /** Paragraph */
-  p: P
-  /** Page Count */
-  pageCount: PageCount
-  /** Page Ranges */
-  pageRange: PageRange
-  /** Part Title in a Citation */
-  partTitle: PartTitle
-  /** Patent Number, Cited */
-  patent: Patent
-  /** Permissions */
-  permissions: Permissions
-  /** Person Group For a Cited Publication */
-  personGroup: PersonGroup
-  /** Phone Number: in an Address */
-  phone: Phone
-  /** Postal Code: in an Address */
-  postalCode: PostalCode
-  /** Prefix */
-  prefix: Prefix
-  /** Preformatted Text */
-  preformat: Preformat
-  /** Price */
-  price: Price
-  /** Principal Award Recipient */
-  principalAwardrecipient: PrincipalAwardrecipient
-  /** Principal Investigator Recipient */
-  principalInvestigator: PrincipalInvestigator
-  /** Private Character (Custom or Unicode) */
-  privateChar: PrivateChar
-  /** Processing Metadata Model */
-  processingMeta: ProcessingMeta
-  /** Product Information */
-  product: Product
-  /** Publication Date */
-  pubDate: PubDate
-  /** Date Not Available Flag */
-  pubDatenotavailable: PubDatenotavailable
-  /** Publication History */
-  pubHistory: PubHistory
-  /** Publication Identifier For a Cited Publication */
-  pubId: PubId
-  /** Publisher */
-  publisher: Publisher
-  /** Publisher's Location */
-  publisherLoc: PublisherLoc
-  /** Publisher's Name */
-  publisherName: PublisherName
-  /** Question */
-  question: Question
-  /** Question Preamble */
-  questionPreamble: QuestionPreamble
-  /** Question Wrap */
-  questionWrap: QuestionWrap
-  /** Question Wrap Group */
-  questionWrapgroup: QuestionWrapgroup
-  /** Ruby Base */
-  rb: Rb
-  /** Reference Item */
-  ref: Ref
-  /** Reference Count */
-  refCount: RefCount
-  /** Reference List (Bibliographic Reference List) */
-  refList: RefList
-  /** Related Article Information */
-  relatedArticle: RelatedArticle
-  /** Related Object Information */
-  relatedObject: RelatedObject
-  /** Resource Group */
-  resourceGroup: ResourceGroup
-  /** Resource Identifier */
-  resourceId: ResourceId
-  /** Resource Name */
-  resourceName: ResourceName
-  /** Resource Wrap */
-  resourceWrap: ResourceWrap
-  /** Response */
-  response: Response
-  /** Restricted-by Model */
-  restrictedBy: RestrictedBy
-  /** Role or Function Title of Contributor */
-  role: Role
-  /** Roman */
-  roman: Roman
-  /** Ruby Parenthesis */
-  rp: Rp
-  /** Ruby Textual Annotation */
-  rt: Rt
-  /** Ruby Wrapper */
-  ruby: Ruby
-  /** Sans Serif */
-  sansSerif: SansSerif
-  /** Small Caps */
-  sc: Sc
-  /** Season */
-  season: Season
-  /** Section */
-  sec: Sec
-  /** Section Metadata */
-  secMeta: SecMeta
-  /** See */
-  see: See
-  /** See-Also Term */
-  seeAlso: SeeAlso
-  /** Uri For This Same Article Online */
-  selfUri: SelfUri
-  /** Series */
-  series: Series
-  /** Series Text: Header Text to Describe */
-  seriesText: SeriesText
-  /** Series Title */
-  seriesTitle: SeriesTitle
-  /** Signature */
-  sig: Sig
-  /** Signature Block */
-  sigBlock: SigBlock
-  /** Size */
-  size: Size
-  /** Source */
-  source: Source
-  /** Speaker */
-  speaker: Speaker
-  /** Speech */
-  speech: Speech
-  /** State or Province: in an Address */
-  state: State
-  /** Statement, Formal */
-  statement: Statement
-  /** Standard, Cited */
-  std: Std
-  /** Standards Organization */
-  stdOrganization: StdOrganization
-  /** Strike Through */
-  strike: Strike
-  /** String Conference Name */
-  stringConf: StringConf
-  /** Date As a String */
-  stringDate: StringDate
-  /** Name of Person (Unstructured) */
-  stringName: StringName
-  /** Styled Special (Subject) Content */
-  styledContent: StyledContent
-  /** Subscript */
-  sub: Sub
-  /** Sub-Article */
-  subArticle: SubArticle
-  subjGroup: SubjGroup
-  /** Subject Name */
-  subject: Subject
-  /** Article Subtitle */
-  subtitle: Subtitle
-  /** Suffix */
-  suffix: Suffix
-  /** Superscript */
-  sup: Sup
-  /** Supplement */
-  supplement: Supplement
-  /** Supplementary Material */
-  supplementaryMaterial: SupplementaryMaterial
-  /** Support Description */
-  supportDescription: SupportDescription
-  /** Support Group */
-  supportGroup: SupportGroup
-  /** Support Source */
-  supportSource: SupportSource
-  /** Surname */
-  surname: Surname
-  /** Table: Table Element .............................. */
-  table: Table
-  /** Table Count */
-  tableCount: TableCount
-  /** Table Wrapper */
-  tableWrap: TableWrap
-  /** Table Wrap Footer */
-  tableWrapfoot: TableWrapfoot
-  /** Table Wrapper Group */
-  tableWrapgroup: TableWrapgroup
-  /** Target of an Internal Link */
-  target: Target
-  tbody: Tbody
-  td: Td
-  /** Definition List: Term */
-  term: Term
-  /** Definition List: Term Head */
-  termHead: TermHead
-  /** Tex Math Equation */
-  texMath: TexMath
-  /** Textual Form */
-  textualForm: TextualForm
-  tfoot: Tfoot
-  th: Th
-  thead: Thead
-  /** Time Stamp For Cited Work */
-  timeStamp: TimeStamp
-  /** Title */
-  title: Title
-  /** Title Group */
-  titleGroup: TitleGroup
-  tr: Tr
-  /** Translated Abstract */
-  transAbstract: TransAbstract
-  /** Translated Source */
-  transSource: TransSource
-  /** Translated Subtitle */
-  transSubtitle: TransSubtitle
-  /** Translated Title */
-  transTitle: TransTitle
-  /** Translated Title Group */
-  transTitlegroup: TransTitlegroup
-  /** Underline */
-  underline: Underline
-  /** Underline End */
-  underlineEnd: UnderlineEnd
-  /** Underline Start */
-  underlineStart: UnderlineStart
-  /** Unstructured Keyword Group */
-  unstructuredKwdgroup: UnstructuredKwdgroup
-  /** Uri */
-  uri: Uri
-  /** Verse Form For Poetry */
-  verseGroup: VerseGroup
-  /** Line of a Verse */
-  verseLine: VerseLine
-  /** Version Statement, Cited */
-  version: Version
-  /** Volume Number */
-  volume: Volume
-  /** Volume Identifier */
-  volumeId: VolumeId
-  /** Translated Title Group */
-  volumeIssuegroup: VolumeIssuegroup
-  /** Volume Series */
-  volumeSeries: VolumeSeries
-  /** Word Count */
-  wordCount: WordCount
-  /** X - Generated Text and Punctuation */
-  x: X
-  /** X(cross) Reference */
-  xref: Xref
-  /** Year */
-  year: Year
-}
-export var document: document
+export type YSize = TextNode<'y-size'>

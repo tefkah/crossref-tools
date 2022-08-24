@@ -23,6 +23,7 @@ export type ArrayValueMaybe<T> = T extends any[] ? ValuesType<NoUndefined<T>> : 
 export type AllTypes<T> = ArrayValueMaybe<ValuesType<T>>
 
 export type RequiredMap<T> = AllTypes<T>
+
 export interface ClinicalTrialnumber extends Element {
   type: 'element'
   name: 'clinical-trial-number'
@@ -30,18 +31,10 @@ export interface ClinicalTrialnumber extends Element {
     /** The clinical trial identifier related to the article. */
     registry: string
     /** Used to identify the article publication date in relation to the issuance of the trial results */
-    type?: ClinicalTrialnumber
+    type?: ClinicalTrialnumberType
   }
-}
-
-/** The clinical trial identifier related to the article. */
-export type ClinicalTrialnumberRegistry = TextNode<'registry'>
-type _ClinicalTrialnumberRegistry = Primitive._string
-
-/** Used to identify the article publication date in relation to the issuance of the trial results */
-type ClinicalTrialnumber = 'preResults' | 'results' | 'postResults'
-interface _ClinicalTrialnumber extends Primitive._string {
-  content: ClinicalTrialnumber
+  /** Element is self-closing */
+  children: []
 }
 
 /** Accommodates deposit of linked clincal trials metadata. The clinical-trial-number value will
@@ -55,15 +48,13 @@ export interface Program extends Element {
 }
 
 export interface ProgramChildren {
-  clinicalTrialnumber?: ClinicalTrialnumber[]
+  ClinicalTrialnumber?: ClinicalTrialnumber[]
 }
 
-export interface document extends Element {
-  clinicalTrialnumber: ClinicalTrialnumber
-  /** Accommodates deposit of linked clincal trials metadata. The clinical-trial-number value will
-   * be a string that must match a specific pattern appropriate for a given clinical trial registry. The
-   * registry is identified in the required attribute 'registry' and must be the DOI of a recognized registry
-   * (see http://dx.doi.org/10.18810/registries) */
-  program: Program
-}
-export var document: document
+/** The clinical trial identifier related to the article. */
+export type Registry = TextNode
+/** The clinical trial identifier related to the article. */
+export type ClinicalTrialnumberRegistry = string
+
+/** Used to identify the article publication date in relation to the issuance of the trial results */
+export type ClinicalTrialnumberType = 'preResults' | 'results' | 'postResults'

@@ -21,11 +21,8 @@ export type ArrayValueMaybe<T> = T extends any[] ? ValuesType<NoUndefined<T>> : 
 export type AllTypes<T> = ArrayValueMaybe<ValuesType<T>>
 
 export type RequiredMap<T> = AllTypes<T>
-export interface _any extends Element {
-  content: any
-}
 
-export interface _boolean extends Element {
+export interface _Boolean extends Element {
   content: boolean
 }
 
@@ -33,13 +30,14 @@ export interface _Date extends Element {
   content: Date
 }
 
-export interface _number extends Element {
+export interface _Number extends Element {
   content: number
 }
 
-export interface _string extends Element {
+export interface _String extends Element {
   content: string
 }
 
-export interface document extends Element {}
-export var document: document
+export interface _Any extends Element {
+  content: any
+}

@@ -23,31 +23,40 @@ export type ArrayValueMaybe<T> = T extends any[] ? ValuesType<NoUndefined<T>> : 
 export type AllTypes<T> = ArrayValueMaybe<ValuesType<T>>
 
 export type RequiredMap<T> = AllTypes<T>
+
+export type LicenseRefT = TextNode
+type _LicenseRefT = Primitive._String
+
+export type LicenseRefAppliesTo = 'vor' | 'am' | 'tdm' | 'stm-asf'
+
+export type EndDate = TextNode
+
+export type Date = string
+
 export interface FreeToRead extends Element {
   type: 'element'
   name: 'free_to_read'
   attributes: {
-    endDate?: Date
-    startDate?: Date
+    /** A date, unknown format **/
+    end_date?: string
+    /** A date, unknown format **/
+    start_date?: string
   }
+  /** Element is self-closing */
+  children: []
 }
 
-export type licenseRefT = TextNode
-type _licenseRefT = Primitive._string
-
-export interface LicenseRef extends licenseRefT {
+export interface LicenseRef extends LicenseRefT {
   type: 'element'
   name: 'license_ref'
   attributes: {
-    appliesTo?: LicenseRefAppliesTo
-    startDate?: Date
+    applies_to?: LicenseRefAppliesTo
+    /** A date, unknown format **/
+    start_date?: string
   }
 }
 
-type LicenseRefAppliesTo = 'vor' | 'am' | 'tdm' | 'stm-asf'
-interface _LicenseRefAppliesTo extends Primitive._string {
-  content: LicenseRefAppliesTo
-}
+export type Name = TextNode<'name'>
 
 /** Accommodates deposit of license metadata. The license_ref value will be a URL. Values for the "applies_to" attribute are vor (version of record),am (accepted manuscript), tdm (text and data mining), and stm-asf (STM Article Sharing Framework license). */
 export interface Program extends Element {
@@ -60,14 +69,8 @@ export interface Program extends Element {
 }
 
 export interface ProgramChildren {
-  freeToRead?: FreeToRead
-  licenseRef?: LicenseRef[]
+  FreeToRead?: FreeToRead
+  LicenseRef?: LicenseRef[]
 }
 
-export interface document extends Element {
-  freeToRead: FreeToRead
-  licenseRef: LicenseRef
-  /** Accommodates deposit of license metadata. The license_ref value will be a URL. Values for the "applies_to" attribute are vor (version of record),am (accepted manuscript), tdm (text and data mining), and stm-asf (STM Article Sharing Framework license). */
-  program: Program
-}
-export var document: document
+export type StartDate = TextNode

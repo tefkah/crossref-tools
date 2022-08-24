@@ -40,7 +40,7 @@
 
 // TODO: Verify output generated
 
-import { CitationList, Citation, FullTitle as JournalTitle } from '../types'
+import { CitationList, Citation, Author, FullTitle as JournalTitle } from '../types'
 export interface Cite {
   publishedWhere: string
   authors: [{ name: string }] | { name: string }[]

@@ -8,6 +8,7 @@
   "devDependencies": {
     "@nrwl/cli": "14.5.8",
     "@nrwl/devkit": "^14.5.8",
+    "@nrwl/eslint-plugin-nx": "^14.5.10",
     "@nrwl/jest": "^14.5.8",
     "@nrwl/js": "14.5.8",
     "@nrwl/node": "^14.5.8",
@@ -32,12 +33,29 @@
   "dependencies": {
     "axios": "^0.27.2",
     "commander": "^9.4.0",
+    "eslint": "^8.22.0",
     "jest": "^27",
     "ts-to-zod": "^1.12.0",
     "tslib": "^2.3.0",
     "unist-builder": "^3.0.0",
     "validate-with-xmllint": "^1.2.0",
     "xastscript": "^3.0.0",
-    "zod": "^3.18.0"
+    "zod": "^3.18.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-next": "12.2.3",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-cypress": "^2.10.3",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jsx-a11y": "6.6.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "7.30.1",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-unicorn": "^43.0.2",
+    "jest": "^28.1.3"
   }
 }

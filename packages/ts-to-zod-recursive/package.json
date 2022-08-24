@@ -1,0 +1,19 @@
+{
+  "name": "ts-to-zod-recursive",
+  "version": "0.0.1",
+  "license": "GPL-3-0-or-later",
+  "repository": "https://github.com/journaloftrialanderror/jote",
+  "author": "Thomas F. K. Jorna <hello@tefkah.com>",
+  "type": "module",
+  "bin": {
+    "ts2zodr": "dist/src/ts-to-zod-recursive.js"
+  },
+  "description": "Follow import links with ts-to-zod",
+  "keywords": [
+    "unified",
+    "abstract",
+    "syntax",
+    "tree",
+    "ast"
+  ]
+}

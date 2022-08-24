@@ -1,0 +1,34 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/ts-to-zod-recursive/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:swc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/packages/ts-to-zod-recursive",
+        "tsConfig": "packages/ts-to-zod-recursive/tsconfig.lib.json",
+        "packageJson": "packages/ts-to-zod-recursive/package.json",
+        "main": "packages/ts-to-zod-recursive/src/index.ts",
+        "assets": [
+          "packages/ts-to-zod-recursive/*.md"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "packages/ts-to-zod-recursive/**/*.ts"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

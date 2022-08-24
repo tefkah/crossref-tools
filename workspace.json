@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
-    "crossref-xml": "packages/crossref-xml"
+    "crossref-xml": "packages/crossref-xml",
+    "ts-to-zod-recursive": "packages/ts-to-zod-recursive"
   }
 }

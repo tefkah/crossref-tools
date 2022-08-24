@@ -23,7 +23,8 @@
     "noImplicitThis": false,
     "baseUrl": ".",
     "paths": {
-      "crossref-xml": ["packages/crossref-xml/src/index.ts"]
+      "crossref-xml": ["packages/crossref-xml/src/index.ts"],
+      "ts-to-zod-recursive": ["packages/ts-to-zod-recursive/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

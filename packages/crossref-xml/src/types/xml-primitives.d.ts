@@ -1,43 +1,78 @@
 // Source files:
 //
 
-import { Element, Text } from 'xast'
-
-export interface TextNode<T extends string = string> extends Element {
-  type: 'element'
-  name: T
-  children: [Text]
+export interface XastAttributes {
+  [name: string]: string | null | undefined
 }
-export type ValuesType<T extends ReadonlyArray<any> | ArrayLike<any> | Record<any, any>> =
-  T extends ReadonlyArray<any>
-    ? T[number]
-    : T extends ArrayLike<any>
-    ? T[number]
-    : T extends object
-    ? T[keyof T]
-    : never
-export type NoUndefined<T> = Exclude<T, undefined>
-export type ArrayValueMaybe<T> = T extends any[] ? ValuesType<NoUndefined<T>> : NoUndefined<T>
-export type AllTypes<T> = ArrayValueMaybe<ValuesType<T>>
 
-export type RequiredMap<T> = AllTypes<T>
+interface XastText {
+  type: 'text'
+  value: string
+}
 
-export interface _Boolean extends Element {
+interface XastComment {
+  type: 'comment'
+  value: string
+}
+
+interface XastCData {
+  type: 'cdata'
+  value: string
+}
+
+interface XastInstruction {
+  type: 'instruction'
+  name: string
+  value: string
+}
+
+interface FakerXastElement {
+  type: 'element'
+  name: string
+  attributes?: XastAttributes | undefined
+  children: (
+    | { type: string; name?: string; attributes?: Record<string, any>; children: any[] }
+    | XastText
+    | XastComment
+    | XastInstruction
+    | XastCData
+  )[]
+}
+
+interface FakeXastElement {
+  type: 'element'
+  name: string
+  attributes?: XastAttributes | undefined
+  children: (FakerXastElement | XastText | XastComment | XastInstruction | XastCData)[]
+}
+
+export interface XastElement {
+  type: 'element'
+  name: string
+  attributes?: XastAttributes | undefined
+  children: (FakeXastElement | XastText | XastComment | XastInstruction | XastCData)[]
+}
+
+interface XastTextElement extends XastElement {
+  children: [XastText]
+}
+
+export interface _Boolean extends XastElement {
   content: boolean
 }
 
-export interface _Date extends Element {
+export interface _Date extends XastElement {
   content: Date
 }
 
-export interface _Number extends Element {
+export interface _Number extends XastElement {
   content: number
 }
 
-export interface _String extends Element {
+export interface _String extends XastElement {
   content: string
 }
 
-export interface _Any extends Element {
+export interface _Any extends XastElement {
   content: any
 }

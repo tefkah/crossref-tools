@@ -3,41 +3,76 @@ import * as Primitive from '../xml-primitives'
 // Source files:
 // https://data.crossref.org/schemas/relations.xsd
 
-import { Element, Text } from 'xast'
-
-export interface TextNode<T extends string = string> extends Element {
-  type: 'element'
-  name: T
-  children: [Text]
+export interface XastAttributes {
+  [name: string]: string | null | undefined
 }
-export type ValuesType<T extends ReadonlyArray<any> | ArrayLike<any> | Record<any, any>> =
-  T extends ReadonlyArray<any>
-    ? T[number]
-    : T extends ArrayLike<any>
-    ? T[number]
-    : T extends object
-    ? T[keyof T]
-    : never
-export type NoUndefined<T> = Exclude<T, undefined>
-export type ArrayValueMaybe<T> = T extends any[] ? ValuesType<NoUndefined<T>> : NoUndefined<T>
-export type AllTypes<T> = ArrayValueMaybe<ValuesType<T>>
 
-export type RequiredMap<T> = AllTypes<T>
+interface XastText {
+  type: 'text'
+  value: string
+}
 
-export interface XrefFaces extends Element {
+interface XastComment {
+  type: 'comment'
+  value: string
+}
+
+interface XastCData {
+  type: 'cdata'
+  value: string
+}
+
+interface XastInstruction {
+  type: 'instruction'
+  name: string
+  value: string
+}
+
+interface FakerXastElement {
   type: 'element'
-  name: 'xrefFaces' /** Element is self-closing */
+  name: string
+  attributes?: XastAttributes | undefined
+  children: (
+    | { type: string; name?: string; attributes?: Record<string, any>; children: any[] }
+    | XastText
+    | XastComment
+    | XastInstruction
+    | XastCData
+  )[]
+}
+
+interface FakeXastElement {
+  type: 'element'
+  name: string
+  attributes?: XastAttributes | undefined
+  children: (FakerXastElement | XastText | XastComment | XastInstruction | XastCData)[]
+}
+
+export interface XastElement {
+  type: 'element'
+  name: string
+  attributes?: XastAttributes | undefined
+  children: (FakeXastElement | XastText | XastComment | XastInstruction | XastCData)[]
+}
+
+interface XastTextElement extends XastElement {
+  children: [XastText]
+}
+
+export interface XrefFaces extends XastElement {
+  type: 'element'
+  name: 'xrefFaces' /** XastElement is self-closing */
   children: []
 }
 
-/** A narrative description of the relationship target item */
-export interface Description extends Element {
+/** A narrative description of the relationship target item**/
+export interface Description extends XastElement {
   type: 'element'
   name: 'description'
   attributes: {
     language?: Language
   }
-  /** Element is self-closing */
+  /** XastElement is self-closing */
   children: []
 }
 
@@ -57,31 +92,33 @@ export type IdentifierType =
   | 'accession'
   | 'other'
 
-export interface InterWorkRelation extends Element {
+export interface InterWorkRelation extends XastElement {
   type: 'element'
   name: 'inter_work_relation'
   attributes: {
     identifierType: IdentifierType
-    /** An identifier systems may require a namespace that is needed in addition to the identifer value to provide uniqueness. */
+    /** An identifier systems may require a namespace that is needed in addition to the identifer value to provide uniqueness.	**/
     namespace: string
-    /** Used to describe relations between items that are not the same work. */
+    /** Used to describe relations between items that are not the same work.
+     **/
     relationshipType: InterWorkRelationRelationshipType
   }
-  /** Element is self-closing */
+  /** XastElement is self-closing */
   children: []
 }
 
-export interface IntraWorkRelation extends Element {
+export interface IntraWorkRelation extends XastElement {
   type: 'element'
   name: 'intra_work_relation'
   attributes: {
     identifierType: IdentifierType
-    /** An identifier systems may require a namespace that is needed in addition to the identifer value to provide uniqueness. */
+    /** An identifier systems may require a namespace that is needed in addition to the identifer value to provide uniqueness.	**/
     namespace: string
-    /** Used to define relations between items that are essentially the same work but may differ in some way that impacts citation, for example a difference in format, language, or revision. Assigning different identifers to exactly the same item available in one place or as copies in multiple places can be problematic and should be avoided. */
+    /** Used to define relations between items that are essentially the same work but may differ in some way that impacts citation, for example a difference in format, language, or revision. Assigning different identifers to exactly the same item available in one place or as copies in multiple places can be problematic and should be avoided.
+     **/
     relationshipType: IntraWorkRelationRelationshipType
   }
-  /** Element is self-closing */
+  /** XastElement is self-closing */
   children: []
 }
 
@@ -270,41 +307,57 @@ export type Language =
   | 'za'
   | 'zh'
 
-export type Name = TextNode<'name'>
+export interface Name extends XastElement {
+  name: 'name'
+  children: [
+    {
+      type: 'text'
+      value: string
+    },
+  ]
+}
 
-/** An identifier systems may require a namespace that is needed in addition to the identifer value to provide uniqueness. */
-export type Namespace = TextNode
-/** An identifier systems may require a namespace that is needed in addition to the identifer value to provide uniqueness. */
+/** An identifier systems may require a namespace that is needed in addition to the identifer value to provide uniqueness.
+ * @minLength 4
+ * @maxLength 1024
+ **/
+export interface Namespace extends XastElement {
+  name: string
+  children: [
+    {
+      type: 'text'
+      /**
+       * @minLength 4
+       * @maxLength 1024
+       **/
+      value: string
+    },
+  ]
+}
+/** An identifier systems may require a namespace that is needed in addition to the identifer value to provide uniqueness.
+ * @minLength 4
+ * @maxLength 1024
+ **/
 export type NamespacePrimitiveType = string
 
-/** Wrapper element for relationship metadata */
-export interface Program extends Element {
+/** Wrapper element for relationship metadata**/
+export interface Program extends XastElement {
   type: 'element'
   name: 'program'
   attributes: {
     name: string
   }
-  children: RequiredMap<ProgramChildren>[]
+  children: RelatedItem[]
 }
 
-export interface ProgramChildren {
-  related_item?: RelatedItem[]
-}
-
-export interface RelatedItem extends Element {
+export interface RelatedItem extends XastElement {
   type: 'element'
   name: 'related_item'
-  children: RequiredMap<RelatedItemChildren>[]
+  children: (Description | InterWorkRelation | IntraWorkRelation)[]
 }
 
-export interface RelatedItemChildren {
-  /** A narrative description of the relationship target item */
-  Description?: Description
-  InterWorkRelation: InterWorkRelation
-  IntraWorkRelation: IntraWorkRelation
-}
-
-/** Used to describe relations between items that are not the same work. */
+/** Used to describe relations between items that are not the same work.
+ **/
 export type InterWorkRelationRelationshipType =
   | 'isDerivedFrom'
   | 'hasDerivation'
@@ -337,7 +390,8 @@ export type InterWorkRelationRelationshipType =
   | 'finances'
   | 'isFinancedBy'
 
-/** Used to define relations between items that are essentially the same work but may differ in some way that impacts citation, for example a difference in format, language, or revision. Assigning different identifers to exactly the same item available in one place or as copies in multiple places can be problematic and should be avoided. */
+/** Used to define relations between items that are essentially the same work but may differ in some way that impacts citation, for example a difference in format, language, or revision. Assigning different identifers to exactly the same item available in one place or as copies in multiple places can be problematic and should be avoided.
+ **/
 export type IntraWorkRelationRelationshipType =
   | 'isTranslationOf'
   | 'hasTranslation'

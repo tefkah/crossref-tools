@@ -3,37 +3,91 @@ import * as Primitive from '../xml-primitives'
 // Source files:
 // https://data.crossref.org/schemas/AccessIndicators.xsd
 
-import { Element, Text } from 'xast'
-
-export interface TextNode<T extends string = string> extends Element {
-  type: 'element'
-  name: T
-  children: [Text]
+export interface XastAttributes {
+  [name: string]: string | null | undefined
 }
-export type ValuesType<T extends ReadonlyArray<any> | ArrayLike<any> | Record<any, any>> =
-  T extends ReadonlyArray<any>
-    ? T[number]
-    : T extends ArrayLike<any>
-    ? T[number]
-    : T extends object
-    ? T[keyof T]
-    : never
-export type NoUndefined<T> = Exclude<T, undefined>
-export type ArrayValueMaybe<T> = T extends any[] ? ValuesType<NoUndefined<T>> : NoUndefined<T>
-export type AllTypes<T> = ArrayValueMaybe<ValuesType<T>>
 
-export type RequiredMap<T> = AllTypes<T>
+interface XastText {
+  type: 'text'
+  value: string
+}
 
-export type LicenseRefT = TextNode
-type _LicenseRefT = Primitive._String
+interface XastComment {
+  type: 'comment'
+  value: string
+}
+
+interface XastCData {
+  type: 'cdata'
+  value: string
+}
+
+interface XastInstruction {
+  type: 'instruction'
+  name: string
+  value: string
+}
+
+interface FakerXastElement {
+  type: 'element'
+  name: string
+  attributes?: XastAttributes | undefined
+  children: (
+    | { type: string; name?: string; attributes?: Record<string, any>; children: any[] }
+    | XastText
+    | XastComment
+    | XastInstruction
+    | XastCData
+  )[]
+}
+
+interface FakeXastElement {
+  type: 'element'
+  name: string
+  attributes?: XastAttributes | undefined
+  children: (FakerXastElement | XastText | XastComment | XastInstruction | XastCData)[]
+}
+
+export interface XastElement {
+  type: 'element'
+  name: string
+  attributes?: XastAttributes | undefined
+  children: (FakeXastElement | XastText | XastComment | XastInstruction | XastCData)[]
+}
+
+interface XastTextElement extends XastElement {
+  children: [XastText]
+}
+
+export interface LicenseRefT extends XastElement {
+  name: string
+  children: [
+    {
+      type: 'text'
+      /**
+       * @pattern ([hH][tT][tT][pP]|[hH][tT][tT][pP][sS]|[fF][tT][pP]):\/\/.*
+       * @minLength 10
+       **/
+      value: string
+    },
+  ]
+}
 
 export type LicenseRefAppliesTo = 'vor' | 'am' | 'tdm' | 'stm-asf'
 
-export type EndDate = TextNode
+export interface EndDate extends XastElement {
+  name: string
+  children: [
+    {
+      type: 'text'
+      value: string
+    },
+  ]
+}
 
 export type Date = string
 
-export interface FreeToRead extends Element {
+export interface FreeToRead extends XastElement {
   type: 'element'
   name: 'free_to_read'
   attributes: {
@@ -42,7 +96,7 @@ export interface FreeToRead extends Element {
     /** A date, unknown format **/
     start_date?: string
   }
-  /** Element is self-closing */
+  /** XastElement is self-closing */
   children: []
 }
 
@@ -56,21 +110,32 @@ export interface LicenseRef extends LicenseRefT {
   }
 }
 
-export type Name = TextNode<'name'>
+export interface Name extends XastElement {
+  name: 'name'
+  children: [
+    {
+      type: 'text'
+      value: string
+    },
+  ]
+}
 
-/** Accommodates deposit of license metadata. The license_ref value will be a URL. Values for the "applies_to" attribute are vor (version of record),am (accepted manuscript), tdm (text and data mining), and stm-asf (STM Article Sharing Framework license). */
-export interface Program extends Element {
+/** Accommodates deposit of license metadata. The license_ref value will be a URL. Values for the "applies_to" attribute are vor (version of record),am (accepted manuscript), tdm (text and data mining), and stm-asf (STM Article Sharing Framework license).**/
+export interface Program extends XastElement {
   type: 'element'
   name: 'program'
   attributes: {
     name: string
   }
-  children: RequiredMap<ProgramChildren>[]
+  children: (FreeToRead | LicenseRef)[]
 }
 
-export interface ProgramChildren {
-  FreeToRead?: FreeToRead
-  LicenseRef?: LicenseRef[]
+export interface StartDate extends XastElement {
+  name: string
+  children: [
+    {
+      type: 'text'
+      value: string
+    },
+  ]
 }
-
-export type StartDate = TextNode

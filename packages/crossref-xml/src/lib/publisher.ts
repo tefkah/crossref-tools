@@ -1,47 +1,19 @@
-import { Element, Text } from "xast"
-export interface Publisher extends Element {
-  name: "publisher"
-  children: (PublisherName | PublisherPlace)[]
-}
+// import { Element, Text } from "xast"
+// export interface Publisher extends Element {
+//   name: "publisher"
+//   children: (PublisherName | PublisherPlace)[]
+// }
 
-export interface PublisherName extends Element {
-  name: "publisher_name"
-  children: [Text]
-}
-export interface PublisherPlace extends Element {
-  name: "publisher_place"
-  children: [Text]
-}
+import { x } from 'xastscript'
+import { Publisher, PublisherName, PublisherPlace } from '../types'
 
-const publisher = (publisher?: { name: string; place: string }): Publisher => {
+const publisher = (publisher?: { name: string; place: string }): Publisher =>
   // https://data.crossref.org/reports/help/schema_doc/4.4.2/schema_4_4_2.html#publisher
-  const js: Publisher = {
-    type: "element",
-    name: "publisher",
-    children: [
-      {
-        type: "element",
-        name: "publisher_name",
-        children: [
-          {
-            type: "text",
-            value: "Liberate Science GmbH",
-          },
-        ],
-      },
-      {
-        type: "element",
-        name: "publisher_place",
-        children: [
-          {
-            type: "text",
-            value: "Berlin (Germany)",
-          },
-        ],
-      },
-    ],
-  }
+  x('publisher', [
+    x('publisher_name', [x('text', publisher?.name)]) as PublisherName,
+    x('publisher_place', [x('text', publisher?.place)]) as PublisherPlace,
+  ]) as Publisher
 
-  return js
-}
+// return js
+
 export default publisher

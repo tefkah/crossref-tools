@@ -40,7 +40,7 @@
 
 // TODO: Verify output generated
 
-import { CitationList, Citation, Author, FullTitle as JournalTitle } from '../types'
+import { CitationList, Citation, Author, JournalTitle, ArticleTitle, Doi } from '../types'
 export interface Cite {
   publishedWhere: string
   authors: [{ name: string }] | { name: string }[]
@@ -85,7 +85,7 @@ const citation_list = ({ citations }: { citations: Cite[] }): CitationList => {
                 value: authors[0].name,
               },
             ],
-          } as CitationAuthor,
+          } as Author,
           {
             type: 'element',
             name: 'cYear',
@@ -105,7 +105,7 @@ const citation_list = ({ citations }: { citations: Cite[] }): CitationList => {
                 value: `${prefix}/${suffix}`,
               },
             ],
-          } as DOI,
+          } as Doi,
           // {
           //   type: "element",
           //   name: "isbn",

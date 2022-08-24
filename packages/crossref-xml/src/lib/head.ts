@@ -1,82 +1,45 @@
-import { Element, Text } from "xast"
+import { u } from 'unist-builder'
+import { Element, Text } from 'xast'
+import { x } from 'xastscript'
+import {
+  Depositor,
+  DepositorName,
+  DoiBatchId,
+  EmailAddress,
+  Head,
+  HeadChildren,
+  Registrant,
+  TextNode,
+  Timestamp,
+} from '../types'
 
-export interface Head extends Element {
-  name: "head"
-  children: (DOIBatchID | Timestamp | Depositor | Registrant)[]
+type HeadProps = {
+  /**
+   *
+   */
+  registrant: Registrant
 }
-
-export interface DOIBatchID extends Element {
-  name: "doi_batch_id"
-  children: [Text]
-}
-
-export interface Timestamp extends Element {
-  name: "timestamp"
-  children: [Text]
-}
-export interface Depositor extends Element {
-  name: "depositor"
-  children: (DepositorName | EmailAddress)[]
-}
-
-export interface DepositorName extends Element {
-  name: "depositor_name"
-  children: [Text]
-}
-export interface EmailAddress extends Element {
-  name: "email_address"
-  children: [Text]
+type SameThingRealy<T> = {
+  [P in keyof T]: T[P] extends TextNode ? string : T[P]
 }
 
-export interface Registrant extends Element {
-  name: "registrant"
-  children: [Text]
-}
+type SameHead = SameThingRealy<HeadChildren>
 
-// Replace id with Date.now as well?
-const head = ({ registrant, email }: { registrant: string; email: string }): Head => {
+const hh = ({ registrant }: SameHead) => registrant
+
+export const head = ({ registrant, email }: { registrant: Registrant; email: string }): Head => {
   const datetime = Date.now()
 
-  const jsHead: Head = {
-    type: "element",
-    name: "head",
-    children: [
-      {
-        type: "element",
-        name: "doi_batch_id",
-        children: [{ type: "text", value: datetime.toString() }],
-      },
-      {
-        type: "element",
-        name: "timestamp",
-        // has to be integer?
-        children: [{ type: "text", value: datetime.toString() }],
-      },
-      {
-        type: "element",
-        name: "depositor",
-        children: [
-          {
-            type: "element",
-            name: "depositor_name",
-            children: [{ type: "text", value: registrant }],
-          },
-          {
-            type: "element",
-            name: "email_address",
-            children: [{ type: "text", value: email }],
-          },
-        ],
-      },
-      {
-        type: "element",
-        name: "registrant",
-        children: [{ type: "text", value: registrant }],
-      },
-    ],
-  }
+  const head: Head = x('head', [
+    x('doi_batch_id', [u('text', datetime.toString())]) as DoiBatchId,
+    x('timestamp', [u('text', datetime.toString())]) as Timestamp,
+    x('depositor', [
+      // x('depositor_name', [u('text', registrant)]) as DepositorName,
+      x('email_address', [u('text', email)]) as EmailAddress,
+    ]) as Depositor,
+    // x('registrant', [u('text', registrant)]) as Registrant,
+    registrant,
+  ]) as Head
 
-  return jsHead
+  return head
 }
-
-export default head

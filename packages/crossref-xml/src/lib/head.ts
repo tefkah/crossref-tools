@@ -7,9 +7,7 @@ import {
   DoiBatchId,
   EmailAddress,
   Head,
-  HeadChildren,
   Registrant,
-  TextNode,
   Timestamp,
 } from '../types'
 
@@ -19,13 +17,6 @@ type HeadProps = {
    */
   registrant: Registrant
 }
-type SameThingRealy<T> = {
-  [P in keyof T]: T[P] extends TextNode ? string : T[P]
-}
-
-type SameHead = SameThingRealy<HeadChildren>
-
-const hh = ({ registrant }: SameHead) => registrant
 
 export const head = ({ registrant, email }: { registrant: Registrant; email: string }): Head => {
   const datetime = Date.now()

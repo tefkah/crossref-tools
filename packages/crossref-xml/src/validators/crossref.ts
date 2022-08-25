@@ -4,36 +4,342 @@ import * as ct from './ct'
 import * as fr from './fr'
 import * as jats from './jats'
 import * as rel from './rel'
+
+import {
+  A,
+  AbbrevTitle,
+  AbbrevTitlePrimitiveType,
+  AcceptanceDate,
+  Affiliations,
+  AltName,
+  Anonymous,
+  ApprovalDate,
+  ApprovedMonth,
+  ApprovedYear,
+  Archive,
+  ArchiveLocations,
+  ArchiveName,
+  ArticleTitle,
+  Assertion,
+  Authenticated,
+  Author,
+  Book,
+  BookBookType,
+  BookMetadata,
+  BookSeriesMetadata,
+  BookSetMetadata,
+  Citation,
+  CitationList,
+  CitationT,
+  CmAssertion,
+  CmAssertionGroupLabel,
+  CmAssertionGroupName,
+  CmAssertionLabel,
+  CmAssertionName,
+  CmDomain,
+  CmUpdateType,
+  Coden,
+  CodenPrimitiveType,
+  Collection,
+  CollectionMultiResolution,
+  CollectionProperty,
+  CompetingInterestStatement,
+  Component,
+  ComponentComponentSize,
+  ComponentList,
+  ComponentNumber,
+  ComponentNumberPrimitiveType,
+  ComponentParentRelation,
+  ComponentRegAgency,
+  ComponentSize,
+  Conference,
+  ConferenceAcronym,
+  ConferenceAcronymPrimitiveType,
+  ConferenceDate,
+  ConferenceDateT,
+  ConferenceLocation,
+  ConferenceLocationPrimitiveType,
+  ConferenceName,
+  ConferenceNamePrimitiveType,
+  ConferenceNumber,
+  ConferenceNumberPrimitiveType,
+  ConferencePaper,
+  ConferenceSponsor,
+  ConferenceSponsorPrimitiveType,
+  ConferenceTheme,
+  ConferenceThemePrimitiveType,
+  ContentDate,
+  ContentItem,
+  ContentItemComponentType,
+  ContentItemLevelSequenceNumber,
+  ContractNumber,
+  ContractNumberPrimitiveType,
+  ContributorRole,
+  Contributors,
+  CreationDate,
+  Crossmark,
+  CrossmarkDomain,
+  CrossmarkDomainExclusive,
+  CrossmarkDomains,
+  CrossmarkPolicy,
+  CrossmarkVersion,
+  CustomMetadata,
+  CYear,
+  Database,
+  DatabaseDate,
+  DatabaseMetadata,
+  Dataset,
+  DatasetDatasetType,
+  DatePrimitiveType,
+  DateT,
+  DateTMediaType,
+  Day,
+  Degree,
+  DegreePrimitiveType,
+  Degrees,
+  Depositor,
+  DepositorName,
+  DepositorNamePrimitiveType,
+  Description,
+  Designators,
+  Dissertation,
+  Doi,
+  DoiBatch,
+  DoiBatchId,
+  DoiBatchIdPrimitiveType,
+  DoiData,
+  DoiPrimitiveType,
+  DoiT,
+  Domain,
+  EditionNumber,
+  EditionNumberPrimitiveType,
+  ElocationId,
+  EmailAddress,
+  EmailAddressPrimitiveType,
+  EndDay,
+  EndMonth,
+  EndYear,
+  EventMetadata,
+  Explanation,
+  FakerXastElement,
+  FakeXastElement,
+  Family,
+  Filter,
+  FirstPage,
+  FirstPagePrimitiveType,
+  Format,
+  FormatT,
+  FullTitle,
+  FullTitlePrimitiveType,
+  GivenName,
+  GivenNamePrimitiveType,
+  GroupLabel,
+  GroupName,
+  GroupTitle,
+  GroupTitlePrimitiveType,
+  Head,
+  Href,
+  Identifier,
+  IdentifierIdType,
+  IdentifierT,
+  Institution,
+  InstitutionAcronym,
+  InstitutionAcronymPrimitiveType,
+  InstitutionDepartment,
+  InstitutionDepartmentPrimitiveType,
+  InstitutionId,
+  InstitutionIdType,
+  InstitutionName,
+  InstitutionNamePrimitiveType,
+  InstitutionPlace,
+  InstitutionPlacePrimitiveType,
+  IntentStatement,
+  Isbn,
+  IsbnT,
+  Issn,
+  IssnT,
+  Issue,
+  IssuePrimitiveType,
+  Item,
+  ItemCountry,
+  ItemCrawler,
+  ItemLabel,
+  ItemLinkHeaderRelationship,
+  ItemNumber,
+  ItemNumberT,
+  ItemNumberType,
+  Journal,
+  JournalArticle,
+  JournalIssue,
+  JournalMetadata,
+  JournalTitle,
+  JournalVolume,
+  Key,
+  KeyPrimitiveType,
+  Label,
+  Language,
+  LastPage,
+  LastPagePrimitiveType,
+  LevelSequenceNumber,
+  MediaType,
+  Month,
+  Name,
+  NameNameStyle,
+  NameStyle,
+  Noisbn,
+  NoisbnReason,
+  ORCID,
+  OrcidT,
+  Order,
+  Organization,
+  OrganizationT,
+  OriginalLanguageTitle,
+  OtherPages,
+  OtherPagesPrimitiveType,
+  Pages,
+  ParentDoi,
+  PartNumber,
+  PartNumberPrimitiveType,
+  PeerReview,
+  PeerReviewRecommendation,
+  PeerReviewStage,
+  PeerReviewType,
+  PendingPublication,
+  PersonName,
+  PID,
+  PostedContent,
+  PostedContentType,
+  PostedDate,
+  Prefix,
+  ProceedingsMetadata,
+  ProceedingsSeriesMetadata,
+  ProceedingsSubject,
+  ProceedingsSubjectPrimitiveType,
+  ProceedingsTitle,
+  ProceedingsTitlePrimitiveType,
+  Publication,
+  PublicationDate,
+  PublicationType,
+  Publisher,
+  PublisherItem,
+  PublisherName,
+  PublisherNamePrimitiveType,
+  PublisherPlace,
+  PublisherPlacePrimitiveType,
+  ReferenceDistributionOpts,
+  RegAgency,
+  Registrant,
+  RegistrantPrimitiveType,
+  ReportPaper,
+  ReportPaperMetadata,
+  ReportPaperSeriesMetadata,
+  Resource,
+  ResourceContentVersion,
+  ResourceT,
+  ReviewDate,
+  RevisionRound,
+  RunningNumber,
+  SaComponent,
+  SaComponentParentDoi,
+  ScnPolicies,
+  ScnPolicyRef,
+  ScnPolicyRefPrimitiveType,
+  ScnPolicySet,
+  Sequence,
+  SeriesMetadata,
+  SeriesNumber,
+  SeriesNumberPrimitiveType,
+  SeriesTitle,
+  SetMetadata,
+  SpecialNumbering,
+  SpecialNumberingPrimitiveType,
+  Standard,
+  StandardMetadata,
+  StandardMetadataPublicationStatus,
+  StandardsBody,
+  StartDate,
+  StartDay,
+  StartMonth,
+  StartYear,
+  StdAdoptedFrom,
+  StdAltAsPublished,
+  StdAltAsPublishedApprovedMonth,
+  StdAltAsPublishedApprovedYear,
+  StdAltAsPublishedReason,
+  StdAltScript,
+  StdAsPublished,
+  StdDesignator,
+  StdDesignatorT,
+  StdDesignatorvalueT,
+  StdRevisionOf,
+  StdSetDesignator,
+  StdSupersedes,
+  StdUndatedDesignator,
+  StdVariantForm,
+  StringName,
+  StringNameNameStyle,
+  Subtitle,
+  Suffix,
+  SuffixPrimitiveType,
+  Surname,
+  SurnamePrimitiveType,
+  Timestamp,
+  Title,
+  Titles,
+  Undated,
+  UnstructuredCitation,
+  Update,
+  UpdateDate,
+  Updates,
+  Version,
+  Volume,
+  VolumePrimitiveType,
+  VolumeTitle,
+  XastAttributes,
+  XastCData,
+  XastComment,
+  XastElement,
+  XastInstruction,
+  XastText,
+  XastTextElement,
+  XrefDay,
+  XrefFaces,
+  XrefMonth,
+  XrefYear,
+  Year,
+} from '../types'
 // Generated by ts-to-zod
 import { z } from 'zod'
 
 // Source files:
 // https://data.crossref.org/schemas/common5.3.1.xsd
 // https://data.crossref.org/schemas/crossref5.3.1.xsd
-export const XastAttributesSchema = z.record(z.union([z.string(), z.undefined()]).nullable())
+export const XastAttributesSchema: z.ZodSchema<XastAttributes> = z.record(
+  z.union([z.string(), z.undefined()]).nullable(),
+)
 
-const XastTextSchema = z.object({
+const XastTextSchema: z.ZodSchema<XastText> = z.object({
   type: z.literal('text'),
   value: z.string(),
 })
 
-const XastCommentSchema = z.object({
+const XastCommentSchema: z.ZodSchema<XastComment> = z.object({
   type: z.literal('comment'),
   value: z.string(),
 })
 
-const XastCDataSchema = z.object({
+const XastCDataSchema: z.ZodSchema<XastCData> = z.object({
   type: z.literal('cdata'),
   value: z.string(),
 })
 
-const XastInstructionSchema = z.object({
+const XastInstructionSchema: z.ZodSchema<XastInstruction> = z.object({
   type: z.literal('instruction'),
   name: z.string(),
   value: z.string(),
 })
 
-const FakerXastElementSchema = z.object({
+const FakerXastElementSchema: z.ZodSchema<FakerXastElement> = z.object({
   type: z.literal('element'),
   name: z.string(),
   attributes: z.union([XastAttributesSchema, z.undefined()]).optional(),
@@ -53,7 +359,7 @@ const FakerXastElementSchema = z.object({
   ),
 })
 
-const FakeXastElementSchema = z.object({
+const FakeXastElementSchema: z.ZodSchema<FakeXastElement> = z.object({
   type: z.literal('element'),
   name: z.string(),
   attributes: z.union([XastAttributesSchema, z.undefined()]).optional(),
@@ -68,26 +374,56 @@ const FakeXastElementSchema = z.object({
   ),
 })
 
-export const XastElementSchema = z.object({
-  type: z.literal('element'),
-  name: z.string(),
-  attributes: z.union([XastAttributesSchema, z.undefined()]).optional(),
-  children: z.array(
-    z.union([
-      FakeXastElementSchema,
-      XastTextSchema,
-      XastCommentSchema,
-      XastInstructionSchema,
-      XastCDataSchema,
-    ]),
-  ),
-})
+type T = typeof XastElementSchema['shape']['children']
 
-const XastTextElementSchema = XastElementSchema.extend({
+type XastChildren = z.ZodArray<
+  z.ZodUnion<
+    [
+      z.ZodType<FakeXastElement, z.ZodTypeDef, FakeXastElement>,
+      z.ZodType<XastText, z.ZodTypeDef, XastText>,
+      z.ZodType<XastComment, z.ZodTypeDef, XastComment>,
+      z.ZodType<XastInstruction, z.ZodTypeDef, XastInstruction>,
+      z.ZodType<XastCData, z.ZodTypeDef, XastCData>,
+    ]
+  >
+>
+
+type ZodXastElement = z.ZodObject<
+  {
+    type: z.ZodLiteral<'element'>
+    name: z.ZodString
+    attributes: z.ZodOptional<
+      z.ZodUnion<[z.ZodType<XastAttributes, z.ZodTypeDef, XastAttributes>, z.ZodUndefined]>
+    >
+    children: XastChildren
+  },
+  'strip',
+  z.ZodTypeAny
+>
+
+export const XastElementSchema: ZodXastElement = //: z.ZodObject<XastElement>
+  z.object({
+    type: z.literal('element'),
+    name: z.string(),
+    attributes: z.union([XastAttributesSchema, z.undefined()]).optional(),
+    children: z.array(
+      z.union([
+        FakeXastElementSchema,
+        XastTextSchema,
+        XastCommentSchema,
+        XastInstructionSchema,
+        XastCDataSchema,
+      ]),
+    ),
+  })
+
+type ElementType = z.infer<typeof XastElementSchema>
+
+const XastTextElementSchema: z.ZodSchema<XastTextElement> = XastElementSchema.extend({
   children: z.tuple([XastTextSchema]),
 })
 
-export const ConferenceDateTSchema = XastElementSchema.extend({
+export const ConferenceDateTSchema: z.ZodSchema<ConferenceDateT> = XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -101,7 +437,7 @@ export const ConferenceDateTSchema = XastElementSchema.extend({
   ]),
 })
 
-export const PIDSchema = XastElementSchema.extend({
+export const PIDSchema: z.ZodSchema<PID> = XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -114,7 +450,7 @@ export const PIDSchema = XastElementSchema.extend({
   ]),
 })
 
-export const OrganizationTSchema = XastElementSchema.extend({
+export const OrganizationTSchema: z.ZodSchema<OrganizationT> = XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -128,7 +464,7 @@ export const OrganizationTSchema = XastElementSchema.extend({
   ]),
 })
 
-export const OrcidTSchema = XastElementSchema.extend({
+export const OrcidTSchema: z.ZodSchema<z.ZodObject<z.ZodType<OrcidT>>> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -141,7 +477,7 @@ export const OrcidTSchema = XastElementSchema.extend({
   ]),
 })
 
-export const ItemNumberTSchema = XastElementSchema.extend({
+export const ItemNumberTSchema: z.ZodSchema<ItemNumberT> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -155,7 +491,7 @@ export const ItemNumberTSchema = XastElementSchema.extend({
   ]),
 })
 
-export const IdentifierTSchema = XastElementSchema.extend({
+export const IdentifierTSchema: z.ZodSchema<IdentifierT> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -169,7 +505,7 @@ export const IdentifierTSchema = XastElementSchema.extend({
   ]),
 })
 
-export const FormatTSchema = XastElementSchema.extend({
+export const FormatTSchema: z.ZodSchema<FormatT> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -183,7 +519,7 @@ export const FormatTSchema = XastElementSchema.extend({
   ]),
 })
 
-export const ResourceTSchema = XastElementSchema.extend({
+export const ResourceTSchema: z.ZodSchema<ResourceT> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -202,7 +538,7 @@ export const ResourceTSchema = XastElementSchema.extend({
   ]),
 })
 
-export const CmAssertionSchema = XastElementSchema.extend({
+export const CmAssertionSchema: z.ZodSchema<CmAssertion> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -216,7 +552,7 @@ export const CmAssertionSchema = XastElementSchema.extend({
   ]),
 })
 
-export const IsbnTSchema = XastElementSchema.extend({
+export const IsbnTSchema: z.ZodSchema<IsbnT> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -235,7 +571,7 @@ export const IsbnTSchema = XastElementSchema.extend({
   ]),
 })
 
-export const IssnTSchema = XastElementSchema.extend({
+export const IssnTSchema: z.ZodSchema<IssnT> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -254,14 +590,14 @@ export const IssnTSchema = XastElementSchema.extend({
   ]),
 })
 
-export const CitationTSchema = XastElementSchema.extend({
+export const CitationTSchema: z.ZodSchema<CitationT> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.string(),
 })
 
 /** content is "Inline" except that anchors shouldn't be nested
  **/
-export const ASchema = XastTextElementSchema.extend({
+export const ASchema: z.ZodSchema<A> =  XastTextElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('a'),
   attributes: z.object({
@@ -274,7 +610,7 @@ export const ASchema = XastTextElementSchema.extend({
   * @maxLength 150
 
 **/
-export const AbbrevTitleSchema = XastElementSchema.extend({
+export const AbbrevTitleSchema: z.ZodObject<AbbrevTitle> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -293,9 +629,12 @@ export const AbbrevTitleSchema = XastElementSchema.extend({
   * @maxLength 150
 
 **/
-export const AbbrevTitlePrimitiveTypeSchema = z.string().min(1).max(150)
+export const AbbrevTitlePrimitiveTypeSchema: z.ZodSchema<AbbrevTitlePrimitiveType> =  z
+  .string()
+  .min(1)
+  .max(150)
 
-export const ApprovedMonthSchema = XastElementSchema.extend({
+export const ApprovedMonthSchema: z.ZodSchema<ApprovedMonth> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -310,9 +649,11 @@ export const ApprovedMonthSchema = XastElementSchema.extend({
   ]),
 })
 
-export const StdAltAsPublishedApprovedMonthSchema = z.string()
+export const StdAltAsPublishedApprovedMonthSchema: z.ZodLazy<
+  z.ZodSchema<StdAltAsPublishedApprovedMonth>
+> =  z.string()
 
-export const ApprovedYearSchema = XastElementSchema.extend({
+export const ApprovedYearSchema: z.ZodSchema<ApprovedYear> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -322,10 +663,12 @@ export const ApprovedYearSchema = XastElementSchema.extend({
   ]),
 })
 
-export const StdAltAsPublishedApprovedYearSchema = z.string()
+export const StdAltAsPublishedApprovedYearSchema: z.ZodLazy<
+  z.ZodSchema<StdAltAsPublishedApprovedYear>
+> =  z.string()
 
 /** Article title in a citation.**/
-export const ArticleTitleSchema = XastElementSchema.extend({
+export const ArticleTitleSchema: z.ZodSchema<ArticleTitle> =  XastElementSchema.extend({
   name: z.literal('article_title'),
   children: z.tuple([
     z.object({
@@ -336,7 +679,7 @@ export const ArticleTitleSchema = XastElementSchema.extend({
 })
 
 /** An assertion is a piece of custom, non-bibliographic metadata that the publisher is asserting about the content to which the Crossmark refers.**/
-export const AssertionSchema = XastElementSchema.extend({
+export const AssertionSchema: z.ZodSchema<Assertion> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('assertion'),
   attributes: z.object({
@@ -358,7 +701,7 @@ export const AssertionSchema = XastElementSchema.extend({
   children: z.tuple([]),
 })
 
-export const AuthenticatedSchema = XastElementSchema.extend({
+export const AuthenticatedSchema: z.ZodSchema<Authenticated> =  XastElementSchema.extend({
   name: z.literal('authenticated'),
   children: z.tuple([
     z.object({
@@ -369,7 +712,7 @@ export const AuthenticatedSchema = XastElementSchema.extend({
 })
 
 /** First author in a citation.**/
-export const AuthorSchema = XastElementSchema.extend({
+export const AuthorSchema: z.ZodSchema<Author> =  XastElementSchema.extend({
   name: z.literal('author'),
   children: z.tuple([
     z.object({
@@ -379,13 +722,13 @@ export const AuthorSchema = XastElementSchema.extend({
   ]),
 })
 
-export const XrefFacesSchema = XastElementSchema.extend({
+export const XrefFacesSchema: z.ZodSchema<XrefFaces> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('xrefFaces'),
   children: z.tuple([]),
 })
 
-export const BookBookTypeSchema = z.union([
+export const BookBookTypeSchema: z.ZodSchema<BookBookType> =  z.union([
   z.literal('edited_book'),
   z.literal('monograph'),
   z.literal('reference'),
@@ -395,7 +738,7 @@ export const BookBookTypeSchema = z.union([
 /** citation is used to deposit each reference in the reference list of the item for which the DOI is being deposited. For details see:
  * https://www.crossref.org/education/metadata-stewardship/maintaining-your-metadata/add-references/
  **/
-export const CitationSchema = CitationTSchema.extend({
+export const CitationSchema: z.ZodSchema<Citation> =  CitationTSchema.extend({
   type: z.literal('element'),
   name: z.literal('citation'),
   attributes: z.object({
@@ -404,7 +747,7 @@ export const CitationSchema = CitationTSchema.extend({
 })
 
 /** A list of articles, books, and other content cited by the item being registered**/
-export const CitationListSchema = XastElementSchema.extend({
+export const CitationListSchema: z.ZodSchema<CitationList> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('citation_list'),
   children: z.array(CitationSchema),
@@ -414,7 +757,7 @@ export const CitationListSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 6
  **/
-export const CodenSchema = XastElementSchema.extend({
+export const CodenSchema: z.ZodSchema<Coden> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -432,33 +775,39 @@ export const CodenSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 6
  **/
-export const CodenPrimitiveTypeSchema = z.string().min(1).max(6)
+export const CodenPrimitiveTypeSchema: z.ZodSchema<CodenPrimitiveType> =  z
+  .string()
+  .min(1)
+  .max(6)
 
 /** The chapter, section, part, etc. number for a content item in a book. Unlike volume and edition_number, component_number should include any additional text that helps identify the type of component.
  * @minLength 1
  * @maxLength 50
  **/
-export const ComponentNumberSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 1
-       * @maxLength 50
-       **/
-      value: z.string().min(1).max(50),
-    }),
-  ]),
-})
+export const ComponentNumberSchema: z.ZodSchema<ComponentNumber> =
+  XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 1
+         * @maxLength 50
+         **/
+        value: z.string().min(1).max(50),
+      }),
+    ]),
+  })
 
 /** The chapter, section, part, etc. number for a content item in a book. Unlike volume and edition_number, component_number should include any additional text that helps identify the type of component.
  * @minLength 1
  * @maxLength 50
  **/
-export const ComponentNumberPrimitiveTypeSchema = z.string().min(1).max(50)
+export const ComponentNumberPrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<ComponentNumberPrimitiveType>
+> =  z.string().min(1).max(50)
 
-export const ComponentSizeSchema = XastElementSchema.extend({
+export const ComponentSizeSchema: z.ZodSchema<ComponentSize> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -468,40 +817,44 @@ export const ComponentSizeSchema = XastElementSchema.extend({
   ]),
 })
 
-export const ComponentComponentSizeSchema = z.string()
+export const ComponentComponentSizeSchema: z.ZodSchema<ComponentComponentSize> =
+  z.string()
 
-export const ContentItemComponentTypeSchema = z.union([
-  z.literal('chapter'),
-  z.literal('section'),
-  z.literal('part'),
-  z.literal('track'),
-  z.literal('reference_entry'),
-  z.literal('other'),
-])
-
-/** The popularly known as or jargon name (e.g. SIGGRAPH for "Special Interest Group on Computer Graphics"). Authors commonly cite the conference acronym rather than the full conference or proceedings name, so it is best to include this element when it is available.
- * @minLength 1
- * @maxLength 127
- **/
-export const ConferenceAcronymSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 1
-       * @maxLength 127
-       **/
-      value: z.string().min(1).max(127),
-    }),
-  ]),
-})
+export const ContentItemComponentTypeSchema: z.ZodSchema<ContentItemComponentType> =
+  z.union([
+    z.literal('chapter'),
+    z.literal('section'),
+    z.literal('part'),
+    z.literal('track'),
+    z.literal('reference_entry'),
+    z.literal('other'),
+  ])
 
 /** The popularly known as or jargon name (e.g. SIGGRAPH for "Special Interest Group on Computer Graphics"). Authors commonly cite the conference acronym rather than the full conference or proceedings name, so it is best to include this element when it is available.
  * @minLength 1
  * @maxLength 127
  **/
-export const ConferenceAcronymPrimitiveTypeSchema = z.string().min(1).max(127)
+export const ConferenceAcronymSchema: z.ZodSchema<ConferenceAcronym> = XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 1
+         * @maxLength 127
+         **/
+        value: z.string().min(1).max(127),
+      }),
+    ]),
+  })
+
+/** The popularly known as or jargon name (e.g. SIGGRAPH for "Special Interest Group on Computer Graphics"). Authors commonly cite the conference acronym rather than the full conference or proceedings name, so it is best to include this element when it is available.
+ * @minLength 1
+ * @maxLength 127
+ **/
+export const ConferenceAcronymPrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<ConferenceAcronymPrimitiveType>
+> =  z.string().min(1).max(127)
 
 /** The start and end dates of a conference event. conference_date may be used in three ways:
  * 1. If publishers that do not have parsed date values, provide just text with the conference dates. The date text should be taken from the proceedings title page.
@@ -509,166 +862,187 @@ export const ConferenceAcronymPrimitiveTypeSchema = z.string().min(1).max(127)
  * 3. If both parsed date values and the date text are available, both should be provided. This is the preferred tagging for conference_date. For example:
  * Jan. 15-17, 1997
  **/
-export const ConferenceDateSchema = ConferenceDateTSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('conference_date'),
-  attributes: z.object({
-    end_day: z.string().optional(),
-    end_month: z.string().optional(),
-    end_year: z.string().optional(),
-    start_day: z.string().optional(),
-    start_month: z.string().optional(),
-    start_year: z.string().optional(),
-  }),
-})
+export const ConferenceDateSchema: z.ZodSchema<ConferenceDate> =
+  ConferenceDateTSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('conference_date'),
+    attributes: z.object({
+      end_day: z.string().optional(),
+      end_month: z.string().optional(),
+      end_year: z.string().optional(),
+      start_day: z.string().optional(),
+      start_month: z.string().optional(),
+      start_year: z.string().optional(),
+    }),
+  })
 
 /** The location of the conference. The city, state, province or country of the conference may be provided as appropriate.
  * @minLength 2
  * @maxLength 255
  **/
-export const ConferenceLocationSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 2
-       * @maxLength 255
-       **/
-      value: z.string().min(2).max(255),
-    }),
-  ]),
-})
+export const ConferenceLocationSchema: z.ZodSchema<ConferenceLocation> =
+  >XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 2
+         * @maxLength 255
+         **/
+        value: z.string().min(2).max(255),
+      }),
+    ]),
+  })
 
 /** The location of the conference. The city, state, province or country of the conference may be provided as appropriate.
  * @minLength 2
  * @maxLength 255
  **/
-export const ConferenceLocationPrimitiveTypeSchema = z.string().min(2).max(255)
+export const ConferenceLocationPrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<ConferenceLocationPrimitiveType>
+> =  z.string().min(2).max(255)
 
 /** The official name of the conference, excluding numbers commonly provided in conference
  * @minLength 3
  * @maxLength 512
  **/
-export const ConferenceNameSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 3
-       * @maxLength 512
-       **/
-      value: z.string().min(3).max(512),
-    }),
-  ]),
-})
+export const ConferenceNameSchema: z.ZodSchema<ConferenceName> =
+  >XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 3
+         * @maxLength 512
+         **/
+        value: z.string().min(3).max(512),
+      }),
+    ]),
+  })
 
 /** The official name of the conference, excluding numbers commonly provided in conference
  * @minLength 3
  * @maxLength 512
  **/
-export const ConferenceNamePrimitiveTypeSchema = z.string().min(3).max(512)
+export const ConferenceNamePrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<ConferenceNamePrimitiveType>
+> =  z.string().min(3).max(512)
 
 /** The number of a conference. conference_number should include only the number of the conference without any extra text
  * @minLength 1
  * @maxLength 15
  **/
-export const ConferenceNumberSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 1
-       * @maxLength 15
-       **/
-      value: z.string().min(1).max(15),
-    }),
-  ]),
-})
+export const ConferenceNumberSchema: z.ZodSchema<ConferenceNumber> =
+  >XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 1
+         * @maxLength 15
+         **/
+        value: z.string().min(1).max(15),
+      }),
+    ]),
+  })
 
 /** The number of a conference. conference_number should include only the number of the conference without any extra text
  * @minLength 1
  * @maxLength 15
  **/
-export const ConferenceNumberPrimitiveTypeSchema = z.string().min(1).max(15)
+export const ConferenceNumberPrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<ConferenceNumberPrimitiveType>
+> =  z.string().min(1).max(15)
 
 /** The sponsoring organization(s) of a conference. Multiple sponsors may be given if a conference is hosted by more than one organization.
  * @minLength 1
  * @maxLength 255
  **/
-export const ConferenceSponsorSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 1
-       * @maxLength 255
-       **/
-      value: z.string().min(1).max(255),
-    }),
-  ]),
-})
+export const ConferenceSponsorSchema: z.ZodSchema<ConferenceSponsor> =
+ > XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 1
+         * @maxLength 255
+         **/
+        value: z.string().min(1).max(255),
+      }),
+    ]),
+  })
 
 /** The sponsoring organization(s) of a conference. Multiple sponsors may be given if a conference is hosted by more than one organization.
  * @minLength 1
  * @maxLength 255
  **/
-export const ConferenceSponsorPrimitiveTypeSchema = z.string().min(1).max(255)
+export const ConferenceSponsorPrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<ConferenceSponsorPrimitiveType>
+> =  z.string().min(1).max(255)
 
 /** The theme is the slogan or special emphasis of a conference in a particular year. It differs from the subject of a conference in that the subject is stable over the years while the theme may vary from year to year. For example, the American Society for Information Science and Technology conference theme was "Knowledge: Creation, Organization and Use" in 1999 and "Defining Information Architecture" in 2000.
  * @minLength 1
  * @maxLength 255
  **/
-export const ConferenceThemeSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 1
-       * @maxLength 255
-       **/
-      value: z.string().min(1).max(255),
-    }),
-  ]),
-})
+export const ConferenceThemeSchema: z.ZodSchema<ConferenceTheme> =
+  XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 1
+         * @maxLength 255
+         **/
+        value: z.string().min(1).max(255),
+      }),
+    ]),
+  })
 
 /** The theme is the slogan or special emphasis of a conference in a particular year. It differs from the subject of a conference in that the subject is stable over the years while the theme may vary from year to year. For example, the American Society for Information Science and Technology conference theme was "Knowledge: Creation, Organization and Use" in 1999 and "Defining Information Architecture" in 2000.
  * @minLength 1
  * @maxLength 255
  **/
-export const ConferenceThemePrimitiveTypeSchema = z.string().min(1).max(255)
+export const ConferenceThemePrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<ConferenceThemePrimitiveType>
+> =  z.string().min(1).max(255)
 
-export const ResourceContentVersionSchema = z.union([z.literal('vor'), z.literal('am')])
-
-/** The contract number under which a report or paper was written.
- * @minLength 2
- * @maxLength 255
- **/
-export const ContractNumberSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 2
-       * @maxLength 255
-       **/
-      value: z.string().min(2).max(255),
-    }),
-  ]),
-})
+export const ResourceContentVersionSchema: z.ZodSchema<ResourceContentVersion> =  z.union(
+  [z.literal('vor'), z.literal('am')],
+)
 
 /** The contract number under which a report or paper was written.
  * @minLength 2
  * @maxLength 255
  **/
-export const ContractNumberPrimitiveTypeSchema = z.string().min(2).max(255)
+export const ContractNumberSchema: z.ZodSchema<ContractNumber> =
+  XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 2
+         * @maxLength 255
+         **/
+        value: z.string().min(2).max(255),
+      }),
+    ]),
+  })
 
-export const ContributorRoleSchema = z.union([
+/** The contract number under which a report or paper was written.
+ * @minLength 2
+ * @maxLength 255
+ **/
+export const ContractNumberPrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<ContractNumberPrimitiveType>
+> =  z.string().min(2).max(255)
+
+export const ContributorRoleSchema: z.ZodSchema<ContributorRole> =  z.union([
   z.literal('author'),
   z.literal('editor'),
   z.literal('chair'),
@@ -680,7 +1054,7 @@ export const ContributorRoleSchema = z.union([
   z.literal('translator'),
 ])
 
-export const ItemCountrySchema = z.union([
+export const ItemCountrySchema: z.ZodSchema<ItemCountry> =  z.union([
   z.literal('AD'),
   z.literal('AE'),
   z.literal('AF'),
@@ -933,7 +1307,7 @@ export const ItemCountrySchema = z.union([
   z.literal('ZW'),
 ])
 
-export const ItemCrawlerSchema = z.union([
+export const ItemCrawlerSchema: z.ZodSchema<ItemCrawler> =  z.union([
   z.literal('google'),
   z.literal('msn'),
   z.literal('scirus'),
@@ -941,46 +1315,48 @@ export const ItemCrawlerSchema = z.union([
   z.literal('iParadigms'),
 ])
 
-export const CrossmarkDomainExclusiveSchema = XastElementSchema.extend({
-  name: z.literal('crossmark_domain_exclusive'),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      value: z.string(),
-    }),
-  ]),
-})
+export const CrossmarkDomainExclusiveSchema: z.ZodSchema<CrossmarkDomainExclusive> =
+  XastElementSchema.extend({
+    name: z.literal('crossmark_domain_exclusive'),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        value: z.string(),
+      }),
+    ]),
+  })
 
 /** A DOI which points to a publisher's CrossMark policy document. Publishers might have different policies for different publications.
  * @pattern 10\.[0-9]{4,9}\/.{1,200}
  * @minLength 6
  * @maxLength 2048
  **/
-export const CrossmarkPolicySchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @pattern 10\.[0-9]{4,9}\/.{1,200}
-       * @minLength 6
-       * @maxLength 2048
-       **/
-      value: z
-        .string()
-        .min(6)
-        .max(2048)
-        .regex(/10\.[0-9]{4,9}\/.{1,200}/),
-    }),
-  ]),
-})
+export const CrossmarkPolicySchema: z.ZodSchema<CrossmarkPolicy> =
+  XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @pattern 10\.[0-9]{4,9}\/.{1,200}
+         * @minLength 6
+         * @maxLength 2048
+         **/
+        value: z
+          .string()
+          .min(6)
+          .max(2048)
+          .regex(/10\.[0-9]{4,9}\/.{1,200}/),
+      }),
+    ]),
+  })
 
 /** A DOI which points to a publisher's CrossMark policy document. Publishers might have different policies for different publications.
  * @pattern 10\.[0-9]{4,9}\/.{1,200}
  * @minLength 6
  * @maxLength 2048
  **/
-export const DoiTSchema = XastElementSchema.extend({
+export const DoiTSchema: z.ZodSchema<DoiT> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -990,25 +1366,27 @@ export const DoiTSchema = XastElementSchema.extend({
   ]),
 })
 
-export const CrossmarkVersionSchema = XastElementSchema.extend({
-  name: z.literal('crossmark_version'),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      value: z.string(),
-    }),
-  ]),
-})
+export const CrossmarkVersionSchema: z.ZodSchema<CrossmarkVersion> =
+  XastElementSchema.extend({
+    name: z.literal('crossmark_version'),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        value: z.string(),
+      }),
+    ]),
+  })
 
 /** Publishers are encouraged to provided any non-bibliographical metadata that they feel might help the researcher evaluate and make better use of the content that the Crossmark record refers to. For example, publishers might want to provide funding information, clinical trial numbers, information about the peer-review process or a summary of the publication history of the document.**/
-export const CustomMetadataSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('custom_metadata'),
-  children: z.array(ct.ProgramSchema),
-})
+export const CustomMetadataSchema: z.ZodSchema<CustomMetadata> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('custom_metadata'),
+    children: z.array(ct.ProgramSchema),
+  })
 
 /** Year of publication in citation.**/
-export const CYearSchema = XastElementSchema.extend({
+export const CYearSchema: z.ZodSchema<CYear> =  XastElementSchema.extend({
   name: z.literal('cYear'),
   children: z.tuple([
     z.object({
@@ -1018,7 +1396,7 @@ export const CYearSchema = XastElementSchema.extend({
   ]),
 })
 
-export const DatasetDatasetTypeSchema = z.union([
+export const DatasetDatasetTypeSchema: z.ZodSchema<DatasetDatasetType> =  z.union([
   z.literal('record'),
   z.literal('collection'),
   z.literal('crossmark_policy'),
@@ -1026,7 +1404,7 @@ export const DatasetDatasetTypeSchema = z.union([
 ])
 
 /** The date of the update will be displayed in the CrossMark dialog and can help the researcher easily tell whether they are likley to have seen the update.**/
-export const DateSchema = XastElementSchema.extend({
+export const DateSchema: z.ZodSchema<Date> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1037,14 +1415,14 @@ export const DateSchema = XastElementSchema.extend({
 })
 
 /** The date of the update will be displayed in the CrossMark dialog and can help the researcher easily tell whether they are likley to have seen the update.**/
-export const DatePrimitiveTypeSchema = z.string()
+export const DatePrimitiveTypeSchema: z.ZodSchema<DatePrimitiveType> =  z.string()
 
 /** Day of publication. The should must be expressed with a leading zero if it is less than 10 (e.g. submit "05", not "5").
  * @maxInclusive 31
  * @maxLength 2
  * @minLength 2
  **/
-export const DaySchema = XastElementSchema.extend({
+export const DaySchema: z.ZodSchema<Day> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1064,13 +1442,13 @@ export const DaySchema = XastElementSchema.extend({
  * @maxLength 2
  * @minLength 2
  **/
-export const XrefDaySchema = z.string().min(2).max(2)
+export const XrefDaySchema: z.ZodSchema<XrefDay> =  z.string().min(2).max(2)
 
 /** The degree(s) awarded for a dissertation.
  * @minLength 2
  * @maxLength 255
  **/
-export const DegreeSchema = XastElementSchema.extend({
+export const DegreeSchema: z.ZodSchema<Degree> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1088,13 +1466,16 @@ export const DegreeSchema = XastElementSchema.extend({
  * @minLength 2
  * @maxLength 255
  **/
-export const DegreePrimitiveTypeSchema = z.string().min(2).max(255)
+export const DegreePrimitiveTypeSchema: z.ZodSchema<DegreePrimitiveType> =  z
+  .string()
+  .min(2)
+  .max(255)
 
 /** Name of the organization registering the DOIs.
  * @minLength 1
  * @maxLength 130
  **/
-export const DepositorNameSchema = XastElementSchema.extend({
+export const DepositorNameSchema: z.ZodSchema<DepositorName> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1112,10 +1493,11 @@ export const DepositorNameSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 130
  **/
-export const DepositorNamePrimitiveTypeSchema = z.string().min(1).max(130)
+export const DepositorNamePrimitiveTypeSchema: z.ZodSchema<DepositorNamePrimitiveType> =
+  z.string().min(1).max(130)
 
 /** DOI for an entity being registered with Crossref.**/
-export const DoiSchema = XastElementSchema.extend({
+export const DoiSchema: z.ZodSchema<Doi> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1126,13 +1508,13 @@ export const DoiSchema = XastElementSchema.extend({
 })
 
 /** DOI for an entity being registered with Crossref.**/
-export const DoiPrimitiveTypeSchema = z.string()
+export const DoiPrimitiveTypeSchema: z.ZodSchema<DoiPrimitiveType> =  z.string()
 
 /** Publisher generated ID that uniquely identifies the DOI submission batch.
  * @minLength 4
  * @maxLength 100
  **/
-export const DoiBatchIdSchema = XastElementSchema.extend({
+export const DoiBatchIdSchema: z.ZodSchema<DoiBatchId> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1150,14 +1532,17 @@ export const DoiBatchIdSchema = XastElementSchema.extend({
  * @minLength 4
  * @maxLength 100
  **/
-export const DoiBatchIdPrimitiveTypeSchema = z.string().min(4).max(100)
+export const DoiBatchIdPrimitiveTypeSchema: z.ZodSchema<DoiBatchIdPrimitiveType> =  z
+  .string()
+  .min(4)
+  .max(100)
 
 /** A domain name or subdomain name (e.g. www.psychoceramics.org or psychoceramics.org). It is used to identify when a referring URL is coming from a Crossmark domain.
  * @pattern [A-Za-z0-9_]+([-.][A-Za-z0-9_]+)*\.[A-Za-z0-9_]+([-.][A-Za-z0-9_]+)*
  * @minLength 4
  * @maxLength 1024
  **/
-export const DomainSchema = XastElementSchema.extend({
+export const DomainSchema: z.ZodSchema<Domain> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1181,7 +1566,7 @@ export const DomainSchema = XastElementSchema.extend({
  * @minLength 4
  * @maxLength 1024
  **/
-export const CmDomainSchema = z
+export const CmDomainSchema: z.ZodSchema<CmDomain> =  z
   .string()
   .min(4)
   .max(1024)
@@ -1191,7 +1576,7 @@ export const CmDomainSchema = z
  * @minLength 1
  * @maxLength 15
  **/
-export const EditionNumberSchema = XastElementSchema.extend({
+export const EditionNumberSchema: z.ZodSchema<EditionNumber> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1209,10 +1594,11 @@ export const EditionNumberSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 15
  **/
-export const EditionNumberPrimitiveTypeSchema = z.string().min(1).max(15)
+export const EditionNumberPrimitiveTypeSchema: z.ZodSchema<EditionNumberPrimitiveType> =
+  z.string().min(1).max(15)
 
 /** article identifier or e-location id of the item**/
-export const ElocationIdSchema = XastElementSchema.extend({
+export const ElocationIdSchema: z.ZodSchema<ElocationId> =  XastElementSchema.extend({
   name: z.literal('elocation_id'),
   children: z.tuple([
     z.object({
@@ -1226,7 +1612,7 @@ export const ElocationIdSchema = XastElementSchema.extend({
  * @minLength 6
  * @maxLength 200
  **/
-export const EmailAddressSchema = XastElementSchema.extend({
+export const EmailAddressSchema: z.ZodSchema<EmailAddress> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1244,9 +1630,12 @@ export const EmailAddressSchema = XastElementSchema.extend({
  * @minLength 6
  * @maxLength 200
  **/
-export const EmailAddressPrimitiveTypeSchema = z.string().min(6).max(200)
+export const EmailAddressPrimitiveTypeSchema: z.ZodSchema<EmailAddressPrimitiveType> =  z
+  .string()
+  .min(6)
+  .max(200)
 
-export const EndDaySchema = XastElementSchema.extend({
+export const EndDaySchema: z.ZodSchema<EndDay> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1261,7 +1650,7 @@ export const EndDaySchema = XastElementSchema.extend({
   ]),
 })
 
-export const EndMonthSchema = XastElementSchema.extend({
+export const EndMonthSchema: z.ZodSchema<EndMonth> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1276,14 +1665,14 @@ export const EndMonthSchema = XastElementSchema.extend({
   ]),
 })
 
-export const XrefMonthSchema = z.string()
+export const XrefMonthSchema: z.ZodSchema<XrefMonth> =  z.string()
 
 /** Basic data types for date parts.
  * @maxInclusive 2200
  * @maxLength 4
  * @minLength 4
  **/
-export const EndYearSchema = XastElementSchema.extend({
+export const EndYearSchema: z.ZodSchema<EndYear> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1303,10 +1692,10 @@ export const EndYearSchema = XastElementSchema.extend({
  * @maxLength 4
  * @minLength 4
  **/
-export const XrefYearSchema = z.string().min(4).max(4)
+export const XrefYearSchema: z.ZodSchema<XrefYear> =  z.string().min(4).max(4)
 
 /** A container for all information that applies to a conference event. event_metadata captures information about a conference event. Data about conference proceedings is captured in proceedings_metadata.**/
-export const EventMetadataSchema = XastElementSchema.extend({
+export const EventMetadataSchema: z.ZodSchema<EventMetadata> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('event_metadata'),
   children: z.array(
@@ -1323,7 +1712,7 @@ export const EventMetadataSchema = XastElementSchema.extend({
 })
 
 /** If the publisher wants to provide a further explanation of what the particular "assertion" means, they can link to such an explanation by providing an appropriate url on the "explanation" attribute.**/
-export const ExplanationSchema = XastElementSchema.extend({
+export const ExplanationSchema: z.ZodSchema<Explanation> =  XastElementSchema.extend({
   name: z.literal('explanation'),
   children: z.tuple([
     z.object({
@@ -1333,7 +1722,7 @@ export const ExplanationSchema = XastElementSchema.extend({
   ]),
 })
 
-export const FamilySchema = XastElementSchema.extend({
+export const FamilySchema: z.ZodSchema<Family> =  XastElementSchema.extend({
   name: z.literal('family'),
   children: z.tuple([
     z.object({
@@ -1343,10 +1732,10 @@ export const FamilySchema = XastElementSchema.extend({
   ]),
 })
 
-export const StringSchema = z.string()
+export const StringSchema: z.ZodSchema<String> =  z.string()
 
 /** The filter element is used to disambiguate content in situations where multiple publishers share the same host (e.g. when on an aggregated platform). It should contain a substring of the path that can be used to uniquely identify a publisher's or publication's content. For instance, using the string "alpsp" here would help the CrossMark system distinguish between ALPSP publications on the ingentaconnect host and other publications on the same host.**/
-export const FilterSchema = XastElementSchema.extend({
+export const FilterSchema: z.ZodSchema<Filter> =  XastElementSchema.extend({
   name: z.literal('filter'),
   children: z.tuple([
     z.object({
@@ -1360,7 +1749,7 @@ export const FilterSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 32
  **/
-export const FirstPageSchema = XastElementSchema.extend({
+export const FirstPageSchema: z.ZodSchema<FirstPage> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1378,13 +1767,16 @@ export const FirstPageSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 32
  **/
-export const FirstPagePrimitiveTypeSchema = z.string().min(1).max(32)
+export const FirstPagePrimitiveTypeSchema: z.ZodSchema<FirstPagePrimitiveType> =  z
+  .string()
+  .min(1)
+  .max(32)
 
 /** The full title by which a journal is commonly known or cited.
  * @minLength 1
  * @maxLength 255
  **/
-export const FullTitleSchema = XastElementSchema.extend({
+export const FullTitleSchema: z.ZodSchema<FullTitle> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1402,14 +1794,17 @@ export const FullTitleSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 255
  **/
-export const FullTitlePrimitiveTypeSchema = z.string().min(1).max(255)
+export const FullTitlePrimitiveTypeSchema: z.ZodSchema<FullTitlePrimitiveType> =  z
+  .string()
+  .min(1)
+  .max(255)
 
 /** A contributor's given name.
  * @pattern [^\d\?]*[^\?\s]+[^\d]*
  * @minLength 1
  * @maxLength 60
  **/
-export const GivenNameSchema = XastElementSchema.extend({
+export const GivenNameSchema: z.ZodSchema<GivenName> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1433,7 +1828,7 @@ export const GivenNameSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 60
  **/
-export const GivenNamePrimitiveTypeSchema = z
+export const GivenNamePrimitiveTypeSchema: z.ZodSchema<GivenNamePrimitiveType> =  z
   .string()
   .min(1)
   .max(60)
@@ -1443,7 +1838,7 @@ export const GivenNamePrimitiveTypeSchema = z
  * @minLength 2
  * @maxLength 150
  **/
-export const GroupLabelSchema = XastElementSchema.extend({
+export const GroupLabelSchema: z.ZodSchema<GroupLabel> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1461,13 +1856,16 @@ export const GroupLabelSchema = XastElementSchema.extend({
  * @minLength 2
  * @maxLength 150
  **/
-export const CmAssertionGroupLabelSchema = z.string().min(2).max(150)
+export const CmAssertionGroupLabelSchema: z.ZodSchema<CmAssertionGroupLabel> =  z
+  .string()
+  .min(2)
+  .max(150)
 
 /** Some assertions could be logically "grouped" together in the CrossMark dialog. For instance, if the publisher is recording several pieces of metadata related to funding sources (source name, percentage, grant number), they may want to make sure that these three assertions are grouped next to each-other in the CrossMark dialog. The group_name attribute is the machine-readable value that will be used for grouping such assertions.
  * @minLength 2
  * @maxLength 150
  **/
-export const GroupNameSchema = XastElementSchema.extend({
+export const GroupNameSchema: z.ZodSchema<GroupName> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1485,13 +1883,16 @@ export const GroupNameSchema = XastElementSchema.extend({
  * @minLength 2
  * @maxLength 150
  **/
-export const CmAssertionGroupNameSchema = z.string().min(2).max(150)
+export const CmAssertionGroupNameSchema: z.ZodSchema<CmAssertionGroupName> =  z
+  .string()
+  .min(2)
+  .max(150)
 
 /** Posted content may be organzed into groupings within a given publisher. This element provides for naming the group. It is expected that publishers will have a small number of groups each of which reflect a topic or subject area.
  * @minLength 1
  * @maxLength 1024
  **/
-export const GroupTitleSchema = XastElementSchema.extend({
+export const GroupTitleSchema: z.ZodSchema<GroupTitle> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1509,9 +1910,12 @@ export const GroupTitleSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 1024
  **/
-export const GroupTitlePrimitiveTypeSchema = z.string().min(1).max(1024)
+export const GroupTitlePrimitiveTypeSchema: z.ZodSchema<GroupTitlePrimitiveType> =  z
+  .string()
+  .min(1)
+  .max(1024)
 
-export const HrefSchema = XastElementSchema.extend({
+export const HrefSchema: z.ZodSchema<Href> =  XastElementSchema.extend({
   name: z.literal('href'),
   children: z.tuple([
     z.object({
@@ -1521,7 +1925,7 @@ export const HrefSchema = XastElementSchema.extend({
   ]),
 })
 
-export const IdentifierIdTypeSchema = z.union([
+export const IdentifierIdTypeSchema: z.ZodSchema<IdentifierIdType> =  z.union([
   z.literal('pii'),
   z.literal('sici'),
   z.literal('doi'),
@@ -1535,7 +1939,7 @@ export const IdentifierIdTypeSchema = z.union([
 ])
 
 /** A public standard identifier that can be used to uniquely identify the item being registered.**/
-export const IdentifierSchema = IdentifierTSchema.extend({
+export const IdentifierSchema: z.ZodSchema<Identifier> =  IdentifierTSchema.extend({
   type: z.literal('element'),
   name: z.literal('identifier'),
   attributes: z.object({
@@ -1547,103 +1951,115 @@ export const IdentifierSchema = IdentifierTSchema.extend({
  * @minLength 1
  * @maxLength 255
  **/
-export const InstitutionAcronymSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 1
-       * @maxLength 255
-       **/
-      value: z.string().min(1).max(255),
-    }),
-  ]),
-})
+export const InstitutionAcronymSchema: z.ZodSchema<InstitutionAcronym> =
+  XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 1
+         * @maxLength 255
+         **/
+        value: z.string().min(1).max(255),
+      }),
+    ]),
+  })
 
 /** The acronym of the institution.
  * @minLength 1
  * @maxLength 255
  **/
-export const InstitutionAcronymPrimitiveTypeSchema = z.string().min(1).max(255)
+export const InstitutionAcronymPrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<InstitutionAcronymPrimitiveType>
+> =  z.string().min(1).max(255)
 
 /** The department within an institution.
  * @minLength 2
  * @maxLength 255
  **/
-export const InstitutionDepartmentSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 2
-       * @maxLength 255
-       **/
-      value: z.string().min(2).max(255),
-    }),
-  ]),
-})
+export const InstitutionDepartmentSchema: z.ZodSchema<InstitutionDepartment> =
+  XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 2
+         * @maxLength 255
+         **/
+        value: z.string().min(2).max(255),
+      }),
+    ]),
+  })
 
 /** The department within an institution.
  * @minLength 2
  * @maxLength 255
  **/
-export const InstitutionDepartmentPrimitiveTypeSchema = z.string().min(2).max(255)
+export const InstitutionDepartmentPrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<InstitutionDepartmentPrimitiveType>
+> =  z.string().min(2).max(255)
 
 /** The full name of an institution.
  * @minLength 1
  * @maxLength 1024
  **/
-export const InstitutionNameSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 1
-       * @maxLength 1024
-       **/
-      value: z.string().min(1).max(1024),
-    }),
-  ]),
-})
+export const InstitutionNameSchema: z.ZodSchema<InstitutionName> =
+  XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 1
+         * @maxLength 1024
+         **/
+        value: z.string().min(1).max(1024),
+      }),
+    ]),
+  })
 
 /** The full name of an institution.
  * @minLength 1
  * @maxLength 1024
  **/
-export const InstitutionNamePrimitiveTypeSchema = z.string().min(1).max(1024)
+export const InstitutionNamePrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<InstitutionNamePrimitiveType>
+> =  z.string().min(1).max(1024)
 
 /** The primary city location of the institution. institution_place gives the primary city location of the institution. When the location is a major city (e.g. New York, Amsterdam), no qualifying country or U.S. state need be given. If the city is not a major city, the appropriate country and/or state or province should be added.
  * @minLength 2
  * @maxLength 255
  **/
-export const InstitutionPlaceSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 2
-       * @maxLength 255
-       **/
-      value: z.string().min(2).max(255),
-    }),
-  ]),
-})
+export const InstitutionPlaceSchema: z.ZodSchema<InstitutionPlace> =
+  XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 2
+         * @maxLength 255
+         **/
+        value: z.string().min(2).max(255),
+      }),
+    ]),
+  })
 
 /** The primary city location of the institution. institution_place gives the primary city location of the institution. When the location is a major city (e.g. New York, Amsterdam), no qualifying country or U.S. state need be given. If the city is not a major city, the appropriate country and/or state or province should be added.
  * @minLength 2
  * @maxLength 255
  **/
-export const InstitutionPlacePrimitiveTypeSchema = z.string().min(2).max(255)
+export const InstitutionPlacePrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<InstitutionPlacePrimitiveType>
+> =  z.string().min(2).max(255)
 
 /** The issue number or name in which an article is published. The issue number takes precedence over any other name. For example, if an issue has only a seasonal name, then the season should be listed in issue.
  * @minLength 1
  * @maxLength 32
  **/
-export const IssueSchema = XastElementSchema.extend({
+export const IssueSchema: z.ZodSchema<Issue> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1661,10 +2077,13 @@ export const IssueSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 32
  **/
-export const IssuePrimitiveTypeSchema = z.string().min(1).max(32)
+export const IssuePrimitiveTypeSchema: z.ZodSchema<IssuePrimitiveType> =  z
+  .string()
+  .min(1)
+  .max(32)
 
 /** A publisher-assigned number that uniquely identifies the item being registered.**/
-export const ItemNumberSchema = ItemNumberTSchema.extend({
+export const ItemNumberSchema: z.ZodSchema<ItemNumber> =  ItemNumberTSchema.extend({
   type: z.literal('element'),
   name: z.literal('item_number'),
   attributes: z.object({
@@ -1672,18 +2091,19 @@ export const ItemNumberSchema = ItemNumberTSchema.extend({
   }),
 })
 
-export const ItemNumberTypeSchema = XastElementSchema.extend({
-  name: z.literal('item_number_type'),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      value: z.string(),
-    }),
-  ]),
-})
+export const ItemNumberTypeSchema: z.ZodSchema<ItemNumberType> =
+  XastElementSchema.extend({
+    name: z.literal('item_number_type'),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        value: z.string(),
+      }),
+    ]),
+  })
 
 /** Journal title in a citation.**/
-export const JournalTitleSchema = XastElementSchema.extend({
+export const JournalTitleSchema: z.ZodSchema<JournalTitle> =  XastElementSchema.extend({
   name: z.literal('journal_title'),
   children: z.tuple([
     z.object({
@@ -1693,7 +2113,7 @@ export const JournalTitleSchema = XastElementSchema.extend({
   ]),
 })
 
-export const KeySchema = XastElementSchema.extend({
+export const KeySchema: z.ZodSchema<Key> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1707,13 +2127,13 @@ export const KeySchema = XastElementSchema.extend({
   ]),
 })
 
-export const KeyPrimitiveTypeSchema = z.string()
+export const KeyPrimitiveTypeSchema: z.ZodSchema<KeyPrimitiveType> =  z.string()
 
 /** This is the human-readable version of the name attribute which will be displayed in the CrossMark dialog. If this attribute is missing, then the value of the assertion will *not* be displayed in the dialog. Publishers may want to "hide" assertions this way in cases where the assertion value is too large or too complex to display in the dialog, but where the assertion is nonetheless valuable enough to include in API queries and metadata dumps (e.g. detailed licensing terms)
  * @minLength 2
  * @maxLength 150
  **/
-export const LabelSchema = XastElementSchema.extend({
+export const LabelSchema: z.ZodSchema<Label> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1731,11 +2151,14 @@ export const LabelSchema = XastElementSchema.extend({
  * @minLength 2
  * @maxLength 150
  **/
-export const CmAssertionLabelSchema = z.string().min(2).max(150)
+export const CmAssertionLabelSchema: z.ZodSchema<CmAssertionLabel> =  z
+  .string()
+  .min(2)
+  .max(150)
 
-export const ItemLabelSchema = z.string()
+export const ItemLabelSchema: z.ZodSchema<ItemLabel> =  z.string()
 
-export const LanguageSchema = z.union([
+export const LanguageSchema: z.ZodSchema<Language> =  z.union([
   z.literal('aa'),
   z.literal('ab'),
   z.literal('ae'),
@@ -1925,7 +2348,7 @@ export const LanguageSchema = z.union([
  * @minLength 1
  * @maxLength 32
  **/
-export const LastPageSchema = XastElementSchema.extend({
+export const LastPageSchema: z.ZodSchema<LastPage> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -1943,36 +2366,46 @@ export const LastPageSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 32
  **/
-export const LastPagePrimitiveTypeSchema = z.string().min(1).max(32)
+export const LastPagePrimitiveTypeSchema: z.ZodSchema<LastPagePrimitiveType> =  z
+  .string()
+  .min(1)
+  .max(32)
 
-export const LevelSequenceNumberSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @maxInclusive 9
-       * @maxLength 1
-       * @minLength 1
-       **/
-      value: z.string().min(1).max(1),
-    }),
-  ]),
-})
+export const LevelSequenceNumberSchema: z.ZodSchema<LevelSequenceNumber> =
+  XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @maxInclusive 9
+         * @maxLength 1
+         * @minLength 1
+         **/
+        value: z.string().min(1).max(1),
+      }),
+    ]),
+  })
 
-export const ContentItemLevelSequenceNumberSchema = z.string()
+export const ContentItemLevelSequenceNumberSchema: z.ZodLazy<
+  z.ZodSchema<ContentItemLevelSequenceNumber>
+> =  z.string()
 
-export const ItemLinkHeaderRelationshipSchema = z.literal('dul')
+export const ItemLinkHeaderRelationshipSchema: z.ZodSchema<ItemLinkHeaderRelationship> =
+  z.literal('dul')
 
-export const DateTMediaTypeSchema = z.union([
+export const DateTMediaTypeSchema: z.ZodSchema<DateTMediaType> =  z.union([
   z.literal('online'),
   z.literal('print'),
   z.literal('other'),
 ])
 
-export const MediaTypeSchema = z.union([z.literal('print'), z.literal('electronic')])
+export const MediaTypeSchema: z.ZodSchema<MediaType> =  z.union([
+  z.literal('print'),
+  z.literal('electronic'),
+])
 
-export const MimeTypeSchema = z.union([
+export const MimeTypeSchema: z.ZodSchema<MimeType> =  z.union([
   z.literal('text/css'),
   z.literal('text/csv'),
   z.literal('text/enriched'),
@@ -2124,7 +2557,7 @@ export const MimeTypeSchema = z.union([
  * @maxLength 2
  * @minLength 2
  **/
-export const MonthSchema = XastElementSchema.extend({
+export const MonthSchema: z.ZodSchema<Month> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2139,9 +2572,10 @@ export const MonthSchema = XastElementSchema.extend({
   ]),
 })
 
-export const CollectionMultiResolutionSchema = z.union([z.literal('lock'), z.literal('unlock')])
+export const CollectionMultiResolutionSchema: z.ZodSchema<CollectionMultiResolution> =
+  z.union([z.literal('lock'), z.literal('unlock')])
 
-export const ArchiveNameSchema = z.union([
+export const ArchiveNameSchema: z.ZodSchema<ArchiveName> =  z.union([
   z.literal('CLOCKSS'),
   z.literal('LOCKSS'),
   z.literal('Portico'),
@@ -2154,23 +2588,26 @@ export const ArchiveNameSchema = z.union([
  * @minLength 2
  * @maxLength 150
  **/
-export const CmAssertionNameSchema = z.string().min(2).max(150)
+export const CmAssertionNameSchema: z.ZodSchema<CmAssertionName> =  z
+  .string()
+  .min(2)
+  .max(150)
 
-export const NameNameStyleSchema = z.union([
+export const NameNameStyleSchema: z.ZodSchema<NameNameStyle> =  z.union([
   z.literal('western'),
   z.literal('eastern'),
   z.literal('islensk'),
   z.literal('given-only'),
 ])
 
-export const StringNameNameStyleSchema = z.union([
+export const StringNameNameStyleSchema: z.ZodSchema<StringNameNameStyle> =  z.union([
   z.literal('western'),
   z.literal('eastern'),
   z.literal('islensk'),
   z.literal('given-only'),
 ])
 
-export const NameStyleSchema = z.union([
+export const NameStyleSchema: z.ZodSchema<NameStyle> =  z.union([
   z.literal('western'),
   z.literal('eastern'),
   z.literal('islensk'),
@@ -2178,7 +2615,7 @@ export const NameStyleSchema = z.union([
 ])
 
 /** The ORCID iD for an author.**/
-export const ORCIDSchema = OrcidTSchema.extend({
+export const ORCIDSchema: z.ZodSchema<ORCID> =  OrcidTSchema.extend({
   type: z.literal('element'),
   name: z.literal('ORCID'),
   attributes: z.object({
@@ -2187,7 +2624,7 @@ export const ORCIDSchema = OrcidTSchema.extend({
 })
 
 /** The publisher may want to control the order in which assertions are displayed to the user in the CrossMark dialog. All assertions will be sorted by this element if it is present.**/
-export const OrderSchema = XastElementSchema.extend({
+export const OrderSchema: z.ZodSchema<Order> =  XastElementSchema.extend({
   name: z.literal('order'),
   children: z.tuple([
     z.object({
@@ -2198,21 +2635,22 @@ export const OrderSchema = XastElementSchema.extend({
 })
 
 /** The title of an item in its original language if the registration is for a translation of a work.**/
-export const OriginalLanguageTitleSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('original_language_title'),
-  attributes: z.object({
-    language: LanguageSchema.optional(),
-  }),
-  /** XastElement is self-closing */
-  children: z.tuple([]),
-})
+export const OriginalLanguageTitleSchema: z.ZodSchema<OriginalLanguageTitle> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('original_language_title'),
+    attributes: z.object({
+      language: LanguageSchema.optional(),
+    }),
+    /** XastElement is self-closing */
+    children: z.tuple([]),
+  })
 
 /** When an item has non-contiguous page information, capture the first page range in first_page and last_page. Any additional page information should be captured in other_pages.
  * @minLength 1
  * @maxLength 100
  **/
-export const OtherPagesSchema = XastElementSchema.extend({
+export const OtherPagesSchema: z.ZodSchema<OtherPages> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2230,16 +2668,19 @@ export const OtherPagesSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 100
  **/
-export const OtherPagesPrimitiveTypeSchema = z.string().min(1).max(100)
+export const OtherPagesPrimitiveTypeSchema: z.ZodSchema<OtherPagesPrimitiveType> =  z
+  .string()
+  .min(1)
+  .max(100)
 
 /** The container for information about page ranges.**/
-export const PagesSchema = XastElementSchema.extend({
+export const PagesSchema: z.ZodSchema<Pages> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('pages'),
   children: z.array(z.union([FirstPageSchema, LastPageSchema, OtherPagesSchema])),
 })
 
-export const ParentDoiSchema = XastElementSchema.extend({
+export const ParentDoiSchema: z.ZodSchema<ParentDoi> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2253,20 +2694,21 @@ export const ParentDoiSchema = XastElementSchema.extend({
   ]),
 })
 
-export const SaComponentParentDoiSchema = z.string()
+export const SaComponentParentDoiSchema: z.ZodSchema<SaComponentParentDoi> =  z.string()
 
-export const ComponentParentRelationSchema = z.union([
-  z.literal('isPartOf'),
-  z.literal('isReferencedBy'),
-  z.literal('isRequiredBy'),
-  z.literal('isTranslationOf'),
-])
+export const ComponentParentRelationSchema: z.ZodSchema<ComponentParentRelation> =
+  z.union([
+    z.literal('isPartOf'),
+    z.literal('isReferencedBy'),
+    z.literal('isRequiredBy'),
+    z.literal('isTranslationOf'),
+  ])
 
 /** The part number of a given volume. In some cases, a book set will have multiple parts, and then one or more volumes within each part. The part number of a given volume should be deposited in this element.
  * @minLength 1
  * @maxLength 15
  **/
-export const PartNumberSchema = XastElementSchema.extend({
+export const PartNumberSchema: z.ZodSchema<PartNumber> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2284,9 +2726,12 @@ export const PartNumberSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 15
  **/
-export const PartNumberPrimitiveTypeSchema = z.string().min(1).max(15)
+export const PartNumberPrimitiveTypeSchema: z.ZodSchema<PartNumberPrimitiveType> =  z
+  .string()
+  .min(1)
+  .max(15)
 
-export const PrefixSchema = XastElementSchema.extend({
+export const PrefixSchema: z.ZodSchema<Prefix> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('prefix'),
   attributes: z.object({
@@ -2300,51 +2745,57 @@ export const PrefixSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 255
  **/
-export const ProceedingsSubjectSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 1
-       * @maxLength 255
-       **/
-      value: z.string().min(1).max(255),
-    }),
-  ]),
-})
+export const ProceedingsSubjectSchema: z.ZodSchema<ProceedingsSubject> =
+  XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 1
+         * @maxLength 255
+         **/
+        value: z.string().min(1).max(255),
+      }),
+    ]),
+  })
 
 /** The subject of the conference proceeding, e.g. "Computer Graphics" is the subject matter of SIGGRAPH.
  * @minLength 1
  * @maxLength 255
  **/
-export const ProceedingsSubjectPrimitiveTypeSchema = z.string().min(1).max(255)
+export const ProceedingsSubjectPrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<ProceedingsSubjectPrimitiveType>
+> =  z.string().min(1).max(255)
 
 /** The undifferentiated title of a conference proceeding.
  * @minLength 1
  * @maxLength 511
  **/
-export const ProceedingsTitleSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 1
-       * @maxLength 511
-       **/
-      value: z.string().min(1).max(511),
-    }),
-  ]),
-})
+export const ProceedingsTitleSchema: z.ZodSchema<ProceedingsTitle> =
+  XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 1
+         * @maxLength 511
+         **/
+        value: z.string().min(1).max(511),
+      }),
+    ]),
+  })
 
 /** The undifferentiated title of a conference proceeding.
  * @minLength 1
  * @maxLength 511
  **/
-export const ProceedingsTitlePrimitiveTypeSchema = z.string().min(1).max(511)
+export const ProceedingsTitlePrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<ProceedingsTitlePrimitiveType>
+> =  z.string().min(1).max(511)
 
-export const CollectionPropertySchema = z.union([
+export const CollectionPropertySchema: z.ZodSchema<CollectionProperty> =  z.union([
   z.literal('list-based'),
   z.literal('country-based'),
   z.literal('crawler-based'),
@@ -2355,25 +2806,24 @@ export const CollectionPropertySchema = z.union([
 ])
 
 /** Used to define a publication (book, journal, etc) for pending publication content. A title must be supplied, as well as an ISSN, ISBN, or title-level DOI**/
-export const PublicationSchema = XastElementSchema.extend({
+export const PublicationSchema: z.ZodSchema<Publication> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('publication'),
   children: z.array(FullTitleSchema),
 })
 
-export const StandardMetadataPublicationStatusSchema = z.union([
-  z.literal('released'),
-  z.literal('withdrawn'),
-])
+export const StandardMetadataPublicationStatusSchema: z.ZodLazy<
+  z.ZodSchema<StandardMetadataPublicationStatus>
+> =  z.union([z.literal('released'), z.literal('withdrawn')])
 
-export const PublicationTypeSchema = z.union([
+export const PublicationTypeSchema: z.ZodSchema<PublicationType> =  z.union([
   z.literal('abstract_only'),
   z.literal('full_text'),
   z.literal('bibliographic_record'),
 ])
 
 /** A container for item identification numbers set by a publisher.**/
-export const PublisherItemSchema = XastElementSchema.extend({
+export const PublisherItemSchema: z.ZodSchema<PublisherItem> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('publisher_item'),
   children: z.array(z.union([IdentifierSchema, ItemNumberSchema])),
@@ -2383,7 +2833,7 @@ export const PublisherItemSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 255
  **/
-export const PublisherNameSchema = XastElementSchema.extend({
+export const PublisherNameSchema: z.ZodSchema<PublisherName> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2401,56 +2851,59 @@ export const PublisherNameSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 255
  **/
-export const PublisherNamePrimitiveTypeSchema = z.string().min(1).max(255)
+export const PublisherNamePrimitiveTypeSchema: z.ZodSchema<PublisherNamePrimitiveType> =
+  z.string().min(1).max(255)
 
 /** publisher_place gives the primary city location of the publisher.  If the city is not a major city, the appropriate country, state, or province should be added.
  * @minLength 2
  * @maxLength 255
  **/
-export const PublisherPlaceSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 2
-       * @maxLength 255
-       **/
-      value: z.string().min(2).max(255),
-    }),
-  ]),
-})
+export const PublisherPlaceSchema: z.ZodSchema<PublisherPlace> =
+  XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 2
+         * @maxLength 255
+         **/
+        value: z.string().min(2).max(255),
+      }),
+    ]),
+  })
 
 /** publisher_place gives the primary city location of the publisher.  If the city is not a major city, the appropriate country, state, or province should be added.
  * @minLength 2
  * @maxLength 255
  **/
-export const PublisherPlacePrimitiveTypeSchema = z.string().min(2).max(255)
+export const PublisherPlacePrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<PublisherPlacePrimitiveType>
+> =  z.string().min(2).max(255)
 
-export const NoisbnReasonSchema = z.union([
+export const NoisbnReasonSchema: z.ZodSchema<NoisbnReason> =  z.union([
   z.literal('archive_volume'),
   z.literal('monograph'),
   z.literal('simple_series'),
 ])
 
-export const StdAltAsPublishedReasonSchema = z.string()
+export const StdAltAsPublishedReasonSchema: z.ZodSchema<StdAltAsPublishedReason> =
+  z.string()
 
-export const PeerReviewRecommendationSchema = z.union([
-  z.literal('major-revision'),
-  z.literal('minor-revision'),
-  z.literal('reject'),
-  z.literal('reject-with-resubmit'),
-  z.literal('accept'),
-  z.literal('accept-with-reservation'),
-])
+export const PeerReviewRecommendationSchema: z.ZodSchema<PeerReviewRecommendation> =
+  z.union([
+    z.literal('major-revision'),
+    z.literal('minor-revision'),
+    z.literal('reject'),
+    z.literal('reject-with-resubmit'),
+    z.literal('accept'),
+    z.literal('accept-with-reservation'),
+  ])
 
-export const ReferenceDistributionOptsSchema = z.union([
-  z.literal('none'),
-  z.literal('query'),
-  z.literal('any'),
-])
+export const ReferenceDistributionOptsSchema: z.ZodSchema<ReferenceDistributionOpts> =
+  z.union([z.literal('none'), z.literal('query'), z.literal('any')])
 
-export const RegAgencySchema = XastElementSchema.extend({
+export const RegAgencySchema: z.ZodSchema<RegAgency> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2460,13 +2913,13 @@ export const RegAgencySchema = XastElementSchema.extend({
   ]),
 })
 
-export const ComponentRegAgencySchema = z.string()
+export const ComponentRegAgencySchema: z.ZodSchema<ComponentRegAgency> =  z.string()
 
 /** The organization responsible for the information being registered.
  * @minLength 1
  * @maxLength 255
  **/
-export const RegistrantSchema = XastElementSchema.extend({
+export const RegistrantSchema: z.ZodSchema<Registrant> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2484,10 +2937,13 @@ export const RegistrantSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 255
  **/
-export const RegistrantPrimitiveTypeSchema = z.string().min(1).max(255)
+export const RegistrantPrimitiveTypeSchema: z.ZodSchema<RegistrantPrimitiveType> =  z
+  .string()
+  .min(1)
+  .max(255)
 
 /** The URI associated with a DOI.**/
-export const ResourceSchema = ResourceTSchema.extend({
+export const ResourceSchema: z.ZodSchema<Resource> =  ResourceTSchema.extend({
   type: z.literal('element'),
   name: z.literal('resource'),
   attributes: z.object({
@@ -2497,7 +2953,7 @@ export const ResourceSchema = ResourceTSchema.extend({
 })
 
 /** Required attribute. First submission defined as revision round zero**/
-export const RevisionRoundSchema = XastElementSchema.extend({
+export const RevisionRoundSchema: z.ZodSchema<RevisionRound> =  XastElementSchema.extend({
   name: z.literal('revision-round'),
   children: z.tuple([
     z.object({
@@ -2508,7 +2964,7 @@ export const RevisionRoundSchema = XastElementSchema.extend({
 })
 
 /** Running numbers to specify the various reports (ex: RC1 to RC4)**/
-export const RunningNumberSchema = XastElementSchema.extend({
+export const RunningNumberSchema: z.ZodSchema<RunningNumber> =  XastElementSchema.extend({
   name: z.literal('running_number'),
   children: z.tuple([
     z.object({
@@ -2523,7 +2979,7 @@ export const RunningNumberSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 2048
  **/
-export const ScnPolicyRefSchema = XastElementSchema.extend({
+export const ScnPolicyRefSchema: z.ZodSchema<ScnPolicyRef> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2547,14 +3003,14 @@ export const ScnPolicyRefSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 2048
  **/
-export const ScnPolicyRefPrimitiveTypeSchema = z
+export const ScnPolicyRefPrimitiveTypeSchema: z.ZodSchema<ScnPolicyRefPrimitiveType> =  z
   .string()
   .min(1)
   .max(2048)
   .regex(/([hH][tT][tT][pP]|[hH][tT][tT][pP][sS]|[fF][tT][pP]):\/\/.*/)
 
 /** A group of related SCN policies**/
-export const ScnPolicySetSchema = XastElementSchema.extend({
+export const ScnPolicySetSchema: z.ZodSchema<ScnPolicySet> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('scn_policy_set'),
   attributes: z.object({
@@ -2564,13 +3020,16 @@ export const ScnPolicySetSchema = XastElementSchema.extend({
   children: z.array(ScnPolicyRefSchema),
 })
 
-export const SequenceSchema = z.union([z.literal('first'), z.literal('additional')])
+export const SequenceSchema: z.ZodSchema<Sequence> =  z.union([
+  z.literal('first'),
+  z.literal('additional'),
+])
 
 /** The series number within a specific published conference discipline.
  * @minLength 1
  * @maxLength 15
  **/
-export const SeriesNumberSchema = XastElementSchema.extend({
+export const SeriesNumberSchema: z.ZodSchema<SeriesNumber> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2588,10 +3047,13 @@ export const SeriesNumberSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 15
  **/
-export const SeriesNumberPrimitiveTypeSchema = z.string().min(1).max(15)
+export const SeriesNumberPrimitiveTypeSchema: z.ZodSchema<SeriesNumberPrimitiveType> =  z
+  .string()
+  .min(1)
+  .max(15)
 
 /** Book series title in a citation.**/
-export const SeriesTitleSchema = XastElementSchema.extend({
+export const SeriesTitleSchema: z.ZodSchema<SeriesTitle> =  XastElementSchema.extend({
   name: z.literal('series_title'),
   children: z.tuple([
     z.object({
@@ -2601,7 +3063,7 @@ export const SeriesTitleSchema = XastElementSchema.extend({
   ]),
 })
 
-export const SetSchema = XastElementSchema.extend({
+export const SetSchema: z.ZodSchema<Set> =  XastElementSchema.extend({
   name: z.literal('set'),
   children: z.tuple([
     z.object({
@@ -2615,39 +3077,42 @@ export const SetSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 15
  **/
-export const SpecialNumberingSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 1
-       * @maxLength 15
-       **/
-      value: z.string().min(1).max(15),
-    }),
-  ]),
-})
+export const SpecialNumberingSchema: z.ZodSchema<SpecialNumbering> =
+  XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 1
+         * @maxLength 15
+         **/
+        value: z.string().min(1).max(15),
+      }),
+    ]),
+  })
 
 /** Issue level numbering for supplements or special issues. Text defining the type of special issue (e.g. "suppl") should be included in this element along with the number.
  * @minLength 1
  * @maxLength 15
  **/
-export const SpecialNumberingPrimitiveTypeSchema = z.string().min(1).max(15)
+export const SpecialNumberingPrimitiveTypeSchema: z.ZodLazy<
+  z.ZodSchema<SpecialNumberingPrimitiveType>
+> =  z.string().min(1).max(15)
 
-export const PeerReviewStageSchema = z.union([
+export const PeerReviewStageSchema: z.ZodSchema<PeerReviewStage> =  z.union([
   z.literal('pre-publication'),
   z.literal('post-publication'),
 ])
 
 /** A wrapper for standards body information.**/
-export const StandardsBodySchema = XastElementSchema.extend({
+export const StandardsBodySchema: z.ZodSchema<StandardsBody> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('standards_body'),
   children: z.tuple([]),
 })
 
-export const StartDateSchema = XastElementSchema.extend({
+export const StartDateSchema: z.ZodSchema<StartDate> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2657,7 +3122,7 @@ export const StartDateSchema = XastElementSchema.extend({
   ]),
 })
 
-export const StartDaySchema = XastElementSchema.extend({
+export const StartDaySchema: z.ZodSchema<StartDay> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2672,7 +3137,7 @@ export const StartDaySchema = XastElementSchema.extend({
   ]),
 })
 
-export const StartMonthSchema = XastElementSchema.extend({
+export const StartMonthSchema: z.ZodSchema<StartMonth> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2692,7 +3157,7 @@ export const StartMonthSchema = XastElementSchema.extend({
  * @maxLength 4
  * @minLength 4
  **/
-export const StartYearSchema = XastElementSchema.extend({
+export const StartYearSchema: z.ZodSchema<StartYear> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2712,28 +3177,32 @@ export const StartYearSchema = XastElementSchema.extend({
   * @maxLength 150
 
 **/
-export const StdAdoptedFromSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 2
-       * @maxLength 150
-       **/
-      value: z.string().min(2).max(150),
-    }),
-  ]),
-})
+export const StdAdoptedFromSchema: z.ZodSchema<StdAdoptedFrom> =
+  XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 2
+         * @maxLength 150
+         **/
+        value: z.string().min(2).max(150),
+      }),
+    ]),
+  })
 
 /** Designator for standard from which the current deposit is adopted.
    * @minLength 2
   * @maxLength 150
 
 **/
-export const StdDesignatorvalueTSchema = z.string().min(2).max(150)
+export const StdDesignatorvalueTSchema: z.ZodSchema<StdDesignatorvalueT> =  z
+  .string()
+  .min(2)
+  .max(150)
 
-export const StdAltScriptSchema = XastElementSchema.extend({
+export const StdAltScriptSchema: z.ZodSchema<StdAltScript> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2747,7 +3216,7 @@ export const StdAltScriptSchema = XastElementSchema.extend({
   ]),
 })
 
-export const StdDesignatorSchema = XastElementSchema.extend({
+export const StdDesignatorSchema: z.ZodSchema<StdDesignator> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2761,17 +3230,18 @@ export const StdDesignatorSchema = XastElementSchema.extend({
   ]),
 })
 
-export const StdDesignatorTSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.string(),
-})
+export const StdDesignatorTSchema: z.ZodSchema<StdDesignatorT> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.string(),
+  })
 
 /** Designator for the previous revision of the standard being deposited. (note: use alt_as_published for revisions within designators having common stem)
    * @minLength 2
   * @maxLength 150
 
 **/
-export const StdRevisionOfSchema = XastElementSchema.extend({
+export const StdRevisionOfSchema: z.ZodSchema<StdRevisionOf> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2786,19 +3256,20 @@ export const StdRevisionOfSchema = XastElementSchema.extend({
 })
 
 /** Provides for defining a DOI for a set of standards (sometimes know as truncated form).**/
-export const StdSetDesignatorSchema = StdDesignatorTSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('std_set_designator'),
-  attributes: z.object({
-    family: z.string(),
-  }),
-})
+export const StdSetDesignatorSchema: z.ZodSchema<StdSetDesignator> =
+  StdDesignatorTSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('std_set_designator'),
+    attributes: z.object({
+      family: z.string(),
+    }),
+  })
 
 /** Designator for standard being replaced by the standard being deposited.
  * @minLength 2
  * @maxLength 150
  **/
-export const StdSupersedesSchema = XastElementSchema.extend({
+export const StdSupersedesSchema: z.ZodSchema<StdSupersedes> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2813,31 +3284,33 @@ export const StdSupersedesSchema = XastElementSchema.extend({
 })
 
 /** Provides for defining a DOI for a group of closely related standard documents (undated form is a stem for any dated form)**/
-export const StdUndatedDesignatorSchema = StdDesignatorTSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('std_undated_designator'),
-  attributes: z.object({
-    family: z.string(),
-    set: z.string(),
-  }),
-})
-
-export const StdVariantFormSchema = XastElementSchema.extend({
-  name: z.string(),
-  children: z.tuple([
-    z.object({
-      type: z.literal('text'),
-      /**
-       * @minLength 2
-       * @maxLength 150
-       **/
-      value: z.string().min(2).max(150),
+export const StdUndatedDesignatorSchema: z.ZodSchema<StdUndatedDesignator> =
+  StdDesignatorTSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('std_undated_designator'),
+    attributes: z.object({
+      family: z.string(),
+      set: z.string(),
     }),
-  ]),
-})
+  })
+
+export const StdVariantFormSchema: z.ZodSchema<StdVariantForm> =
+  XastElementSchema.extend({
+    name: z.string(),
+    children: z.tuple([
+      z.object({
+        type: z.literal('text'),
+        /**
+         * @minLength 2
+         * @maxLength 150
+         **/
+        value: z.string().min(2).max(150),
+      }),
+    ]),
+  })
 
 /** The sub-title portion of a title.**/
-export const SubtitleSchema = XastElementSchema.extend({
+export const SubtitleSchema: z.ZodSchema<Subtitle> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('subtitle'),
   children: z.tuple([]),
@@ -2847,7 +3320,7 @@ export const SubtitleSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 10
  **/
-export const SuffixSchema = XastElementSchema.extend({
+export const SuffixSchema: z.ZodSchema<Suffix> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2865,14 +3338,17 @@ export const SuffixSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 10
  **/
-export const SuffixPrimitiveTypeSchema = z.string().min(1).max(10)
+export const SuffixPrimitiveTypeSchema: z.ZodSchema<SuffixPrimitiveType> =  z
+  .string()
+  .min(1)
+  .max(10)
 
 /** The family_name of a contributor.
  * @pattern [^\d\?]*[^\?\s]+[^\d]*
  * @minLength 1
  * @maxLength 60
  **/
-export const SurnameSchema = XastElementSchema.extend({
+export const SurnameSchema: z.ZodSchema<Surname> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -2896,14 +3372,14 @@ export const SurnameSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 60
  **/
-export const SurnamePrimitiveTypeSchema = z
+export const SurnamePrimitiveTypeSchema: z.ZodSchema<SurnamePrimitiveType> =  z
   .string()
   .min(1)
   .max(60)
   .regex(/[^\d\?]*[^\?\s]+[^\d]*/)
 
 /** An integer representation of date and time that serves as a version number for the record that is being deposited, used to uniquely identify batch files and DOI values when a DOI has been updated one or more times.**/
-export const TimestampSchema = XastElementSchema.extend({
+export const TimestampSchema: z.ZodSchema<Timestamp> =  XastElementSchema.extend({
   name: z.literal('timestamp'),
   children: z.tuple([
     z.object({
@@ -2914,20 +3390,20 @@ export const TimestampSchema = XastElementSchema.extend({
 })
 
 /** The title of the item being registered.**/
-export const TitleSchema = XastElementSchema.extend({
+export const TitleSchema: z.ZodSchema<Title> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('title'),
   children: z.tuple([]),
 })
 
 /** A container for the title and original language title elements.**/
-export const TitlesSchema = XastElementSchema.extend({
+export const TitlesSchema: z.ZodSchema<Titles> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('titles'),
   children: z.array(z.union([OriginalLanguageTitleSchema, SubtitleSchema, TitleSchema])),
 })
 
-export const InstitutionIdTypeSchema = z.union([
+export const InstitutionIdTypeSchema: z.ZodSchema<InstitutionIdType> =  z.union([
   z.literal('ror'),
   z.literal('isni'),
   z.literal('wikidata'),
@@ -2947,7 +3423,7 @@ export const InstitutionIdTypeSchema = z.union([
  * retraction
  * withdrawal
  **/
-export const CmUpdateTypeSchema = z.union([
+export const CmUpdateTypeSchema: z.ZodSchema<CmUpdateType> =  z.union([
   z.literal('addendum'),
   z.literal('clarification'),
   z.literal('correction'),
@@ -2962,7 +3438,7 @@ export const CmUpdateTypeSchema = z.union([
   z.literal('withdrawal'),
 ])
 
-export const PeerReviewTypeSchema = z.union([
+export const PeerReviewTypeSchema: z.ZodSchema<PeerReviewType> =  z.union([
   z.literal('referee-report'),
   z.literal('editor-report'),
   z.literal('author-comment'),
@@ -2972,7 +3448,7 @@ export const PeerReviewTypeSchema = z.union([
   z.literal('recommendation'),
 ])
 
-export const PostedContentTypeSchema = z.union([
+export const PostedContentTypeSchema: z.ZodSchema<PostedContentType> =  z.union([
   z.literal('preprint'),
   z.literal('working_paper'),
   z.literal('letter'),
@@ -2982,7 +3458,7 @@ export const PostedContentTypeSchema = z.union([
   z.literal('other'),
 ])
 
-export const UndatedSchema = XastElementSchema.extend({
+export const UndatedSchema: z.ZodSchema<Undated> =  XastElementSchema.extend({
   name: z.literal('undated'),
   children: z.tuple([
     z.object({
@@ -2993,14 +3469,15 @@ export const UndatedSchema = XastElementSchema.extend({
 })
 
 /** A citation to an item that is not structured with the Crossref citation model.  'unstructured_citation' supports deposit of references for which no structural information is available.**/
-export const UnstructuredCitationSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('unstructured_citation'),
-  children: z.tuple([]),
-})
+export const UnstructuredCitationSchema: z.ZodSchema<UnstructuredCitation> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('unstructured_citation'),
+    children: z.tuple([]),
+  })
 
 /** The DOI of the content being updated (e.g. corrected, retracted, etc.) In the CrossMark Terms and Conditions "updates" are defined as changes that are likely to "change the reader’s interpretation or crediting of the work." That is, *editorially significant* changes. "Updates" should not include minor changes to spelling, punctuation, formatting, etc.**/
-export const UpdateSchema = DoiTSchema.extend({
+export const UpdateSchema: z.ZodSchema<Update> =  DoiTSchema.extend({
   type: z.literal('element'),
   name: z.literal('update'),
   attributes: z.object({
@@ -3026,13 +3503,13 @@ export const UpdateSchema = DoiTSchema.extend({
 })
 
 /** A document might provide updates (e.g. corrections, clarifications, retractions) to several other documents. When this is the case, the DOIs of the documents that are being *updated* should be listed here.**/
-export const UpdatesSchema = XastElementSchema.extend({
+export const UpdatesSchema: z.ZodSchema<Updates> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('updates'),
   children: z.array(UpdateSchema),
 })
 
-export const VersionSchema = XastElementSchema.extend({
+export const VersionSchema: z.ZodSchema<Version> =  XastElementSchema.extend({
   name: z.literal('version'),
   children: z.tuple([
     z.object({
@@ -3046,7 +3523,7 @@ export const VersionSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 32
  **/
-export const VolumeSchema = XastElementSchema.extend({
+export const VolumeSchema: z.ZodSchema<Volume> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -3064,10 +3541,13 @@ export const VolumeSchema = XastElementSchema.extend({
  * @minLength 1
  * @maxLength 32
  **/
-export const VolumePrimitiveTypeSchema = z.string().min(1).max(32)
+export const VolumePrimitiveTypeSchema: z.ZodSchema<VolumePrimitiveType> =  z
+  .string()
+  .min(1)
+  .max(32)
 
 /** Book volume title in a citation.**/
-export const VolumeTitleSchema = XastElementSchema.extend({
+export const VolumeTitleSchema: z.ZodSchema<VolumeTitle> =  XastElementSchema.extend({
   name: z.literal('volume_title'),
   children: z.tuple([
     z.object({
@@ -3082,7 +3562,7 @@ export const VolumeTitleSchema = XastElementSchema.extend({
  * @maxLength 4
  * @minLength 4
  **/
-export const YearSchema = XastElementSchema.extend({
+export const YearSchema: z.ZodSchema<Year> =  XastElementSchema.extend({
   name: z.string(),
   children: z.tuple([
     z.object({
@@ -3097,7 +3577,7 @@ export const YearSchema = XastElementSchema.extend({
   ]),
 })
 
-export const DateTSchema = XastElementSchema.extend({
+export const DateTSchema: z.ZodSchema<DateT> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.string(),
   attributes: z.object({
@@ -3107,19 +3587,19 @@ export const DateTSchema = XastElementSchema.extend({
 })
 
 /** The date a manuscript was accepted for publication.**/
-export const AcceptanceDateSchema = DateTSchema.extend({
+export const AcceptanceDateSchema: z.ZodSchema<AcceptanceDate> =  DateTSchema.extend({
   type: z.literal('element'),
   name: z.literal('acceptance_date'),
 })
 
 /** The date on which a dissertation was accepted by the institution awarding the degree, a report was approved, or a standard was accepted.**/
-export const ApprovalDateSchema = DateTSchema.extend({
+export const ApprovalDateSchema: z.ZodSchema<ApprovalDate> =  DateTSchema.extend({
   type: z.literal('element'),
   name: z.literal('approval_date'),
 })
 
 /** Used to indicate the designated archiving organization(s) for an item.**/
-export const ArchiveSchema = XastElementSchema.extend({
+export const ArchiveSchema: z.ZodSchema<Archive> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('archive'),
   attributes: z.object({
@@ -3130,50 +3610,54 @@ export const ArchiveSchema = XastElementSchema.extend({
 })
 
 /** Container element for archive information**/
-export const ArchiveLocationsSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('archive_locations'),
-  children: z.array(ArchiveSchema),
-})
+export const ArchiveLocationsSchema: z.ZodSchema<ArchiveLocations> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('archive_locations'),
+    children: z.array(ArchiveSchema),
+  })
 
 /** Statement of competing interest supplied by a review author during the review process.**/
-export const CompetingInterestStatementSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('competing_interest_statement'),
-  attributes: z.object({
-    language: LanguageSchema.optional(),
-  }),
-  /** XastElement is self-closing */
-  children: z.tuple([]),
-})
+export const CompetingInterestStatementSchema: z.ZodSchema<CompetingInterestStatement> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('competing_interest_statement'),
+    attributes: z.object({
+      language: LanguageSchema.optional(),
+    }),
+    /** XastElement is self-closing */
+    children: z.tuple([]),
+  })
 
 /** The date a piece of content was created.**/
-export const ContentDateSchema = DateTSchema.extend({
+export const ContentDateSchema: z.ZodSchema<ContentDate> =  DateTSchema.extend({
   type: z.literal('element'),
   name: z.literal('content_date'),
 })
 
 /** The date a database or dataset item was created.**/
-export const CreationDateSchema = DateTSchema.extend({
+export const CreationDateSchema: z.ZodSchema<CreationDate> =  DateTSchema.extend({
   type: z.literal('element'),
   name: z.literal('creation_date'),
 })
 
 /** This should be a simple Internet domain name or subdomain name (e.g. www.psychoceramics.org or psychoceramics.org). It is used to identify when a referring URL is coming from a Crossmark domain. A "crossmark_domain" is made up of two subelements; a "domain" and a "filter". The filter is only needed for use in situations where content from multiple publishers/publications is on the same host with the same domain name (e.g. an aggregator) and one needs to use the referrer's URI "path" to further determine whether the content in a crossmark domain.**/
-export const CrossmarkDomainSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('crossmark_domain'),
-  children: z.array(z.union([DomainSchema, FilterSchema])),
-})
+export const CrossmarkDomainSchema: z.ZodSchema<CrossmarkDomain> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('crossmark_domain'),
+    children: z.array(z.union([DomainSchema, FilterSchema])),
+  })
 
 /** Container element for crossmark_domain. A list of domains where the publisher maintains updates and corrections to their content. Minimally, one of these should include the Internet domain name of the publisher's web site(s), but the publisher might also decide to include 3rd party aggregators (e.g. Ebsco, IngentaConnect) or archives with which the publisher has agreements to update the content**/
-export const CrossmarkDomainsSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('crossmark_domains'),
-  children: z.array(CrossmarkDomainSchema),
-})
+export const CrossmarkDomainsSchema: z.ZodSchema<CrossmarkDomains> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('crossmark_domains'),
+    children: z.array(CrossmarkDomainSchema),
+  })
 
-export const DegreesSchema = XastElementSchema.extend({
+export const DegreesSchema: z.ZodSchema<Degrees> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('degrees'),
   attributes: z.object({
@@ -3184,14 +3668,14 @@ export const DegreesSchema = XastElementSchema.extend({
 })
 
 /** Information about the organization submitting DOI metadata to Crossref**/
-export const DepositorSchema = XastElementSchema.extend({
+export const DepositorSchema: z.ZodSchema<Depositor> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('depositor'),
   children: z.array(z.union([DepositorNameSchema, EmailAddressSchema])),
 })
 
 /** A narrative description of a file (e.g. a figure caption or video description).**/
-export const DescriptionSchema = XastElementSchema.extend({
+export const DescriptionSchema: z.ZodSchema<Description> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('description'),
   attributes: z.object({
@@ -3202,14 +3686,14 @@ export const DescriptionSchema = XastElementSchema.extend({
 })
 
 /** A wrapper for designators or other primary identifiers for a standard.**/
-export const DesignatorsSchema = XastElementSchema.extend({
+export const DesignatorsSchema: z.ZodSchema<Designators> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('designators'),
   children: z.array(z.union([StdAdoptedFromSchema, StdRevisionOfSchema, StdSupersedesSchema])),
 })
 
 /** A narrative description of a component's file format and/or file extension.**/
-export const FormatSchema = FormatTSchema.extend({
+export const FormatSchema: z.ZodSchema<Format> =  FormatTSchema.extend({
   type: z.literal('element'),
   name: z.literal('format'),
   attributes: z.object({
@@ -3219,7 +3703,7 @@ export const FormatSchema = FormatTSchema.extend({
 
 /** Container for information related to the DOI batch submission. This element uniquely identifies the batch deposit to Crossref and contains information that will be used as a reference in error messages triggered during submission processing.
  **/
-export const HeadSchema = XastElementSchema.extend({
+export const HeadSchema: z.ZodSchema<Head> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('head'),
   children: z.array(
@@ -3228,7 +3712,7 @@ export const HeadSchema = XastElementSchema.extend({
 })
 
 /** Identifier for an institution or organization (currently supported: ROR, ISNI, Wikidata). Identifiers must be included as a URI**/
-export const InstitutionIdSchema = PIDSchema.extend({
+export const InstitutionIdSchema: z.ZodSchema<InstitutionId> =  PIDSchema.extend({
   type: z.literal('element'),
   name: z.literal('institution_id'),
   attributes: z.object({
@@ -3237,17 +3721,18 @@ export const InstitutionIdSchema = PIDSchema.extend({
 })
 
 /** Member's custom statement of intent to publish content for which a pending publication DOI has been created**/
-export const IntentStatementSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('intent_statement'),
-  attributes: z.object({
-    language: LanguageSchema.optional(),
-  }),
-  children: z.array(z.union([ASchema, XrefFacesSchema, XrefFacesSchema, XrefFacesSchema])),
-})
+export const IntentStatementSchema: z.ZodSchema<IntentStatement> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('intent_statement'),
+    attributes: z.object({
+      language: LanguageSchema.optional(),
+    }),
+    children: z.array(z.union([ASchema, XrefFacesSchema, XrefFacesSchema, XrefFacesSchema])),
+  })
 
 /** The ISBN assigned to an entity.**/
-export const IsbnSchema = IsbnTSchema.extend({
+export const IsbnSchema: z.ZodSchema<Isbn> =  IsbnTSchema.extend({
   type: z.literal('element'),
   name: z.literal('isbn'),
   attributes: z.object({
@@ -3256,7 +3741,7 @@ export const IsbnSchema = IsbnTSchema.extend({
 })
 
 /** The ISSN assigned to the title being registered.**/
-export const IssnSchema = IssnTSchema.extend({
+export const IssnSchema: z.ZodSchema<Issn> =  IssnTSchema.extend({
   type: z.literal('element'),
   name: z.literal('issn'),
   attributes: z.object({
@@ -3265,7 +3750,7 @@ export const IssnSchema = IssnTSchema.extend({
 })
 
 /** A container used to associate a URI with the DOI being registered.**/
-export const ItemSchema = XastElementSchema.extend({
+export const ItemSchema: z.ZodSchema<Item> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('item'),
   attributes: z.object({
@@ -3277,7 +3762,7 @@ export const ItemSchema = XastElementSchema.extend({
   children: z.array(z.union([DoiSchema, ResourceSchema])),
 })
 
-export const NameSchema = XastElementSchema.extend({
+export const NameSchema: z.ZodSchema<Name> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('name'),
   attributes: z.object({
@@ -3288,7 +3773,7 @@ export const NameSchema = XastElementSchema.extend({
 })
 
 /** Identifies books or conference proceedings that have no ISBN assigned.**/
-export const NoisbnSchema = XastElementSchema.extend({
+export const NoisbnSchema: z.ZodSchema<Noisbn> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('noisbn'),
   attributes: z.object({
@@ -3299,7 +3784,7 @@ export const NoisbnSchema = XastElementSchema.extend({
 })
 
 /** The name of an organization (as opposed to a person) that contributed to an item. If an item was authored by individuals in addition to one or more organizations, person_name and organization may be freely intermixed within contributors.**/
-export const OrganizationSchema = OrganizationTSchema.extend({
+export const OrganizationSchema: z.ZodSchema<Organization> =  OrganizationTSchema.extend({
   type: z.literal('element'),
   name: z.literal('organization'),
   attributes: z.object({
@@ -3311,60 +3796,62 @@ export const OrganizationSchema = OrganizationTSchema.extend({
 })
 
 /** The date a pre-print was posted to a repository.**/
-export const PostedDateSchema = DateTSchema.extend({
+export const PostedDateSchema: z.ZodSchema<PostedDate> =  DateTSchema.extend({
   type: z.literal('element'),
   name: z.literal('posted_date'),
 })
 
 /** The date of publication. Multiple dates are allowed to allow for different dates of publication for online and print versions.**/
-export const PublicationDateSchema = DateTSchema.extend({
+export const PublicationDateSchema: z.ZodSchema<PublicationDate> =  DateTSchema.extend({
   type: z.literal('element'),
   name: z.literal('publication_date'),
 })
 
 /** A container for information about the publisher of the item being registered**/
-export const PublisherSchema = XastElementSchema.extend({
+export const PublisherSchema: z.ZodSchema<Publisher> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('publisher'),
   children: z.array(z.union([PublisherNameSchema, PublisherPlaceSchema])),
 })
 
 /** The date a review was published to a repository.**/
-export const ReviewDateSchema = XastElementSchema.extend({
+export const ReviewDateSchema: z.ZodSchema<ReviewDate> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('review_date'),
   children: z.array(z.union([DaySchema, MonthSchema, YearSchema])),
 })
 
 /** A wrapper for Scholarly Sharing Network (SCN) policy information**/
-export const ScnPoliciesSchema = XastElementSchema.extend({
+export const ScnPoliciesSchema: z.ZodSchema<ScnPolicies> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('scn_policies'),
   children: z.array(ScnPolicySetSchema),
 })
 
-export const StdAltAsPublishedSchema = StdDesignatorTSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('std_alt_as_published'),
-  attributes: z.object({
-    approvedMonth: z.string().optional(),
-    approvedYear: z.string(),
-    Reason: StdAltAsPublishedReasonSchema,
-  }),
-})
+export const StdAltAsPublishedSchema: z.ZodSchema<StdAltAsPublished> =
+  StdDesignatorTSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('std_alt_as_published'),
+    attributes: z.object({
+      approvedMonth: z.string().optional(),
+      approvedYear: z.string(),
+      Reason: StdAltAsPublishedReasonSchema,
+    }),
+  })
 
 /** Designator or other primary identifier for the standard being deposited.**/
-export const StdAsPublishedSchema = StdDesignatorTSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('std_as_published'),
-  attributes: z.object({
-    family: z.string(),
-    set: z.string(),
-    undated: z.string(),
-  }),
-})
+export const StdAsPublishedSchema: z.ZodSchema<StdAsPublished> =
+  StdDesignatorTSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('std_as_published'),
+    attributes: z.object({
+      family: z.string(),
+      set: z.string(),
+      undated: z.string(),
+    }),
+  })
 
-export const StringNameSchema = XastElementSchema.extend({
+export const StringNameSchema: z.ZodSchema<StringName> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('string-name'),
   attributes: z.object({
@@ -3377,12 +3864,12 @@ export const StringNameSchema = XastElementSchema.extend({
 })
 
 /** The date a pre-print was posted to a repository.**/
-export const UpdateDateSchema = DateTSchema.extend({
+export const UpdateDateSchema: z.ZodSchema<UpdateDate> =  DateTSchema.extend({
   type: z.literal('element'),
   name: z.literal('update_date'),
 })
 
-export const AltNameSchema = XastElementSchema.extend({
+export const AltNameSchema: z.ZodSchema<AltName> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('alt-name'),
   children: z.array(z.union([NameSchema, StringNameSchema])),
@@ -3397,7 +3884,7 @@ export const AltNameSchema = XastElementSchema.extend({
  * syndication: identifies resources to be used for syndication
  * link-header: identifies resources to be used as an endpoint
  **/
-export const CollectionSchema = XastElementSchema.extend({
+export const CollectionSchema: z.ZodSchema<Collection> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('collection'),
   attributes: z.object({
@@ -3408,7 +3895,7 @@ export const CollectionSchema = XastElementSchema.extend({
 })
 
 /** Container element for CrossMark data.**/
-export const CrossmarkSchema = XastElementSchema.extend({
+export const CrossmarkSchema: z.ZodSchema<Crossmark> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('crossmark'),
   children: z.array(
@@ -3424,21 +3911,21 @@ export const CrossmarkSchema = XastElementSchema.extend({
 })
 
 /** Container for key dates in the life of a database or dataset.**/
-export const DatabaseDateSchema = XastElementSchema.extend({
+export const DatabaseDateSchema: z.ZodSchema<DatabaseDate> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('database_date'),
   children: z.array(z.union([CreationDateSchema, PublicationDateSchema, UpdateDateSchema])),
 })
 
 /** The container for elements related directly to a DOI.**/
-export const DoiDataSchema = XastElementSchema.extend({
+export const DoiDataSchema: z.ZodSchema<DoiData> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('doi_data'),
   children: z.array(z.union([CollectionSchema, DoiSchema, ResourceSchema, TimestampSchema])),
 })
 
 /** Container element for information about an institution or organization associated with an item.**/
-export const InstitutionSchema = XastElementSchema.extend({
+export const InstitutionSchema: z.ZodSchema<Institution> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('institution'),
   children: z.array(
@@ -3452,27 +3939,28 @@ export const InstitutionSchema = XastElementSchema.extend({
 })
 
 /** Container for metadata that defines a journal.**/
-export const JournalMetadataSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('journal_metadata'),
-  attributes: z.object({
-    language: LanguageSchema.optional(),
-    reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
-  }),
-  children: z.array(
-    z.union([
-      AbbrevTitleSchema,
-      ArchiveLocationsSchema,
-      CodenSchema,
-      DoiDataSchema,
-      FullTitleSchema,
-      IssnSchema,
-    ]),
-  ),
-})
+export const JournalMetadataSchema: z.ZodSchema<JournalMetadata> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('journal_metadata'),
+    attributes: z.object({
+      language: LanguageSchema.optional(),
+      reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
+    }),
+    children: z.array(
+      z.union([
+        AbbrevTitleSchema,
+        ArchiveLocationsSchema,
+        CodenSchema,
+        DoiDataSchema,
+        FullTitleSchema,
+        IssnSchema,
+      ]),
+    ),
+  })
 
 /** Container for the journal volume and DOI assigned to an entire journal volume. You may register a DOI for an entire volume by including doi_data in journal_volume.**/
-export const JournalVolumeSchema = XastElementSchema.extend({
+export const JournalVolumeSchema: z.ZodSchema<JournalVolume> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('journal_volume'),
   children: z.array(
@@ -3481,36 +3969,37 @@ export const JournalVolumeSchema = XastElementSchema.extend({
 })
 
 /** Container for all information that applies to a non-series conference proceeding.**/
-export const ProceedingsMetadataSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('proceedings_metadata'),
-  attributes: z.object({
-    language: LanguageSchema.optional(),
-    reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
-  }),
-  children: z.array(
-    z.union([
-      ArchiveLocationsSchema,
-      DoiDataSchema,
-      IsbnSchema,
-      NoisbnSchema,
-      ProceedingsSubjectSchema,
-      ProceedingsTitleSchema,
-      PublicationDateSchema,
-      PublisherSchema,
-      PublisherItemSchema,
-    ]),
-  ),
-})
+export const ProceedingsMetadataSchema: z.ZodSchema<ProceedingsMetadata> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('proceedings_metadata'),
+    attributes: z.object({
+      language: LanguageSchema.optional(),
+      reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
+    }),
+    children: z.array(
+      z.union([
+        ArchiveLocationsSchema,
+        DoiDataSchema,
+        IsbnSchema,
+        NoisbnSchema,
+        ProceedingsSubjectSchema,
+        ProceedingsTitleSchema,
+        PublicationDateSchema,
+        PublisherSchema,
+        PublisherItemSchema,
+      ]),
+    ),
+  })
 
-export const AffiliationsSchema = XastElementSchema.extend({
+export const AffiliationsSchema: z.ZodSchema<Affiliations> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('affiliations'),
   children: z.array(InstitutionSchema),
 })
 
 /** **/
-export const AnonymousSchema = XastElementSchema.extend({
+export const AnonymousSchema: z.ZodSchema<Anonymous> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('anonymous'),
   attributes: z.object({
@@ -3523,7 +4012,7 @@ export const AnonymousSchema = XastElementSchema.extend({
 })
 
 /** The name of a person (as opposed to an organization) that contributed to an item.**/
-export const PersonNameSchema = XastElementSchema.extend({
+export const PersonNameSchema: z.ZodSchema<PersonName> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('person_name'),
   attributes: z.object({
@@ -3545,38 +4034,39 @@ export const PersonNameSchema = XastElementSchema.extend({
 })
 
 /** The container for all who contributed to authoring or editing an item.**/
-export const ContributorsSchema = XastElementSchema.extend({
+export const ContributorsSchema: z.ZodSchema<Contributors> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('contributors'),
   children: z.array(z.union([AnonymousSchema, OrganizationSchema, PersonNameSchema])),
 })
 
 /** database_metadata contains metadata about the database.**/
-export const DatabaseMetadataSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('database_metadata'),
-  attributes: z.object({
-    language: LanguageSchema.optional(),
-    reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
-  }),
-  children: z.array(
-    z.union([
-      ArchiveLocationsSchema,
-      ContributorsSchema,
-      DatabaseDateSchema,
-      DescriptionSchema,
-      DoiDataSchema,
-      InstitutionSchema,
-      rel.ProgramSchema,
-      PublisherSchema,
-      PublisherItemSchema,
-      TitlesSchema,
-    ]),
-  ),
-})
+export const DatabaseMetadataSchema: z.ZodSchema<DatabaseMetadata> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('database_metadata'),
+    attributes: z.object({
+      language: LanguageSchema.optional(),
+      reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
+    }),
+    children: z.array(
+      z.union([
+        ArchiveLocationsSchema,
+        ContributorsSchema,
+        DatabaseDateSchema,
+        DescriptionSchema,
+        DoiDataSchema,
+        InstitutionSchema,
+        rel.ProgramSchema,
+        PublisherSchema,
+        PublisherItemSchema,
+        TitlesSchema,
+      ]),
+    ),
+  })
 
 /** Container for metadata that defines a single issue of a journal.**/
-export const JournalIssueSchema = XastElementSchema.extend({
+export const JournalIssueSchema: z.ZodSchema<JournalIssue> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('journal_issue'),
   children: z.array(
@@ -3595,7 +4085,7 @@ export const JournalIssueSchema = XastElementSchema.extend({
 
 /** The peer_review content type is intended for assigning DOIs to the reports and other artifacts associated with the review of published content.
  **/
-export const PeerReviewSchema = XastElementSchema.extend({
+export const PeerReviewSchema: z.ZodSchema<PeerReview> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('peer_review'),
   attributes: z.object({
@@ -3622,32 +4112,33 @@ export const PeerReviewSchema = XastElementSchema.extend({
 })
 
 /** Container for 'pending publication' metadata. Pending publication DOIs are used to create a DOI for a content item that is not yet available online or in print.**/
-export const PendingPublicationSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('pending_publication'),
-  attributes: z.object({
-    language: LanguageSchema.optional(),
-  }),
-  children: z.array(
-    z.union([
-      jats.AbstractSchema,
-      AcceptanceDateSchema,
-      ContributorsSchema,
-      CrossmarkSchema,
-      DoiSchema,
-      InstitutionSchema,
-      IntentStatementSchema,
-      ItemNumberSchema,
-      rel.ProgramSchema,
-      PublicationSchema,
-      TitlesSchema,
-    ]),
-  ),
-})
+export const PendingPublicationSchema: z.ZodSchema<PendingPublication> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('pending_publication'),
+    attributes: z.object({
+      language: LanguageSchema.optional(),
+    }),
+    children: z.array(
+      z.union([
+        jats.AbstractSchema,
+        AcceptanceDateSchema,
+        ContributorsSchema,
+        CrossmarkSchema,
+        DoiSchema,
+        InstitutionSchema,
+        IntentStatementSchema,
+        ItemNumberSchema,
+        rel.ProgramSchema,
+        PublicationSchema,
+        TitlesSchema,
+      ]),
+    ),
+  })
 
 /** Container for posted content metadata.
  **/
-export const PostedContentSchema = XastElementSchema.extend({
+export const PostedContentSchema: z.ZodSchema<PostedContent> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('posted_content'),
   attributes: z.object({
@@ -3673,58 +4164,60 @@ export const PostedContentSchema = XastElementSchema.extend({
 })
 
 /** Container for the metadata related to a Technical Report or Working Paper.**/
-export const ReportPaperMetadataSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('report-paper_metadata'),
-  attributes: z.object({
-    language: LanguageSchema.optional(),
-    reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
-  }),
-  children: z.array(
-    z.union([
-      jats.AbstractSchema,
-      ApprovalDateSchema,
-      ArchiveLocationsSchema,
-      CitationListSchema,
-      ContractNumberSchema,
-      ContributorsSchema,
-      CrossmarkSchema,
-      DoiDataSchema,
-      EditionNumberSchema,
-      InstitutionSchema,
-      IsbnSchema,
-      rel.ProgramSchema,
-      PublicationDateSchema,
-      PublisherSchema,
-      PublisherItemSchema,
-      ScnPoliciesSchema,
-      TitlesSchema,
-    ]),
-  ),
-})
+export const ReportPaperMetadataSchema: z.ZodSchema<ReportPaperMetadata> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('report-paper_metadata'),
+    attributes: z.object({
+      language: LanguageSchema.optional(),
+      reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
+    }),
+    children: z.array(
+      z.union([
+        jats.AbstractSchema,
+        ApprovalDateSchema,
+        ArchiveLocationsSchema,
+        CitationListSchema,
+        ContractNumberSchema,
+        ContributorsSchema,
+        CrossmarkSchema,
+        DoiDataSchema,
+        EditionNumberSchema,
+        InstitutionSchema,
+        IsbnSchema,
+        rel.ProgramSchema,
+        PublicationDateSchema,
+        PublisherSchema,
+        PublisherItemSchema,
+        ScnPoliciesSchema,
+        TitlesSchema,
+      ]),
+    ),
+  })
 
 /** Container for metadata about a series publication.**/
-export const SeriesMetadataSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('series_metadata'),
-  children: z.array(
-    z.union([
-      jats.AbstractSchema,
-      ArchiveLocationsSchema,
-      CodenSchema,
-      ContributorsSchema,
-      CrossmarkSchema,
-      DoiDataSchema,
-      IssnSchema,
-      PublisherItemSchema,
-      SeriesNumberSchema,
-      TitlesSchema,
-    ]),
-  ),
-})
+export const SeriesMetadataSchema: z.ZodSchema<SeriesMetadata> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('series_metadata'),
+    children: z.array(
+      z.union([
+        jats.AbstractSchema,
+        ArchiveLocationsSchema,
+        CodenSchema,
+        ContributorsSchema,
+        CrossmarkSchema,
+        DoiDataSchema,
+        IssnSchema,
+        PublisherItemSchema,
+        SeriesNumberSchema,
+        TitlesSchema,
+      ]),
+    ),
+  })
 
 /** When a book consists of multiple volumes that are not part of a serial publication (series), set_metadata is used to describe information about the entire set.**/
-export const SetMetadataSchema = XastElementSchema.extend({
+export const SetMetadataSchema: z.ZodSchema<SetMetadata> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('set_metadata'),
   children: z.array(
@@ -3742,37 +4235,38 @@ export const SetMetadataSchema = XastElementSchema.extend({
 })
 
 /** Container for the metadata related to a Standard that is not part of a series.**/
-export const StandardMetadataSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('standard_metadata'),
-  attributes: z.object({
-    language: LanguageSchema.optional(),
-    publication_status: StandardMetadataPublicationStatusSchema.optional(),
-    reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
-  }),
-  children: z.array(
-    z.union([
-      jats.AbstractSchema,
-      ApprovalDateSchema,
-      ArchiveLocationsSchema,
-      CitationListSchema,
-      ContributorsSchema,
-      CrossmarkSchema,
-      DesignatorsSchema,
-      DoiDataSchema,
-      EditionNumberSchema,
-      IsbnSchema,
-      rel.ProgramSchema,
-      PublisherSchema,
-      PublisherItemSchema,
-      StandardsBodySchema,
-      TitlesSchema,
-    ]),
-  ),
-})
+export const StandardMetadataSchema: z.ZodSchema<StandardMetadata> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('standard_metadata'),
+    attributes: z.object({
+      language: LanguageSchema.optional(),
+      publication_status: StandardMetadataPublicationStatusSchema.optional(),
+      reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
+    }),
+    children: z.array(
+      z.union([
+        jats.AbstractSchema,
+        ApprovalDateSchema,
+        ArchiveLocationsSchema,
+        CitationListSchema,
+        ContributorsSchema,
+        CrossmarkSchema,
+        DesignatorsSchema,
+        DoiDataSchema,
+        EditionNumberSchema,
+        IsbnSchema,
+        rel.ProgramSchema,
+        PublisherSchema,
+        PublisherItemSchema,
+        StandardsBodySchema,
+        TitlesSchema,
+      ]),
+    ),
+  })
 
 /** A container for all title-level metadata for a single book that is not part of a series or set.**/
-export const BookMetadataSchema = XastElementSchema.extend({
+export const BookMetadataSchema: z.ZodSchema<BookMetadata> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('book_metadata'),
   attributes: z.object({
@@ -3801,58 +4295,60 @@ export const BookMetadataSchema = XastElementSchema.extend({
 })
 
 /** A container for all information that applies to an individual volume of a book series.**/
-export const BookSeriesMetadataSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('book_series_metadata'),
-  attributes: z.object({
-    language: LanguageSchema.optional(),
-    reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
-  }),
-  children: z.array(
-    z.union([
-      ArchiveLocationsSchema,
-      CitationListSchema,
-      CrossmarkSchema,
-      DoiDataSchema,
-      rel.ProgramSchema,
-      PublicationDateSchema,
-      PublisherSchema,
-      PublisherItemSchema,
-      SeriesMetadataSchema,
-    ]),
-  ),
-})
+export const BookSeriesMetadataSchema: z.ZodSchema<BookSeriesMetadata> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('book_series_metadata'),
+    attributes: z.object({
+      language: LanguageSchema.optional(),
+      reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
+    }),
+    children: z.array(
+      z.union([
+        ArchiveLocationsSchema,
+        CitationListSchema,
+        CrossmarkSchema,
+        DoiDataSchema,
+        rel.ProgramSchema,
+        PublicationDateSchema,
+        PublisherSchema,
+        PublisherItemSchema,
+        SeriesMetadataSchema,
+      ]),
+    ),
+  })
 
 /** A container for all information that applies to an individual volume of a book set.**/
-export const BookSetMetadataSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('book_set_metadata'),
-  attributes: z.object({
-    language: LanguageSchema.optional(),
-    reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
-  }),
-  children: z.array(
-    z.union([
-      ArchiveLocationsSchema,
-      CitationListSchema,
-      ContributorsSchema,
-      CrossmarkSchema,
-      DoiDataSchema,
-      EditionNumberSchema,
-      IsbnSchema,
-      NoisbnSchema,
-      rel.ProgramSchema,
-      PublicationDateSchema,
-      PublisherSchema,
-      PublisherItemSchema,
-      SetMetadataSchema,
-      VolumeSchema,
-    ]),
-  ),
-})
+export const BookSetMetadataSchema: z.ZodSchema<BookSetMetadata> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('book_set_metadata'),
+    attributes: z.object({
+      language: LanguageSchema.optional(),
+      reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
+    }),
+    children: z.array(
+      z.union([
+        ArchiveLocationsSchema,
+        CitationListSchema,
+        ContributorsSchema,
+        CrossmarkSchema,
+        DoiDataSchema,
+        EditionNumberSchema,
+        IsbnSchema,
+        NoisbnSchema,
+        rel.ProgramSchema,
+        PublicationDateSchema,
+        PublisherSchema,
+        PublisherItemSchema,
+        SetMetadataSchema,
+        VolumeSchema,
+      ]),
+    ),
+  })
 
 /** Container for component metadata. Supplemental materials, figures, tables, and other items that can be considered a citeable part of a registered item may be registered as components.**/
-export const ComponentSchema = XastElementSchema.extend({
+export const ComponentSchema: z.ZodSchema<Component> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('component'),
   attributes: z.object({
@@ -3876,43 +4372,44 @@ export const ComponentSchema = XastElementSchema.extend({
 })
 
 /** Container for a group of components**/
-export const ComponentListSchema = XastElementSchema.extend({
+export const ComponentListSchema: z.ZodSchema<ComponentList> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('component_list'),
   children: z.array(ComponentSchema),
 })
 
 /** Container for all information about a single conference paper.**/
-export const ConferencePaperSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('conference_paper'),
-  attributes: z.object({
-    language: LanguageSchema.optional(),
-    publication_type: PublicationTypeSchema,
-    reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
-  }),
-  children: z.array(
-    z.union([
-      jats.AbstractSchema,
-      AcceptanceDateSchema,
-      ArchiveLocationsSchema,
-      CitationListSchema,
-      ComponentListSchema,
-      ContributorsSchema,
-      CrossmarkSchema,
-      DoiDataSchema,
-      PagesSchema,
-      rel.ProgramSchema,
-      PublicationDateSchema,
-      PublisherItemSchema,
-      ScnPoliciesSchema,
-      TitlesSchema,
-    ]),
-  ),
-})
+export const ConferencePaperSchema: z.ZodSchema<ConferencePaper> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('conference_paper'),
+    attributes: z.object({
+      language: LanguageSchema.optional(),
+      publication_type: PublicationTypeSchema,
+      reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
+    }),
+    children: z.array(
+      z.union([
+        jats.AbstractSchema,
+        AcceptanceDateSchema,
+        ArchiveLocationsSchema,
+        CitationListSchema,
+        ComponentListSchema,
+        ContributorsSchema,
+        CrossmarkSchema,
+        DoiDataSchema,
+        PagesSchema,
+        rel.ProgramSchema,
+        PublicationDateSchema,
+        PublisherItemSchema,
+        ScnPoliciesSchema,
+        TitlesSchema,
+      ]),
+    ),
+  })
 
 /** A segment of a book, report, or standard for which a DOI is being registered. Most commonly used for book chapters.**/
-export const ContentItemSchema = XastElementSchema.extend({
+export const ContentItemSchema: z.ZodSchema<ContentItem> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('content_item'),
   attributes: z.object({
@@ -3944,7 +4441,7 @@ export const ContentItemSchema = XastElementSchema.extend({
 })
 
 /** dataset is used to capture information about one or more database records or collections.**/
-export const DatasetSchema = XastElementSchema.extend({
+export const DatasetSchema: z.ZodSchema<Dataset> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('dataset'),
   attributes: z.object({
@@ -3969,7 +4466,7 @@ export const DatasetSchema = XastElementSchema.extend({
 })
 
 /** dissertation is the top level element for deposit of metadata about one or more dissertations.**/
-export const DissertationSchema = XastElementSchema.extend({
+export const DissertationSchema: z.ZodSchema<Dissertation> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('dissertation'),
   attributes: z.object({
@@ -4000,77 +4497,80 @@ export const DissertationSchema = XastElementSchema.extend({
 })
 
 /** Container for all information about a single journal article.**/
-export const JournalArticleSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('journal_article'),
-  attributes: z.object({
-    language: LanguageSchema.optional(),
-    publication_type: PublicationTypeSchema,
-    reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
-  }),
-  children: z.array(
-    z.union([
-      jats.AbstractSchema,
-      AcceptanceDateSchema,
-      ArchiveLocationsSchema,
-      CitationListSchema,
-      ComponentListSchema,
-      ContributorsSchema,
-      CrossmarkSchema,
-      DoiDataSchema,
-      PagesSchema,
-      rel.ProgramSchema,
-      PublicationDateSchema,
-      PublisherItemSchema,
-      ScnPoliciesSchema,
-      TitlesSchema,
-    ]),
-  ),
-})
+export const JournalArticleSchema: z.ZodSchema<JournalArticle> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('journal_article'),
+    attributes: z.object({
+      language: LanguageSchema.optional(),
+      publication_type: PublicationTypeSchema,
+      reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
+    }),
+    children: z.array(
+      z.union([
+        jats.AbstractSchema,
+        AcceptanceDateSchema,
+        ArchiveLocationsSchema,
+        CitationListSchema,
+        ComponentListSchema,
+        ContributorsSchema,
+        CrossmarkSchema,
+        DoiDataSchema,
+        PagesSchema,
+        rel.ProgramSchema,
+        PublicationDateSchema,
+        PublisherItemSchema,
+        ScnPoliciesSchema,
+        TitlesSchema,
+      ]),
+    ),
+  })
 
 /** Container for all information that applies to a specific conference proceeding that is part of a series.**/
-export const ProceedingsSeriesMetadataSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('proceedings_series_metadata'),
-  attributes: z.object({
-    reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
-  }),
-  children: z.array(
-    z.union([ArchiveLocationsSchema, DoiDataSchema, PublisherItemSchema, SeriesMetadataSchema]),
-  ),
-})
+export const ProceedingsSeriesMetadataSchema: z.ZodSchema<ProceedingsSeriesMetadata> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('proceedings_series_metadata'),
+    attributes: z.object({
+      reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
+    }),
+    children: z.array(
+      z.union([ArchiveLocationsSchema, DoiDataSchema, PublisherItemSchema, SeriesMetadataSchema]),
+    ),
+  })
 
 /** Container for the metadata related to a Technical Report or Working Paper that is part of a series.**/
-export const ReportPaperSeriesMetadataSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('report-paper_series_metadata'),
-  attributes: z.object({
-    language: LanguageSchema.optional(),
-    reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
-  }),
-  children: z.array(
-    z.union([
-      ApprovalDateSchema,
-      ArchiveLocationsSchema,
-      CitationListSchema,
-      ContractNumberSchema,
-      ContributorsSchema,
-      DoiDataSchema,
-      EditionNumberSchema,
-      InstitutionSchema,
-      IsbnSchema,
-      rel.ProgramSchema,
-      PublicationDateSchema,
-      PublisherSchema,
-      PublisherItemSchema,
-      SeriesMetadataSchema,
-      VolumeSchema,
-    ]),
-  ),
-})
+export const ReportPaperSeriesMetadataSchema: z.ZodSchema<ReportPaperSeriesMetadata> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('report-paper_series_metadata'),
+    attributes: z.object({
+      language: LanguageSchema.optional(),
+      reference_distribution_opts: ReferenceDistributionOptsSchema.optional(),
+    }),
+    children: z.array(
+      z.union([
+        ApprovalDateSchema,
+        ArchiveLocationsSchema,
+        CitationListSchema,
+        ContractNumberSchema,
+        ContributorsSchema,
+        DoiDataSchema,
+        EditionNumberSchema,
+        InstitutionSchema,
+        IsbnSchema,
+        rel.ProgramSchema,
+        PublicationDateSchema,
+        PublisherSchema,
+        PublisherItemSchema,
+        SeriesMetadataSchema,
+        VolumeSchema,
+      ]),
+    ),
+  })
 
 /** Container for component metadata if the component is being registered after the parent record/DOI is created.**/
-export const SaComponentSchema = XastElementSchema.extend({
+export const SaComponentSchema: z.ZodSchema<SaComponent> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('sa_component'),
   attributes: z.object({
@@ -4080,7 +4580,7 @@ export const SaComponentSchema = XastElementSchema.extend({
 })
 
 /** standard is the top level element for deposit of metadata about standards developed by Standards Development Organizations (SDOs) or Consortia.**/
-export const StandardSchema = XastElementSchema.extend({
+export const StandardSchema: z.ZodSchema<Standard> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('standard'),
   attributes: z.object({
@@ -4090,7 +4590,7 @@ export const StandardSchema = XastElementSchema.extend({
 })
 
 /** Container for all information about a single book.**/
-export const BookSchema = XastElementSchema.extend({
+export const BookSchema: z.ZodSchema<Book> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('book'),
   attributes: z.object({
@@ -4107,7 +4607,7 @@ export const BookSchema = XastElementSchema.extend({
 })
 
 /** Container for all information about a single conference and its proceedings. If a conference proceedings spans multiple volumes, each volume must be contained in a unique conference element.**/
-export const ConferenceSchema = XastElementSchema.extend({
+export const ConferenceSchema: z.ZodSchema<Conference> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('conference'),
   children: z.array(
@@ -4122,21 +4622,21 @@ export const ConferenceSchema = XastElementSchema.extend({
 })
 
 /** database is the top level element for deposit of metadata about one or more datasets or records in a database.**/
-export const DatabaseSchema = XastElementSchema.extend({
+export const DatabaseSchema: z.ZodSchema<Database> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('database'),
   children: z.array(z.union([ComponentListSchema, DatabaseMetadataSchema, DatasetSchema])),
 })
 
 /** Container for all information about a single journal and the volumes, issues, and articles being registered within the journal.  Within a journal instance you may register articles from a single issue, detailed in journal_issue. If you want to register items from more than one issue you must use multiple journal instances within your XML file.**/
-export const JournalSchema = XastElementSchema.extend({
+export const JournalSchema: z.ZodSchema<Journal> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('journal'),
   children: z.array(z.union([JournalArticleSchema, JournalIssueSchema, JournalMetadataSchema])),
 })
 
 /** report-paper is the top level element for deposit of metadata about one or more reports or working papers.**/
-export const ReportPaperSchema = XastElementSchema.extend({
+export const ReportPaperSchema: z.ZodSchema<ReportPaper> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('report-paper'),
   attributes: z.object({
@@ -4153,7 +4653,7 @@ export const ReportPaperSchema = XastElementSchema.extend({
 })
 
 /** Container for the main body of a DOI record submission. While it is possible to include records for multiple journals, books, conferences, or other types of content in a single submission, it is not possible to mix content types within a single DOI submission.**/
-export const BodySchema = XastElementSchema.extend({
+export const BodySchema: z.ZodSchema<Body> =  XastElementSchema.extend({
   type: z.literal('element'),
   name: z.literal('body'),
   children: z.array(
@@ -4174,11 +4674,13 @@ export const BodySchema = XastElementSchema.extend({
 })
 
 /** Top level element for a metadata record submission. This element indicates the start and end of the XML file. The version number is fixed to the version of the schema.**/
-export const DoiBatchSchema = XastElementSchema.extend({
-  type: z.literal('element'),
-  name: z.literal('doi_batch'),
-  attributes: z.object({
-    version: z.string(),
+export const DoiBatchSchema: z.ZodSchema<DoiBatch> =
+  XastElementSchema.extend({
+    type: z.literal('element'),
+    name: z.literal('doi_batch'),
+    attributes: z.object({
+      version: z.string(),
+    }),
+    children: z.array(z.union([BodySchema, HeadSchema])),
   }),
-  children: z.array(z.union([BodySchema, HeadSchema])),
-})
+)

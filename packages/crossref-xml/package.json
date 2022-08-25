@@ -12,5 +12,9 @@
     "syntax",
     "tree",
     "ast"
-  ]
+  ],
+  "dependencies": {
+    "axios": "^0.27.2",
+    "from-xml": "^0.1.7"
+  }
 }

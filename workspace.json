@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "crossref-xml": "packages/crossref-xml",
-    "ts-to-zod-recursive": "packages/ts-to-zod-recursive"
+    "ts-to-zod-recursive": "packages/ts-to-zod-recursive",
+    "xsd-to-ts": "packages/xsd-to-ts"
   }
 }

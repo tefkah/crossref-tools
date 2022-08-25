@@ -12,13 +12,17 @@ import {
 } from '../types'
 
 type HeadProps = {
-  /**
-   *
-   */
-  registrant: Registrant
+  registrant: Registrant['children'][0]['value']
+  email: string
 }
 
-export const head = ({ registrant, email }: { registrant: Registrant; email: string }): Head => {
+export const head = ({
+  registrant,
+  email,
+}: {
+  registrant: Registrant['children'][0]['value']
+  email: EmailAddress['children'][0]['value']
+}): Head => {
   const datetime = Date.now()
 
   const head: Head = x('head', [

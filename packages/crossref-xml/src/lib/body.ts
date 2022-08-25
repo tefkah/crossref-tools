@@ -1,8 +1,8 @@
-import { Element } from "xast"
-import { URI } from "./ai_program"
-import book, { Book } from "./book"
-import { Cite } from "./citation_list"
-import { Author } from "./contributors"
+import { URI } from './ai_program'
+import { book } from './book'
+import { Cite } from './citation_list'
+import { Author } from './contributors'
+import { Body } from '../types'
 
 export interface BodyProps {
   type: any
@@ -15,12 +15,8 @@ export interface BodyProps {
   resolve_url: URI
   citations: Cite[]
 }
-export interface Body extends Element {
-  name: "body"
-  children: [Book]
-}
 
-const body = ({
+export const body = ({
   type,
   title,
   language,
@@ -32,13 +28,12 @@ const body = ({
   citations,
 }: BodyProps): Body => {
   const js: Body = {
-    type: "element",
-    name: "body",
+    type: 'element',
+    name: 'body',
     children: [
       book({ title, language, authors, abstractText, license_url, doi, resolve_url, citations }),
     ],
   }
 
-  return js
+  return js as Body
 }
-export default body

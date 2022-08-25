@@ -1,10 +1,11 @@
 import { Element, Instruction, Root, Text } from 'xast'
 
-import head, { Head } from './head'
-import body, { Body } from './body'
+import { head } from './head'
+import { body } from './body'
 import { Cite } from './citation_list'
 import { Author } from './contributors'
 import { URI } from './ai_program'
+import { Head, Body } from '../types'
 
 export interface CrossRef extends Root {
   children: (Instruction | DOIBatch)[]

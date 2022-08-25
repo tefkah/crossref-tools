@@ -1,26 +1,26 @@
-import { Element, Text } from "xast"
+import { Element, Text } from 'xast'
 
 export interface Abstract extends Element {
-  name: "jats:abstract"
-  children: JATS<"p">[]
+  name: 'jats:abstract'
+  children: JATS<'p'>[]
 }
 
-export interface JATS<T extends string = "p"> extends Element {
+export interface JATS<T extends string = 'p'> extends Element {
   name: `jats:${T}`
   children: (Text | JATS)[]
 }
 
-const abstract = (abstract: string): Abstract => {
+export const abstract = (abstract: string): Abstract => {
   const js: Abstract = {
-    type: "element",
-    name: "jats:abstract",
+    type: 'element',
+    name: 'jats:abstract',
     children: [
       {
-        type: "element",
-        name: "jats:p",
+        type: 'element',
+        name: 'jats:p',
         children: [
           {
-            type: "text",
+            type: 'text',
             value: abstract,
           },
         ],

@@ -1,1 +1,5 @@
 export * from './www.crossref.org/schema/5.3.1'
+export * from './www.crossref.org/AccessIndicators.xsd'
+export * from './www.crossref.org/clinicaltrials.xsd'
+export * from './www.crossref.org/fundref.xsd'
+export * from './www.crossref.org/relations.xsd'

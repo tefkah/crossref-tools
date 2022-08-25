@@ -42,7 +42,7 @@ const dbAuthorToCrossrefAuthor = (author: Author): PersonName['children'] => {
 }
 
 // TODO: Feature update needed for organizations / affiliations
-const contributors = (authors: Author[]): Contributors => {
+export const contributors = (authors: Author[]): Contributors => {
   return x(
     'contributors',
     authors.map(

@@ -1,43 +1,3 @@
-// import { Element, Text } from "xast"
-// export interface CitationList extends Element {
-//   name: "citation_list"
-//   children: Citation[]
-// }
-
-// export interface Citation extends Element {
-//   name: "citation"
-//   attributes: {
-//     key: string
-//   }
-//   children: (DOI | ISBN | JournalTitle | CitationAuthor | CYear | ArticleTitle)[]
-// }
-
-// export interface CitationAuthor extends Element {
-//   name: "author"
-//   children: [Text]
-// }
-
-// export interface CYear extends Element {
-//   name: "cYear"
-//   children: [Text]
-// }
-// export interface DOI extends Element {
-//   name: "doi"
-//   children: [Text]
-// }
-// export interface ISBN extends Element {
-//   name: "isbn"
-//   children: [Text]
-// }
-// export interface JournalTitle extends Element {
-//   name: "journal_title"
-//   children: [Text]
-// }
-// export interface ArticleTitle extends Element {
-//   name: "article_title"
-//   children: [Text]
-// }
-
 // TODO: Verify output generated
 
 import { CitationList, Citation, Author, JournalTitle, ArticleTitle, Doi } from '../types'
@@ -50,7 +10,7 @@ export interface Cite {
   publishedAt: string | Date
 }
 
-const citation_list = ({ citations }: { citations: Cite[] }): CitationList => {
+export const citationList = ({ citations }: { citations: Cite[] }): CitationList => {
   const js: CitationList = {
     type: 'element',
     name: 'citation_list',
@@ -134,5 +94,3 @@ const citation_list = ({ citations }: { citations: Cite[] }): CitationList => {
 
   return js
 }
-
-export default citation_list

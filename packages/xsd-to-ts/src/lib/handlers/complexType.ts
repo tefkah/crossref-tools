@@ -1,7 +1,7 @@
 import { X, Element } from '../types'
 import { select } from 'xast-util-select'
 
-export const simpleType = (x: X, node: Element) => {
+export const complexType = (x: X, node: Element) => {
   const attributes = select('xsd\\:attribute, xs:\\attribute', node)
 
   console.log({ attributes })

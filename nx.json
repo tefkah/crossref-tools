@@ -5,6 +5,7 @@
     "defaultBase": "main"
   },
   "implicitDependencies": {
+    "workspace.json": "*",
     "package.json": {
       "dependencies": "*",
       "devDependencies": "*"

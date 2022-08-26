@@ -1,1 +1,1 @@
-export * from './lib/xsd-to-ts'
+export * from './lib/stringTypeSwitcher'

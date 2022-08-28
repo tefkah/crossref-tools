@@ -27,6 +27,8 @@ export interface Context {
   frozenBaseUrl: string | null
   wrapText: boolean
   qNesting: number
+  refs: Record<string, 'element' | 'attribute' | 'attributeGroup' | 'group' | 'choice'>
+  resolvedRefs?: Record<string, Record<string, any>>
   handlers: { [handler: string]: Handle }
 }
 

@@ -51,6 +51,7 @@ specifiers:
   unist-util-visit: ^4.1.1
   validate-with-xmllint: ^1.2.0
   xast-util-from-xml: ^2.0.1
+  xast-util-is-element: ^0.0.1
   xast-util-select: ^0.1.6
   xast-util-to-string: ^2.0.0
   xast-util-to-xml: ^3.0.0
@@ -85,6 +86,7 @@ dependencies:
   unist-util-visit: 4.1.1
   validate-with-xmllint: 1.2.0
   xast-util-from-xml: 2.0.1
+  xast-util-is-element: 0.0.1
   xast-util-select: 0.1.6
   xast-util-to-string: 2.0.0
   xastscript: 3.0.0

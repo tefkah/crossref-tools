@@ -62,6 +62,7 @@ export const xmlToTS = async (xml: string, options: Options = {}) => {
       frozenBaseUrl: null,
       qNesting: 0,
       handlers: options.handlers ? { ...handlers, ...options.handlers } : handlers,
+      refs: {},
     } as Context,
   )
 

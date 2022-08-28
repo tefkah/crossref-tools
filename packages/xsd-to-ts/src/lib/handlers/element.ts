@@ -4,6 +4,11 @@ import { getAnnotation } from '../util/get-annotation'
 
 export const element = (x: X, node: Element, parent?: Parent): any | Array<any> | void => {
   const annotation = getAnnotation(node)
+  if (node.attributes?.ref) {
+    x.refs = { ...(x.refs ?? {}), [node.attributes.ref]: 'element' }
+    return { type: 'ref', name: node.attributes.ref }
+  }
+
   const type = {
     type: 'type',
     name: node.attributes?.name ?? 'type',
@@ -11,5 +16,5 @@ export const element = (x: X, node: Element, parent?: Parent): any | Array<any> 
     children: all(x, node),
   }
 
-  return x(node, 'type', {}, all(x, type))
+  return type
 }

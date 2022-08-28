@@ -1,6 +1,5 @@
-// TODO: Verify output generated
-
 import { CitationList, Citation, Author, JournalTitle, ArticleTitle, Doi } from '../types'
+
 export interface Cite {
   publishedWhere: string
   authors: [{ name: string }] | { name: string }[]

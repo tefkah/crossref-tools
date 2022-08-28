@@ -1,4 +1,3 @@
-import { Element } from 'xast'
 import { x } from 'xastscript'
 import { Noisbn } from '../types'
 

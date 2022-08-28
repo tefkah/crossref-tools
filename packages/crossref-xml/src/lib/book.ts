@@ -1,15 +1,15 @@
-import { Element, Text } from 'xast'
 import { titles } from './titles'
 import { publicationDate } from './publication_date'
 import { noisbn } from './noisbn'
-import { publisher } from './publisher'
+import { publisher, PublisherProps } from './publisher'
 import { abstract } from './abstract'
 import { aiProgram, URI } from './ai_program'
 import { doiData } from './doi_data'
 import { contributors, Author } from './contributors'
 import { citationList, Cite } from './citation_list'
 import { componentList } from './component_list'
-import { Book, ContentItem } from '../types'
+import { Book, BookBookType, BookMetadata, ContentItem, Language } from '../types'
+import { PublisherPlacePrimitiveTypeSchema } from '../validators/crossref'
 
 export interface BookProps {
   title: string
@@ -20,6 +20,10 @@ export interface BookProps {
   doi: string
   resolve_url: URI
   citations: Cite[]
+  publisherPlace: string
+  publisherName: string
+  bookLanguage?: Language
+  bookType?: BookBookType
 }
 
 export const book = ({
@@ -31,12 +35,16 @@ export const book = ({
   doi,
   resolve_url,
   citations,
+  publisherName,
+  publisherPlace,
+  bookLanguage = 'en',
+  bookType = 'other',
 }: BookProps) =>
   ({
     type: 'element',
     name: 'book',
     attributes: {
-      book_type: 'other',
+      book_type: bookType,
     },
     children: [
       {
@@ -44,13 +52,16 @@ export const book = ({
         type: 'element',
         name: 'book_metadata',
         attributes: {
-          language: 'en',
+          language: bookLanguage,
         },
         children: [
           titles('ResearchEquals'),
           publicationDate(),
           noisbn(),
-          publisher(),
+          publisher({
+            name: publisherName,
+            place: publisherPlace,
+          }),
           aiProgram({
             url: 'https://creativecommons.org/publicdomain/zero/1.0/legalcode',
           }),

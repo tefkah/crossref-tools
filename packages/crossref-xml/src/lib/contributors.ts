@@ -1,4 +1,6 @@
-// import { Element, Text } from "xast"
+import { u } from 'unist-builder'
+import { x } from 'xastscript'
+import { GivenName, Surname, PersonName, Contributors, ORCID } from '../types'
 
 export interface Author {
   firstName?: string | null
@@ -6,44 +8,37 @@ export interface Author {
   orcid?: string | null
 }
 
-import { u } from 'unist-builder'
-import { x } from 'xastscript'
-import { GivenName, Surname, PersonName, Contributors, ORCID } from '../types'
-
-const dbAuthorToCrossrefAuthor = (author: Author): PersonName['children'] => {
+const dbAuthorToCrossrefAuthor = (author: Author): PersonName['children'] =>
   /**
    * Object.entries returns [key:string, value:any][], always
    * so we need to typecast it
    */
-  return (
-    (Object.entries(author) as [keyof Author, string][])
-      .map(([key, value]) => {
-        if (!value) {
-          return null
-        }
+  (Object.entries(author) as [keyof Author, string][])
+    .map(([key, value]) => {
+      if (!value) {
+        return null
+      }
 
-        switch (key) {
-          case 'firstName':
-            return x('given_name', [u('text', value)]) as GivenName
-          case 'lastName':
-            return x('surname', [u('text', value)]) as Surname
-
-          case 'orcid':
-            return x('ORCID', { authenticated: true }, [
-              u('text', `https://orcid.org/${value}`),
-            ]) as ORCID
-        }
-      })
-      /**
-       * Filter out null values
-       */
-      .filter((x) => x) as PersonName['children']
-  )
-}
+      switch (key) {
+        case 'lastName':
+          return x('surname', [u('text', value)]) as Surname
+        case 'orcid':
+          return x('ORCID', { authenticated: true }, [
+            u('text', `https://orcid.org/${value}`),
+          ]) as ORCID
+        case 'firstName':
+        default:
+          return x('given_name', [u('text', value)]) as GivenName
+      }
+    })
+    /**
+     * Filter out null values
+     */
+    .filter(Boolean) as PersonName['children']
 
 // TODO: Feature update needed for organizations / affiliations
-export const contributors = (authors: Author[]): Contributors => {
-  return x(
+export const contributors = (authors: Author[]): Contributors =>
+  x(
     'contributors',
     authors.map(
       (author, index) =>
@@ -57,6 +52,5 @@ export const contributors = (authors: Author[]): Contributors => {
         ) as PersonName,
     ),
   ) as Contributors
-}
 
 export default contributors

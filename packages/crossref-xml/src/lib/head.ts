@@ -1,31 +1,16 @@
 import { u } from 'unist-builder'
-import { Element, Text } from 'xast'
 import { x } from 'xastscript'
-import {
-  Depositor,
-  DepositorName,
-  DoiBatchId,
-  EmailAddress,
-  Head,
-  Registrant,
-  Timestamp,
-} from '../types'
+import { Depositor, DoiBatchId, EmailAddress, Head, Registrant, Timestamp } from '../types'
 
 type HeadProps = {
   registrant: Registrant['children'][0]['value']
-  email: string
+  email: EmailAddress['children'][0]['value']
 }
 
-export const head = ({
-  registrant,
-  email,
-}: {
-  registrant: Registrant['children'][0]['value']
-  email: EmailAddress['children'][0]['value']
-}): Head => {
+export const head = ({ registrant, email }: HeadProps): Head => {
   const datetime = Date.now()
 
-  const head: Head = x('head', [
+  return x('head', [
     x('doi_batch_id', [u('text', datetime.toString())]) as DoiBatchId,
     x('timestamp', [u('text', datetime.toString())]) as Timestamp,
     x('depositor', [
@@ -35,6 +20,4 @@ export const head = ({
     // x('registrant', [u('text', registrant)]) as Registrant,
     registrant,
   ]) as Head
-
-  return head
 }

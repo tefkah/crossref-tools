@@ -1,4 +1,4 @@
-import { Element, Instruction, Root, Text } from 'xast'
+import { Element, Instruction, Root } from 'xast'
 
 import { head } from './head'
 import { body } from './body'

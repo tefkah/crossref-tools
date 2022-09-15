@@ -6,8 +6,11 @@ import { attributeGroup } from './attributeGroup'
 import { attribute } from './attribute'
 import { group } from './group'
 import { choice } from './choice'
+import { Handle } from '../types'
 
-export const handlers = {
+const ignore = () => {}
+
+export const handlers: Record<string, Handle> = {
   root: all,
   element: element,
   complexType,
@@ -16,4 +19,5 @@ export const handlers = {
   attributeGroup,
   group,
   choice,
+  annotation: ignore,
 }

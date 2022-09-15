@@ -11,7 +11,10 @@ export const attributeGroup = (x: X, node: Element, parent?: Parent) => {
     return `attributes: ${createTypeName(node.attributes.ref.replace('atts', ''))}` //{ type: 'ref', name: node.attributes.ref }
   }
 
-  if (parent && isElement(parent) && /schema/.test(parent?.name) && node?.attributes?.name) {
+  if (
+    node?.attributes?.name ||
+    (parent && isElement(parent) && /schema/.test(parent?.name) && node?.attributes?.name)
+  ) {
     return `export interface ${createTypeName(node.attributes?.name)} {
       ${all(x, node)}
     }`

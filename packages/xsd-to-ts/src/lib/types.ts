@@ -1,3 +1,4 @@
+import { SourceFile } from 'ts-morph'
 import { Element } from 'xast'
 
 import { Attributes as OoxastProperties, Parent, Text, Root } from 'xast'
@@ -29,6 +30,7 @@ export interface Context {
   qNesting: number
   refs: Record<string, 'element' | 'attribute' | 'attributeGroup' | 'group' | 'choice'>
   resolvedRefs?: Record<string, Record<string, any>>
+  sourceFile: SourceFile
   handlers: { [handler: string]: Handle }
 }
 

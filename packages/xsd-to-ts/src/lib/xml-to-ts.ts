@@ -6,6 +6,7 @@ import { one } from './one'
 import { Context, Handle, Options, X } from './types'
 import { handlers } from './handlers'
 import rehypeMinifyWhitespace from 'rehype-minify-whitespace'
+import { ts } from 'ts-morph'
 
 type XastContent = Root['children'][number]
 
@@ -63,6 +64,12 @@ export const xmlToTS = async (xml: string, options: Options = {}) => {
       qNesting: 0,
       handlers: options.handlers ? { ...handlers, ...options.handlers } : handlers,
       refs: {},
+      sourceFile: ts.createSourceFile(
+        'xast.d.ts',
+        '',
+        { languageVersion: ts.ScriptTarget.Latest },
+        true,
+      ),
     } as Context,
   )
 
